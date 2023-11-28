@@ -16,9 +16,14 @@ a {
 	text-decoration: none;
 }
 
+body {
+	background: var(--bgColor);
+}
+
 .App {
 	width: 100%;
 	min-height: 100vh;
+	font-family: var(--baseFont);
 
 	&.dark {
 	}

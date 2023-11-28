@@ -1,0 +1,88 @@
+{
+  "normPeople": [
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member1.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member2.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member3.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member4.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member5.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member6.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member7.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member8.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member9.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member10.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member11.jpg"
+    },
+    {
+      "name": "Christopher James",
+      "position": "Project Manager",
+      "pic": "../img/department/member12.jpg"
+    }
+  ],
+  "article": {
+    "headline": "NORM ARCHITECTS STUDIO WAS FOUNDED IN 2008",
+    "mainImg": "main.jpg",
+    "subHeadline": "Much like human well-being the essence of Norm Architects work is found in balance-between richness and restraint, between order complexity.",
+    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aut aperiam qui accusantium officia officiis, asperiores, libero at quidem alias illum. Tempora distinctio similique a, incidunt obcaecati dolorem cumque esse in dicta rerum odit, fugit cupiditate tenetur nobis, vero atque sunt quasi unde nemo eius. Facere a quas est laudantium sunt quibusdam laboriosam officia, sequi cumque earum adipisci odit expedita aut! Totam corrupti repudiandae ullam sapiente? Vitae architecto maxime incidunt! Molestias quibusdam corrupti sit modi impedit quos. Officia accusantium itaque consequatur. Id suscipit, voluptatibus harum voluptas dicta dolores incidunt minus aliquam quos. Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiores quisquam exercitationem rerum quae aperiam earum illo accusantium, labore, totam veniam aliquid officia suscipit? Eveniet dolore tenetur, id commodi, dolorum quae atque exercitationem recusandae amet nulla deserunt voluptates in! Eum est a earum veniam ipsa reprehenderit impedit aspernatur officia esse voluptates, quis blanditiis excepturi. Quibusdam alias similique nisi sit eaque culpa? Recusandae sunt maxime ea, ex ipsum soluta dolor quasi error, debitis odio magnam voluptate fugit nihil inventore in fugiat. Tenetur?",
+    "features": [
+      {
+        "header": "12 Years Experience",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+      },
+      {
+        "header": "145 Projects",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+      },
+      {
+        "header": "44 Awards Winning",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+      },
+      {
+        "header": "39 Great Clients",
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+      }
+    ]
+  }
+}
