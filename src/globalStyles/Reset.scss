@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Nanum+Myeongjo&family=Noto+Sans:wght@300;400;500&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,6 +18,10 @@ a {
 	text-decoration: none;
 }
 
+p {
+	line-height: var(--bodyLineHeight);
+}
+
 body {
 	background: var(--bgColor);
 }
@@ -23,7 +29,10 @@ body {
 .App {
 	width: 100%;
 	min-height: 100vh;
+	color: var(--baseColor);
 	font-family: var(--baseFont);
+	font-size: var(--bodySize);
+	font-weight: var(--bodyWeight);
 
 	&.dark {
 	}

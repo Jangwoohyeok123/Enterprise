@@ -1,12 +1,20 @@
 :root {
-	--baseFont: 'Nanum Myeongjo', 'arial', '돋움';
-	--pointFont: 'orbitron', 'arial';
-	--baseColor: #111;
-	--baseColor-code: 18, 18, 18;
+	// fontFamily
+	--baseFont: 'Noto Sans', sans-serif;
+	--pointFont: 'Inter', sans-serif;
+	// fontSize
+	--titSize1: 4rem;
+	--titSize2: 3.2rem;
+	--titSize3: 2.4rem;
+	--titSize4: 1.6rem;
+	--bodySize: 15px;
+	// fontEffect
+	--bodyLineHeight: 1.7;
+	--bodyWeight: 400;
+	--screenSize: 80vw;
+	// color
+	--baseColor: #333;
+	--baseColor-code: 51, 51, 51;
 	--pointColor: crimson;
 	--bgColor: #efefef;
-	--titSize1: 4rem;
-	--titSize2: 1.6rem;
-	--bodySize: 1rem;
-	--screenSize: 80vw;
 }

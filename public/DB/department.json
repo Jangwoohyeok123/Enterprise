@@ -3,62 +3,42 @@
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member1.jpg"
+      "pic": "member1.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member2.jpg"
+      "pic": "member2.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member3.jpg"
+      "pic": "member3.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member4.jpg"
+      "pic": "member4.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member5.jpg"
+      "pic": "member5.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member6.jpg"
+      "pic": "member6.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member7.jpg"
+      "pic": "member7.jpg"
     },
     {
       "name": "Christopher James",
       "position": "Project Manager",
-      "pic": "../img/department/member8.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "../img/department/member9.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "../img/department/member10.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "../img/department/member11.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "../img/department/member12.jpg"
+      "pic": "member8.jpg"
     }
   ],
   "article": {
@@ -69,19 +49,19 @@
     "features": [
       {
         "header": "12 Years Experience",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. tempora ex ratione"
       },
       {
         "header": "145 Projects",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+        "body": "ipsudolor sitametc onsectetur adipisicingelit. Laborum delenititempora ex ratione, rerum, officia exercitationem adipi"
       },
       {
         "header": "44 Awards Winning",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia "
       },
       {
         "header": "39 Great Clients",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia exercitationem adipisci, tempore alias dignissimos autem eveniet similique eaque doloribus?"
+        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex "
       }
     ]
   }
