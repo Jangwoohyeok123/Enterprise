@@ -26,12 +26,14 @@
 				width: 50%;
 				padding-right: 10%;
 				line-height: 1.5;
+				font-size: var(--titSize2);
 				font-weight: var(--titWeight);
 				font-family: var(--pointFont);
 			}
 
 			div {
 				width: 50%;
+
 				p:nth-child(1) {
 					padding-bottom: 5vh;
 				}
@@ -49,9 +51,6 @@
 
 						h4 {
 							width: 60%;
-							font-family: var(--pointFont);
-							font-size: var(--titSize4);
-							font-weight: var(--titWeight);
 							padding-bottom: 1.3vh;
 						}
 					}
@@ -64,8 +63,6 @@
 		border-top: 1px solid rgba(var(--baseColor-code), 0.2);
 
 		h2 {
-			font-size: var(--titSize3);
-			font-weight: var(--titWeight);
 			display: inline-block;
 			width: 200px;
 			margin-top: 2vh;
@@ -92,12 +89,12 @@
 
 				.text {
 					padding-top: 1vh;
-					h5 {
-						font-size: 1.3rem;
-						font-weight: var(--titWeight);
-					}
 				}
 			}
 		}
+	}
+
+	&-thirdSection {
+		height: 700px;
 	}
 }

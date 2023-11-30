@@ -11,7 +11,9 @@ ol,
 li {
 	list-style: none;
 }
-a {
+a,
+div,
+span {
 	outline: 0;
 	color: inherit;
 	font-family: inherit;
@@ -27,6 +29,45 @@ p {
 
 body {
 	background: var(--bgColor);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--pointFont);
+}
+
+h1 {
+	font-size: var(--titSize1);
+	font-weight: var(--titWeight1);
+}
+
+h2 {
+	font-size: var(--titSize2);
+	font-weight: var(--titWeight2);
+}
+
+h3 {
+	font-size: var(--titSize3);
+	font-weight: var(--titWeight3);
+}
+
+h4 {
+	font-size: var(--titSize4);
+	font-weight: var(--titWeight4);
+}
+
+h5 {
+	font-size: var(--titSize5);
+	font-weight: var(--titWeight5);
+}
+
+h6 {
+	font-size: var(--titSize6);
+	font-weight: var(--titWeight6);
 }
 
 .App {
