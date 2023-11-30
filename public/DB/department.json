@@ -65,72 +65,80 @@
       }
     ]
   },
-  "our-awards": [
-    {
-      "organizer": "oremipsumdolor",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt amet",
-      "date": "2022 Nov 11"
-    },
-    {
-      "organizer": "oremipsumdolor",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2022 Aug 11"
-    },
-    {
-      "organizer": "nesciuntcorrupti",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2022 Feb 20"
-    },
-    {
-      "organizer": "oremipsumdolor",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2021 Oct 13"
-    },
-    {
-      "organizer": " consequuntur sint nulla ",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt  adipisicing",
-      "date": "2020 Nov 17"
-    },
-    {
-      "organizer": "oremipsumdolor",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2020 Oct 5"
-    },
-    {
-      "organizer": " consequuntur sint nulla ",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2019 Sep 25"
-    },
-    {
-      "organizer": "oremipsumdolor",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2019 Mar 9"
-    },
-    {
-      "organizer": " consequuntur sint nulla ",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2017 Nov 11"
-    },
-    {
-      "organizer": "oremipsumdolor",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2017 Oct 5"
-    },
-    {
-      "organizer": "ignissimos corporisr",
-      "subject": "consequuntur sint nulla",
-      "winner": "nesciunt",
-      "date": "2016 Oct 13"
-    }
-  ]
+  "our-awards": {
+    "header": [
+      "organizer",
+      "subject",
+      "winner",
+      "date"
+    ],
+    "body": [
+      [
+        "oremipsumdolor",
+        "consequuntur sint nulla",
+        "nesciunt amet",
+        "2022 Nov 11"
+      ],
+      [
+        "oremipsumdolor",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2022 Aug 11"
+      ],
+      [
+        "nesciuntcorrupti",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2022 Feb 20"
+      ],
+      [
+        "oremipsumdolor",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2021 Oct 13"
+      ],
+      [
+        " consequuntur sint nulla ",
+        "consequuntur sint nulla",
+        "nesciunt  adipisicing",
+        "2020 Nov 17"
+      ],
+      [
+        "oremipsumdolor",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2020 Oct 5"
+      ],
+      [
+        " consequuntur sint nulla ",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2019 Sep 25"
+      ],
+      [
+        "oremipsumdolor",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2019 Mar 9"
+      ],
+      [
+        " consequuntur sint nulla ",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2017 Nov 11"
+      ],
+      [
+        "oremipsumdolor",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2017 Oct 5"
+      ],
+      [
+        "ignissimos corporisr",
+        "consequuntur sint nulla",
+        "nesciunt",
+        "2016 Oct 13"
+      ]
+    ]
+  }
 }

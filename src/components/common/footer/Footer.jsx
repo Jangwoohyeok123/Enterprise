@@ -6,51 +6,40 @@ export default function Footer() {
 	return (
 		<footer className='Footer'>
 			<ul>
-				<li>
-					<h1>logo</h1>
+				<li className='logo'>
+					<h6>logo</h6>
 					<span>good company</span>
 				</li>
 				<li>
-					<h6></h6>
-					<div>span</div>
-					<div>span</div>
-					<div>span</div>
+					<div>weebly themes</div>
+					<div>pre-sale faqs</div>
+					<div>submit a ticket</div>
 				</li>
 				<li>
-					<h6></h6>
-					<div>span</div>
-					<div>span</div>
-					<div>span</div>
+					<div>services</div>
+					<div>theme tweak</div>
 				</li>
 				<li>
-					<h6></h6>
-					<div>span</div>
-					<div>span</div>
-					<div>span</div>
+					<div>showcase</div>
+					<div>widgetkit</div>
+					<div>support</div>
 				</li>
 				<li>
-					<h6></h6>
-					<div>span</div>
-					<div>span</div>
-					<div>span</div>
+					<div>about us</div>
+					<div>contact us</div>
+					<div>Affiliates</div>
+					<div>Resource</div>
 				</li>
 			</ul>
-			<div className='sns'>
-				<span>
+			<div className='bottom'>
+				<div className='sns'>
 					<FaYoutube size='23' />
-				</span>
-				<span>
 					<FaTwitter size='23' />
-				</span>
-				<span>
 					<FaFacebookF size='23' />
-				</span>
-				<span>
 					<FaGoogle size='23' />
-				</span>
-				<span>
 					<FaSpotify size='23' />
-				</span>
+				</div>
+				<div>&copy;Copyright All rights reserved.</div>
 			</div>
 		</footer>
 	);

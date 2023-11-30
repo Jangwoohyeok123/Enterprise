@@ -8,7 +8,8 @@ export default function Department() {
 	const [FeaturesData, setFeaturesData] = useState([]);
 	const [MembersData, setMembers] = useState([]);
 	const [MembersTitle, setMembersTitle] = useState([]);
-	const [AwardsData, setAwardsData] = useState([]);
+	const [TableHeader, setTableHeader] = useState([]);
+	const [TableBody, setTableBody] = useState([]);
 	const [AwardsTitle, setAwardsTitle] = useState([]);
 
 	// ref
@@ -22,13 +23,13 @@ export default function Department() {
 	const departmentFetch = async () => {
 		const dataSet = await fetch(`${path.current}/DB/department.json`);
 		const json = await dataSet.json();
-
 		setArticleData(json.article);
 		setFeaturesData(json.article.features);
 		setMembers(json['norm-people']);
 		setMembersTitle(splitHeader('norm-people', true));
-		setAwardsData(json['our-awards']);
 		setAwardsTitle(splitHeader('our-awards', true));
+		setTableHeader(json['our-awards'].header);
+		setTableBody(json['our-awards'].body);
 	};
 
 	useEffect(() => {
@@ -82,22 +83,30 @@ export default function Department() {
 					return <h3 key={title + idx}>{title}</h3>;
 				})}
 				<div className='awards-table'>
-					{/* <thead>
+					<thead>
 						<tr>
-							<th>안녕</th>
-							<th>col2</th>
-							<th>col3</th>
-							<th>colr3</th>
+							{TableHeader.map((col, idx) => {
+								return <th key={col + idx}>{col}</th>;
+							})}
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						{TableBody.map((row, idx) => {
+							return (
+								<tr key={row + idx}>
+									{row.map((data, idx) => {
+										return <td key={data + idx}>{data}</td>;
+									})}
+								</tr>
+							);
+						})}
+						{/* <tr>
 							<td>22</td>
 							<td>33</td>
 							<td>44</td>
 							<td>55</td>
-						</tr>
-					</tbody> */}
+						</tr> */}
+					</tbody>
 				</div>
 			</section>
 		</main>

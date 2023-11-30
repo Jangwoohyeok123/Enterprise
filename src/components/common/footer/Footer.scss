@@ -9,27 +9,49 @@ footer {
 	justify-content: space-between;
 	background: #333;
 
-	h1 {
+	h6 {
 		text-transform: uppercase;
-		font-size: var(--titSize3);
+		font-size: var(--titSize6);
+		display: flex;
+		line-height: 1;
 	}
+
 	ul {
 		width: 100%;
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-start;
 		padding: 5vh 0;
-	}
-	.sns {
-		width: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 30px;
-		height: 110px;
+		text-transform: uppercase;
+		border-bottom: 1px solid #ccc;
 
-		span {
-			border: 1px solid;
-			border-radius: 50%;
+		li {
+			letter-spacing: 1px;
+			line-height: 1.7;
+		}
+	}
+	.bottom {
+		padding: 7vh;
+		text-align: center;
+		width: 100%;
+
+		.sns {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			padding-bottom: 1vh;
+			svg {
+				box-sizing: content-box;
+				border: 1px solid #ccc;
+				padding: 7px;
+				border-radius: 50%;
+				transition: 0.7s;
+			}
+
+			svg:hover {
+				cursor: pointer;
+				outline: 1.3px solid #ccc;
+			}
 		}
 	}
 }
