@@ -1,14 +1,14 @@
 .Department {
 	width: 80vw;
 	margin: 0 auto;
+
 	&-firstSection {
 		.header {
 			h1 {
 				padding: 4vh 0;
-				padding-top: 6vh;
 				font-family: var(--pointFont);
 				font-size: var(--titSize1);
-				font-weight: 500;
+				font-weight: var(--titWeight);
 				width: 70%;
 			}
 			img {
@@ -26,7 +26,7 @@
 				width: 50%;
 				padding-right: 10%;
 				line-height: 1.5;
-				font-weight: 500;
+				font-weight: var(--titWeight);
 				font-family: var(--pointFont);
 			}
 
@@ -51,7 +51,7 @@
 							width: 60%;
 							font-family: var(--pointFont);
 							font-size: var(--titSize4);
-							font-weight: 500;
+							font-weight: var(--titWeight);
 							padding-bottom: 1.3vh;
 						}
 					}
@@ -65,7 +65,7 @@
 
 		h2 {
 			font-size: var(--titSize3);
-			font-weight: 600;
+			font-weight: var(--titWeight);
 			display: inline-block;
 			width: 200px;
 			margin-top: 2vh;
@@ -94,7 +94,7 @@
 					padding-top: 1vh;
 					h5 {
 						font-size: 1.3rem;
-						font-weight: 500;
+						font-weight: var(--titWeight);
 					}
 				}
 			}
