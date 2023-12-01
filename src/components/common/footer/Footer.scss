@@ -2,7 +2,7 @@ footer {
 	color: #eee;
 	width: 100%;
 	margin: 0 auto;
-	padding: 0 10vw;
+	padding: 3vh 10vw;
 	border-top: 1px solid rgba(var(--baseColor-code), 0.3);
 	display: flex;
 	flex-wrap: wrap;
@@ -45,7 +45,7 @@ footer {
 				border: 1px solid #ccc;
 				padding: 7px;
 				border-radius: 50%;
-				transition: 0.7s;
+				transition: outline 1s;
 			}
 
 			svg:hover {
