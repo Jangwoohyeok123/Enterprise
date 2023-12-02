@@ -100,12 +100,6 @@ export default function Department() {
 								</tr>
 							);
 						})}
-						{/* <tr>
-							<td>22</td>
-							<td>33</td>
-							<td>44</td>
-							<td>55</td>
-						</tr> */}
 					</tbody>
 				</div>
 			</section>

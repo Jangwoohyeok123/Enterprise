@@ -54,6 +54,7 @@
 	}
 
 	&-secondSection {
+		width: 100%;
 		padding: 30px 0 100px 0;
 		border-top: 1px solid rgba(var(--baseColor-code), 0.4);
 
@@ -144,13 +145,13 @@
 .Tablet,
 .Mobile {
 	.Department {
-		width: 90%;
+		width: 90vw;
 		&-firstSection {
 			.header {
 				h1 {
+					font-size: calc(var(--titSize1) * 0.6);
 					padding: 4vh 0;
 					width: 100%;
-					font-size: calc(var(--titSize1) * 0.8);
 				}
 				img {
 					width: 100%;
@@ -158,8 +159,8 @@
 					object-fit: cover;
 				}
 			}
+
 			.body {
-				width: 100%;
 				display: block;
 				margin: 7vh 0;
 
@@ -167,10 +168,13 @@
 					width: 100%;
 					padding-right: 0;
 					line-height: 1.5;
+					font-size: calc(var(--titSize2) * 0.8);
+					padding-bottom: 2vh;
 				}
 
 				div {
 					width: 100%;
+
 					p:nth-child(1) {
 						padding-bottom: 5vh;
 					}
@@ -195,21 +199,108 @@
 				}
 			}
 		}
+		&-secondSection {
+			width: 90vw;
+			padding: 30px 0 100px 0;
+			border-top: 1px solid rgba(var(--baseColor-code), 0.4);
+
+			h2 {
+				display: inline-block;
+				width: 200px;
+				margin-top: 2vh;
+			}
+
+			.container {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-content: space-between;
+				flex-wrap: wrap;
+				row-gap: 6vh;
+				margin: 4vh 0;
+
+				.card {
+					width: 48%;
+					overflow: hidden;
+
+					img {
+						object-fit: cover;
+						width: 100%;
+						height: 60vh;
+					}
+
+					.text {
+						padding-top: 1vh;
+					}
+				}
+			}
+		}
 	}
 }
 
 .Mobile {
 	.Department {
-		.header {
-			h1 {
-				padding: 4vh 0;
-				width: 100%;
-				font-size: calc(var(--titSize1) * 0.6);
+		&-secondSection {
+			padding-bottom: 7vh;
+			.container {
+				.card {
+					width: 100%;
+
+					img {
+						width: 100%;
+						height: 70vh;
+						padding-bottom: 5px;
+					}
+				}
 			}
-			img {
+		}
+
+		&-thirdSection {
+			border-top: 1px solid rgba(var(--baseColor-code), 0.4);
+			padding-top: 30px;
+			padding-bottom: 100px;
+
+			.awards-table {
+				text-align: left;
 				width: 100%;
-				height: 50vh;
-				object-fit: cover;
+				margin-top: 4vh;
+
+				tr {
+					padding: 10px 0;
+				}
+
+				td {
+					border-top: 1px solid rgba(var(--baseColor-code), 0.4);
+				}
+
+				thead {
+					display: block;
+					width: 100%;
+
+					tr {
+						display: flex;
+						width: 100%;
+
+						th {
+							flex: 1;
+						}
+					}
+				}
+
+				tbody {
+					display: block;
+					width: 100%;
+					tr {
+						display: flex;
+						width: 100%;
+
+						td {
+							width: 25%;
+							padding-right: 10px;
+							word-break: break-all;
+						}
+					}
+				}
 			}
 		}
 	}
