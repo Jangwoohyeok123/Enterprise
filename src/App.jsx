@@ -10,16 +10,17 @@ import Gallery from './components/sub/gallery/Gallery';
 import Youtube from './components/sub/youtube/Youtube';
 import './globalStyles/Reset.scss';
 import './globalStyles/Variable.scss';
-import { useEffect, useState } from 'react';
-import { useViewType } from './hooks/useSetType';
+import { useState } from 'react';
+import { useViewType } from './hooks/useViewType';
 
 export default function App() {
 	const [Dark, setDark] = useState(false);
-	const [Mode, setMode] = useState('');
+	const [Toggle, setToggle] = useState(false);
+	const viewType = useViewType();
 
 	return (
-		<div className={`App ${Dark ? 'dark' : ''} ${useViewType()}`}>
-			<Header Dark={Dark} setDark={setDark} />
+		<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
+			<Header Dark={Dark} setDark={setDark} viewType={viewType} />
 			<Route exact path='/' component={MainWrap} />
 			<Route path='/department' component={Department} />
 			<Route path='/youtube' component={Youtube} />
