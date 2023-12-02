@@ -1,7 +1,11 @@
 import './Header.scss';
 import { NavLink, Link } from 'react-router-dom';
+import { MdOutlineDarkMode } from 'react-icons/md';
 
-export default function Header() {
+export default function Header({ Dark, setDark }) {
+	const handleDarkMode = () => {
+		setDark(!Dark);
+	};
 	return (
 		<header className='Header'>
 			<h1>
@@ -39,6 +43,9 @@ export default function Header() {
 					</NavLink>
 				</li>
 			</ul>
+			<div className='darkmode'>
+				<MdOutlineDarkMode onClick={handleDarkMode} />
+			</div>
 		</header>
 	);
 }

@@ -24,9 +24,15 @@
 	--bodyWeight: 400;
 	--titWeight: 300;
 	--screenSize: 80vw;
-	// color
+	// color : 반응형 색의미도 갖고 있음
+	--pointColor: crimson;
 	--baseColor: #333;
 	--baseColor-code: 51, 51, 51;
-	--pointColor: crimson;
 	--bgColor: #efefef;
+}
+
+.dark {
+	--baseColor: #efefef;
+	--baseColor-code: 255, 255, 255;
+	--bgColor: #333;
 }

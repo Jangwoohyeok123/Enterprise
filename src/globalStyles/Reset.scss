@@ -77,7 +77,5 @@ h6 {
 	font-family: var(--baseFont);
 	font-size: var(--bodySize);
 	font-weight: var(--bodyWeight);
-
-	&.dark {
-	}
+	background: var(--bgColor);
 }
