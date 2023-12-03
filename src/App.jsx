@@ -10,12 +10,11 @@ import Gallery from './components/sub/gallery/Gallery';
 import Youtube from './components/sub/youtube/Youtube';
 import './globalStyles/Reset.scss';
 import './globalStyles/Variable.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 
 export default function App() {
 	const [Dark, setDark] = useState(false);
-	const [Toggle, setToggle] = useState(false);
 	const viewType = useViewType();
 
 	return (
