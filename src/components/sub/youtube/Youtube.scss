@@ -1,0 +1,32 @@
+.Youtube {
+	width: 80vw;
+	margin: 0 auto;
+
+	&-headerSection {
+		position: relative;
+		margin-bottom: 100px;
+		.mainImage {
+			z-index: 1;
+			width: 100vw;
+			height: 30vh;
+			object-fit: cover;
+			margin-left: -10vw;
+			object-position: left;
+		}
+
+		div {
+			position: absolute;
+			top: 60%;
+			left: 15%;
+
+			h1 {
+				font-size: 70px;
+				line-height: 1;
+				color: var(--pointColor);
+			}
+		}
+	}
+
+	&-bodySection {
+	}
+}

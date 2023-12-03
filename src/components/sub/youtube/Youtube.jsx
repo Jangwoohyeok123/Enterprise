@@ -1,6 +1,5 @@
 import './Youtube.scss';
-import Layout from '../../common/layout/Layout';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
@@ -15,9 +14,38 @@ export default function Youtube() {
 		setVids(json.items);
 	};
 
+	const path = useRef(process.env.PUBLIC_URL);
+
 	useEffect(() => {
 		fetchYoutube();
 	}, []);
 
-	return <Layout title={'Youtube'}></Layout>;
+	return (
+		<main className='Youtube'>
+			<section className='Youtube-headerSection'>
+				<img className='mainImage' src={`${path.current}/img/youtube/main1.jpg`} alt='' />
+				<div>
+					<h1>
+						Our
+						<br />
+						Youtube
+					</h1>
+				</div>
+			</section>
+
+			<section className='Youtube-bodySection'>
+				{Vids.map((video) => {
+					const [date, time] = video.snippet.publishedAt.split('T');
+
+					return (
+						<article>
+							<h2>{video.snippet.title}</h2>
+							<span>{video.snippet.description}</span>
+							<img src={video.snippet.thumbnails.standard.url} alt={video.snippet.title} />
+						</article>
+					);
+				})}
+			</section>
+		</main>
+	);
 }

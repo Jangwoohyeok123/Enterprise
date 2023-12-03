@@ -42,7 +42,7 @@ export default function Department() {
 			<section className='Department-firstSection'>
 				<div className='header'>
 					<h1>{ArticleData.headline}</h1>
-					<img src={`${path.current}/img/${ArticleData.mainImg}`} alt='mainImage' />
+					<img src={`${path.current}/img/department/${ArticleData.mainImg}`} alt='mainImage' />
 				</div>
 				<div className='body'>
 					<h2>{ArticleData.subHeadline}</h2>
@@ -69,7 +69,7 @@ export default function Department() {
 					{MembersData.map((member, idx) => {
 						return (
 							<div className='card' key={member + idx}>
-								<img src={`${path.current}/img/${member.pic}`} alt='memberImage' />
+								<img src={`${path.current}/img/department/${member.pic}`} alt='memberImage' />
 								<div className='text'>
 									<h5>{member.name}</h5>
 									<p>{member.position}</p>
