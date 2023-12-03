@@ -7,10 +7,11 @@ export default function Youtube() {
 
 	const fetchYoutube = async () => {
 		const api_key = process.env.REACT_APP_YOUTUBE_API; // Cloud 에서 받아옴
-		const playListId = process.env.REACT_APP_YOUTUBE_API; // youtube url 뒤에 있음
+		const pid = process.env.REACT_APP_YOUTUBE_API; // youtube url 뒤에 있음
 		const num = 10;
-		const url = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${playListId}&maxResults=${num}`;
+		const url = `https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyBdiwuRjRbibBfsczkDmMDvmo0PMxc52Uo&part=snippet&playlistId=${pid}&maxResults=${num}`;
 		const data = await fetch(url);
+		console.log(data);
 		const json = await data.json();
 		setVids(json.items);
 	};

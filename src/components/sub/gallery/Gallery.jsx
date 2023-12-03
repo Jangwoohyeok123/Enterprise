@@ -6,7 +6,7 @@ export default function Gallery() {
 	const [Pics, setPics] = useState([]);
 
 	const fetchFlickr = async () => {
-		const flickr_api = '52602ca25cab9b4f2bf4e422b63f1bd0';
+		const flickr_api = process.env.REACT_APP_FLICKR_API;
 		const host = 'https://www.flickr.com/services/rest/';
 		const methodInterestingness = 'flickr.interestingness.getList';
 		const picNum = 500; // 앞으로 개수는 Num 으로 통일한다.
