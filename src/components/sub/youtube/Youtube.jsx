@@ -6,20 +6,15 @@ export default function Youtube() {
 	const [Vids, setVids] = useState([]);
 
 	const fetchYoutube = async () => {
-		const api_key = process.env.REACT_APP_YOUTUBE_API;
-		const pid = process.env.REACT_APP_YOUTUBE_LIST;
+		const api_key = process.env.REACT_APP_YOUTUBE_API; // Cloud 에서 받아옴
+		const playListId = process.env.REACT_APP_YOUTUBE_LIST; // youtube url 뒤에 있음
 		const num = 10;
-		const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
-		//               https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${playListId}&maxResults=${num}`;
-
-		try {
-			const data = await fetch(baseURL);
-			const json = await data.json();
-			setVids(json.items);
-		} catch (err) {
-			console.error(err);
-		}
+		const url = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${playListId}&maxResults=${num}`;
+		const data = await fetch(url);
+		const json = await data.json();
+		setVids(json.items);
 	};
+
 	useEffect(() => {
 		fetchYoutube();
 	}, []);
