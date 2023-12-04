@@ -68,11 +68,10 @@ export default function Youtube() {
 				<span>Prev</span>
 				<div className='page'>
 					<span>1</span>
-					<span>1</span>
-					<span>1</span>
-					<span>...</span>
-					<span>1</span>
-					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
 				</div>
 				<span>Next</span>
 			</section>
