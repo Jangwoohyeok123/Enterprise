@@ -15,8 +15,6 @@ export default function Department() {
 	// ref
 	const path = useRef(process.env.PUBLIC_URL);
 
-	// const AwardsTitleArr = useRef(AwardsTitle);
-
 	// custom hook
 	const splitHeader = useTextMethod('split');
 
