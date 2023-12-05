@@ -22,7 +22,15 @@ export default function useTextMethod(type) {
 	}
 
 	// 받아온 data 의 글자가 layout 을 벗어나 곤란할 때
-	if (type === 'slice') {
+	if (type === 'wordSlice') {
+		// slice 할 txt 와 최종적으로 받고 싶은 글자 수
+		return (txt, num) => {
+			const result = txt.split(' ').slice(0, num).join(' ');
+			return result;
+		};
+	}
+
+	if (type === 'charSlice') {
 		// slice 할 txt 와 최종적으로 받고 싶은 글자 수
 		return (txt, num) => {
 			const result = txt.slice(0, num);

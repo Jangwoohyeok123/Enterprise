@@ -17,7 +17,8 @@ export default function Youtube() {
 		setVids(json.items); // 요청 함수
 	};
 
-	const slice = useTextMethod('slice');
+	const wordSlice = useTextMethod('wordSlice');
+	const charSlice = useTextMethod('charSlice');
 
 	// useRef 는 return 문에서 활용하면 안된다.
 	// youtube 사이트에 사용자가 머무를 동안 유지될 변수
@@ -41,14 +42,14 @@ export default function Youtube() {
 						<article>
 							<div className='text'>
 								<div className='head'>
-									<h2>{slice(video.snippet.title, 32)}</h2>
+									<h2>{wordSlice(video.snippet.title, 5)}</h2>
 									<div className='time'>
 										<span>{date}</span>
 										<span>{time}</span>
 									</div>
 								</div>
 
-								<p className='body'>{slice(video.snippet.description, 400)}</p>
+								<p className='body'>{wordSlice(video.snippet.description, 10)}</p>
 
 								<div className='services'>
 									<span>dd</span>
@@ -70,6 +71,7 @@ export default function Youtube() {
 					<span>1</span>
 					<span>2</span>
 					<span>3</span>
+
 					<span>4</span>
 					<span>5</span>
 				</div>

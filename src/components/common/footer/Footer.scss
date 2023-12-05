@@ -40,6 +40,7 @@ footer {
 			justify-content: center;
 			gap: 10px;
 			padding-bottom: 1vh;
+
 			svg {
 				box-sizing: content-box;
 				border: 1px solid rgba(255, 255, 255, 0.4);
@@ -56,15 +57,10 @@ footer {
 	}
 }
 
-.Notebook,
-.Tablet,
-.Mobile {
-	footer {
-	}
+.Notebook {
 }
 
-.Tablet,
-.Mobile {
+.Tablet {
 	footer {
 		padding: 3vh 5vw;
 	}
