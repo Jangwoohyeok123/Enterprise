@@ -7,11 +7,12 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
+			border: none;
 		}
 	}
 
 	.text {
-		padding: 5vh 0 15vh 0;
+		padding: 3vh 0 15vh 0;
 		display: flex;
 		flex-direction: column;
 		gap: 2vh;

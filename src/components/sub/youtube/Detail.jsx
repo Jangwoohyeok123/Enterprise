@@ -26,15 +26,17 @@ export default function Detail() {
 
 	return (
 		<Layout className='Detail' title={Title}>
-			<figure>
-				<div className='screen'>
-					<iframe src={`https://www.youtube.com/embed/${Video.resourceId.videoId}`}></iframe>
-				</div>
-				<div className='text'>
-					<h3>{Video.title}</h3>
-					<p>{Video.description}</p>
-				</div>
-			</figure>
+			{Video && (
+				<figure>
+					<div className='screen'>
+						<iframe src={`https://www.youtube.com/embed/${Video.resourceId.videoId}`}></iframe>
+					</div>
+					<div className='text'>
+						<h3>{Video.title}</h3>
+						<p>{Video.description}</p>
+					</div>
+				</figure>
+			)}
 		</Layout>
 	);
 }
