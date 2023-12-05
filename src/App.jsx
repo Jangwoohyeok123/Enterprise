@@ -12,6 +12,7 @@ import './globalStyles/Reset.scss';
 import './globalStyles/Variable.scss';
 import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
+import Detail from './components/sub/youtube/Detail';
 
 export default function App() {
 	const [Dark, setDark] = useState(false);
@@ -27,6 +28,7 @@ export default function App() {
 			<Route path='/community' component={Community} />
 			<Route path='/members' component={Members} />
 			<Route path='/contact' component={Contact} />
+			<Route path='/detail/:id' component={Detail} />
 			<Footer />
 		</div>
 	);
