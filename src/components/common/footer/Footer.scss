@@ -41,17 +41,21 @@ footer {
 			gap: 10px;
 			padding-bottom: 1vh;
 
-			svg {
-				box-sizing: content-box;
-				border: 1px solid rgba(255, 255, 255, 0.4);
-				padding: 7px;
+			.icon {
+				width: 35px;
+				height: 35px;
+				border: 1px solid #ccc;
+				position: relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				border-radius: 50%;
-				transition: outline 1s;
-			}
+				transition: 0.3s;
 
-			svg:hover {
-				cursor: pointer;
-				outline: 1.3px solid rgba(var(--baseColor-code), 0.4);
+				&:hover {
+					cursor: pointer;
+					border: 1px solid var(--pointColor);
+				}
 			}
 		}
 	}

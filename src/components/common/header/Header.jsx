@@ -7,8 +7,6 @@ export default function Header({ Dark, setDark, viewType }) {
 	const handleDarkMode = () => {
 		setDark(!Dark);
 	};
-
-	console.log(viewType);
 	return (
 		<header className='Header'>
 			<h1>

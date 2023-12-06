@@ -19,6 +19,7 @@ export const useViewType = (opt) => {
 		return () => window.removeEventListener('resize', getClientWid);
 	}, []);
 
+	// console.log('viewType: ' + Type);
 	return Type;
 };
 

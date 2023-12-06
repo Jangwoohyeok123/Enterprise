@@ -22,7 +22,7 @@ span {
 }
 
 p {
-	line-height: var(--bodyLineHeight);
+	line-height: 1.7;
 	word-break: break-all;
 	text-align: justify;
 }
@@ -41,32 +41,32 @@ h6 {
 }
 
 h1 {
-	font-size: var(--titSize1);
+	font-size: 3.8rem;
 	font-weight: var(--titWeight1);
 }
 
 h2 {
-	font-size: var(--titSize2);
+	font-size: 1.8rem;
 	font-weight: var(--titWeight2);
 }
 
 h3 {
-	font-size: var(--titSize3);
+	font-size: 2rem;
 	font-weight: var(--titWeight3);
 }
 
 h4 {
-	font-size: var(--titSize4);
+	font-size: 1.4rem;
 	font-weight: var(--titWeight4);
 }
 
 h5 {
-	font-size: var(--titSize5);
+	font-size: 1.4rem;
 	font-weight: var(--titWeight5);
 }
 
 h6 {
-	font-size: var(--titSize6);
+	font-size: 2.4rem;
 	font-weight: var(--titWeight6);
 }
 

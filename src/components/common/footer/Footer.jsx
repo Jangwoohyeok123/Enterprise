@@ -33,11 +33,21 @@ export default function Footer() {
 			</ul>
 			<div className='bottom'>
 				<div className='sns'>
-					<FaYoutube size='23' />
-					<FaTwitter size='23' />
-					<FaFacebookF size='23' />
-					<FaGoogle size='23' />
-					<FaSpotify size='23' />
+					<span className='icon'>
+						<FaYoutube size='' />
+					</span>
+					<span className='icon'>
+						<FaTwitter size='15' />
+					</span>
+					<span className='icon'>
+						<FaFacebookF size='15' />
+					</span>
+					<span className='icon'>
+						<FaGoogle size='15' />
+					</span>
+					<span className='icon'>
+						<FaSpotify size='15' />
+					</span>
 				</div>
 				<div>&copy;Copyright All rights reserved.</div>
 			</div>
