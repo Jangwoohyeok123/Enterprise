@@ -2,15 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import Masonry from 'react-masonry-component';
 import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
-import { LuSearch } from 'react-icons/lu';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
-// import Modal from '../../common/modal/Modal';
+import Modal from '../../common/modal/Modal';
 
 export default function Gallery() {
 	// useState
 	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
 	const [Pics, setPics] = useState([]);
+	const [Open, setOpen] = useState(false);
+	const [Index, setIndex] = useState(0);
 
 	// useRef
 	const userId = useRef('128267964@N02');
@@ -19,7 +20,13 @@ export default function Gallery() {
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
 
-	// controller
+	// controller - 동기
+	const toggleModal = (idx) => {
+		setIndex(idx);
+		setOpen(true);
+	};
+
+	// controller - 비동기
 	const setUserGallery = async (e) => {
 		if (e.currentTarget.innerText === userId.current) return;
 		userId.current = e.currentTarget.innerText;
@@ -84,7 +91,13 @@ export default function Gallery() {
 												<span>User id: </span>
 												<span onClick={setUserGallery}>{pic.owner}</span>
 											</div>
-											<IoArrowForwardCircleOutline className='more icons' />
+											<IoArrowForwardCircleOutline
+												className='more icons'
+												onClick={() => {
+													setIndex(idx);
+													setOpen(true);
+												}}
+											/>
 										</div>
 										<h3>
 											{top}
@@ -93,13 +106,21 @@ export default function Gallery() {
 										</h3>
 									</div>
 
-									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+									<img
+										onClick={() => {
+											setIndex(idx);
+											setOpen(true);
+										}}
+										src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+										alt={`${pic.title}`}
+									/>
 								</article>
 							);
 						})}
 					</Masonry>
 				</section>
 			</Layout>
+			<Modal Open={Open} setOpen={setOpen}></Modal>
 		</>
 	);
 }

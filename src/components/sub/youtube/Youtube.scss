@@ -112,10 +112,12 @@ $imgHeight: 60vh;
 
 			h2 {
 				width: 60%;
+				font-size: 2rem;
 			}
 
 			h3 {
 				width: 30%;
+				font-size: 1.5rem;
 			}
 		}
 
@@ -145,6 +147,7 @@ $imgHeight: 60vh;
 						transform: scale(1.5);
 					}
 				}
+
 				.text {
 					position: relative;
 					display: flex;
@@ -159,7 +162,7 @@ $imgHeight: 60vh;
 						display: flex;
 						justify-content: space-between;
 
-						.title {
+						.time {
 							display: flex;
 							gap: 5px;
 						}
@@ -196,4 +199,81 @@ $imgHeight: 60vh;
 			}
 		}
 	}
+}
+
+.Notebook {
+}
+
+.Tablet,
+.Mobile {
+	.Youtube {
+		&-firstSection {
+			display: block;
+			.leftImg {
+				width: 100%;
+			}
+
+			.right {
+				width: 100%;
+				img {
+					display: none;
+				}
+			}
+		}
+
+		&-secondSection {
+			.header {
+				h3 {
+					display: none;
+				}
+			}
+
+			article {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+
+				.video {
+					display: block;
+					width: 100%;
+					padding-bottom: 2vh;
+
+					.img {
+						display: block;
+						width: 100%;
+
+						img {
+							height: 30vh;
+						}
+					}
+
+					.text {
+						display: block;
+						width: 100%;
+
+						h4 {
+							padding: 1vh 0;
+						}
+
+						.sub {
+							position: relative;
+							display: flex;
+							justify-content: right;
+
+							.time {
+							}
+						}
+					}
+				}
+
+				.description {
+					width: 100%;
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+.Mobile {
 }

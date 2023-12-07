@@ -4,7 +4,7 @@ import './Layout.scss';
 export default function Layout({ children, title, className }) {
 	return (
 		<main className={className}>
-			<h1>{title}</h1>
+			<h1 className='title'>{title}</h1>
 			{children}
 		</main>
 	);

@@ -26,7 +26,6 @@ export default function Youtube() {
 	};
 
 	const path = useRef(process.env.PUBLIC_URL);
-	console.log(path.current);
 
 	// 줄세우기 함수
 	useEffect(() => {
@@ -69,7 +68,7 @@ export default function Youtube() {
 			</section>
 			<section className='Youtube-secondSection'>
 				<div className='header'>
-					<h2>Video & Title</h2>
+					<h2>Working Videos</h2>
 					<h3>description</h3>
 				</div>
 				{Vids.map((video, idx) => {
@@ -84,7 +83,7 @@ export default function Youtube() {
 								<div className='text'>
 									<h4>{wordSlice(video.snippet.title)}</h4>
 									<div className='sub'>
-										<div className='title'>
+										<div className='time'>
 											<span>{date}</span>
 											<span>{time}</span>
 										</div>

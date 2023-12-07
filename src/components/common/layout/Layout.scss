@@ -2,8 +2,32 @@ main {
 	width: 80vw;
 	margin: 0 auto;
 
-	h1 {
+	.title {
 		padding: 4vh 0;
-		width: 70%;
+		width: 80%;
+	}
+}
+
+.Notebook {
+	.title {
+		width: 80%;
+	}
+}
+
+.Tablet {
+	main {
+		.title {
+			font-size: 3.4rem;
+			width: 90%;
+		}
+	}
+}
+
+.Mobile {
+	main {
+		.title {
+			font-size: 3rem;
+			width: 90%;
+		}
 	}
 }

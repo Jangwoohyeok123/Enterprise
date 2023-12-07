@@ -6,11 +6,18 @@ footer {
 	border-top: 1px solid rgba(var(--baseColor-code), 0.4);
 	background: #333;
 
-	h6 {
-		text-transform: uppercase;
-		font-size: var(--titSize6);
-		display: flex;
-		line-height: 1;
+	.logo {
+		transition: 0.3s;
+		h6 {
+			text-transform: uppercase;
+			display: flex;
+			line-height: 1;
+		}
+
+		&:hover {
+			color: var(--subColor);
+			border-color: var(--subColor);
+		}
 	}
 
 	ul {
@@ -27,6 +34,15 @@ footer {
 
 			&:hover {
 				cursor: pointer;
+			}
+
+			div {
+				transition: 0.3s;
+
+				&:hover {
+					color: var(--subColor);
+					border-color: var(--subColor);
+				}
 			}
 		}
 	}
@@ -54,7 +70,8 @@ footer {
 
 				&:hover {
 					cursor: pointer;
-					border: 1px solid var(--pointColor);
+					color: var(--subColor);
+					border-color: var(--subColor);
 				}
 			}
 		}
