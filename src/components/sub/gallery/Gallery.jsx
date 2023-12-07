@@ -4,15 +4,22 @@ import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
 import { LuSearch } from 'react-icons/lu';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
+import useTextMethod from '../../../hooks/useText';
 // import Modal from '../../common/modal/Modal';
 
 export default function Gallery() {
+	// useState
 	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
 	const [Pics, setPics] = useState([]);
 
+	// useRef
 	const userId = useRef('128267964@N02');
 	const page = useRef('');
 
+	// useCustomHook
+	const charSlice = useTextMethod('charSlice');
+
+	// controller
 	const setUserGallery = async (e) => {
 		if (e.currentTarget.innerText === userId.current) return;
 		userId.current = e.currentTarget.innerText;
@@ -66,8 +73,8 @@ export default function Gallery() {
 					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {
 							const picTitle = pic.title.split(' ');
-							const top = picTitle.slice(0, picTitle.length / 2 + 1);
-							const bottom = picTitle.slice(picTitle.length / 2 + 1);
+							const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
+							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
 							return (
 								<article key={idx}>

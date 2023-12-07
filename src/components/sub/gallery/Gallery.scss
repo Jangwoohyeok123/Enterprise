@@ -2,12 +2,17 @@
 	--num: 4;
 	--gap: 20px;
 
+	h1 {
+		padding-bottom: 8vh;
+	}
+
 	.icons {
 		font-size: 18px;
 	}
 
 	.frameWrap {
 		position: relative;
+		padding-bottom: 8vh;
 
 		.back {
 			position: absolute;
@@ -30,7 +35,7 @@
 			article {
 				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
 				border-top: 1px solid rgba(var(--baseColor-code), 0.3);
-				height: 45vh;
+				height: 50vh;
 
 				.txt {
 					.services {
@@ -66,7 +71,7 @@
 				img {
 					width: 100%;
 					max-height: 70%;
-					object-fit: cover;
+					object-fit: contain;
 				}
 			}
 		}
