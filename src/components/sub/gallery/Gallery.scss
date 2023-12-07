@@ -1,0 +1,92 @@
+.Gallery {
+	--num: 4;
+	--gap: 20px;
+
+	.icons {
+		font-size: 18px;
+	}
+
+	.frameWrap {
+		position: relative;
+
+		.back {
+			position: absolute;
+			right: 0;
+			// font-size: px;
+			top: -33px;
+			display: flex;
+			align-items: center;
+			gap: 8px;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		.frame {
+			display: flex;
+			flex-wrap: wrap;
+
+			article {
+				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+				border-top: 1px solid rgba(var(--baseColor-code), 0.3);
+				height: 45vh;
+
+				.txt {
+					.services {
+						padding: 5px 0;
+						display: flex;
+						justify-content: space-between;
+
+						.info {
+							span:nth-of-type(1) {
+								color: #e59617;
+								font-weight: 500;
+							}
+
+							span:nth-of-type(2) {
+								cursor: pointer;
+							}
+						}
+
+						.more {
+							position: relative;
+							top: 4px;
+							cursor: pointer;
+						}
+					}
+
+					h3 {
+						padding: 10px 0;
+						font-size: 1.5rem;
+						font-weight: 600;
+					}
+				}
+
+				img {
+					width: 100%;
+					max-height: 70%;
+					object-fit: cover;
+				}
+			}
+		}
+	}
+}
+
+.Notebook {
+	.Gallery {
+		--num: 3;
+	}
+}
+
+.Tablet {
+	.Gallery {
+		--num: 2;
+	}
+}
+
+.Mobile {
+	.Gallery {
+		--num: 1;
+	}
+}
