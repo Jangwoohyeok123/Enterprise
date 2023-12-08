@@ -36,6 +36,7 @@
 				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
 				border-top: 1px solid rgba(var(--baseColor-code), 0.3);
 				height: 50vh;
+				margin-bottom: 3vh;
 
 				.txt {
 					.services {
@@ -70,7 +71,7 @@
 
 				img {
 					width: 100%;
-					max-height: 67%;
+					max-height: 70%;
 					object-fit: contain;
 
 					&:hover {
@@ -91,11 +92,19 @@
 .Tablet {
 	.Gallery {
 		--num: 2;
+
+		article {
+			margin-bottom: 5vh;
+		}
 	}
 }
 
 .Mobile {
 	.Gallery {
 		--num: 1;
+
+		article {
+			margin-bottom: 5vh;
+		}
 	}
 }
