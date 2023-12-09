@@ -16,7 +16,7 @@ export default function Gallery() {
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const page = useRef(''); // page 이동시 필요한 ref
-	// imgClick 시 모달 컴포넌트에 전달할 프롭에 필요
+	// imgClick 시 모달 에 전달할 프롭에 필요
 	const imgSrc = useRef('');
 	const layoutId = useRef('');
 
