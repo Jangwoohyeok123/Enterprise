@@ -90,23 +90,23 @@ export default function Gallery() {
 
 							return (
 								<>
-									<motion.article key={idx} layoutId={pic.owner}>
-										<motion.div className='txt'>
-											<motion.div className='services'>
-												<motion.div className='info'>
-													<motion.span>User id: </motion.span>
-													<motion.span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</motion.span>
-												</motion.div>
+									<article key={idx} layoutId={pic.owner}>
+										<div className='txt'>
+											<div className='services'>
+												<div className='info'>
+													<span>User id: </span>
+													<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
+												</div>
 												<IoArrowForwardCircleOutline className='more icons' onClick={() => setUserGallery(pic.owner)} />
-											</motion.div>
-											<motion.h3>
+											</div>
+											<h3>
 												{top}
 												<br></br>
 												{bottom.length ? bottom : 'Dream'}
-											</motion.h3>
-										</motion.div>
+											</h3>
+										</div>
 
-										<motion.img
+										<img
 											onClick={() =>
 												fullImgAnimation(
 													pic.owner,
@@ -116,7 +116,7 @@ export default function Gallery() {
 											src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
 											alt={`${pic.title}`}
 										/>
-									</motion.article>
+									</article>
 								</>
 							);
 						})}
@@ -133,64 +133,3 @@ export default function Gallery() {
 		</>
 	);
 }
-
-/*
-	순서1.일반 동적 데이터를 제외한 일반 정적인 컨텐츠가 렌더링됨 (참조객체에 20 상수값을 미리 담아놓음)
-	순서2.정적인 JSX가 요소 일단은 브라우저에 렌더링완료되었기 때문에 useEffect실행가능해짐
-	순서3.useEffect안쪽에서 미리 참조객체에 연결해놓은 refFrameWrap에 접근 가능 (이때 refFrameWrap에 --gap변수에 20이라는 값을 강제 적용 이때부터는 sass파일에 --gap이란 변수가 없더라도 리액트에서 동적으로 gap이라는 변수값을 넣었기 때문에 활용가능)
-	순서4-리액트에 동적으로 변수값을 적용해서 돔을생성하고 나면 그 이후 scss가 해당 변수값을 읽어서 화면 스타일링
-
-
-	순서1-처음에 gap이라는 참조객체값을 해석
-	순서2-2번째 렌더링타임에 useEffect가 실행되면서 참조객체에 담겨있는 section요소에 강제로 gap변수값을 적용
-	순서3-3번째 렌더링 타임에 fecthing데이터에 의한 동적 요소가 출력되면서 그때 비로서 변수값이 적용된 sass styling 적용 (paint)
-*/
-
-/* 
-<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: gap.current }}>
-						{Pics.length === 0 ? (
-							<h2>해당 키워드에 대한 검색 결과가 없습니다.</h2>
-						) : (
-							Pics.map((pic, idx) => {
-								return (
-									<article key={pic.id}>
-										<div
-											className='pic'
-											onClick={() => {
-												setOpen(true);
-												setIndex(idx);
-											}}
-										>
-											<img
-												src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-												alt={pic.title}
-											/>
-										</div>
-										<h2>{pic.title}</h2>
-
-										<div className='profile'>
-											<img
-												src={`http://farm${pic.farm}.staticflickr.com/${pic.server}/buddyicons/${pic.owner}.jpg`}
-												alt='사용자 프로필 이미지'
-												onError={(e) => e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif')}
-											/>
-											<span onClick={handleUser}>{pic.owner}</span>
-										</div>
-									</article>
-								);
-							})
-						)}
-					</Masonry>
-
-
-					
-		  <Modal Open={Open} setOpen={setOpen}>
-				{Pics.length !== 0 && (
-					<img
-						src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
-						alt={Pics[Index].title}
-					/>
-				)}
-			</Modal> 
-
-*/
