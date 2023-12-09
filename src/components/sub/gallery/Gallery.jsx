@@ -5,20 +5,41 @@ import './Gallery.scss';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
-import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Gallery() {
 	// useState
 	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
 	const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
+	const [Dx, setDx] = useState(0);
+	const [Dy, setDy] = useState(0);
 
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const page = useRef(''); // page 이동시 필요한 ref
+
 	// imgClick 시 모달 에 전달할 프롭에 필요
+	// const [imgSrc, setimgSrc] = useState('');
+	// const [layoutId, setlayoutId] = useState('');
+	// 시간되면 state 로 바꿔라
+	const initX = useRef(0);
+	const initY = useRef(0);
+	const dx = useRef(0);
+	const dy = useRef(0);
 	const imgSrc = useRef('');
 	const layoutId = useRef('');
+
+	const test = useRef('');
+	const 이미지클릭하면애니메이션 = (e) => {
+		dx.current = window.innerWidth / 3 - e.currentTarget.getBoundingClientRect().left;
+		dy.current = window.innerHeight / 5 - e.currentTarget.getBoundingClientRect().top;
+		initX.current = e.currentTarget.getBoundingClientRect().left;
+		initY.current = e.currentTarget.getBoundingClientRect().top;
+
+		console.log(dx.current);
+		console.log(dy.current);
+		setOpenModal(true);
+	};
 
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
@@ -89,42 +110,52 @@ export default function Gallery() {
 							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
 							return (
-								<>
-									<article key={idx} layoutId={pic.owner}>
-										<div className='txt'>
-											<div className='services'>
-												<div className='info'>
-													<span>User id: </span>
-													<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
-												</div>
-												<IoArrowForwardCircleOutline className='more icons' onClick={() => setUserGallery(pic.owner)} />
+								<article key={idx} layoutid={pic.owner}>
+									<div className='txt'>
+										<div className='services'>
+											<div className='info'>
+												<span>User id: </span>
+												<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
 											</div>
-											<h3>
-												{top}
-												<br></br>
-												{bottom.length ? bottom : 'Dream'}
-											</h3>
+											<IoArrowForwardCircleOutline
+												className='more icons'
+												onClick={(e) => {
+													setUserGallery(pic.owner);
+												}}
+											/>
 										</div>
+										<h3>
+											{top}
+											<br></br>
+											{bottom.length ? bottom : 'Dream'}
+										</h3>
+									</div>
 
-										<img
-											onClick={() =>
-												fullImgAnimation(
-													pic.owner,
-													`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`
-												)
-											}
-											src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-											alt={`${pic.title}`}
-										/>
-									</article>
-								</>
+									<img
+										onClick={(e) => {
+											fullImgAnimation(
+												pic.owner,
+												`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`
+											);
+											이미지클릭하면애니메이션(e);
+										}}
+										src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+										alt={`${pic.title}`}
+										ref={test}
+									/>
+								</article>
 							);
 						})}
 					</Masonry>
 
+					{/* 이벤트가 발생할 때 전달할 속성은 state 로 처리한다. */}
 					<Modal
 						selectedId={layoutId.current}
 						imgSrc={imgSrc.current}
+						initX={initX.current}
+						initY={initY.current}
+						dx={dx.current}
+						dy={dy.current}
 						OpenModal={OpenModal}
 						setOpenModal={setOpenModal}
 					></Modal>
