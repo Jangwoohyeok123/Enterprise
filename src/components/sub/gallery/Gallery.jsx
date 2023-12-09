@@ -5,31 +5,36 @@ import './Gallery.scss';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
+import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Gallery() {
 	// useState
 	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
 	const [Pics, setPics] = useState([]);
-	const [Open, setOpen] = useState(false);
-	const [Index, setIndex] = useState(0);
+	const [OpenModal, setOpenModal] = useState(false);
 
 	// useRef
-	const userId = useRef('128267964@N02');
-	const page = useRef('');
+	const userId = useRef('128267964@N02'); // user's gallery 에 필요
+	const page = useRef(''); // page 이동시 필요한 ref
+	// imgClick 시 모달 컴포넌트에 전달할 프롭에 필요
+	const imgSrc = useRef('');
+	const layoutId = useRef('');
 
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
 
 	// controller - 동기
-	const toggleModal = (idx) => {
-		setIndex(idx);
-		setOpen(true);
+	// setState 를 호출하면서 props 를 setting 하는 함수
+	const fullImgAnimation = (clickedId, clickedImgSrc) => {
+		layoutId.current = clickedId;
+		imgSrc.current = clickedImgSrc;
+		setOpenModal(true);
 	};
 
 	// controller - 비동기
-	const setUserGallery = async (e) => {
-		if (e.currentTarget.innerText === userId.current) return;
-		userId.current = e.currentTarget.innerText;
+	const setUserGallery = async (clickedId) => {
+		if (clickedId === userId.current) return;
+		userId.current = clickedId;
 		page.current = 'user';
 		const photos = await fetchFlickr({ type: 'user', id: userId.current });
 		setPics(photos);
@@ -84,43 +89,47 @@ export default function Gallery() {
 							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
 							return (
-								<article key={idx}>
-									<div className='txt'>
-										<div className='services'>
-											<div className='info'>
-												<span>User id: </span>
-												<span onClick={setUserGallery}>{pic.owner}</span>
-											</div>
-											<IoArrowForwardCircleOutline
-												className='more icons'
-												onClick={() => {
-													setIndex(idx);
-													setOpen(true);
-												}}
-											/>
-										</div>
-										<h3>
-											{top}
-											<br></br>
-											{bottom.length ? bottom : 'Dream'}
-										</h3>
-									</div>
+								<>
+									<motion.article key={idx} layoutId={pic.owner}>
+										<motion.div className='txt'>
+											<motion.div className='services'>
+												<motion.div className='info'>
+													<motion.span>User id: </motion.span>
+													<motion.span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</motion.span>
+												</motion.div>
+												<IoArrowForwardCircleOutline className='more icons' onClick={() => setUserGallery(pic.owner)} />
+											</motion.div>
+											<motion.h3>
+												{top}
+												<br></br>
+												{bottom.length ? bottom : 'Dream'}
+											</motion.h3>
+										</motion.div>
 
-									<img
-										onClick={() => {
-											setIndex(idx);
-											setOpen(true);
-										}}
-										src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-										alt={`${pic.title}`}
-									/>
-								</article>
+										<motion.img
+											onClick={() =>
+												fullImgAnimation(
+													pic.owner,
+													`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`
+												)
+											}
+											src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+											alt={`${pic.title}`}
+										/>
+									</motion.article>
+								</>
 							);
 						})}
 					</Masonry>
+
+					<Modal
+						selectedId={layoutId.current}
+						imgSrc={imgSrc.current}
+						OpenModal={OpenModal}
+						setOpenModal={setOpenModal}
+					></Modal>
 				</section>
 			</Layout>
-			<Modal Open={Open} setOpen={setOpen}></Modal>
 		</>
 	);
 }
