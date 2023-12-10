@@ -56,8 +56,44 @@
 
 						.more {
 							position: relative;
-							top: 4px;
-							cursor: pointer;
+
+							.noti {
+								position: absolute;
+								text-align: center;
+								transform: translateX(-92%) translateY(-200%);
+								border: 1px solid #e59617;
+								background: var(--bgColor);
+								border-radius: 5px 5px 5px 5px;
+								padding: 5px;
+								visibility: hidden;
+
+								&::before {
+									content: '';
+									width: 0;
+									height: 0;
+									position: absolute;
+									right: 3%;
+									top: 100%;
+									border-left: 25px solid transparent;
+									border-right: 25px solid #f1b048;
+									border-bottom: 10px solid transparent;
+									border-top: 10px solid #f1b048;
+								}
+
+								&:hover {
+									visibility: visible;
+								}
+							}
+
+							svg:hover {
+								cursor: pointer;
+							}
+
+							&::before {
+								content: '';
+								width: 0;
+								height: 0;
+							}
 						}
 					}
 

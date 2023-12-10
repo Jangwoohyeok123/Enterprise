@@ -17,21 +17,23 @@ export default function Gallery() {
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const page = useRef(''); // page 이동시 필요한 ref
 
-	// imgClick 시 모달 에 전달할 프롭에 필요
-	// const [imgSrc, setimgSrc] = useState('');
-	// const [layoutId, setlayoutId] = useState('');
-	// 시간되면 state 로 바꿔라
-
-	const test = useRef('');
-	const 이미지클릭하면애니메이션 = (e) => {
-		setOpenModal(true);
-	};
-
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
 
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
+	const notiOpen = (e) => {
+		console.log('onMouseOver');
+		console.log(e.currentTarget.children[1]);
+		e.currentTarget.children[1].style.visibility = 'visible';
+		console.log('');
+	};
+
+	const notiClose = (e) => {
+		console.log('onMouseDown');
+		console.log(e.currentTarget.children[1]);
+		e.currentTarget.children[1].style.visibility = 'hidden';
+	};
 
 	// controller - 비동기
 	const setUserGallery = async (clickedId) => {
@@ -98,12 +100,15 @@ export default function Gallery() {
 												<span>User id: </span>
 												<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
 											</div>
-											<IoArrowForwardCircleOutline
-												className='more icons'
-												onClick={(e) => {
-													setUserGallery(pic.owner);
-												}}
-											/>
+											<div className='more' onMouseOver={notiOpen} onMouseOut={notiClose}>
+												<IoArrowForwardCircleOutline
+													className='more icons'
+													onClick={(e) => {
+														setUserGallery(pic.owner);
+													}}
+												/>
+												<div className='noti'>{pic.owner}'s gallery</div>
+											</div>
 										</div>
 										<h3>
 											{top}
