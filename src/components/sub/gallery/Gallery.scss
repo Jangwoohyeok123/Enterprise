@@ -21,9 +21,11 @@
 			display: flex;
 			align-items: center;
 			gap: 8px;
+			transition: 0.3s;
 
 			&:hover {
 				cursor: pointer;
+				color: var(--subPoint);
 			}
 		}
 
