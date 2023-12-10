@@ -11,8 +11,7 @@ export default function Gallery() {
 	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
 	const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
-	const [Dx, setDx] = useState(0);
-	const [Dy, setDy] = useState(0);
+	const [Index, setIndex] = useState(0);
 
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
@@ -22,22 +21,9 @@ export default function Gallery() {
 	// const [imgSrc, setimgSrc] = useState('');
 	// const [layoutId, setlayoutId] = useState('');
 	// 시간되면 state 로 바꿔라
-	const initX = useRef(0);
-	const initY = useRef(0);
-	const dx = useRef(0);
-	const dy = useRef(0);
-	const imgSrc = useRef('');
-	const layoutId = useRef('');
 
 	const test = useRef('');
 	const 이미지클릭하면애니메이션 = (e) => {
-		dx.current = window.innerWidth / 3 - e.currentTarget.getBoundingClientRect().left;
-		dy.current = window.innerHeight / 5 - e.currentTarget.getBoundingClientRect().top;
-		initX.current = e.currentTarget.getBoundingClientRect().left;
-		initY.current = e.currentTarget.getBoundingClientRect().top;
-
-		console.log(dx.current);
-		console.log(dy.current);
 		setOpenModal(true);
 	};
 
@@ -46,11 +32,6 @@ export default function Gallery() {
 
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
-	const fullImgAnimation = (clickedId, clickedImgSrc) => {
-		layoutId.current = clickedId;
-		imgSrc.current = clickedImgSrc;
-		setOpenModal(true);
-	};
 
 	// controller - 비동기
 	const setUserGallery = async (clickedId) => {
@@ -110,7 +91,7 @@ export default function Gallery() {
 							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
 							return (
-								<article key={idx} layoutid={pic.owner}>
+								<article key={idx}>
 									<div className='txt'>
 										<div className='services'>
 											<div className='info'>
@@ -132,16 +113,12 @@ export default function Gallery() {
 									</div>
 
 									<img
-										onClick={(e) => {
-											fullImgAnimation(
-												pic.owner,
-												`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`
-											);
-											이미지클릭하면애니메이션(e);
-										}}
 										src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
 										alt={`${pic.title}`}
-										ref={test}
+										onClick={() => {
+											setOpenModal(true);
+											setIndex(idx);
+										}}
 									/>
 								</article>
 							);
@@ -149,17 +126,15 @@ export default function Gallery() {
 					</Masonry>
 
 					{/* 이벤트가 발생할 때 전달할 속성은 state 로 처리한다. */}
-					<Modal
-						selectedId={layoutId.current}
-						imgSrc={imgSrc.current}
-						initX={initX.current}
-						initY={initY.current}
-						dx={dx.current}
-						dy={dy.current}
-						OpenModal={OpenModal}
-						setOpenModal={setOpenModal}
-					></Modal>
 				</section>
+				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
+					{Pics.length !== 0 && (
+						<img
+							src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
+							alt={Pics[Index].title}
+						/>
+					)}
+				</Modal>
 			</Layout>
 		</>
 	);
