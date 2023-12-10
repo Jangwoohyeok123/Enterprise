@@ -15,8 +15,8 @@ footer {
 		}
 
 		&:hover {
-			color: var(--subColor);
-			border-color: var(--subColor);
+			color: var(--subPoint);
+			border-color: var(--subPoint);
 		}
 	}
 
@@ -40,8 +40,8 @@ footer {
 				transition: 0.3s;
 
 				&:hover {
-					color: var(--subColor);
-					border-color: var(--subColor);
+					color: var(--subPoint);
+					border-color: var(--subPoint);
 				}
 			}
 		}
@@ -70,8 +70,8 @@ footer {
 
 				&:hover {
 					cursor: pointer;
-					color: var(--subColor);
-					border-color: var(--subColor);
+					color: var(--subPoint);
+					border-color: var(--subPoint);
 				}
 			}
 		}
