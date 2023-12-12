@@ -23,15 +23,10 @@ export default function Gallery() {
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
 	const notiOpen = (e) => {
-		console.log('onMouseOver');
-		console.log(e.currentTarget.children[1]);
 		e.currentTarget.children[1].style.visibility = 'visible';
-		console.log('');
 	};
 
 	const notiClose = (e) => {
-		console.log('onMouseDown');
-		console.log(e.currentTarget.children[1]);
 		e.currentTarget.children[1].style.visibility = 'hidden';
 	};
 
@@ -48,7 +43,6 @@ export default function Gallery() {
 		// page 가 interest 면 fetch 안함
 		if (page.current === 'interest') return;
 		page.current = 'interest';
-		console.log('interest');
 		const photos = await fetchFlickr({ type: 'interest' });
 		setPics(photos);
 	};
