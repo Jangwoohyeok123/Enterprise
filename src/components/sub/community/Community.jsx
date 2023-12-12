@@ -5,9 +5,14 @@ import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 export default function Community() {
+	// state
 	const [Title, setTitle] = useState("User's Community");
 	const [Posts, setPosts] = useState([]);
+
+	// ref
 	const path = useRef(process.env.PUBLIC_URL);
+	const refTitle = useRef(null);
+	const refBody = useRef(null);
 
 	const fetchPosts = async () => {
 		const data = await fetch(`${path.current}/DB/community.json`);
@@ -17,13 +22,30 @@ export default function Community() {
 		setPosts(json.posts);
 	};
 
-	const resetInput = () => {};
+	const resetInput = () => {
+		refTitle.current.value = '';
+		refBody.current.value = '';
+	};
 
-	const createPost = () => {};
+	const createPost = () => {
+		const time = new Date();
+		const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+
+		setPosts([
+			{
+				title: refTitle.current.value,
+				body: refBody.current.value,
+				enableUpdate: false,
+				userid: '96229824@N06',
+				time: current
+			},
+			...Posts
+		]);
+	};
 
 	const editPost = editIndex => {
 		setPosts(
-			Posts.forEach((post, idx) => {
+			Posts.map((post, idx) => {
 				if (editIndex === idx) post.enableUpdate = true;
 				else post.enableUpdate = false;
 			})
@@ -52,8 +74,8 @@ export default function Community() {
 
 			<section className='body'>
 				<aside className='createPost'>
-					<input type='text' placeholder='title' />
-					<textarea cols='30' rows='5' placeholder='content'></textarea>
+					<input type='text' placeholder='title' ref={refTitle} />
+					<textarea cols='30' rows='5' placeholder='body' ref={refBody}></textarea>
 
 					<nav>
 						<button onClick={resetInput}>Reset</button>
