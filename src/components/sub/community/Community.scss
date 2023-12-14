@@ -18,6 +18,7 @@
 
 	.body {
 		display: flex;
+
 		.createPost {
 			width: 30%;
 			margin-right: 5%;
@@ -81,6 +82,7 @@
 				border-top: 1px solid rgba(var(--baseColor-code), 0.3);
 
 				.posting {
+					// Edit Mode 의 css, Read Mode 의 css 를 만들어라
 					h4 {
 						font-weight: 500;
 						padding-bottom: 3vh;

@@ -14,6 +14,8 @@ export default function Community() {
 	const path = useRef(process.env.PUBLIC_URL);
 	const refTitle = useRef(null);
 	const refBody = useRef(null);
+	const refEditTitle = useRef(null);
+	const refEditBody = useRef(null);
 
 	const fetchPosts = async () => {
 		const data = await fetch(`${path.current}/DB/community.json`);
@@ -44,20 +46,24 @@ export default function Community() {
 		]);
 	};
 
-	// editPost 는 batchUpdating 됨
-	const editPost = editIndex => {
+	const openEditMode = selectedIndex => {
+		console.log(selectedIndex);
+		if (IsEdit) return;
 		setIsEdit(!IsEdit);
 		setPosts(
 			Posts.map((post, idx) => {
-				if (editIndex === idx) {
-					return {
-						title: refTitle.current.value,
-						body: refBody.current.value,
-						enableUpdate: true,
-						userid: post.userid,
-						time: post.time
-					};
-				} else return post;
+				if (selectedIndex === idx) post.enableUpdate = true;
+				return post;
+			})
+		);
+	};
+
+	const closeEditMode = selectedIndex => {
+		setIsEdit(!IsEdit);
+		setPosts(
+			Posts.map((post, idx) => {
+				if (selectedIndex === idx) post.enableUpdate = false;
+				return post;
 			})
 		);
 	};
@@ -94,69 +100,66 @@ export default function Community() {
 				</aside>
 
 				<div className='posts'>
-					{IsEdit === true
-						? Posts.map((post, idx) => {
-								if (idx >= 4) return null;
-								return (
-									<article key={idx} className='post'>
-										<div className='posting'>
-											<h4>{post.title}</h4>
-											<p>{post.body}</p>
+					{Posts.map((post, idx) => {
+						console.log(Posts);
+						if (idx > 4) return null;
+						if (post.enableUpdate) {
+							return (
+								<article key={idx} className='post'>
+									<div className='posting'>
+										<input type='text' defaultValue={post.title} ref={refEditTitle} />
+										<textarea cols='30' rows='4' defaultValue={post.body} ref={refEditBody}></textarea>
+									</div>
+									<div className='profile'>
+										<div className='left'>
+											<span>
+												<strong>User id: </strong>
+												{post.userid}
+											</span>
 										</div>
-										<div className='profile'>
-											<div className='left'>
-												<span>
-													<strong>User id: </strong>
-													{post.userid}
-												</span>
-											</div>
-											<div className='right'>
-												<span>Date: {post.time}</span>
-												<span
-													onClick={() => {
-														editPost(idx);
-													}}>
-													<FiEdit3 />
-												</span>
-												<span onClick={() => deletePost(idx)}>
-													<RiDeleteBinLine />
-												</span>
-											</div>
+										<div className='right'>
+											<span>Date: {post.time}</span>
+											<span onClick={() => closeEditMode(idx)}>
+												<FiEdit3 />
+											</span>
+											<span onClick={() => deletePost(idx)}>
+												<RiDeleteBinLine />
+											</span>
 										</div>
-									</article>
-								);
-						  })
-						: Posts.map((post, idx) => {
-								if (idx >= 4) return null;
-								return (
-									<article key={idx} className='post'>
-										<div className='posting'>
-											<h4>{post.title}</h4>
-											<p>{post.body}</p>
+									</div>
+								</article>
+							);
+						} else {
+							return (
+								<article key={idx} className='post'>
+									<div className='posting'>
+										<h4>{post.title}</h4>
+										<p>{post.body}</p>
+									</div>
+									<div className='profile'>
+										<div className='left'>
+											<span>
+												<strong>User id: </strong>
+												{post.userid}
+											</span>
 										</div>
-										<div className='profile'>
-											<div className='left'>
-												<span>
-													<strong>User id: </strong>
-													{post.userid}
-												</span>
-											</div>
-											<div className='right'>
-												<span>Date: {post.time}</span>
-												<span
-													onClick={() => {
-														editPost(idx);
-													}}>
-													<FiEdit3 />
-												</span>
-												<span onClick={() => deletePost(idx)}>
-													<RiDeleteBinLine />
-												</span>
-											</div>
+										<div className='right'>
+											<span>Date: {post.time}</span>
+											<span
+												onClick={() => {
+													openEditMode(idx);
+												}}>
+												<FiEdit3 />
+											</span>
+											<span onClick={() => deletePost(idx)}>
+												<RiDeleteBinLine />
+											</span>
 										</div>
-									</article>
-								);
-						  })}
+									</div>
+								</article>
+							);
+						}
+					})}
 				</div>
 			</section>
 		</Layout>
@@ -168,3 +171,8 @@ export default function Community() {
 
 // Read Mode 일 때는 Read 모드 출력하기
 // Edit Mode 일 때는 클릭한 post 만 edit 가능학세 만들기
+
+/* 
+
+
+*/
