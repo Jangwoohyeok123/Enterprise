@@ -44,8 +44,14 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 						padding-bottom: 3px;
 					}
 
+					// 왜 reset 이 안먹는지 나중에 생각할 것
 					input {
 						width: 100%;
+						background-color: #fff;
+
+						&::placeholder {
+							background-color: #fff;
+						}
 					}
 				}
 			}

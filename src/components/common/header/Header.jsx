@@ -40,9 +40,10 @@ export default function Header({ Dark, setDark, viewType }) {
 				</li>
 			</ul>
 			<div className='darkmode icons'>
-				<NavLink to='/signup' activeClassName={'on'}>
+				<NavLink to='/signup' className='signup' activeClassName={'on'}>
 					Signup
 				</NavLink>
+
 				<MdOutlineDarkMode size={30} onClick={handleDarkMode} />
 				{viewType == 'Tablet' || viewType == 'Mobile' ? <FiMenu size={30} /> : null}
 			</div>
