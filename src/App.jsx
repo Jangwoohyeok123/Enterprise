@@ -13,7 +13,6 @@ import './globalStyles/Variable.scss';
 import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
-import Signup from './components/sub/Signup/Signup';
 
 export default function App() {
 	const [Dark, setDark] = useState(false);
