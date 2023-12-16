@@ -1,6 +1,128 @@
 .Contact {
-	#map {
+	header {
 		width: 100%;
-		height: 50vh;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+
+		img {
+			width: 100%;
+			height: 40vh;
+			object-fit: cover;
+		}
+	}
+
+	.mapBox {
+		width: 100%;
+		height: 40vh;
+	}
+
+	.info {
+		display: flex;
+		justify-content: space-between;
+		margin: 5vh 0;
+
+		.txt-info {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			width: 40%;
+			height: 25vh;
+
+			&-header {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+				font-weight: 500;
+
+				h2 {
+					font-weight: 500;
+				}
+			}
+
+			&-body {
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+
+			&-footer {
+				display: flex;
+				width: 100%;
+				justify-content: flex-start;
+				gap: 20px;
+
+				span {
+					border: 1px solid rgba(var(--baseColor-code), 0.3);
+					padding: 10px;
+					cursor: pointer;
+					transition: 0.3s;
+
+					&:hover {
+						color: var(--subPoint);
+						border-color: var(--subPoint);
+					}
+				}
+			}
+		}
+
+		form {
+			width: 60%;
+			height: 50vh;
+			position: relative;
+
+			label {
+				display: block;
+				padding: 10px 0 5px 0;
+			}
+
+			input,
+			textarea {
+				color: var(--inputColor);
+				font-size: 1rem;
+				background: var(--inputBgColor);
+				font-weight: 400;
+			}
+
+			.profile {
+				input[type='text'] {
+					width: 100%;
+					border: none;
+					padding: 5px 10px;
+				}
+			}
+
+			.message {
+				width: 100%;
+				height: 40%;
+
+				textarea {
+					padding: 5px 10px;
+					width: 100%;
+					height: 100%;
+					border: none;
+				}
+			}
+
+			.submit {
+				color: var(--baseColor);
+				width: 80px;
+				height: 42px;
+				position: absolute;
+				bottom: 3%;
+				right: 0;
+				background-color: transparent;
+				border: 1px solid rgba(var(--baseColor-code), 0.3);
+				cursor: pointer;
+				transition: 0.3s;
+
+				&:hover {
+					color: var(--subPoint);
+					border-color: var(--subPoint);
+				}
+			}
+		}
 	}
 }

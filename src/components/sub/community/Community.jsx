@@ -62,18 +62,26 @@ export default function Community() {
 		setIsEdit(!IsEdit);
 		setPosts(
 			Posts.map((post, idx) => {
-				if (selectedIndex === idx) post.enableUpdate = false;
+				const time = new Date();
+				const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+
+				if (selectedIndex === idx) {
+					return {
+						title: refEditTitle.current.value,
+						body: refEditBody.current.value,
+						enableUpdate: false,
+						userid: '96229824@N06',
+						time: '(latest) ' + current
+					};
+				}
 				return post;
 			})
 		);
 	};
 
 	const deletePost = deleteIndex => {
-		setPosts(
-			Posts.filter((_, idx) => {
-				return idx !== deleteIndex;
-			})
-		);
+		if (!window.confirm('해당 게시글을 삭제하겠습니까?')) return;
+		setPosts(Posts.filter((_, idx) => idx !== deleteIndex));
 	};
 
 	useEffect(() => {
@@ -101,7 +109,6 @@ export default function Community() {
 
 				<div className='posts'>
 					{Posts.map((post, idx) => {
-						console.log(Posts);
 						if (idx > 4) return null;
 						if (post.enableUpdate) {
 							return (

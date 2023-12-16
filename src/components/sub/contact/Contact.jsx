@@ -4,9 +4,10 @@ import emailjs from '@emailjs/browser';
 import './Contact.scss';
 
 export default function Contact() {
-	const [Title, setTitle] = useState('dasdzxhbck');
 	const kakaoMap = useRef(null);
 	// dom 생성후 api 를 호출할 때 필요한 option 을 설정할 때도 api 가 필요함
+
+	const path = useRef(process.env.PUBLIC_URL);
 
 	// emailJS
 	const form = useRef();
@@ -34,17 +35,59 @@ export default function Contact() {
 	}, []);
 
 	return (
-		<Layout title={Title}>
-			<article className='mapBox' ref={kakaoMap}></article>
-			<form ref={form} onSubmit={sendEmail}>
-				<label>Name</label>
-				<input type='text' name='user_name' />
-				<label>Email</label>
-				<input type='email' name='user_email' />
-				<label>Message</label>
-				<textarea name='message' />
-				<input type='submit' value='Send' />
-			</form>
+		<Layout title={'Contact Us'} className={'Contact'}>
+			<header>
+				<h3 style={{ fontSize: '1.5rem' }}>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					<br /> Atque nobis hic voluptatibus distinctio!
+				</h3>
+				<article className='mapBox' ref={kakaoMap}></article>
+			</header>
+
+			<section className='info'>
+				<div className='txt-info'>
+					<div className='txt-info-header'>
+						<span>LOCATION</span>
+						<h2 style={{ fontSize: '2rem' }}>HOW TO FIND US</h2>
+					</div>
+					<div className='txt-info-body'>
+						<span>
+							<strong>Address</strong> = {'map요소'}
+						</span>
+						<span>
+							<strong>Telephone</strong> = {'map요소'}
+						</span>
+						<span>
+							<strong>Fax</strong> = {'map요소'}
+						</span>
+					</div>
+					<div className='txt-info-footer'>
+						<span>삼성동</span>
+						<span>코엑스</span>
+						<span>엑슨모빌</span>
+					</div>
+				</div>
+
+				<form ref={form} onSubmit={sendEmail}>
+					<div className='profile'>
+						<label for='email_address'>Email Address</label>
+						<input
+							type='text'
+							id='email_address'
+							name='to_email'
+							defaultValue='dkanvk1@gmail.com'
+							placeholder='organizer@gmail.com'
+						/>
+						<label for='name'>Name</label>
+						<input type='text' id='name' name='user_name' placeholder='name' />
+					</div>
+					<div className='message'>
+						<label for='message'>Message</label>
+						<textarea name='message' id='message' placeholder='Dear Lorem&#39;s employee' />
+					</div>
+					<input className='submit' type='submit' value='Send' />
+				</form>
+			</section>
 		</Layout>
 	);
 }
