@@ -2,7 +2,7 @@ import { Route } from 'react-router-dom';
 import Footer from './components/common/footer/Footer';
 import Header from './components/common/header/Header';
 import MainWrap from './components/main/mainWrap/MainWrap';
-import Members from './components/sub/members/Members';
+import Signup from './components/sub/signup/Signup';
 import Community from './components/sub/community/Community';
 import Contact from './components/sub/contact/Contact';
 import Department from './components/sub/department/Department';
@@ -13,6 +13,7 @@ import './globalStyles/Variable.scss';
 import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
+import Signup from './components/sub/Signup/Signup';
 
 export default function App() {
 	const [Dark, setDark] = useState(false);
@@ -26,7 +27,7 @@ export default function App() {
 			<Route path='/youtube' component={Youtube} />
 			<Route path='/gallery' component={Gallery} />
 			<Route path='/community' component={Community} />
-			<Route path='/members' component={Members} />
+			<Route path='/signup' component={Signup} />
 			<Route path='/contact' component={Contact} />
 			<Route path='/detail/:id' component={Detail} />
 			<Footer />
