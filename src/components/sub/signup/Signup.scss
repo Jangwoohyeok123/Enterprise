@@ -23,6 +23,8 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 		}
 
 		form {
+			width: 100%;
+			height: 360px;
 			margin-bottom: 20px;
 
 			.text-input {
