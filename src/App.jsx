@@ -26,10 +26,11 @@ export default function App() {
 			<Route path='/youtube' component={Youtube} />
 			<Route path='/gallery' component={Gallery} />
 			<Route path='/community' component={Community} />
-			<Route path='/signup' component={Signup} />
 			<Route path='/contact' component={Contact} />
 			<Route path='/detail/:id' component={Detail} />
-			<Footer />
+			<Route path='/signup' component={Signup} />
+			<Footer viewType={viewType} />
 		</div>
 	);
 }
+//signup page 에서는
