@@ -1,12 +1,13 @@
-import { useRef } from 'react';
+import { memo, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import './Form.scss';
 
-export default function Form() {
+function Form() {
 	const form = useRef();
 	const path = useRef(process.env.PUBLIC_URL);
 	const sendEmail = e => {
 		e.preventDefault();
+		window.confirm('Do you want to send email?');
 
 		emailjs.sendForm('service_vj48mbo', 'template_j2mozwh', form.current, 'x-s69WH3OOeOCRhr0').then(
 			result => {
@@ -40,3 +41,5 @@ export default function Form() {
 		</form>
 	);
 }
+
+export default memo(Form);
