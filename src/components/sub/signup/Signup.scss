@@ -43,9 +43,14 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 						width: 100%;
 						display: block;
 						padding-bottom: 3px;
+
+						strong {
+							font-size: 0.9rem;
+							font-weight: 500;
+							color: var(--pointColor);
+						}
 					}
 
-					// 왜 reset 이 안먹는지 나중에 생각할 것
 					input {
 						width: 100%;
 						background-color: #fff;
@@ -65,11 +70,23 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 						font-size: 1rem;
 						font-weight: 600;
 						padding-bottom: 2px;
+
+						strong {
+							font-size: 0.9rem;
+							font-weight: 500;
+							color: var(--pointColor);
+						}
 					}
 
 					.checkboxs {
 						display: flex;
 						justify-content: space-between;
+
+						label {
+							position: relative;
+							right: 15px;
+							bottom: 3px;
+						}
 					}
 				}
 			}
