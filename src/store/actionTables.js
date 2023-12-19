@@ -1,3 +1,4 @@
+// 이 파일은 그냥 전역 STATE 관련된 작업을 하려고 하면 보면서 작업해라
 export const DEPARTMENT = {
 	start: 'DEPARTMENT_START',
 	full: 'DEPARTMENT_FULLFILLED',

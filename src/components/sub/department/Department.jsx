@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
+import { useSelector } from 'react-redux';
 
 export default function Department() {
+	console.log(useSelector(store => store));
 	// state
 	const [ArticleData, setArticleData] = useState([]);
 	const [FeaturesData, setFeaturesData] = useState([]);
