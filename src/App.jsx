@@ -13,18 +13,18 @@ import './globalStyles/Variable.scss';
 import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
-import { useDispatch } from 'react-redux';
-import * as TABLES from './store/actionTables';
+// import { useDispatch } from 'react-redux';
+// import * as TABLES from './store/actionTables';
 
 export default function App() {
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 	const [Dark, setDark] = useState(false);
 	const viewType = useViewType();
 
-	useEffect(() => {
-		dispatch({ type: TABLES.DEPARTMENT.start });
-		dispatch({ type: TABLES.POSTS.start });
-	}, [dispatch]);
+	// useEffect(() => {
+	// 	dispatch({ type: TABLES.DEPARTMENT.start });
+	// 	dispatch({ type: TABLES.POSTS.start });
+	// }, [dispatch]);
 
 	return (
 		<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
