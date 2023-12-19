@@ -1,5 +1,5 @@
 import { takeLatest, call, put, fork, all } from 'redux-saga/effects';
-import { fetchCommunity, fetchDepartment } from './fetch';
+import { fetchCommunity, fetchDepartment } from '../fetch/fetch';
 import * as TABLES from '../actionTables';
 
 // saga 를 만들떄는 actionTable.js 를 보면서 작업해라

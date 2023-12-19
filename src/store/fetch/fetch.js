@@ -1,5 +1,6 @@
 const path = process.env.PUBLIC_URL;
 
+// fetch 한 이후 json 으로 전역 state 화 시켜놓음
 export const fetchDepartment = async () => {
 	const data = await fetch(`${path}/DB/department.json`);
 	const json = data.json();
