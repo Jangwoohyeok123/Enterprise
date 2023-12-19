@@ -1,5 +1,10 @@
 import { takeLatest, call, put, fork, all } from 'redux-saga/effects';
 import { fetchCommunity, fetchDepartment } from './fetch';
+import * as TABLES from '../actionTables';
+
+// function* callDepartment() {
+//   yield takeLatest(TABLES.)
+// }
 
 export default function* rootSaga() {
 	yield all([fork()]);
