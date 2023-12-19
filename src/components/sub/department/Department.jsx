@@ -21,7 +21,7 @@ export default function Department() {
 	// fetch
 	const departmentFetch = async () => {
 		const dataSet = await fetch(`${path.current}/DB/department.json`);
-		const json = await dataSet.json();
+		const json = dataSet.json();
 		setArticleData(json.article);
 		setFeaturesData(json.article.features);
 		setMembers(json['norm-people']);
