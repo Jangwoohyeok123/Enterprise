@@ -19,11 +19,6 @@ export default function Signup() {
 	const [States, setStates] = useState(initVal.current);
 	const [Errors, setErrors] = useState([]);
 
-	// console.log(Errors);
-
-	// const [Inputs, setInputs] = useDebounce(init.current, );
-	// const DebouncedVal = useDebounce(Val);
-
 	const handleChange = e => {
 		// 입력할때마다 state 변경하기
 		// const { name, value } = e.target;
@@ -44,17 +39,16 @@ export default function Signup() {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// Register 버튼 클릭했을 때 처리하기
-		// validation 하기, 화면 이동시키기
 		// Errors States 를 분석하고 Error 가 없다면 가입을 승인하고 홈으로 이동시킨다.
 		const errors = validation(States);
+
 		let flag = true;
-		Array.from(errors).forEach(error => {
-			console.log(error);
-			if (!flag) return;
-			if (error === '') flag = true;
-			else flag = false;
-		});
+		// 객체를 iteration 하는게 안됨
+		for (const key in errors) {
+			if (errors[key] !== '') flag = false;
+			// value 가 하나라도 없으면 flag 는 false 여야함
+			// 이런 구조는 초기값을 true 로 두고 filtering 을 한번이라도 걸리면 false 가 되도록 만드는 구조를 짜면 됨 => algorithm 도 그렇고 자주 나옴 handler 공책에 적고 외워라
+		}
 
 		flag ? history.push('/') : alert('가입정보를 다시 확인해주세요');
 	};
@@ -75,7 +69,6 @@ export default function Signup() {
 		if (States.password1 !== States.password2 || States.password2.length === 0)
 			error.password2 = '비밀번호가 일치하지 않습니다.';
 		if (States.reasons.length === 0) error.reasons = 'Reason 을 하나이상 체크해주세요';
-		console.log(error);
 
 		return error;
 	};
@@ -92,17 +85,22 @@ export default function Signup() {
 		<section className='Signup'>
 			<fieldset>
 				<legend className='hide'>signup page</legend>
-				<h1>Registration</h1>
+				<h1
+					onClick={() => {
+						history.push('/');
+					}}>
+					ENTERPRISE
+				</h1>
 				<form onSubmit={handleSubmit}>
 					<section className='text-input'>
 						<div className='text-input-1 input'>
 							<label htmlFor='userid'>User id {Errors.userid && <strong>({Errors.userid})</strong>}</label>
-							<input name='userid' type='text' id='name' placeholder='Enter your User id' onChange={handleChange} />
+							<input name='userid' type='text' id='name' placeholder='Enter User id' onChange={handleChange} />
 						</div>
 
 						<div className='text-input-2 input'>
 							<label htmlFor='email'>Email {Errors.email && <strong>({Errors.email})</strong>}</label>
-							<input name='email' type='text' id='email' placeholder='Enter your email' onChange={handleChange} />
+							<input name='email' type='text' id='email' placeholder='Enter email' onChange={handleChange} />
 						</div>
 
 						<div className='text-input-3 input'>
