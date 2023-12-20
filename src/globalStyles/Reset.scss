@@ -115,8 +115,16 @@ textarea {
 		padding: 0px;
 		font-size: 1rem;
 	}
+}
 
+input[type='text'] {
 	&:focus {
-		outline: none;
+		outline: 1px solid var(--inputColor);
+	}
+}
+
+textarea {
+	&:focus {
+		outline: 1px solid var(--inputColor);
 	}
 }

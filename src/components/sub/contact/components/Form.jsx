@@ -2,7 +2,7 @@ import { memo, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import './Form.scss';
 
-function Form(className) {
+function Form({ className }) {
 	const form = useRef();
 	const path = useRef(process.env.PUBLIC_URL);
 	const sendEmail = e => {
