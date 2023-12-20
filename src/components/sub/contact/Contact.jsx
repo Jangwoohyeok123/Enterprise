@@ -119,7 +119,7 @@ export default function Contact() {
 									</div>
 								</div>
 
-								<Form />
+								<Form className={'Form'} />
 							</section>
 						</div>
 					);

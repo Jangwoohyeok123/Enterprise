@@ -35,12 +35,10 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 				display: flex;
 				flex-wrap: wrap;
 				justify-content: space-between;
-				row-gap: 15px;
-				padding-bottom: 30px;
+				row-gap: 5px;
 
 				.input {
 					width: 100%;
-					height: 50px;
 
 					label {
 						font-size: 1rem;
@@ -95,11 +93,10 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 							display: flex;
 							gap: 15px;
 							align-items: center;
+							padding: 3px 0;
 
 							label {
 								font-weight: 400;
-								position: relative;
-								bottom: 3px;
 							}
 						}
 					}
@@ -127,57 +124,60 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 
 .Mobile {
 	.Signup {
-		display: flex;
-		background: linear-gradient($metal);
 		width: 100%;
-		min-height: 0;
+		height: 100vh;
 		justify-content: center;
-		align-items: center;
+
+		background: #ddd;
+		position: relative;
 
 		fieldset {
 			border: none;
 			width: 100%;
+			height: 100%;
 			background: #ddd;
 			color: var(--inputColor);
-			padding: 20px 30px;
+			padding: 30px 10px;
 
 			h1 {
 				font-size: 2rem;
 				font-weight: 500;
-				padding-bottom: 5px;
+				height: 9vh;
 				text-align: center;
 
 				&:hover {
 					cursor: pointer;
 				}
 			}
+
 			// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
 			form {
 				width: 100%;
-				height: auto;
 				display: flex;
+				height: 80vh;
 				flex-direction: column;
+				justify-content: center;
 
 				.text-input {
 					display: flex;
 					flex-wrap: wrap;
+					height: 40vh;
 					justify-content: space-between;
-					row-gap: 15px;
-					padding-bottom: 0;
+					row-gap: 1vh;
 
 					.input {
 						width: 100%;
-						height: 50px;
+						height: 5vh;
 
 						label {
 							font-size: 1rem;
 							font-weight: 500;
 							width: 100%;
 							display: block;
-							padding-bottom: 3px;
+							padding-bottom: 5px;
 
 							strong {
-								font-size: 0.9rem;
+								font-size: 0.7rem;
 								font-weight: 500;
 								color: var(--pointColor);
 							}
@@ -186,6 +186,7 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 						input {
 							width: 100%;
 							background-color: #fff;
+							padding: 8px;
 
 							&::placeholder {
 								background-color: #fff;
@@ -199,35 +200,37 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 				}
 
 				.else-input {
-					padding-bottom: 10px;
+					height: 30vh;
+					padding-top: 2vh;
 
 					.reason {
+						font-weight: 500;
 						h3 {
 							font-size: 1rem;
-							font-weight: 600;
-							padding-bottom: 2px;
+							font-weight: 500;
 
 							strong {
-								font-size: 0.9rem;
-								font-weight: 500;
 								color: var(--pointColor);
+								font-size: 0.7rem;
+								font-weight: 500;
 							}
 						}
 
 						.checkboxs {
 							display: flex;
-							justify-content: space-between;
 							flex-wrap: wrap;
+							justify-content: space-between;
 
-							input[type='checkbox'] {
-								position: relative;
-								padding-right: 5px;
-							}
-
+							// checkbox 에서 label 이 문제가 있음
 							.checkbox {
-								width: 50%;
+								width: 100%;
 								display: flex;
-								gap: 20px;
+								gap: 1vh;
+								align-items: center;
+
+								label {
+									font-weight: 400;
+								}
 							}
 						}
 					}
@@ -253,4 +256,11 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 	}
 }
 
-//
+/* 생각보다 hard.. 
+모바일 화면이 되면 사인업 페이지 ...
+
+filedSet 을 100% 로 Signup 페이지와 동일하게 만듦
+배경색은 #ddd 로 일치시킨다. 
+Enterpirse, text-input, else-input, register의 간격을 넓게 띄어서 보기 사용자가 사용하기 쉽게 만든다.
+간격은 고정pixel 보단 % 를 이용하려고 노력해보자. 화면 높이가 너무 다양하다.
+*/

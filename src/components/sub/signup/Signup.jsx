@@ -84,13 +84,14 @@ export default function Signup() {
 	return (
 		<section className='Signup'>
 			<fieldset>
-				<legend className='hide'>signup page</legend>
 				<h1
 					onClick={() => {
 						history.push('/');
 					}}>
 					ENTERPRISE
 				</h1>
+				<legend className='hide'>signup page</legend>
+
 				<form onSubmit={handleSubmit}>
 					<section className='text-input'>
 						<div className='text-input-1 input'>

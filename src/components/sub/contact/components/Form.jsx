@@ -2,7 +2,7 @@ import { memo, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import './Form.scss';
 
-function Form() {
+function Form(className) {
 	const form = useRef();
 	const path = useRef(process.env.PUBLIC_URL);
 	const sendEmail = e => {
@@ -20,7 +20,8 @@ function Form() {
 	};
 
 	return (
-		<form ref={form} onSubmit={sendEmail}>
+		// component 분리하면 [ 대문자 시작 + 태그 이름 ] 의 class
+		<form ref={form} onSubmit={sendEmail} className={className}>
 			<div className='profile'>
 				<label htmlFor='email_address'>Email Address</label>
 				<input
