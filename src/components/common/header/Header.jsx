@@ -46,18 +46,24 @@ export default function Header({ Dark, setDark, viewType }) {
 						</li>
 					</ul>
 					<div className='darkmode icons'>
-						<NavLink to='/signup' className='signup' activeClassName={'on'}>
-							Signup
-						</NavLink>
+						<span className='icon'>
+							<Link to='/signup' className='signup'>
+								Signup
+							</Link>
+						</span>
 
-						<MdOutlineDarkMode size={30} onClick={handleDarkMode} />
+						<span className='icon'>
+							<MdOutlineDarkMode onClick={handleDarkMode} />
+						</span>
+
 						{viewType == 'Tablet' || viewType == 'Mobile' ? (
-							<FiMenu
-								size={30}
-								onClick={() => {
-									console.log('open modal');
-								}}
-							/>
+							<span className='icon'>
+								<FiMenu
+									onClick={() => {
+										console.log('open modal');
+									}}
+								/>
+							</span>
 						) : null}
 					</div>
 				</header>

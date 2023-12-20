@@ -126,10 +126,10 @@ export default function Community() {
 										</div>
 										<div className='right'>
 											<span>Date: {post.time}</span>
-											<span onClick={() => closeEditMode(idx)}>
+											<span className='icon' onClick={() => closeEditMode(idx)}>
 												<FiEdit3 />
 											</span>
-											<span onClick={() => deletePost(idx)}>
+											<span className='icon' onClick={() => deletePost(idx)}>
 												<RiDeleteBinLine />
 											</span>
 										</div>

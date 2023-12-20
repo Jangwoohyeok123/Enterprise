@@ -130,3 +130,74 @@
 		}
 	}
 }
+
+.Notebook {
+	.Community {
+		header {
+			height: 380px;
+		}
+	}
+}
+
+.Tablet,
+.Mobile {
+	.Community {
+		header {
+			height: 250px;
+			margin-bottom: 30px;
+		}
+
+		.body {
+			flex-direction: column;
+
+			.createPost {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+
+			.posts {
+				width: 100%;
+
+				.post {
+					height: 23vh;
+				}
+			}
+		}
+	}
+}
+
+.Mobile {
+	.Community {
+		width: 100%;
+		padding: 0 2%;
+
+		header {
+			height: 150px;
+		}
+
+		// createPost 와 posts 는 width 100% 가 적용된 상태들
+		.createPost {
+		}
+
+		.posts {
+			.post {
+				.profile {
+					font-size: 0.8rem;
+					position: relative;
+					top: 10px;
+
+					.left {
+						position: relative;
+						top: 2px;
+					}
+
+					.right {
+						.icon {
+							font-size: 10rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}

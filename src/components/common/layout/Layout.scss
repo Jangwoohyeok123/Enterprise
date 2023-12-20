@@ -11,14 +11,17 @@ main {
 
 .Notebook {
 	.title {
-		width: 80%;
+		font-size: 2.5rem;
+		font-weight: 500;
+		width: 90%;
 	}
 }
 
 .Tablet {
 	main {
 		.title {
-			font-size: 3.4rem;
+			font-size: 2rem;
+			font-weight: 500;
 			width: 90%;
 		}
 	}
@@ -27,8 +30,9 @@ main {
 .Mobile {
 	main {
 		.title {
-			font-size: 3rem;
-			width: 90%;
+			font-size: 1.5rem;
+			font-weight: 500;
+			width: 100%;
 		}
 	}
 }

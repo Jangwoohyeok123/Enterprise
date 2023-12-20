@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 export const useViewType = opt => {
 	const dispatch = useDispatch();
-	const defOpt = { mobile: 640, tablet: 1000, laptop: 1400 };
+	const defOpt = { mobile: 640, tablet: 1050, laptop: 1400 };
 	const result = { ...defOpt, ...opt };
 	const [Type, setType] = useState('');
 
