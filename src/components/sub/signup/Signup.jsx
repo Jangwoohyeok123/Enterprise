@@ -31,11 +31,9 @@ export default function Signup() {
 		// 체크할때마다 state 변경하기
 		const { name } = e.target;
 		// e.target 의 부모요소를 가서 input 들 긁어오기
-		const inputs = e.target.parentElement.querySelectorAll('input');
+		const inputs = e.target.parentElement.parentElement.querySelectorAll('input');
 		const checkArr = []; // check 한 배열을 담을 그릇
-		for (let i = 0; i < inputs.length; i++) {
-			console.log(inputs[i]);
-		}
+		inputs.forEach(input => input.checked && checkArr.push(input));
 		setStates({ ...States, [name]: checkArr });
 	};
 
