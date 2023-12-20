@@ -5,14 +5,13 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 	display: flex;
 	background: linear-gradient($metal);
 	width: 100%;
-	min-height: 100vh;
+	height: 100vh;
 	justify-content: center;
 	align-items: center;
 
 	fieldset {
 		border: none;
 		width: 600px;
-		height: 480px;
 		background: #ddd;
 		color: var(--inputColor);
 		padding: 20px 30px;
@@ -27,6 +26,7 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 				cursor: pointer;
 			}
 		}
+
 		// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
 		form {
 			width: 100%;
@@ -72,29 +72,35 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 			}
 
 			.else-input {
-				padding-bottom: 10px;
-
 				.reason {
+					font-weight: 500;
 					h3 {
-						font-size: 1rem;
-						font-weight: 600;
-						padding-bottom: 2px;
+						font-size: 1.1rem;
 
 						strong {
 							font-size: 0.9rem;
 							font-weight: 500;
-							color: var(--pointColor);
 						}
 					}
 
 					.checkboxs {
 						display: flex;
+						flex-wrap: wrap;
 						justify-content: space-between;
+						padding: 5px 0;
 
-						label {
-							position: relative;
-							right: 15px;
-							bottom: 3px;
+						// checkbox 에서 label 이 문제가 있음
+						.checkbox {
+							width: 50%;
+							display: flex;
+							gap: 15px;
+							align-items: center;
+
+							label {
+								font-weight: 400;
+								position: relative;
+								bottom: 3px;
+							}
 						}
 					}
 				}
@@ -116,46 +122,135 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 				}
 			}
 		}
+	}
+}
 
-		.sns {
+.Mobile {
+	.Signup {
+		display: flex;
+		background: linear-gradient($metal);
+		width: 100%;
+		min-height: 0;
+		justify-content: center;
+		align-items: center;
+
+		fieldset {
+			border: none;
 			width: 100%;
-			display: flex;
-			justify-content: center;
-			gap: 10px;
+			background: #ddd;
+			color: var(--inputColor);
+			padding: 20px 30px;
 
-			.google {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 25px;
-				width: 40px;
-				height: 40px;
-				border: 1px solid #bbb;
-				border-radius: 50%;
-				cursor: pointer;
-				transition: 0.3s;
+			h1 {
+				font-size: 2rem;
+				font-weight: 500;
+				padding-bottom: 5px;
+				text-align: center;
 
 				&:hover {
-					border-color: #777;
+					cursor: pointer;
 				}
 			}
-
-			.kakao {
+			// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
+			form {
+				width: 100%;
+				height: auto;
 				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 25px;
-				width: 40px;
-				height: 40px;
-				border: 1px solid #bbb;
-				border-radius: 50%;
-				cursor: pointer;
-				transition: 0.3s;
+				flex-direction: column;
 
-				&:hover {
-					border-color: #777;
+				.text-input {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					row-gap: 15px;
+					padding-bottom: 0;
+
+					.input {
+						width: 100%;
+						height: 50px;
+
+						label {
+							font-size: 1rem;
+							font-weight: 500;
+							width: 100%;
+							display: block;
+							padding-bottom: 3px;
+
+							strong {
+								font-size: 0.9rem;
+								font-weight: 500;
+								color: var(--pointColor);
+							}
+						}
+
+						input {
+							width: 100%;
+							background-color: #fff;
+
+							&::placeholder {
+								background-color: #fff;
+							}
+
+							&:focus {
+								border: 1px solid #555;
+							}
+						}
+					}
+				}
+
+				.else-input {
+					padding-bottom: 10px;
+
+					.reason {
+						h3 {
+							font-size: 1rem;
+							font-weight: 600;
+							padding-bottom: 2px;
+
+							strong {
+								font-size: 0.9rem;
+								font-weight: 500;
+								color: var(--pointColor);
+							}
+						}
+
+						.checkboxs {
+							display: flex;
+							justify-content: space-between;
+							flex-wrap: wrap;
+
+							input[type='checkbox'] {
+								position: relative;
+								padding-right: 5px;
+							}
+
+							.checkbox {
+								width: 50%;
+								display: flex;
+								gap: 20px;
+							}
+						}
+					}
+				}
+
+				input[type='submit'] {
+					width: 100%;
+					padding: 10px 0;
+					font-size: 1rem;
+					color: #000;
+					font-weight: 500;
+					background: linear-gradient($metal);
+					opacity: 0.7;
+					cursor: pointer;
+					transition: 0.3s;
+
+					&:hover {
+						opacity: 1;
+					}
 				}
 			}
 		}
 	}
 }
+
+//

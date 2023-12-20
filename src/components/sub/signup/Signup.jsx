@@ -132,23 +132,28 @@ export default function Signup() {
 						<div className='reason'>
 							<h3>Sign-up Reason {Errors.reasons && <strong>({Errors.reasons})</strong>}</h3>
 							<div className='checkboxs'>
-								<input type='checkbox' name='reasons' value='marketing' id='Marketing' onChange={handleCheckBox} />
-								<label htmlFor='Marketing'>Marketing</label>
-
-								<input type='checkbox' name='reasons' value='trends' id='Market Trends' onChange={handleCheckBox} />
-								<label htmlFor='Market Trends'>Market Trends</label>
-
-								<input
-									type='checkbox'
-									name='reasons'
-									value='collaboration'
-									id='Collaboration'
-									onChange={handleCheckBox}
-								/>
-								<label htmlFor='Collaboration'>Collaboration</label>
-
-								<input type='checkbox' name='reasons' value='others' id='Sponsorship' onChange={handleCheckBox} />
-								<label htmlFor='others'>others</label>
+								<div className='checkbox'>
+									<input type='checkbox' name='reasons' value='marketing' id='Marketing' onChange={handleCheckBox} />
+									<label htmlFor='Marketing'>Marketing</label>
+								</div>
+								<div className='checkbox'>
+									<input type='checkbox' name='reasons' value='trends' id='Market Trends' onChange={handleCheckBox} />
+									<label htmlFor='Market Trends'>Market Trends</label>
+								</div>
+								<div className='checkbox'>
+									<input
+										type='checkbox'
+										name='reasons'
+										value='collaboration'
+										id='Collaboration'
+										onChange={handleCheckBox}
+									/>
+									<label htmlFor='Collaboration'>Collaboration</label>
+								</div>
+								<div className='checkbox'>
+									<input type='checkbox' name='reasons' value='others' id='Sponsorship' onChange={handleCheckBox} />
+									<label htmlFor='others'>others</label>
+								</div>
 							</div>
 						</div>
 					</section>
