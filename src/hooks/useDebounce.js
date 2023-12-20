@@ -1,25 +1,24 @@
 import { useRef, useState } from 'react';
 
+// useDebounc 또는 useThrottle 에 들어올 인자는 컴포넌트에서 계속 반복해서 호출하는 특징이 있음
 export const useDebounce = (value, gap = 500) => {
 	const [DebouncedVal, setDebouncedVal] = useState(value);
-	const timer = useRef(null); //setTimeout의 리턴값을 받을 참조객체
+	const eventBlocker = useRef(null);
 
-	//인수로 받은 state값이 변경될때마다 setTimeout구문의 호출을 계속 초기화
-	clearTimeout(timer.current);
+	clearTimeout(eventBlocker.current);
 
-	timer.current = setTimeout(() => {
+	eventBlocker.current = setTimeout(() => {
 		setDebouncedVal(value);
 	}, gap);
 
 	return DebouncedVal;
 };
 
-/* 
-  커스텀 훅안에 useState 를 통해서 state 를 만들어 놓으면 훅을 호출한 컴포넌트의 state 처럼 커스텀 훅의 state 가 변경되면 컴포넌트가 재렌더링된다.
-*/
+/*  Debouncing 적용하기 
 
-/* useDebounce 훅을 호출하면... 
-  인자로 받은 변수를 디바운스를 적용할 state 로 선언한다.
+1. 디바운싱을 적용하고 싶은 컴포넌트에서
+const DebouncedVal = useDebounce(Val); // Val 는 state 값
 
-  setState 를 호 
+2. 기존의 setState(디바운싱적용전 state)
+
 */

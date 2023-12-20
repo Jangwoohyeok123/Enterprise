@@ -51,10 +51,21 @@ export default function Header({ Dark, setDark, viewType }) {
 						</NavLink>
 
 						<MdOutlineDarkMode size={30} onClick={handleDarkMode} />
-						{viewType == 'Tablet' || viewType == 'Mobile' ? <FiMenu size={30} /> : null}
+						{viewType == 'Tablet' || viewType == 'Mobile' ? (
+							<FiMenu
+								size={30}
+								onClick={() => {
+									console.log('open modal');
+								}}
+							/>
+						) : null}
 					</div>
 				</header>
 			)}
 		</>
 	);
 }
+// 모달이 닫혀있으면 dispatch
+// 즉, action 이 2개 필요함
+// 전역 state 를 만든다.
+// 1. 리듀서를 만든다. 2. action 을 만든다.
