@@ -93,71 +93,74 @@ export default function Signup() {
 				<legend className='hide'>signup page</legend>
 
 				<form onSubmit={handleSubmit}>
-					<section className='text-input'>
-						<div className='text-input-1 input'>
-							<label htmlFor='userid'>User id {Errors.userid && <strong>({Errors.userid})</strong>}</label>
-							<input name='userid' type='text' id='name' placeholder='Enter User id' onChange={handleChange} />
-						</div>
+					<section className='inputs'>
+						<section className='text-input'>
+							<div className='text-input-1 input'>
+								<label htmlFor='userid'>User id {Errors.userid && <strong>({Errors.userid})</strong>}</label>
+								<input name='userid' type='text' id='name' placeholder='Enter User id' onChange={handleChange} />
+							</div>
 
-						<div className='text-input-2 input'>
-							<label htmlFor='email'>Email {Errors.email && <strong>({Errors.email})</strong>}</label>
-							<input name='email' type='text' id='email' placeholder='Enter email' onChange={handleChange} />
-						</div>
+							<div className='text-input-2 input'>
+								<label htmlFor='email'>Email {Errors.email && <strong>({Errors.email})</strong>}</label>
+								<input name='email' type='text' id='email' placeholder='Enter email' onChange={handleChange} />
+							</div>
 
-						<div className='text-input-3 input'>
-							<label htmlFor='password'>Password {Errors.password1 && <strong>({Errors.password1})</strong>}</label>
-							<input
-								name='password1'
-								type='password'
-								id='password'
-								placeholder='Enter new password'
-								onChange={handleChange}
-							/>
-						</div>
+							<div className='text-input-3 input'>
+								<label htmlFor='password'>Password {Errors.password1 && <strong>({Errors.password1})</strong>}</label>
+								<input
+									name='password1'
+									type='password'
+									id='password'
+									placeholder='Enter new password'
+									onChange={handleChange}
+								/>
+							</div>
 
-						<div className='text-input-4 input'>
-							<label htmlFor='confirm-password'>
-								Confirm password {Errors.password2 && <strong>({Errors.password2})</strong>}
-							</label>
-							<input
-								name='password2'
-								type='password'
-								id='confirm-password'
-								placeholder='Enter confirm password'
-								onChange={handleChange}
-							/>
-						</div>
-					</section>
+							<div className='text-input-4 input'>
+								<label htmlFor='confirm-password'>
+									Confirm password {Errors.password2 && <strong>({Errors.password2})</strong>}
+								</label>
+								<input
+									name='password2'
+									type='password'
+									id='confirm-password'
+									placeholder='Enter confirm password'
+									onChange={handleChange}
+								/>
+							</div>
+						</section>
 
-					<section className='else-input'>
-						<div className='reason'>
-							<h3>Sign-up Reason {Errors.reasons && <strong>({Errors.reasons})</strong>}</h3>
-							<div className='checkboxs'>
-								<div className='checkbox'>
-									<input type='checkbox' name='reasons' value='marketing' id='Marketing' onChange={handleCheckBox} />
-									<label htmlFor='Marketing'>Marketing</label>
-								</div>
-								<div className='checkbox'>
-									<input type='checkbox' name='reasons' value='trends' id='Market Trends' onChange={handleCheckBox} />
-									<label htmlFor='Market Trends'>Market Trends</label>
-								</div>
-								<div className='checkbox'>
-									<input
-										type='checkbox'
-										name='reasons'
-										value='collaboration'
-										id='Collaboration'
-										onChange={handleCheckBox}
-									/>
-									<label htmlFor='Collaboration'>Collaboration</label>
-								</div>
-								<div className='checkbox'>
-									<input type='checkbox' name='reasons' value='others' id='Sponsorship' onChange={handleCheckBox} />
-									<label htmlFor='others'>others</label>
+						<section className='else-input'>
+							<div className='reason'>
+								<h3>Sign-up Reason {Errors.reasons && <strong>({Errors.reasons})</strong>}</h3>
+								<div className='checkboxs'>
+									<div className='checkbox'>
+										<input type='checkbox' name='reasons' value='marketing' id='Marketing' onChange={handleCheckBox} />
+										<label htmlFor='Marketing'>Marketing</label>
+									</div>
+									<div className='checkbox'>
+										<input type='checkbox' name='reasons' value='trends' id='Market Trends' onChange={handleCheckBox} />
+										<label htmlFor='Market Trends'>Market Trends</label>
+									</div>
+									<div className='checkbox'>
+										<input
+											type='checkbox'
+											name='reasons'
+											value='collaboration'
+											id='Collaboration'
+											onChange={handleCheckBox}
+										/>
+										<label htmlFor='Collaboration'>Collaboration</label>
+									</div>
+									<div className='checkbox'>
+										<input type='checkbox' name='reasons' value='others' id='Sponsorship' onChange={handleCheckBox} />
+										<label htmlFor='others'>others</label>
+									</div>
 								</div>
 							</div>
-						</div>
+						</section>
 					</section>
+
 					<input type='submit' value='Register' />
 				</form>
 
