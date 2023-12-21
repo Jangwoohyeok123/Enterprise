@@ -32,9 +32,10 @@ function* callYoutube() {
 }
 
 function* callFlickr() {
-	yield takeLatest(TABLES.FLICKR.start, function* () {
+	//
+	yield takeLatest(TABLES.FLICKR.start, function* (action) {
 		try {
-			const json = yield call(fetchFlickr);
+			const json = yield call(fetchFlickr, action.opt);
 			yield put({ type: TABLES.FLICKR.full, payload: json });
 		} catch (err) {
 			yield put({ type: TABLES.FLICKR.rej, payload: err });
@@ -54,7 +55,7 @@ function* callPosts() {
 }
 
 export default function* rootSaga() {
-	yield all([fork(callDepartment), fork(callPosts), fork(callYoutube)]);
+	yield all([fork(callDepartment), fork(callPosts), fork(callYoutube), fork(callFlickr)]);
 }
 
 /* saga 함수 정리 

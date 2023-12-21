@@ -25,7 +25,7 @@ export default function App() {
 		dispatch({ type: TABLES.DEPARTMENT.start });
 		dispatch({ type: TABLES.POSTS.start });
 		dispatch({ type: TABLES.YOUTUBE.start });
-		dispatch({ type: TABLES.FLICKR.start });
+		dispatch({ type: TABLES.FLICKR.start, opt: { type: 'interest' } });
 	}, [dispatch]);
 
 	return (

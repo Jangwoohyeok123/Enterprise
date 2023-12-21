@@ -5,10 +5,14 @@ import './Gallery.scss';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
+import { useDispatch, useSelector } from 'react-redux';
+import * as TABLES from '../../../store/actionTables';
 
 export default function Gallery() {
+	const dispatch = useDispatch();
+	const Pics = useSelector(store => store.flickrReducer.flickr);
 	// useState
-	const [Pics, setPics] = useState([]);
+	// const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Index, setIndex] = useState(0);
 
@@ -34,42 +38,19 @@ export default function Gallery() {
 		if (clickedId === userId.current) return;
 		userId.current = clickedId;
 		page.current = 'user';
-		const photos = await fetchFlickr({ type: 'user', id: userId.current });
-		setPics(photos);
+		// const photos = await fetchFlickr({ type: 'user', id: userId.current });
+		dispatch({ type: TABLES.FLICKR.start, opt: { type: 'user', id: userId.current } });
 	};
 
 	const setInterstGallery = async e => {
 		// page 가 interest 면 fetch 안함
 		if (page.current === 'interest') return;
 		page.current = 'interest';
-		const photos = await fetchFlickr({ type: 'interest' });
-		setPics(photos);
+		// dispatch 하면 알아서 비동기 호출함
+		// const photos = await fetchFlickr({ type: 'interest' });
+		// setPics(photos);
+		dispatch({ type: TABLES.FLICKR.start, opt: { type: 'interest' } });
 	};
-
-	const fetchFlickr = async opt => {
-		const num = 36;
-		const flickr_api = process.env.REACT_APP_FLICKR_API;
-		const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
-		const method_interest = 'flickr.interestingness.getList';
-		const method_user = 'flickr.people.getPhotos';
-		const method_search = 'flickr.photos.search'; //search method 추가
-		const interestURL = `${baseURL}${method_interest}`;
-		const userURL = `${baseURL}${method_user}&user_id=${opt.id}`;
-		const searchURL = `${baseURL}${method_search}&tags=${opt.keyword}`; //search url 추가
-		let url = '';
-		opt.type === 'user' && (url = userURL);
-		opt.type === 'interest' && (url = interestURL);
-		opt.type === 'search' && (url = searchURL);
-		const data = await fetch(url);
-		const json = await data.json();
-		const photos = json.photos.photo;
-
-		return photos;
-	};
-
-	useEffect(() => {
-		setInterstGallery();
-	}, []);
 
 	return (
 		<>
