@@ -16,20 +16,6 @@ export const fetchYoutube = async () => {
 	const json = await data.json();
 	return json; // 요청 함수
 };
-/* 
-	const fetchYoutube = async () => {
-		const api비밀키 = process.env.REACT_APP_YOUTUBE_API; // Cloud 에서 받아옴
-		const 저장소이름 = process.env.REACT_APP_YOUTUBE_LIST; // youtube url 뒤에 있음
-		const 요청사진개수 = 5;
-		const 최종주소 = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api비밀키}&part=snippet&playlistId=${저장소이름}&maxResults=${요청사진개수}`;
-		const data = await fetch(최종주소);
-		const json = await data.json();
-		setVids(json.items); // 요청 함수
-	};
-
-
-
-*/
 
 export const fetchCommunity = async () => {
 	const data = await fetch(`${path}/DB/community.json`);

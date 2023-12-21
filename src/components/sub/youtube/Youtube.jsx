@@ -8,9 +8,10 @@ import { IoArrowForwardCircleOutline } from 'react-icons/io5';
 import { useSelector } from 'react-redux';
 
 export default function Youtube() {
-	useSelector(store => console.log(store));
-	const [Vids, setVids] = useState([]);
+	const Vids = useSelector(store => store.youtubeReducer.youtube.items);
+
 	const [Title, setTitle] = useState('We provide a simplified build process');
+	// console.log(Vids);
 
 	// custom hook
 	const viewType = useViewType();
@@ -24,14 +25,17 @@ export default function Youtube() {
 		const 최종주소 = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api비밀키}&part=snippet&playlistId=${저장소이름}&maxResults=${요청사진개수}`;
 		const data = await fetch(최종주소);
 		const json = await data.json();
-		console.log(json);
-		setVids(json.items); // 요청 함수
+		//
+		// console.log(json.items);
+		// setVids(json.items); // 요청 함수
 	};
 
 	const path = useRef(process.env.PUBLIC_URL);
 
 	// 줄세우기 함수
-	useEffect(() => {}, []);
+	useEffect(() => {
+		fetchYoutube();
+	}, []);
 
 	return (
 		<Layout title={Title} className='Youtube'>
