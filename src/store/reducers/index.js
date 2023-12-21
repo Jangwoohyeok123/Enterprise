@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 import * as TABLES from '../actionTables';
-import departmentReducer from './departmentreducer';
+import departmentReducer from './department';
 import postsReducer from './posts';
+import youtubeReducer from './youtube';
 
-const reducers = combineReducers({ departmentReducer, postsReducer });
+const reducers = combineReducers({ departmentReducer, postsReducer, youtubeReducer });
 
 export default reducers;
 

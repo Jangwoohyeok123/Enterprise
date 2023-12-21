@@ -24,6 +24,7 @@ export default function App() {
 	useEffect(() => {
 		dispatch({ type: TABLES.DEPARTMENT.start });
 		dispatch({ type: TABLES.POSTS.start });
+		dispatch({ type: TABLES.YOUTUBE.start });
 	}, [dispatch]);
 
 	return (

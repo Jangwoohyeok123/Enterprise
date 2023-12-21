@@ -1,5 +1,5 @@
 import { takeLatest, call, put, fork, all } from 'redux-saga/effects';
-import { fetchCommunity, fetchDepartment } from '../fetch/fetch';
+import { fetchCommunity, fetchDepartment, fetchYoutube } from '../fetch/fetch';
 import * as TABLES from '../actionTables';
 
 // saga 를 만들떄는 actionTable.js 를 보면서 작업해라
@@ -18,6 +18,20 @@ function* callDepartment() {
 	});
 }
 
+function* callYoutube() {
+	yield takeLatest(TABLES.YOUTUBE.start, function* () {
+		try {
+			// fetchYoutube 는 반환받은 json 에서 item 들을 반환한다.
+			const json = yield call(fetchYoutube);
+			console.log(json);
+			// fetchYoutube 가 반환하는 데이터를 payload 에 넣어주기만 하면됨
+			yield put({ type: TABLES.YOUTUBE.full, payload: json });
+		} catch (err) {
+			yield put({ type: TABLES.YOUTUBE.rej, payload: err });
+		}
+	});
+}
+
 function* callPosts() {
 	yield takeLatest(TABLES.POSTS.start, function* () {
 		try {
@@ -30,7 +44,7 @@ function* callPosts() {
 }
 
 export default function* rootSaga() {
-	yield all([fork(callDepartment), fork(callPosts)]);
+	yield all([fork(callDepartment), fork(callPosts), fork(callYoutube)]);
 }
 
 /* saga 함수 정리 

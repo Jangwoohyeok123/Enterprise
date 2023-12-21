@@ -7,7 +7,6 @@ import * as TABLES from '../../../store/actionTables';
 
 export default function Department() {
 	const json = useSelector(store => store.departmentReducer.department);
-	console.log(json);
 	// custom hook
 	const splitHeader = useTextMethod('split');
 
