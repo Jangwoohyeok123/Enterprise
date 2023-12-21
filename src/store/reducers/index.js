@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import * as TABLES from '../actionTables';
-import departmentReducer from './department';
+import departmentReducer from './departmentReducer';
 import postsReducer from './posts';
 
 const reducers = combineReducers({ departmentReducer, postsReducer });
