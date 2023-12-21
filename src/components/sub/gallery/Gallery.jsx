@@ -8,7 +8,6 @@ import Modal from '../../common/modal/Modal';
 
 export default function Gallery() {
 	// useState
-	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
 	const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Index, setIndex] = useState(0);
@@ -74,11 +73,11 @@ export default function Gallery() {
 
 	return (
 		<>
-			<Layout title={Title} className='Gallery'>
+			<Layout title={'Our users post creative and interesting photos on our app'} className='Gallery'>
 				<section className='frameWrap'>
 					<div className='back' onClick={setInterstGallery}>
 						<IoArrowBack className='icons' />
-						Return to Today's Gallery Rankings
+						Return to Today's interest Gallery
 					</div>
 					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {

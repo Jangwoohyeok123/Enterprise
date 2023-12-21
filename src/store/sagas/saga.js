@@ -1,5 +1,5 @@
 import { takeLatest, call, put, fork, all } from 'redux-saga/effects';
-import { fetchCommunity, fetchDepartment, fetchYoutube } from '../fetch/fetch';
+import { fetchCommunity, fetchDepartment, fetchYoutube, fetchFlickr } from '../fetch/fetch';
 import * as TABLES from '../actionTables';
 
 // saga 를 만들떄는 actionTable.js 를 보면서 작업해라
@@ -27,6 +27,17 @@ function* callYoutube() {
 			yield put({ type: TABLES.YOUTUBE.full, payload: json });
 		} catch (err) {
 			yield put({ type: TABLES.YOUTUBE.rej, payload: err });
+		}
+	});
+}
+
+function* callFlickr() {
+	yield takeLatest(TABLES.FLICKR.start, function* () {
+		try {
+			const json = yield call(fetchFlickr);
+			yield put({ type: TABLES.FLICKR.full, payload: json });
+		} catch (err) {
+			yield put({ type: TABLES.FLICKR.rej, payload: err });
 		}
 	});
 }

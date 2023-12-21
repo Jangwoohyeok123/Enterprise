@@ -3,8 +3,9 @@ import * as TABLES from '../actionTables';
 import departmentReducer from './department';
 import postsReducer from './posts';
 import youtubeReducer from './youtube';
+import flickrReducer from './flickr';
 
-const reducers = combineReducers({ departmentReducer, postsReducer, youtubeReducer });
+const reducers = combineReducers({ departmentReducer, postsReducer, youtubeReducer, flickrReducer });
 
 export default reducers;
 

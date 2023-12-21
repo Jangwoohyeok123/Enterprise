@@ -10,35 +10,15 @@ import { useSelector } from 'react-redux';
 export default function Youtube() {
 	const Vids = useSelector(store => store.youtubeReducer.youtube.items);
 
-	const [Title, setTitle] = useState('We provide a simplified build process');
-	// console.log(Vids);
-
 	// custom hook
 	const viewType = useViewType();
 	const wordSlice = useTextMethod('wordSlice');
 	const charSlice = useTextMethod('charSlice');
 
-	const fetchYoutube = async () => {
-		const api비밀키 = process.env.REACT_APP_YOUTUBE_API; // Cloud 에서 받아옴
-		const 저장소이름 = process.env.REACT_APP_YOUTUBE_LIST; // youtube url 뒤에 있음
-		const 요청사진개수 = 5;
-		const 최종주소 = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api비밀키}&part=snippet&playlistId=${저장소이름}&maxResults=${요청사진개수}`;
-		const data = await fetch(최종주소);
-		const json = await data.json();
-		//
-		// console.log(json.items);
-		// setVids(json.items); // 요청 함수
-	};
-
 	const path = useRef(process.env.PUBLIC_URL);
 
-	// 줄세우기 함수
-	useEffect(() => {
-		fetchYoutube();
-	}, []);
-
 	return (
-		<Layout title={Title} className='Youtube'>
+		<Layout title={'We provide a simplified build process'} className='Youtube'>
 			<section className='Youtube-firstSection'>
 				<div className='leftImg'>
 					<div className='text'>
@@ -122,4 +102,8 @@ export default function Youtube() {
 			wordSlice(video.snippet.title, 5)
 			wordSlice(video.snippet.description, 50)
 			video.snippet.thumbnails.standard.url} alt={video.snippet.title}
+*/
+
+/* 
+  home 을 갔다가 Youtube 로 가면 문제가 없는데 youtube 로 바로가면 문제가 생김
 */
