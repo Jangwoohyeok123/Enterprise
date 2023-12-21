@@ -42,7 +42,7 @@ export default function App() {
 	);
 }
 
-/* redux-saga 에 관하여..
+/* redux-saga 파일에 에 관하여..
 
 fetch 파일
 => action 객체를 인터셉트 한 후 saga 가 처리할 fetch 로직들을 담은 파일
@@ -58,4 +58,33 @@ actionTables 파일
 
 store 파일 
 => redux 전역 store 파일을 만드는 공간으로 Provider 이 파일에서 생성한 store 를 전달하면 App component 는 전역 state 를 useSelector 를 통해 사용가능하다.
+
+*/
+
+/* redux 관련 해야할 일 정리 
+
+redux 를 다루면서 해야할 일은 일반 redux 는 
+1. 전역 state 만들기
+2. 전역 state 변경하기
+3. 전역 state 불러오기
+
+saga 는
+1. 전역 state 만들기
+2. 전역 state 변경하기
+3. 전역 state 후처리 후 변경하기 (saga)
+4. 전역 state 불러오기
+
+정리하면,
+
+=> 전역 state 만들기
+1. reducer 만들기
+2. action 만들기 
+3. 비동기 state 라면 saga 를 이용하기 
+
+=> 전역 state 사용하기 
+useSelector(store => store.리듀서이름.state);
+
+=> 전역 state 변경하기 
+dispatch({ type: TABLES.DEPARTMENT.start })
+
 */
