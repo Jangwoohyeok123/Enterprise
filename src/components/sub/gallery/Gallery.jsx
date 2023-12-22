@@ -80,6 +80,16 @@ export default function Gallery() {
 						<article className='mainImg'>
 							<img src={`${path}/img/gallery/main.jpg`} alt='mainImg' />
 						</article>
+						{Pics.map((pic, idx) => {
+							// main 은 2개만 사용하기 위해 idx 제한을 사용한다. 컴파일러를 믿자.
+							if (idx > 2) return;
+
+							const picTitle = pic.title.split(' ');
+							const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
+							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
+
+							return <ariticle></ariticle>;
+						})}
 					</Masonry>
 					<Masonry className={'subLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {
