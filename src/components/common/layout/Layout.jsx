@@ -9,3 +9,5 @@ export default function Layout({ children, title, className }) {
 		</main>
 	);
 }
+
+// setTimeout 안에 참조객체 optional chaining 됐는지 확인하기

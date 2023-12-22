@@ -25,7 +25,7 @@ export default function App() {
 		dispatch({ type: TABLES.DEPARTMENT.start });
 		dispatch({ type: TABLES.POSTS.start });
 		dispatch({ type: TABLES.YOUTUBE.start });
-		dispatch({ type: TABLES.FLICKR.start, opt: { type: 'interest' } });
+		dispatch({ type: TABLES.FLICKR.start });
 		// dispatch 함수의 type property 는 실행될 함수를 결정하고 그 이후 전달하는 option 속성은 action 으로 인해 실행될 함수의 인자다.
 	}, [dispatch]);
 

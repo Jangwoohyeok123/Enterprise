@@ -17,7 +17,10 @@ export const fetchYoutube = async () => {
 	return json; // 요청 함수
 };
 
-export const fetchFlickr = async opt => {
+export const fetchFlickr = async option => {
+	const defaultOption = { type: 'interest' };
+	const opt = { ...defaultOption, option };
+
 	const num = 36;
 	const flickr_api = process.env.REACT_APP_FLICKR_API;
 	const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
