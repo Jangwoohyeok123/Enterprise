@@ -1,5 +1,5 @@
 import { takeLatest, call, put, fork, all } from 'redux-saga/effects';
-import { fetchCommunity, fetchDepartment, fetchYoutube, fetchFlickr } from '../fetch/fetch';
+import { fetchDepartment, fetchYoutube, fetchFlickr, fetchPosts } from '../fetch/fetch';
 import * as TABLES from '../actionTables';
 
 // saga 를 만들떄는 actionTable.js 를 보면서 작업해라
@@ -43,11 +43,12 @@ function* callFlickr() {
 	});
 }
 
+// 여기!
 function* callPosts() {
 	yield takeLatest(TABLES.POSTS.start, function* () {
 		try {
-			const resPosts = yield call(fetchCommunity);
-			yield put({ type: TABLES.POSTS.full, payload: resPosts.posts });
+			const json = yield call(fetchPosts);
+			yield put({ type: TABLES.POSTS.full, payload: json });
 		} catch (err) {
 			yield put({ type: TABLES.POSTS.rej, payload: err });
 		}

@@ -1,4 +1,4 @@
-import * as TABLES from '../actionTables';
+import * as TABLES from '../../actionTables';
 
 // department 전역변수에 관한 reducer
 const flickrReducer = (state = { flickr: {} }, action) => {

@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import * as TABLES from '../actionTables';
-import departmentReducer from './department';
-import postsReducer from './posts';
-import youtubeReducer from './youtube';
-import flickrReducer from './flickr';
+import departmentReducer from './server/department';
+import postsReducer from './server/posts';
+import youtubeReducer from './server/youtube';
+import flickrReducer from './server/flickr';
 
 const reducers = combineReducers({ departmentReducer, postsReducer, youtubeReducer, flickrReducer });
 

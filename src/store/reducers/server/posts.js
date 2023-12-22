@@ -1,4 +1,4 @@
-import * as TABLES from '../actionTables';
+import * as TABLES from '../../actionTables';
 
 const postsReducer = (state = { posts: [] }, action) => {
 	if (action.type === TABLES.POSTS.start) return state;

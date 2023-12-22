@@ -3,11 +3,13 @@ import Layout from '../../common/layout/Layout';
 import { useEffect, useRef, useState } from 'react';
 import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Community() {
+	const Posts = useSelector(store => store.postsReducer.posts.posts);
+	const dispatch = useDispatch();
 	// state
-	const [Title, setTitle] = useState("User's Community");
-	const [Posts, setPosts] = useState([]);
+	const [Pos, setPosts] = useState([]);
 	const [IsEdit, setIsEdit] = useState(false);
 
 	// ref
@@ -16,14 +18,6 @@ export default function Community() {
 	const refBody = useRef(null);
 	const refEditTitle = useRef(null);
 	const refEditBody = useRef(null);
-
-	const fetchPosts = async () => {
-		const data = await fetch(`${path.current}/DB/community.json`);
-		const json = await data.json();
-		json.posts.forEach(post => (post.enableUpdate = false));
-		localStorage.setItem('posts', JSON.stringify(json.posts));
-		setPosts(json.posts);
-	};
 
 	const resetInput = () => {
 		refTitle.current.value = '';
@@ -44,6 +38,8 @@ export default function Community() {
 			},
 			...Posts
 		]);
+
+		dispatch({});
 	};
 
 	const openEditMode = selectedIndex => {
@@ -84,12 +80,8 @@ export default function Community() {
 		setPosts(Posts.filter((_, idx) => idx !== deleteIndex));
 	};
 
-	useEffect(() => {
-		fetchPosts();
-	}, []);
-
 	return (
-		<Layout title={Title} className='Community'>
+		<Layout title={"User's Community"} className='Community'>
 			<header>
 				<div className='img'>
 					<img src={`${path.current}/img/community/main.jpg`} alt='main image' />

@@ -38,9 +38,12 @@ export const fetchFlickr = async opt => {
 	return photos;
 };
 
-export const fetchCommunity = async () => {
+// 비동기로 전역 state 등록 및 localStorage 에 등록
+export const fetchPosts = async () => {
 	const data = await fetch(`${path}/DB/community.json`);
-	const json = data.json();
+	const json = await data.json();
+	json.posts.forEach(post => (post.enableUpdate = false));
+	localStorage.setItem('posts', JSON.stringify(json.posts));
 	return json;
 };
 
