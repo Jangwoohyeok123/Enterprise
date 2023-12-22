@@ -57,71 +57,35 @@ export default function Gallery() {
 		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'interest' } });
 	};
 
+	/* 
+									{idx === 0 && (
+									<article className='mainImg'>
+										<img
+											src={`${path}/img/gallery/main.jpg`}
+											alt='mainImg'
+											onClick={() => {
+												setOpenModal(true);
+												setIndex(idx);
+											}}
+										/>
+									</article>
+								)}
+	
+	*/
 	return (
 		<>
 			<Layout title={''} className='Gallery'>
 				<section className='frameWrap'>
-					{Pics.map((pic, idx) => {
-						const picTitle = pic.title.split(' ');
-						const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
-						const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
-						return (
-							<>
-								<Masonry className={'mainLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
-									{idx === 0 && (
-										<article className='mainImg'>
-											<img
-												src={`${path}/img/gallery/main.jpg`}
-												alt='mainImg'
-												onClick={() => {
-													setOpenModal(true);
-													setIndex(idx);
-												}}
-											/>
-										</article>
-									)}
-									{idx < 3 && (
-										<article>
-											<article key={idx}>
-												<div className='txt'>
-													<div className='services'>
-														<div className='info'>
-															<span>User id: </span>
-															<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
-														</div>
-														<div className='more' onMouseOver={notiOpen} onMouseOut={notiClose}>
-															<IoArrowForwardCircleOutline
-																className='more icons'
-																onClick={e => {
-																	setUserGallery(pic.owner);
-																}}
-															/>
-															<div className='noti'>{pic.owner}'s gallery</div>
-														</div>
-													</div>
-													<h3>
-														{top}
-														<br></br>
-														{bottom.length ? bottom : 'Dream'}
-													</h3>
-												</div>
-
-												<img
-													src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-													alt={`${pic.title}`}
-													onClick={() => {
-														setOpenModal(true);
-														setIndex(idx);
-													}}
-												/>
-											</article>
-										</article>
-									)}
-								</Masonry>
-								<Masonry className={'subLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}></Masonry>
-							</>
-						);
-					})}
+					<Masonry className={'mainLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+						<article className='mainImg'>
+							<img src={`${path}/img/gallery/main.jpg`} alt='mainImg' />
+						</article>
+					</Masonry>
+					<Masonry className={'subLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+						{Pics.map((pic, idx) => {
+							if (idx > 2) return <></>; // index 가 3 이상일 경우 subLayout 에 표현한다.
+						})}
+					</Masonry>
 				</section>
 
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
