@@ -188,13 +188,9 @@ export default function Signup() {
 */
 
 /* 
-	change 가 될 때마다  
-	val state 가 변경된다. 
-	val state 가 변경될 때마다 setTimeout 이 초기화 된 후 다시 할당된다.
-
-	내가 궁금한 점은 val 가 변경될때마다 setState 호출을 막으려고 디바운싱을 하는건데 이러면 안되는거 아님? 
+	onChange 가 발생할 때 States 가 변경되지 않음
 */
 
-/* 
-	onChange 가 발생할 때 States 가 변경되지 않음
+/* [debouncing 에 관한 궁금점 해결] 
+	debouncing 하는 것은 하나의 state 를 wrapping 해서 extension 하는 것이 아니라 화면을 위한 state 와 checking 을 위한 debouncing 된 state 를 별도로 만드는 작업이다.
 */
