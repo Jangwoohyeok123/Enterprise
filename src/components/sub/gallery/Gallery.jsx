@@ -4,6 +4,7 @@ import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
+import Card from './Card';
 import Modal from '../../common/modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SERVER_TABLES from '../../../store/actionTables/serverTable';
@@ -88,7 +89,7 @@ export default function Gallery() {
 							const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
 							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
-							return <ariticle></ariticle>;
+							return <Card type={'fix'} key={idx} info={pic}></Card>;
 						})}
 					</Masonry>
 					<Masonry className={'subLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
