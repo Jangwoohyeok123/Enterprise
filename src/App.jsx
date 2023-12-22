@@ -22,10 +22,13 @@ export default function App() {
 	const viewType = useViewType();
 
 	useEffect(() => {
-		dispatch({ type: SERVER_TABLES.DEPARTMENT.start });
-		dispatch({ type: SERVER_TABLES.POSTS.start });
-		dispatch({ type: SERVER_TABLES.YOUTUBE.start });
-		dispatch({ type: SERVER_TABLES.FLICKR.start });
+		const fetchAction = ['DEPARTMENT', 'POSTS', 'YOUTUBE', 'FLICKR'];
+		fetchAction.forEach(action => dispatch({ type: SERVER_TABLES[action].start }));
+		// dispatch({ type: SERVER_TABLES.DEPARTMENT.start });
+		// dispatch({ type: SERVER_TABLES.POSTS.start });
+		// dispatch({ type: SERVER_TABLES.YOUTUBE.start });
+		// dispatch({ type: SERVER_TABLES.FLICKR.start });
+
 		// dispatch 함수의 type property 는 실행될 함수를 결정하고 그 이후 전달하는 option 속성은 action 으로 인해 실행될 함수의 인자다.
 	}, [dispatch]);
 

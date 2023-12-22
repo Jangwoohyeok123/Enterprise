@@ -3,16 +3,21 @@ import { NavLink, Link } from 'react-router-dom';
 import { MdOutlineDarkMode } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
+import { useState } from 'react';
+import Menu from '../menu/Menu';
 
 export default function Header({ Dark, setDark, viewType }) {
 	const handleDarkMode = () => {
 		setDark(!Dark);
 	};
+	const [Bl, setMenu] = useState(true);
 
 	const location = useLocation();
 
 	return (
 		<>
+			{Bl && <Menu />}
+
 			{location.pathname !== '/signup' && (
 				<header className='Header'>
 					<h1>
