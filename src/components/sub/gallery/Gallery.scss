@@ -2,14 +2,38 @@
 	--num: 4;
 	--gap: 20px;
 
-	h1 {
-		padding-bottom: 8vh;
-	}
-
 	.icons {
 		font-size: 18px;
 	}
+}
 
+.Notebook {
+	.Gallery {
+		--num: 3;
+	}
+}
+
+.Tablet {
+	.Gallery {
+		--num: 2;
+
+		article {
+			margin-bottom: 5vh;
+		}
+	}
+}
+
+.Mobile {
+	.Gallery {
+		--num: 1;
+
+		article {
+			margin-bottom: 5vh;
+		}
+	}
+}
+
+/* 
 	.frameWrap {
 		position: relative;
 		padding-bottom: 8vh;
@@ -118,30 +142,6 @@
 			}
 		}
 	}
-}
 
-.Notebook {
-	.Gallery {
-		--num: 3;
-	}
-}
 
-.Tablet {
-	.Gallery {
-		--num: 2;
-
-		article {
-			margin-bottom: 5vh;
-		}
-	}
-}
-
-.Mobile {
-	.Gallery {
-		--num: 1;
-
-		article {
-			margin-bottom: 5vh;
-		}
-	}
-}
+*/

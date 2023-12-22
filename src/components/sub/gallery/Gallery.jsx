@@ -19,6 +19,7 @@ export default function Gallery() {
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const page = useRef(''); // page 이동시 필요한 ref
+	const path = process.env.PUBLIC_URL;
 
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
@@ -59,7 +60,30 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={'GALLERY'} className='Gallery'>
-				<section className='frameWrap'>{/* 이벤트가 발생할 때 전달할 속성은 state 로 처리한다. */}</section>
+				<section className='frameWrap'>
+					{Pics.map((pic, idx) => {
+						return (
+							<>
+								<Masonry className={'mainLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+									{idx === 0 && (
+										<article className='mainImg'>
+											<img
+												src={`${path}/img/gallery/main.jpg`}
+												alt='mainImg'
+												onClick={() => {
+													setOpenModal(true);
+													setIndex(idx);
+												}}
+											/>
+										</article>
+									)}
+								</Masonry>
+								<Masonry className={'subLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}></Masonry>
+							</>
+						);
+					})}
+				</section>
+
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (
 						<img
