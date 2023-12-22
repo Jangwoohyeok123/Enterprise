@@ -6,7 +6,7 @@ import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
-import * as TABLES from '../../../store/actionTables';
+import * as SERVER_TABLES from '../../../store/actionTables/serverTable';
 
 export default function Gallery() {
 	const dispatch = useDispatch();
@@ -39,7 +39,7 @@ export default function Gallery() {
 		userId.current = clickedId;
 		page.current = 'user';
 		// const photos = await fetchFlickr({ type: 'user', id: userId.current });
-		dispatch({ type: TABLES.FLICKR.start, opt: { type: 'user', id: userId.current } });
+		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'user', id: userId.current } });
 	};
 
 	const setInterstGallery = async e => {
@@ -49,7 +49,7 @@ export default function Gallery() {
 		// dispatch 하면 알아서 비동기 호출함
 		// const photos = await fetchFlickr({ type: 'interest' });
 		// setPics(photos);
-		dispatch({ type: TABLES.FLICKR.start, opt: { type: 'interest' } });
+		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'interest' } });
 	};
 
 	return (

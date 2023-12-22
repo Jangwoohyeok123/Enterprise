@@ -3,7 +3,6 @@ import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
 import { useSelector } from 'react-redux';
 import Layout from '../../common/layout/Layout';
-import * as TABLES from '../../../store/actionTables';
 
 export default function Department() {
 	const json = useSelector(store => store.departmentReducer.department);

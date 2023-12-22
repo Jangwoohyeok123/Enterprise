@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
 import { useDispatch } from 'react-redux';
-import * as TABLES from './store/actionTables';
+import * as SERVER_TABLES from './store/actionTables/serverTable';
 
 export default function App() {
 	const dispatch = useDispatch();
@@ -22,10 +22,10 @@ export default function App() {
 	const viewType = useViewType();
 
 	useEffect(() => {
-		dispatch({ type: TABLES.DEPARTMENT.start });
-		dispatch({ type: TABLES.POSTS.start });
-		dispatch({ type: TABLES.YOUTUBE.start });
-		dispatch({ type: TABLES.FLICKR.start });
+		dispatch({ type: SERVER_TABLES.DEPARTMENT.start });
+		dispatch({ type: SERVER_TABLES.POSTS.start });
+		dispatch({ type: SERVER_TABLES.YOUTUBE.start });
+		dispatch({ type: SERVER_TABLES.FLICKR.start });
 		// dispatch 함수의 type property 는 실행될 함수를 결정하고 그 이후 전달하는 option 속성은 action 으로 인해 실행될 함수의 인자다.
 	}, [dispatch]);
 
