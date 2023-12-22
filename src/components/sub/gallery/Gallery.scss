@@ -4,17 +4,31 @@
 
 	.frameWrap {
 		padding-bottom: 30vh; // 나중에 처리해라!
+
 		.mainLayout {
-			.mainImg {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			&-mainImg {
 				// wide 에서는 3/4
-				width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
-				height: 80vh;
+				// width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
+				width: 50%;
+
 				overflow: hidden;
 
 				img {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
+				}
+			}
+
+			aside {
+				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+
+				.card {
+					width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
 				}
 			}
 		}
