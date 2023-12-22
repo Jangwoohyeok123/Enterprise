@@ -59,9 +59,12 @@ export default function Gallery() {
 
 	return (
 		<>
-			<Layout title={'GALLERY'} className='Gallery'>
+			<Layout title={''} className='Gallery'>
 				<section className='frameWrap'>
 					{Pics.map((pic, idx) => {
+						const picTitle = pic.title.split(' ');
+						const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
+						const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 						return (
 							<>
 								<Masonry className={'mainLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
@@ -75,6 +78,43 @@ export default function Gallery() {
 													setIndex(idx);
 												}}
 											/>
+										</article>
+									)}
+									{idx < 3 && (
+										<article>
+											<article key={idx}>
+												<div className='txt'>
+													<div className='services'>
+														<div className='info'>
+															<span>User id: </span>
+															<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
+														</div>
+														<div className='more' onMouseOver={notiOpen} onMouseOut={notiClose}>
+															<IoArrowForwardCircleOutline
+																className='more icons'
+																onClick={e => {
+																	setUserGallery(pic.owner);
+																}}
+															/>
+															<div className='noti'>{pic.owner}'s gallery</div>
+														</div>
+													</div>
+													<h3>
+														{top}
+														<br></br>
+														{bottom.length ? bottom : 'Dream'}
+													</h3>
+												</div>
+
+												<img
+													src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+													alt={`${pic.title}`}
+													onClick={() => {
+														setOpenModal(true);
+														setIndex(idx);
+													}}
+												/>
+											</article>
 										</article>
 									)}
 								</Masonry>

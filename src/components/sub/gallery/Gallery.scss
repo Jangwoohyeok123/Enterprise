@@ -2,8 +2,25 @@
 	--num: 4;
 	--gap: 20px;
 
-	.icons {
-		font-size: 18px;
+	.frameWrap {
+		padding-bottom: 30vh; // 나중에 처리해라!
+		.mainLayout {
+			.mainImg {
+				// wide 에서는 3/4
+				width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
+				height: 80vh;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+
+		.subLayout {
+		}
 	}
 }
 
@@ -34,6 +51,11 @@
 }
 
 /* 
+
+	.icons {
+		font-size: 18px;
+	}
+	
 	.frameWrap {
 		position: relative;
 		padding-bottom: 8vh;
