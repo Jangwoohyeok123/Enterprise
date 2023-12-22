@@ -14,7 +14,6 @@
 				// wide 에서는 3/4
 				// width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
 				width: 50%;
-
 				overflow: hidden;
 
 				img {
@@ -25,7 +24,9 @@
 			}
 
 			aside {
-				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+				background: yellow;
+				width: 20%;
+				// width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
 
 				.card {
 					width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));

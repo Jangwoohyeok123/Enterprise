@@ -62,41 +62,43 @@ export default function Gallery() {
 			<Layout title={''} className='Gallery'>
 				<section className='frameWrap'>
 					{/* fixed height component Layout */}
-					<Masonry className={'mainLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
-						<article className='mainLayout-mainImg'>
-							<img src={`${path}/img/gallery/main.jpg`} alt='mainImg' />
-						</article>
+					<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
+						<div className='mainLayout'>
+							<article className='mainLayout-mainImg'>
+								<img src={`${path}/img/gallery/main.jpg`} alt='mainImg' />
+							</article>
 
-						<aside>
-							{Pics.map((pic, idx) => {
-								// main 은 2개만 사용하기 위해 idx 제한을 사용한다. 컴파일러를 믿자.
-								if (idx > 1) return;
+							<aside>
+								{Pics.map((pic, idx) => {
+									// main 은 2개만 사용하기 위해 idx 제한을 사용한다. 컴파일러를 믿자.
+									if (idx > 1) return;
 
-								const picTitle = pic.title.split(' ');
-								const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
-								const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
-								console.log(pic);
+									const picTitle = pic.title.split(' ');
+									const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
+									const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
+									console.log(pic);
 
-								return (
-									<article className='card'>
-										<div className='services'>
-											<div className='user'>
-												<span>User id: </span>
-												<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
-												<IoArrowForwardCircleOutline
-													className='more icons'
-													onClick={e => {
-														setUserGallery(pic.owner);
-													}}
-												/>
+									return (
+										<article className='card'>
+											<div className='services'>
+												<div className='user'>
+													<span>User id: </span>
+													<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
+													<IoArrowForwardCircleOutline
+														className='more icons'
+														onClick={e => {
+															setUserGallery(pic.owner);
+														}}
+													/>
+												</div>
 											</div>
-										</div>
-										<h3>{pic.title}</h3>
-										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-									</article>
-								);
-							})}
-						</aside>
+											<h3>{pic.title}</h3>
+											<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+										</article>
+									);
+								})}
+							</aside>
+						</div>
 					</Masonry>
 					{/* variable height component Layout */}
 					<Masonry className={'subLayout'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
