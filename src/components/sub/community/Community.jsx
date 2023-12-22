@@ -81,7 +81,7 @@ export default function Community() {
 	};
 
 	return (
-		<Layout title={"User's Community"} className='Community'>
+		<Layout title={''} className='Community'>
 			<header>
 				<div className='img'>
 					<img src={`${path.current}/img/community/main.jpg`} alt='main image' />

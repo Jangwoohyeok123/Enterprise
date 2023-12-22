@@ -82,15 +82,15 @@ export default function Contact() {
 	// useEffect 는 렌더링 된 이후이기 때문에 state 를 찾아보면 active 가 된 요소를 찾을 수 있다. 거기다 요소의 개수가 적기 때문에 filter 를 통해 찾는게 문제가 되지 않을 것 같다.
 
 	return (
-		<Layout title={'Contact Us'} className={'Contact'}>
+		<Layout title={''} className={'Contact'}>
 			{MapInfo.map((info, idx) => {
 				if (info.active) {
 					return (
 						<div key={info + idx}>
 							<header>
 								<h3 style={{ fontSize: '1.5rem' }}>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									<br /> Atque nobis hic voluptatibus distinctio!
+									{/* Lorem ipsum dolor sit amet consectetur adipisicing elit.
+									<br /> Atque nobis hic voluptatibus distinctio! */}
 								</h3>
 								<article className='mapBox' ref={mapElement}></article>
 							</header>

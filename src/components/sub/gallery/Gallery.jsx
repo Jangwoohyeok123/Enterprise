@@ -25,15 +25,18 @@ export default function Gallery() {
 
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
+	// 마우스가 올라갔을 때 말풍선 보이기
 	const notiOpen = e => {
 		e.currentTarget.children[1].style.visibility = 'visible';
 	};
 
+	// 마우스가 내려갔을 때 말풍선 없애기
 	const notiClose = e => {
 		e.currentTarget.children[1].style.visibility = 'hidden';
 	};
 
 	// controller - 비동기
+	// 클릭한 userId 로 전역 state 변경하기 및 화면 재 렌더링
 	const setUserGallery = async clickedId => {
 		if (clickedId === userId.current) return;
 		userId.current = clickedId;
@@ -42,6 +45,7 @@ export default function Gallery() {
 		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'user', id: userId.current } });
 	};
 
+	// 클릭시 interest 로 돌아가기 'Return to Today's interest gallery' 를 말함
 	const setInterstGallery = async e => {
 		// page 가 interest 면 fetch 안함
 		if (page.current === 'interest') return;
@@ -54,13 +58,29 @@ export default function Gallery() {
 
 	return (
 		<>
-			<Layout title={'Our users post creative and interesting photos on our app'} className='Gallery'>
-				<section className='frameWrap'>
+			<Layout title={'GALLERY'} className='Gallery'>
+				<section className='frameWrap'>{/* 이벤트가 발생할 때 전달할 속성은 state 로 처리한다. */}</section>
+				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
+					{Pics.length !== 0 && (
+						<img
+							src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
+							alt={Pics[Index].title}
+						/>
+					)}
+				</Modal>
+			</Layout>
+		</>
+	);
+}
+
+/* 
+
+
 					<div className='back' onClick={setInterstGallery}>
 						<IoArrowBack className='icons' />
 						Return to Today's interest Gallery
 					</div>
-					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+	<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {
 							const picTitle = pic.title.split(' ');
 							const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
@@ -104,17 +124,6 @@ export default function Gallery() {
 						})}
 					</Masonry>
 
-					{/* 이벤트가 발생할 때 전달할 속성은 state 로 처리한다. */}
-				</section>
-				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
-					{Pics.length !== 0 && (
-						<img
-							src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
-							alt={Pics[Index].title}
-						/>
-					)}
-				</Modal>
-			</Layout>
-		</>
-	);
-}
+
+
+*/

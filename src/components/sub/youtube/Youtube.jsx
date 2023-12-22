@@ -18,7 +18,7 @@ export default function Youtube() {
 	const path = useRef(process.env.PUBLIC_URL);
 
 	return (
-		<Layout title={'We provide a simplified build process'} className='Youtube'>
+		<Layout title={''} className='Youtube'>
 			<section className='Youtube-firstSection'>
 				<div className='leftImg'>
 					<div className='text'>
