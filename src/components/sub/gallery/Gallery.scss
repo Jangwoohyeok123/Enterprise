@@ -9,11 +9,14 @@
 			display: flex;
 			flex-direction: row;
 			flex-wrap: wrap;
+			gap: var(--gap);
+			width: 100%;
+			height: 70vh;
 
 			&-mainImg {
 				// wide 에서는 3/4
-				// width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
-				width: 50%;
+				width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
+				height: 100%;
 				overflow: hidden;
 
 				img {
@@ -24,12 +27,40 @@
 			}
 
 			aside {
-				background: yellow;
-				width: 20%;
-				// width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+				display: flex;
+				flex-direction: column;
+				gap: 4%;
+				height: 100%;
 
 				.card {
-					width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
+					width: 100%;
+					height: 48%;
+					border-top: 1px solid #ccc;
+
+					.services {
+						height: 10%;
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+					}
+
+					h3 {
+						height: 20%;
+						font-size: 1.3rem;
+					}
+
+					.imgBox {
+						width: 100%;
+						height: 70%;
+						overflow: hidden;
+
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+						}
+					}
 				}
 			}
 		}
