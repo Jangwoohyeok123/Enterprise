@@ -62,14 +62,68 @@ export default function Gallery() {
 			<Layout title={''} className='Gallery'>
 				{/* Pics[0] */}
 				<section className='gridContainer'>
-					<div className='bestImage'></div>
-					<aside>
-						<div className='fixedCard1'></div>
-						<div className='fixedCard2'></div>
-					</aside>
+					<div className='bestImage'>
+						<img src={`${path}/img/gallery/main.jpg`} alt='mainImage' />
+					</div>
+					<article className='fixedCard1 card'>
+						<div className='user'>
+							<span className='userid'>
+								<strong>User id:</strong> {Pics[0].owner}
+							</span>
+							<IoArrowForwardCircleOutline
+								className='more icons'
+								onClick={e => {
+									setUserGallery(Pics[0].owner);
+								}}
+							/>
+						</div>
+						<h3>{Pics[0].title}</h3>
+						<img
+							src={`https://live.staticflickr.com/${Pics[0].server}/${Pics[0].id}_${Pics[0].secret}_b.jpg`}
+							alt='picture1'
+						/>
+					</article>
+					<article className='fixedCard2 card'>
+						<div className='user'>
+							<span className='userid'>
+								<strong>User id:</strong> {Pics[1].owner}
+							</span>
+							<IoArrowForwardCircleOutline
+								className='more icons'
+								onClick={e => {
+									setUserGallery(Pics[1].owner);
+								}}
+							/>
+						</div>
+						<h3>{Pics[1].title}</h3>
+						<img
+							src={`https://live.staticflickr.com/${Pics[1].server}/${Pics[1].id}_${Pics[1].secret}_b.jpg`}
+							alt='picture2'
+						/>
+					</article>
 				</section>
-				<Masonry className={'gridFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
-					{Pics.map((pic, idx) => {})}
+
+				<Masonry className={'cardFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+					{Pics.map((pic, idx) => {
+						if (idx < 2) return;
+						return (
+							<article className='card'>
+								<div className='user'>
+									<span className='userid'>
+										<strong>User id:</strong> {pic.owner}
+									</span>
+									<IoArrowForwardCircleOutline
+										className='more icons'
+										onClick={e => {
+											setUserGallery(Pics[2].owner);
+										}}
+									/>
+								</div>
+								<h3>{pic.title}</h3>
+								<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`} alt='picture2' />
+							</article>
+						);
+					})}
 				</Masonry>
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (
