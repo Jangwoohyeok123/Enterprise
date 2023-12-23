@@ -1,4 +1,4 @@
-import * as CLINET_TABLES from '../../actionTables/clientTable';
+import CLINET_TABLES from '../../actionTables/clientTable';
 
 const menuReducer = (state = { menu: false }, action) => {
 	if (action.type === CLINET_TABLES.MENU.start) return { ...state, menu: action.payload };
