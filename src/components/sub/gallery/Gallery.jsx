@@ -66,9 +66,20 @@ export default function Gallery() {
 							// mainLayout 을 만들어내는 공간
 							if (idx > 3) return;
 							// bestImage 를 생산함
-							else if (idx === 0) return <></>;
+							else if (idx === 0) {
+								return (
+									<div className='bestImg'>
+										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+									</div>
+								);
+							}
 							// fixed img height card 를 생산함
-							else if (idx < 3) return <></>;
+							else if (idx < 3)
+								return (
+									<div className='fixedImg'>
+										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+									</div>
+								);
 						})}
 					</div>
 				</Masonry>
@@ -77,7 +88,12 @@ export default function Gallery() {
 						{Pics.map((pic, idx) => {
 							// subLayout 을 만들어내는 공간
 							// variable img height card 를 생산함
-							if (idx >= 3) console.log(idx + ': variable height card');
+							if (idx >= 3)
+								return (
+									<div className='variableImage'>
+										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+									</div>
+								);
 						})}
 					</div>
 				</Masonry>
@@ -100,6 +116,13 @@ export default function Gallery() {
 	1. Best image 
 	2. height fixed card
 	2. height variable card
+*/
+
+// pic 을 활용한 img tag
+/* 
+	<div className='imgBox'>
+	  <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+	</div>
 */
 
 /* 

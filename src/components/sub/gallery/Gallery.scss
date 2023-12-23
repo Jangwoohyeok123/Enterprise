@@ -1,28 +1,31 @@
 .Gallery {
 	--num: 4;
 	--gap: 20px;
+	--main: 3;
 
-	.frameWrap {
-		padding-bottom: 30vh; // 나중에 처리해라!
+	.mainLayout {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--gap);
 
-		// fixed, variable 공통 css
-		.card {
-		}
+		.bestImg {
+			width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
+			height: 70vh;
 
-		.mainLayout {
-			display: flex;
-
-			.bestImg-box {
-			}
-
-			.fixed {
-			}
-		}
-
-		.subLayout {
-			.var {
+			img {
+				width: 100%;
+				height: 100%;
 			}
 		}
+
+		.fixedImg {
+			width: calc((100% - var(--gap) * (var(--num) - 1)) / 4);
+			height: 35vh;
+		}
+	}
+
+	.subLayout {
 	}
 }
 
