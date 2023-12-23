@@ -3,32 +3,14 @@
 	--gap: 20px;
 	--main: 3;
 
+	.asd {
+		display: grid;
+	}
 	// 열과 행 크기를 설정은 template columns, rows 를 사용한다.
 	// fr 은 사용가능한 크기의 단위 fr / 총합 fr 만큼 차지한다는 의미
 	.gridFrame {
-		display: grid;
-		grid-template-columns: repeat(var(--num), 1fr);
-		grid-auto-rows: 25vh;
-		column-gap: var(--gap);
-
-		.bestImg {
-			grid-column: 1/ 4;
-			overflow: hidden;
-			width: 100%;
-			grid-row: span 3;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
-
-		.fixedImg {
-			grid-column: 4;
-		}
-
-		.varImg {
+		.item {
+			background: #ccc;
 		}
 	}
 }

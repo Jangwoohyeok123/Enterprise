@@ -60,29 +60,36 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={''} className='Gallery'>
-				<Masonry className={'gridFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
-					{Pics.map((pic, idx) => {
-						if (idx === 0) {
-							return (
-								<div className='bestImg'>
-									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-								</div>
-							);
-						} else if (idx < 3) {
-							return (
-								<div className='fixedImg'>
-									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-								</div>
-							);
-						} else {
-							return (
-								<div className='varImg'>
-									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-								</div>
-							);
-						}
-					})}
-				</Masonry>
+				<div>
+					<Masonry className={'gridFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+						{Pics.map((pic, idx) => {
+							if (idx === 0) {
+								return (
+									<div className='bestImg item'>
+										<div className='img'>
+											bestImgdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+										</div>
+										{/* <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' /> */}
+									</div>
+								);
+							} else if (idx < 3) {
+								return (
+									<div className='fixedImg item'>
+										<div>fixedImg</div>
+										{/* <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' /> */}
+									</div>
+								);
+							} else {
+								return (
+									<div className='varImg item'>
+										<div>varImgddddddddddddddddd</div>
+										{/* <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' /> */}
+									</div>
+								);
+							}
+						})}
+					</Masonry>
+				</div>
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (
 						<img
