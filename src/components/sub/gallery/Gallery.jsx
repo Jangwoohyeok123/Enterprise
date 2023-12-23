@@ -78,6 +78,7 @@ export default function Gallery() {
 							/>
 						</div>
 						<h3>{Pics[0].title}</h3>
+						{/* 여기 */}
 						<img
 							src={`https://live.staticflickr.com/${Pics[0].server}/${Pics[0].id}_${Pics[0].secret}_b.jpg`}
 							alt='picture1'
@@ -102,7 +103,7 @@ export default function Gallery() {
 						/>
 					</article>
 				</section>
-
+				{/* 여기 */}
 				<Masonry className={'cardFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 					{Pics.map((pic, idx) => {
 						if (idx < 2) return;
@@ -120,6 +121,7 @@ export default function Gallery() {
 									/>
 								</div>
 								<h3>{pic.title}</h3>
+								{/* 여기 */}
 								<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`} alt='picture2' />
 							</article>
 						);

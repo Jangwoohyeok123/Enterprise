@@ -1,11 +1,15 @@
 import './Modal.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SlClose } from 'react-icons/sl';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function Modal({ OpenModal, setOpenModal, children }) {
+	const dispatch = useDispatch();
+	const Modal = useSelector(store => store.modalReducer.modal);
+
 	return (
 		<AnimatePresence>
-			{OpenModal && (
+			{Modal && (
 				<motion.aside
 					className='Modal'
 					initial='hidden'
@@ -30,7 +34,7 @@ export default function Modal({ OpenModal, setOpenModal, children }) {
 						}}>
 						{children}
 					</motion.div>
-					<span onClick={() => setOpenModal(false)}>
+					<span onClick={dispatch()}>
 						<SlClose />
 					</span>
 				</motion.aside>

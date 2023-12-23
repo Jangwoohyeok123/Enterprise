@@ -1,17 +1,24 @@
-export const VIEWTYPE = {
-	Notebook: 'Notebook',
-	Tablet: 'Tablet',
-	Mobile: 'Mobile'
+const CLIENT_TABLE = {
+	VIEWTYPE: {
+		Notebook: 'Notebook',
+		Tablet: 'Tablet',
+		Mobile: 'Mobile'
+	},
+
+	MODAL: {
+		start: 'MODAL_START'
+	},
+
+	MENU: {
+		start: 'MENU_START'
+	},
+
+	DARK: {
+		start: 'DARK_START'
+	}
 };
 
-export const MODAL = {
-	start: 'MODAL_START'
-};
+export default CLIENT_TABLE;
 
-export const MENU = {
-	start: 'MENU_START'
-};
-
-export const DARK = {
-	start: 'DARK_START'
-};
+// 자동완성 안되는거 너무 힘들다...
+// 컴포넌트에서 또는 리듀서에서 사용할 때 import CLIENT_TABLE.MODAL.start 형식으로 사용하면서 import 는 쉽게 만들어보자.

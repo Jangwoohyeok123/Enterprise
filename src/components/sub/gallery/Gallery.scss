@@ -4,7 +4,8 @@
 	--main: 3;
 
 	h3 {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
+		padding-bottom: 15px;
 	}
 
 	.gridContainer {
@@ -72,7 +73,7 @@
 		.card {
 			border-top: 1px solid rgba(var(--baseColor-code), 0.3);
 			width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
-			height: 70vh;
+			height: 75vh;
 			overflow: hidden;
 
 			.user {
