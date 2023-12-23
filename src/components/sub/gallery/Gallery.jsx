@@ -60,70 +60,20 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={''} className='Gallery'>
-				{Pics.map((pic, idx) => {
-					if (idx < 3)
-						return (
-							<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
-								<div className='mainLayout'>
-									{/* idx === 0 이면 mainLayout 처리하기 */}
-									{/* 기존에는 best Page 를 mainImage 로 감싸지 않았었음 즉, 새롭게 만들어야 함*/}
-									{idx === 0 && (
-										<div className='bestImg-box'>
-											<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-										</div>
-									)}
-									{idx > 0 && idx < 3 && (
-										<article className='card fixed'>
-											<div className='services'>
-												<div className='userid'>
-													<span>User id: </span>
-													<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
-												</div>
-												<IoArrowForwardCircleOutline
-													className='more icons'
-													onClick={e => {
-														setUserGallery(pic.owner);
-													}}
-												/>
-											</div>
-											<h3>{pic.title}</h3>
-											<div className='imgBox'>
-												<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-											</div>
-										</article>
-									)}
-								</div>
-							</Masonry>
-						);
-					else
-						return (
-							<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
-								<div className='subLayout'>
-									{idx > 2 && (
-										<article className='card fixed'>
-											<div className='services'>
-												<div className='userid'>
-													<span>User id: </span>
-													<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
-												</div>
-												<IoArrowForwardCircleOutline
-													className='more icons'
-													onClick={e => {
-														setUserGallery(pic.owner);
-													}}
-												/>
-											</div>
-											<h3>{pic.title}</h3>
-											<div className='imgBox'>
-												<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-											</div>
-										</article>
-									)}
-								</div>
-							</Masonry>
-						);
-				})}
-
+				<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
+					<div className='mainLayout'>
+						{Pics.map((pic, idx) => {
+							if (idx > 3) return;
+						})}
+					</div>
+				</Masonry>
+				<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
+					<div className='subLayout'>
+						{Pics.map((pic, idx) => {
+							if (idx >= 3) console.log(idx);
+						})}
+					</div>
+				</Masonry>
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (
 						<img
