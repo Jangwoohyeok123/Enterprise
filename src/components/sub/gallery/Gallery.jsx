@@ -60,36 +60,17 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={''} className='Gallery'>
-				<div>
-					<Masonry className={'gridFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
-						{Pics.map((pic, idx) => {
-							if (idx === 0) {
-								return (
-									<div className='bestImg item'>
-										<div className='img'>
-											bestImgdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-										</div>
-										{/* <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' /> */}
-									</div>
-								);
-							} else if (idx < 3) {
-								return (
-									<div className='fixedImg item'>
-										<div>fixedImg</div>
-										{/* <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' /> */}
-									</div>
-								);
-							} else {
-								return (
-									<div className='varImg item'>
-										<div>varImgddddddddddddddddd</div>
-										{/* <img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' /> */}
-									</div>
-								);
-							}
-						})}
-					</Masonry>
-				</div>
+				{/* Pics[0] */}
+				<section className='gridContainer'>
+					<div className='bestImage'></div>
+					<aside>
+						<div className='fixedCard1'></div>
+						<div className='fixedCard2'></div>
+					</aside>
+				</section>
+				<Masonry className={'gridFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+					{Pics.map((pic, idx) => {})}
+				</Masonry>
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (
 						<img
