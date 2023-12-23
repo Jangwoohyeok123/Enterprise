@@ -63,14 +63,21 @@ export default function Gallery() {
 				<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
 					<div className='mainLayout'>
 						{Pics.map((pic, idx) => {
+							// mainLayout 을 만들어내는 공간
 							if (idx > 3) return;
+							// bestImage 를 생산함
+							else if (idx === 0) return <></>;
+							// fixed img height card 를 생산함
+							else if (idx < 3) return <></>;
 						})}
 					</div>
 				</Masonry>
 				<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
 					<div className='subLayout'>
 						{Pics.map((pic, idx) => {
-							if (idx >= 3) console.log(idx);
+							// subLayout 을 만들어내는 공간
+							// variable img height card 를 생산함
+							if (idx >= 3) console.log(idx + ': variable height card');
 						})}
 					</div>
 				</Masonry>
@@ -86,6 +93,14 @@ export default function Gallery() {
 		</>
 	);
 }
+// 레이아웃 제약조건
+// mainLayout, subLayout 은 반복되면 안됨
+// Pics.map 이 생산하는 jsx 는 아래와 같음
+/* 
+	1. Best image 
+	2. height fixed card
+	2. height variable card
+*/
 
 /* 
 
