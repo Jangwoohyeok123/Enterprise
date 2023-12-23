@@ -60,42 +60,28 @@ export default function Gallery() {
 	return (
 		<>
 			<Layout title={''} className='Gallery'>
-				<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
-					<div className='mainLayout'>
-						{Pics.map((pic, idx) => {
-							// mainLayout 을 만들어내는 공간
-							if (idx > 3) return;
-							// bestImage 를 생산함
-							else if (idx === 0) {
-								return (
-									<div className='bestImg'>
-										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-									</div>
-								);
-							}
-							// fixed img height card 를 생산함
-							else if (idx < 3)
-								return (
-									<div className='fixedImg'>
-										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-									</div>
-								);
-						})}
-					</div>
-				</Masonry>
-				<Masonry options={{ transitionDuration: '0.5s', gutter: 20 }}>
-					<div className='subLayout'>
-						{Pics.map((pic, idx) => {
-							// subLayout 을 만들어내는 공간
-							// variable img height card 를 생산함
-							if (idx >= 3)
-								return (
-									<div className='variableImage'>
-										<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
-									</div>
-								);
-						})}
-					</div>
+				<Masonry className={'gridFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+					{Pics.map((pic, idx) => {
+						if (idx === 0) {
+							return (
+								<div className='bestImg'>
+									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+								</div>
+							);
+						} else if (idx < 3) {
+							return (
+								<div className='fixedImg'>
+									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+								</div>
+							);
+						} else {
+							return (
+								<div className='varImg'>
+									<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`} alt='' />
+								</div>
+							);
+						}
+					})}
 				</Masonry>
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (

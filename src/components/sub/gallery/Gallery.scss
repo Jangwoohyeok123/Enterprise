@@ -3,29 +3,8 @@
 	--gap: 20px;
 	--main: 3;
 
-	.mainLayout {
-		width: 100%;
-		display: flex;
-		flex-wrap: wrap;
-		gap: var(--gap);
-
-		.bestImg {
-			width: calc((100% - var(--gap) * (var(--num) - 1)) / 4 * 3);
-			height: 70vh;
-
-			img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-
-		.fixedImg {
-			width: calc((100% - var(--gap) * (var(--num) - 1)) / 4);
-			height: 35vh;
-		}
-	}
-
-	.subLayout {
+	.gridFrame {
+		display: grid;
 	}
 }
 
