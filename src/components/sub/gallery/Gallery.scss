@@ -44,6 +44,11 @@
 				color: #fff;
 				font-weight: 400;
 				font-family: var(--pointFont);
+
+				strong {
+					color: var(--subPoint);
+					font-weight: 400;
+				}
 			}
 
 			.big-txt {

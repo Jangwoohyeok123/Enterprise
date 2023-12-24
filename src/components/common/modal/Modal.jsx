@@ -46,3 +46,12 @@ export default function Modal({ OpenModal, setOpenModal, children }) {
 
 // animate x, y 는 변위 값이다.
 // 모달이 열리면 dispatch
+
+// 음... 어떻게 하는거더라
+/* 
+
+	 
+
+
+
+*/

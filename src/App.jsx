@@ -13,13 +13,15 @@ import './globalStyles/Variable.scss';
 import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as SERVER_TABLES from './store/actionTables/serverTable';
+import Menu from './components/common/menu/Menu';
 
 export default function App() {
 	const dispatch = useDispatch();
 	const [Dark, setDark] = useState(false);
 	const viewType = useViewType();
+	const open = useSelector(store => store.menuReducer.open);
 
 	useEffect(() => {
 		const fetchAction = ['DEPARTMENT', 'POSTS', 'YOUTUBE', 'FLICKR'];
@@ -27,18 +29,21 @@ export default function App() {
 	}, [dispatch]);
 
 	return (
-		<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
-			<Header Dark={Dark} setDark={setDark} viewType={viewType} />
-			<Route exact path='/' component={MainWrap} />
-			<Route path='/department' component={Department} />
-			<Route path='/youtube' component={Youtube} />
-			<Route path='/gallery' component={Gallery} />
-			<Route path='/community' component={Community} />
-			<Route path='/contact' component={Contact} />
-			<Route path='/detail/:id' component={Detail} />
-			<Route path='/signup' component={Signup} />
-			<Footer viewType={viewType} />
-		</div>
+		<>
+			<div className={`App ${Dark ? 'dark' : ''} ${viewType} ${open ? 'blur' : ''}`}>
+				<Header Dark={Dark} setDark={setDark} viewType={viewType} />
+				<Route exact path='/' component={MainWrap} />
+				<Route path='/department' component={Department} />
+				<Route path='/youtube' component={Youtube} />
+				<Route path='/gallery' component={Gallery} />
+				<Route path='/community' component={Community} />
+				<Route path='/contact' component={Contact} />
+				<Route path='/detail/:id' component={Detail} />
+				<Route path='/signup' component={Signup} />
+				<Footer viewType={viewType} />
+			</div>
+			<Menu></Menu>
+		</>
 	);
 }
 

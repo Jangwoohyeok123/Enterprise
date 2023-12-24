@@ -10,7 +10,7 @@ const CLIENT_TABLES = {
 	},
 
 	MENU: {
-		start: 'MENU_START'
+		open: 'MENU_START'
 	},
 
 	DARK: {

@@ -5,12 +5,16 @@ import { useLocation } from 'react-router-dom';
 import { FiMenu } from 'react-icons/fi';
 import { useState } from 'react';
 import Menu from '../menu/Menu';
+import { useDispatch, useSelector } from 'react-redux';
+import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 
 export default function Header({ Dark, setDark, viewType }) {
 	const handleDarkMode = () => {
 		setDark(!Dark);
 	};
 	const [Bl, setMenu] = useState(true);
+	const dispatch = useDispatch();
+	const open = useSelector(store => store.menuReducer.open);
 
 	const location = useLocation();
 
@@ -65,7 +69,7 @@ export default function Header({ Dark, setDark, viewType }) {
 							<span className='icon'>
 								<FiMenu
 									onClick={() => {
-										console.log('open modal');
+										dispatch({ type: CLIENT_TABLES.MENU.open, payload: true });
 									}}
 								/>
 							</span>

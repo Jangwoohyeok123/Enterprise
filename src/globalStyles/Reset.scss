@@ -85,6 +85,8 @@ h6 {
 	background: var(--bgColor);
 	transition: color 1s background-color 1s;
 	overflow-x: hidden;
+	filter: blur(0) px;
+	transition: 1s;
 
 	&::-webkit-scrollbar {
 		width: 8px;
@@ -94,6 +96,10 @@ h6 {
 		border-radius: 4px;
 		background: #ccc;
 	}
+}
+
+.blur {
+	filter: blur(3px);
 }
 
 input,
