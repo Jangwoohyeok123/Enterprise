@@ -2,6 +2,7 @@ import './Modal.scss';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SlClose } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
+import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 
 export default function Modal({ OpenModal, setOpenModal, children }) {
 	const dispatch = useDispatch();
@@ -34,7 +35,7 @@ export default function Modal({ OpenModal, setOpenModal, children }) {
 						}}>
 						{children}
 					</motion.div>
-					<span onClick={dispatch()}>
+					<span onClick={dispatch({ type: CLIENT_TABLES.MODAL.start, payload: false })}>
 						<SlClose />
 					</span>
 				</motion.aside>

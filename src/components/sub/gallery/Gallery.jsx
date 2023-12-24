@@ -64,6 +64,10 @@ export default function Gallery() {
 				<section className='gridContainer'>
 					<div className='bestImage'>
 						<img src={`${path}/img/gallery/main.jpg`} alt='mainImage' />
+						<span className='small-txt'>Loremipsum dolor</span>
+						<span className='big-txt'>
+							FOGIA: FUTURE<br></br>CLASSICS
+						</span>
 					</div>
 					<article className='fixedCard1 card'>
 						<div className='user'>
