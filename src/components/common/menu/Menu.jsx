@@ -3,6 +3,7 @@ import './Menu.scss';
 import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 import { AnimatePresence, motion } from 'framer-motion';
 import { SlClose } from 'react-icons/sl';
+import { NavLink, Link } from 'react-router-dom';
 
 export default function Menu() {
 	const dispatch = useDispatch();
@@ -11,25 +12,59 @@ export default function Menu() {
 	return (
 		<AnimatePresence>
 			{open && (
-				<motion.div className='layout'>
-					<motion.aside
-						className='Menu'
-						initial='hidden'
-						animate='visible'
-						exit='exit'
-						transition={{ duration: 0.5 }}
-						variants={{
-							hidden: { opacity: 0, x: '-100%' },
-							visible: { opacity: 1, x: '0%' },
-							exit: { opacity: 0, x: '-100%', transition: { delay: 0.3, duration: 0.6 } }
-						}}>
-						<div className='close' onClick={() => dispatch({ type: CLIENT_TABLES.MENU.open, payload: false })}>
-							<SlClose />
+				<motion.aside
+					className='Menu'
+					initial='hidden'
+					animate='visible'
+					exit='exit'
+					transition={{ duration: 0.5 }}
+					variants={{
+						hidden: { opacity: 0, x: '-100%' },
+						visible: { opacity: 1, x: '0%' },
+						exit: { opacity: 0, x: '-100%', transition: { delay: 0.3, duration: 0.6 } }
+					}}>
+					<div className='layout'>
+						<div className='top'>
+							<header className='menu-header'>
+								{/* logo 는 클릭하면 홈으로 이동 */}
+								<h3>
+									<Link to='/'>LOGO</Link>
+								</h3>
+								<div className='close' onClick={() => dispatch({ type: CLIENT_TABLES.MENU.open, payload: false })}>
+									<SlClose />
+								</div>
+							</header>
+							<nav className='menu-nav'>
+								<NavLink to='/department' activeClassName={'on'}>
+									DEPARTMENT
+								</NavLink>
+								<NavLink to='/youtube' activeClassName={'on'}>
+									YOUTUBE
+								</NavLink>
+								<NavLink to='/gallery' activeClassName={'on'}>
+									GALLERY
+								</NavLink>
+								<NavLink to='/community' activeClassName={'on'}>
+									COMMUNITY
+								</NavLink>
+								<NavLink to='/contact' activeClassName={'on'}>
+									CONTACT
+								</NavLink>
+							</nav>
+							<div className='signup'>
+								<Link to='/signup'>SIGN UP</Link>
+							</div>
 						</div>
 
-						<motion></motion>
-					</motion.aside>
-				</motion.div>
+						<div className='bottom'>
+							<div className='menu-footer'>
+								<span>lorme</span>
+								<span>kleds</span>
+								<span>allow</span>
+							</div>
+						</div>
+					</div>
+				</motion.aside>
 			)}
 		</AnimatePresence>
 	);
