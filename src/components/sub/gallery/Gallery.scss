@@ -98,11 +98,13 @@
 	}
 
 	.cardFrame {
+		margin-bottom: 20px;
 		.card {
 			border-top: 1px solid rgba(var(--baseColor-code), 0.3);
 			width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
 			height: 700px;
 			overflow: hidden;
+			margin-bottom: 30px;
 
 			.user {
 				padding: 10px 0;

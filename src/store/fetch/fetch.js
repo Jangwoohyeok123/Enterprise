@@ -19,7 +19,7 @@ export const fetchYoutube = async () => {
 
 export const fetchFlickr = async option => {
 	const defaultOption = { type: 'interest' };
-	const opt = { ...defaultOption, option };
+	const opt = { ...defaultOption, ...option };
 	console.log(opt);
 
 	const num = 38;

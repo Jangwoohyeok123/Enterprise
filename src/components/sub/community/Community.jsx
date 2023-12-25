@@ -55,6 +55,7 @@ export default function Community() {
 	};
 
 	const closeEditMode = selectedIndex => {
+		console.log('closedEdit');
 		setIsEdit(!IsEdit);
 		setPosts(
 			Posts.map((post, idx) => {
