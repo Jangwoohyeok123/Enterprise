@@ -39,9 +39,9 @@ export default function Gallery() {
 	// controller - 비동기
 	// 클릭한 userId 로 전역 state 변경하기 및 화면 재 렌더링
 	const setUserGallery = async clickedId => {
-		console.log('he');
 		if (clickedId === userId.current) return;
 		userId.current = clickedId;
+		console.log(userId.current);
 		page.current = 'user';
 		// const photos = await fetchFlickr({ type: 'user', id: userId.current });
 		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'user', id: userId.current } });
@@ -123,7 +123,7 @@ export default function Gallery() {
 									<IoArrowForwardCircleOutline
 										className='more icons'
 										onClick={e => {
-											setUserGallery(Pics[2].owner);
+											setUserGallery(pic.owner);
 										}}
 									/>
 								</div>
