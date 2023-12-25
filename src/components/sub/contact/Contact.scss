@@ -1,71 +1,71 @@
 .Contact {
 	header {
 		width: 100%;
-		overflow: hidden;
+		overflow: visible;
 		display: flex;
 		flex-direction: column;
 		gap: 6px;
 
-		img {
-			width: 100%;
+		.mapBox {
+			position: relative;
+			width: 100vw;
+			margin-left: -10vw;
+			top: -5vh;
 			height: 40vh;
-			object-fit: cover;
 		}
 	}
 
-	.mapBox {
-		width: 100%;
-		height: 40vh;
-	}
-
-	.info {
+	.map-list {
 		display: flex;
 		justify-content: space-between;
-		margin: 5vh 0;
 
-		.txt-info {
-			position: relative;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			width: 40%;
-			height: 25vh;
+		.map {
+			width: 27%;
+			height: 200px;
+			background: #25323b;
+			color: #fff;
 
-			&-header {
-				display: flex;
-				flex-direction: column;
-				gap: 8px;
-				font-weight: 500;
+			button {
+				border: none;
+				position: relative;
+				padding: 15px;
+				left: 25px;
+				bottom: 15px;
+				background: var(--subPoint);
+				font-size: 1.1rem;
+				cursor: pointer;
+				transition: 0.2s;
 
-				h2 {
-					font-weight: 500;
+				&:hover {
+					color: var(--pointColor);
 				}
 			}
 
-			&-body {
+			.info {
+				position: relative;
+				width: calc(100% - 25px);
+				height: 200px - 35px;
+				padding-right: 25px;
+				left: 25px;
+				bottom: 22px;
 				display: flex;
 				flex-direction: column;
-				gap: 8px;
+				justify-content: center;
+				gap: 5px;
 			}
+		}
+	}
 
-			&-footer {
-				display: flex;
-				width: 100%;
-				justify-content: flex-start;
-				gap: 20px;
+	.mail-title {
+		font-family: var(--pointFont);
+		width: 100%;
+		text-align: center;
+		margin-top: 10vh;
+		margin-bottom: 3vh;
 
-				span {
-					border: 1px solid rgba(var(--baseColor-code), 0.3);
-					padding: 10px;
-					cursor: pointer;
-					transition: 0.3s;
-
-					&:hover {
-						color: var(--subPoint);
-						border-color: var(--subPoint);
-					}
-				}
-			}
+		h2 {
+			font-size: 2.3rem;
+			font-weight: 500;
 		}
 	}
 }

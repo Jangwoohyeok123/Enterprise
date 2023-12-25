@@ -23,16 +23,14 @@ function Form({ className }) {
 		// component 분리하면 [ 대문자 시작 + 태그 이름 ] 의 class
 		<form ref={form} onSubmit={sendEmail} className={className}>
 			<div className='profile'>
-				<label htmlFor='email_address'>Email Address</label>
-				<input
-					type='text'
-					id='email_address'
-					name='to_email'
-					defaultValue='dkanvk1@gmail.com'
-					placeholder='organizer@gmail.com'
-				/>
-				<label htmlFor='name'>Name</label>
-				<input type='text' id='name' name='user_name' placeholder='name' />
+				<div className='address'>
+					<label htmlFor='email_address'>Email Address</label>
+					<input type='text' id='email_address' name='to_email' defaultValue='' placeholder='organizer@gmail.com' />
+				</div>
+				<div className='name'>
+					<label htmlFor='name'>Name</label>
+					<input type='text' id='name' name='user_name' placeholder='name' />
+				</div>
 			</div>
 			<div className='message'>
 				<label htmlFor='message'>Message</label>

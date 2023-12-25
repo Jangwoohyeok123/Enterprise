@@ -88,39 +88,41 @@ export default function Contact() {
 					return (
 						<div key={info + idx}>
 							<header>
-								<h3 style={{ fontSize: '1.5rem' }}>
-									{/* Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									<br /> Atque nobis hic voluptatibus distinctio! */}
-								</h3>
 								<article className='mapBox' ref={mapElement}></article>
 							</header>
-							<section className='info'>
-								<div className='txt-info'>
-									<div className='txt-info-header'>
-										<span>LOCATION</span>
-										<h2 style={{ fontSize: '2rem' }}>HOW TO FIND US</h2>
-									</div>
-									{/* {MapInfo} */}
-									<div className='txt-info-body'>
-										<span>
-											<strong>Address</strong> = {'map요소'}
-										</span>
-										<span>
-											<strong>Telephone</strong> = {'map요소'}
-										</span>
-										<span>
-											<strong>Fax</strong> = {'map요소'}
-										</span>
-									</div>
-									<div className='txt-info-footer'>
-										<span onClick={e => changeMap(e)}>kakao</span>
-										<span onClick={e => changeMap(e)}>naver</span>
-										<span onClick={e => changeMap(e)}>seoul</span>
+
+							<div className='map-list'>
+								<div className='kakao map'>
+									<button onClick={e => changeMap(e)}>kakao</button>
+									<div className='info'>
+										<span className='address'>Address: 162 Yanghwa-ro, Mapo-gu, Seoul</span>
+										<span className='number'>Phone: 02-6010-0104</span>
+										<span className='email'>Email: dkanvk1@gmail.com</span>
 									</div>
 								</div>
+								<div className='naver map'>
+									<button onClick={e => changeMap(e)}>naver</button>
+									<div className='info'>
+										<span className='address'>Address: 6 Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do</span>
+										<span className='number'>Phone: 1588-3830</span>
+										<span className='email'>Email: dkanvk1@naver.com</span>
+									</div>
+								</div>
+								<div className='seoul map'>
+									<button onClick={e => changeMap(e)}>seoul</button>
+									<div className='info'>
+										<span className='address'>Address: 267 Namdaemunno 5(o)-ga, Jung-gu, Seoul</span>
+										<span className='number'>Phone: 02-3709-0019</span>
+										<span className='email'>Email: dkanvk1@gmail.com</span>
+									</div>
+								</div>
+							</div>
 
-								<Form className='Form' />
-							</section>
+							<div className='mail-title'>
+								<h2>SEND US MESSAGE</h2>
+								<span>Lorem ipsum dolor sit amet.</span>
+							</div>
+							<Form className='Form' />
 						</div>
 					);
 				} else {

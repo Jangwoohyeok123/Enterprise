@@ -28,16 +28,16 @@ export default function Community() {
 		const time = new Date();
 		const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
 
-		setPosts([
-			{
-				title: refTitle.current.value,
-				body: refBody.current.value,
-				enableUpdate: false,
-				userid: '96229824@N06',
-				time: current
-			},
-			...Posts
-		]);
+		// setPosts([
+		// 	{
+		// 		title: refTitle.current.value,
+		// 		body: refBody.current.value,
+		// 		enableUpdate: false,
+		// 		userid: '96229824@N06',
+		// 		time: current
+		// 	},
+		// 	...Posts
+		// ]);
 
 		dispatch({});
 	};
@@ -57,23 +57,25 @@ export default function Community() {
 	const closeEditMode = selectedIndex => {
 		console.log('closedEdit');
 		setIsEdit(!IsEdit);
-		setPosts(
-			Posts.map((post, idx) => {
-				const time = new Date();
-				const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+		dispatch({ type: 'edit' });
 
-				if (selectedIndex === idx) {
-					return {
-						title: refEditTitle.current.value,
-						body: refEditBody.current.value,
-						enableUpdate: false,
-						userid: '96229824@N06',
-						time: '(latest) ' + current
-					};
-				}
-				return post;
-			})
-		);
+		// setPosts(
+		// 	Posts.map((post, idx) => {
+		// 		const time = new Date();
+		// 		const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+
+		// 		if (selectedIndex === idx) {
+		// 			return {
+		// 				title: refEditTitle.current.value,
+		// 				body: refEditBody.current.value,
+		// 				enableUpdate: false,
+		// 				userid: '96229824@N06',
+		// 				time: '(latest) ' + current
+		// 			};
+		// 		}
+		// 		return post;
+		// 	})
+		// );
 	};
 
 	const deletePost = deleteIndex => {
