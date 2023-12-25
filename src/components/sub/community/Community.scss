@@ -88,11 +88,11 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					gap: 20px;
 
 					.left {
 						display: flex;
 						align-items: center;
-						gap: 20px;
 
 						span:nth-of-type(1) {
 							color: var(--baseColor);
@@ -179,21 +179,26 @@
 		.createPost {
 		}
 
-		.posts {
-			.post {
-				.profile {
-					font-size: 0.8rem;
-					position: relative;
-					top: 10px;
+		.body {
+			.posts {
+				.post {
+					height: 30vh;
 
-					.left {
+					.profile {
+						font-size: 0.7rem;
 						position: relative;
-						top: 2px;
-					}
+						gap: 0px;
+						top: 10px;
 
-					.right {
-						.icon {
-							font-size: 10rem;
+						.left {
+							position: relative;
+							top: 2px;
+						}
+
+						.right {
+							.icon {
+								font-size: 0.8rem;
+							}
 						}
 					}
 				}

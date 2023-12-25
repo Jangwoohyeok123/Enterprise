@@ -19,6 +19,7 @@ function* callDepartment() {
 }
 
 function* callYoutube() {
+	// action type 과 saga 함수가 인자로 전달됨
 	yield takeLatest(SERVER_TABLES.YOUTUBE.start, function* () {
 		try {
 			// fetchYoutube 는 반환받은 json 에서 item 들을 반환한다.

@@ -143,7 +143,7 @@ export default function Community() {
 											</span>
 										</div>
 										<div className='right'>
-											<span>Date: {post.time}</span>
+											<span className='date'>Date: {post.time}</span>
 											<span
 												onClick={() => {
 													openEditMode(idx);

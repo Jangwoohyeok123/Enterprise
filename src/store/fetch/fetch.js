@@ -20,6 +20,7 @@ export const fetchYoutube = async () => {
 export const fetchFlickr = async option => {
 	const defaultOption = { type: 'interest' };
 	const opt = { ...defaultOption, option };
+	console.log('opt' + opt.id);
 
 	const num = 38;
 	const flickr_api = process.env.REACT_APP_FLICKR_API;
