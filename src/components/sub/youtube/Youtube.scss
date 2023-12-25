@@ -201,9 +201,6 @@ $imgHeight: 60vh;
 	}
 }
 
-.Notebook {
-}
-
 .Tablet,
 .Mobile {
 	.Youtube {
@@ -259,9 +256,6 @@ $imgHeight: 60vh;
 							position: relative;
 							display: flex;
 							justify-content: right;
-
-							.time {
-							}
 						}
 					}
 				}
@@ -269,6 +263,10 @@ $imgHeight: 60vh;
 				.description {
 					width: 100%;
 					display: block;
+
+					.more {
+						display: none;
+					}
 				}
 			}
 		}

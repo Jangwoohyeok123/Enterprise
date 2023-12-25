@@ -11,7 +11,7 @@ export default function Footer() {
 		<>
 			{location.pathname !== '/signup' && (
 				<footer className='Footer'>
-					<ul>
+					<ul className='top'>
 						<li className='logo'>
 							<h6>logo</h6>
 							<span>good company</span>
@@ -40,7 +40,7 @@ export default function Footer() {
 					<div className='bottom'>
 						<div className='sns'>
 							<span className='icon'>
-								<FaYoutube size='' />
+								<FaYoutube size='15' />
 							</span>
 							<span className='icon'>
 								<FaTwitter size='15' />
