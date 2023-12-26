@@ -1,6 +1,7 @@
 .Header {
 	width: 100%;
 	padding: 1.5vh 10vw;
+	height: 60px;
 	// 반응형에 벗어나게 만듦
 	background: #333;
 	color: #efefef;
@@ -73,6 +74,7 @@
 
 .Mobile {
 	.Header {
+		height: 50px;
 		padding: 1.2vh 3vw;
 
 		h1 {

@@ -45,12 +45,12 @@ export default function Contact() {
 		);
 	};
 
-	// rendering 된 이후 active 된 것 state 에서 marker 에 필요한 센터위치를 전달해주는 함수
-	const 위치찾기 = () => {
+	// rendering 된 이후 active 된 것 state 에서
+	const getCenterPosition = () => {
 		// state 를 회문하면서 active 찾기
 		const info = MapInfo.filter((el, idx) => el.active === true);
 		// marker.current = new window.kakao.maps.Marker({ position: mapInfoForInstance.current['kakao'].center });
-		return info.center;
+		return info[0].center;
 	};
 
 	// kakao api 는 속성의 key 가 center 가 아니면 에러남
@@ -61,7 +61,7 @@ export default function Contact() {
 
 	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
 	useEffect(() => {
-		mapOption.current.center = 위치찾기();
+		mapOption.current.center = getCenterPosition();
 		mapInstance.current = new window.kakao.maps.Map(mapElement.current, mapOption.current);
 		marker.current = new window.kakao.maps.Marker({ position: mapOption.current.center });
 		marker.current.setMap(mapInstance.current);

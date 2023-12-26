@@ -78,18 +78,23 @@ export default function Signup() {
 		setErrors(validation(States));
 	}, [States]);
 
+	const path = process.env.PUBLIC_URL;
+
 	return (
 		<section className='Signup'>
 			<fieldset>
-				<h1
-					onClick={() => {
-						history.push('/');
-					}}>
-					ENTERPRISE
-				</h1>
-				<legend className='hide'>signup page</legend>
-
+				<div className='sideImage'>
+					<img src={`${path}/img/signup/background.jpg`} alt='' />
+				</div>
 				<form onSubmit={handleSubmit}>
+					<h1
+						onClick={() => {
+							history.push('/');
+						}}>
+						ENTERPRISE
+					</h1>
+					<legend className='hide'>signup page</legend>
+
 					<section className='inputs'>
 						<section className='text-input'>
 							<div className='text-input-1 input'>
@@ -160,15 +165,6 @@ export default function Signup() {
 
 					<input type='submit' value='Register' />
 				</form>
-
-				{/* <div className='sns'>
-					<div className='google'>
-						<FcGoogle />
-					</div>
-					<div className='kakao'>
-						<RiKakaoTalkFill />
-					</div>
-				</div> */}
 			</fieldset>
 		</section>
 	);
