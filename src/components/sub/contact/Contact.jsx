@@ -45,7 +45,7 @@ export default function Contact() {
 		);
 	};
 
-	// rendering 된 이후 active 된 것 state 에서
+	// rendering 된 이후 active 된 것 state 에서 marker 에 필요한 센터위치를 전달해주는 함수
 	const 위치찾기 = () => {
 		// state 를 회문하면서 active 찾기
 		const info = MapInfo.filter((el, idx) => el.active === true);
