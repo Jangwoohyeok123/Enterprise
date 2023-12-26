@@ -31,6 +31,7 @@ export default function Contact() {
 	// 여기기기기기기기기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	const changeMap = e => {
 		setMapInfo(
+			// 클릭할때마다 MapInfo state 배열을 돌면서 하나의 info 를 활성화시킨다.
 			MapInfo.map((info, idx) => {
 				// 요소를 클릭 했을떄 요소를 활성화 시킨다.
 				// 클릭한 요소를 mapInstance.current 와 marker.current 에 저장한다.
@@ -44,11 +45,12 @@ export default function Contact() {
 		);
 	};
 
+	// rendering 된 이후 active 된 것 state 에서
 	const 위치찾기 = () => {
 		// state 를 회문하면서 active 찾기
 		const info = MapInfo.filter((el, idx) => el.active === true);
 		// marker.current = new window.kakao.maps.Marker({ position: mapInfoForInstance.current['kakao'].center });
-		return info[0];
+		return info.center;
 	};
 
 	// kakao api 는 속성의 key 가 center 가 아니면 에러남
@@ -59,10 +61,9 @@ export default function Contact() {
 
 	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
 	useEffect(() => {
-		const curStateInfo = 위치찾기();
-		mapOption.current.center = curStateInfo.center;
+		mapOption.current.center = 위치찾기();
 		mapInstance.current = new window.kakao.maps.Map(mapElement.current, mapOption.current);
-		marker.current = new window.kakao.maps.Marker({ position: curStateInfo.center });
+		marker.current = new window.kakao.maps.Marker({ position: mapOption.current.center });
 		marker.current.setMap(mapInstance.current);
 		// // 마커
 		// marker.current = new window.kakao.maps.Marker({ position: mapInfoForInstance.current['kakao'].center });
