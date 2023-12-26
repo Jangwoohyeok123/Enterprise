@@ -98,17 +98,31 @@ export default function Signup() {
 					<section className='inputs'>
 						<section className='text-input'>
 							<div className='text-input-1 input'>
-								<label htmlFor='userid'>User id {Errors.userid && <strong>({Errors.userid})</strong>}</label>
-								<input name='userid' type='text' id='name' placeholder='Enter User id' onChange={handleChange} />
+								{/* {Errors.userid && <strong>({Errors.userid})</strong>} */}
+								<label htmlFor='userid'>User id </label>
+								{Errors.userid ? (
+									<input
+										name='userid'
+										type='text'
+										id='name'
+										placeholder='Enter User id'
+										onChange={handleChange}
+										className='errorUserid'
+									/>
+								) : (
+									<input name='userid' type='text' id='name' placeholder='Enter User id' onChange={handleChange} />
+								)}
 							</div>
 
 							<div className='text-input-2 input'>
-								<label htmlFor='email'>Email {Errors.email && <strong>({Errors.email})</strong>}</label>
+								{/* {Errors.email && <strong>({Errors.email})</strong>} */}
+								<label htmlFor='email'>Email</label>
 								<input name='email' type='text' id='email' placeholder='Enter email' onChange={handleChange} />
 							</div>
 
 							<div className='text-input-3 input'>
-								<label htmlFor='password'>Password {Errors.password1 && <strong>({Errors.password1})</strong>}</label>
+								{/* {Errors.password1 && <strong>({Errors.password1})</strong>} */}
+								<label htmlFor='password'>Password</label>
 								<input
 									name='password1'
 									type='password'
@@ -119,9 +133,8 @@ export default function Signup() {
 							</div>
 
 							<div className='text-input-4 input'>
-								<label htmlFor='confirm-password'>
-									Confirm password {Errors.password2 && <strong>({Errors.password2})</strong>}
-								</label>
+								{/* {Errors.password2 && <strong>({Errors.password2})</strong>} */}
+								<label htmlFor='confirm-password'>Confirm password</label>
 								<input
 									name='password2'
 									type='password'
@@ -134,7 +147,8 @@ export default function Signup() {
 
 						<section className='else-input'>
 							<div className='reason'>
-								<h3>Sign-up Reason {Errors.reasons && <strong>({Errors.reasons})</strong>}</h3>
+								{/* {Errors.reasons && <strong>({Errors.reasons})</strong>} */}
+								<h3>Sign-up Reason</h3>
 								<div className='checkboxs'>
 									<div className='checkbox'>
 										<input type='checkbox' name='reasons' value='marketing' id='Marketing' onChange={handleCheckBox} />
@@ -186,4 +200,10 @@ export default function Signup() {
 
 /* [debouncing 에 관한 궁금점 해결] 
 	debouncing 하는 것은 하나의 state 를 wrapping 해서 extension 하는 것이 아니라 화면을 위한 state 와 checking 을 위한 debouncing 된 state 를 별도로 만드는 작업이다.
+*/
+
+/* 
+	submit 을 하면 전체 input 을 다시 검사한다.
+
+
 */

@@ -5,7 +5,7 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 	display: flex;
 	background: #efefef;
 	width: 100%;
-	height: calc(100vh - 60px);
+	height: 100%;
 	justify-content: center;
 	align-items: center;
 
@@ -79,13 +79,30 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 						input {
 							width: 100%;
 							background-color: #fff;
+							border-bottom: 1px solid #aaa;
+							transition: 0.3s;
 
 							&::placeholder {
-								background-color: #fff;
+								color: #777;
 							}
+						}
+
+						// sign up input 은 reset 을 무시하게 만듦
+						input[type='text'] {
+							padding: 5px 0;
 
 							&:focus {
-								outline: 1px solid #555;
+								outline: none;
+								border-bottom: 1px solid #111;
+							}
+						}
+
+						input[type='password'] {
+							padding: 5px 0;
+
+							&:focus {
+								outline: none;
+								border-bottom: 1px solid #111;
 							}
 						}
 					}
@@ -148,145 +165,104 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 }
 
 .Tablet {
-	fieldset {
-		width: 90%;
-
-		img {
-			object-position: 35% 0;
-		}
-	}
-}
-
-.Mobile {
 	.Signup {
-		height: calc(100vh - 50px);
+		height: 80vh;
+		margin-top: 10vh;
 
 		fieldset {
-			border: none;
-			width: 100%;
-			height: 100%;
-			background: #efefef;
-			color: var(--inputColor);
-			padding: 0 10px;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			box-shadow: none;
+			width: 90%;
 
 			.sideImage {
-				display: none;
+				width: 45%;
 			}
 
-			h1 {
-				font-size: 2rem;
-				padding-top: 5vh;
-			}
-
-			// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
 			form {
-				width: 100%;
-				height: 100%;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
+				width: 55%;
+				padding: 5% 2.5% 5% 2.5%;
 
 				.inputs {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-
 					.text-input {
-						display: flex;
-						flex-wrap: wrap;
-						justify-content: space-between;
-						row-gap: 1.5vh;
+						row-gap: 20px;
 
 						.input {
-							width: 100%;
-
 							label {
-								font-size: 1rem;
-								font-weight: 500;
-								width: 100%;
-								display: block;
-								padding-bottom: 5px;
+								font-size: 0.8rem;
 
 								strong {
-									font-size: 0.7rem;
-									font-weight: 500;
-									color: var(--pointColor);
-								}
-							}
-
-							input {
-								width: 100%;
-								background-color: #fff;
-								padding: 8px;
-
-								&::placeholder {
-									background-color: #fff;
-								}
-
-								&:focus {
-									border: 1px solid #555;
+									font-size: 0.8rem;
+									display: none;
 								}
 							}
 						}
 					}
 
 					.else-input {
-						padding-top: 2vh;
-
 						.reason {
-							font-weight: 500;
-							padding: 0;
-
 							h3 {
-								font-size: 1rem;
-								font-weight: 500;
-
 								strong {
-									color: var(--pointColor);
-									font-size: 0.7rem;
-									font-weight: 500;
-								}
-							}
-
-							.checkboxs {
-								display: flex;
-								flex-wrap: wrap;
-								justify-content: space-between;
-
-								// checkbox 에서 label 이 문제가 있음
-								.checkbox {
-									width: 100%;
-									display: flex;
-									gap: 1vh;
-									align-items: center;
-
-									label {
-										font-weight: 400;
-									}
+									display: none;
 								}
 							}
 						}
 					}
 				}
+			}
+
+			img {
+				object-position: 35% 0;
+			}
+		}
+	}
+}
+
+.Mobile {
+	.Signup {
+		height: 100vh;
+
+		fieldSet {
+			box-shadow: none;
+			width: 100%;
+			height: 100%;
+			display: block;
+
+			background: #efefef;
+
+			.sideImage {
+				display: none;
+			}
+
+			form {
+				position: relative;
+				width: 95%;
+				height: 100%;
+				display: block;
+				padding: 0;
+				left: 2.5%;
+
+				h1 {
+					position: absolute;
+					top: 5%;
+					left: 50%;
+					transform: translateX(-50%);
+				}
+
+				.inputs {
+					position: absolute;
+					top: 15%;
+				}
 
 				input[type='submit'] {
-					width: 100%;
-					padding: 10px 0;
-					font-size: 1rem;
-					color: #000;
-					font-weight: 500;
-					background: linear-gradient($metal);
-					opacity: 0.7;
-					cursor: pointer;
-					transition: 0.3s;
-					margin-bottom: 5vh;
+					position: absolute;
+					bottom: 100px;
+				}
 
-					&:hover {
-						opacity: 1;
+				.else-input {
+					.reason {
+						h3 {
+							strong {
+								display: none;
+							}
+						}
 					}
 				}
 			}
