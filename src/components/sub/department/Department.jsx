@@ -6,15 +6,8 @@ import Layout from '../../common/layout/Layout';
 
 export default function Department() {
 	const { data: json, isSuccess: isDepartment } = useQueryDepartment();
-	// json 이 안날라옴
-
-	// ref
 	const path = useRef(process.env.PUBLIC_URL);
-
-	// custom hook
 	const splitHeader = useTextMethod('split');
-
-	// fetch
 
 	return (
 		<Layout className='Department' title={'NORM ARCHITECTS STUDIO WAS FOUNDED IN 2008'}>
