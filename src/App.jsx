@@ -13,25 +13,29 @@ import './globalStyles/Variable.scss';
 import { useEffect, useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 export default function App() {
 	const [Dark, setDark] = useState(false);
 	const viewType = useViewType();
+	const queryClient = new QueryClient();
 
 	return (
-		<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
-			<Header Dark={Dark} setDark={setDark} viewType={viewType} />
-			<Route exact path='/' component={MainWrap} />
-			<Route path='/department' component={Department} />
-			<Route path='/youtube' component={Youtube} />
-			<Route path='/gallery' component={Gallery} />
-			<Route path='/community' component={Community} />
-			<Route path='/signup' component={Signup} />
-			<Route path='/contact' component={Contact} />
-			<Route path='/detail/:id' component={Detail} />
-			<Footer />
-		</div>
+		<QueryClientProvider client={queryClient}>
+			<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
+				<Header Dark={Dark} setDark={setDark} viewType={viewType} />
+				<Route exact path='/' component={MainWrap} />
+				<Route path='/department' component={Department} />
+				<Route path='/youtube' component={Youtube} />
+				<Route path='/gallery' component={Gallery} />
+				<Route path='/community' component={Community} />
+				<Route path='/signup' component={Signup} />
+				<Route path='/contact' component={Contact} />
+				<Route path='/detail/:id' component={Detail} />
+				<Footer />
+			</div>
+			<ReactQueryDevtools />
+		</QueryClientProvider>
 	);
 }
-
-// react-query test

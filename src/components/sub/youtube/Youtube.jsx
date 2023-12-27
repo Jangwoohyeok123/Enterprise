@@ -8,7 +8,6 @@ import { IoArrowForwardCircleOutline } from 'react-icons/io5';
 
 export default function Youtube() {
 	const [Vids, setVids] = useState([]);
-	const [Title, setTitle] = useState('We provide a simplified build process');
 
 	// custom hook
 	const viewType = useViewType();
@@ -33,7 +32,7 @@ export default function Youtube() {
 	}, []);
 
 	return (
-		<Layout title={Title} className='Youtube'>
+		<Layout title={'We provide a simplified build process'} className='Youtube'>
 			<section className='Youtube-firstSection'>
 				<div className='leftImg'>
 					<div className='text'>
