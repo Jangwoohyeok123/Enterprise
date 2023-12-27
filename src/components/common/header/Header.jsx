@@ -8,12 +8,13 @@ import Menu from '../menu/Menu';
 import { useDispatch, useSelector } from 'react-redux';
 import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 
-export default function Header({ Dark, setDark, viewType }) {
+export default function Header({ viewType }) {
+	const dispatch = useDispatch();
+	const Dark = useSelector(store => store.darkReducer.dark);
 	const handleDarkMode = () => {
-		setDark(!Dark);
+		dispatch({ type: CLIENT_TABLES.DARK.start, payload: !Dark });
 	};
 	const [Bl, setMenu] = useState(true);
-	const dispatch = useDispatch();
 	const open = useSelector(store => store.menuReducer.open);
 
 	const location = useLocation();

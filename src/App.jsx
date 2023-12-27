@@ -19,7 +19,7 @@ import Menu from './components/common/menu/Menu';
 
 export default function App() {
 	const dispatch = useDispatch();
-	const [Dark, setDark] = useState(false);
+	const Dark = useSelector(store => store.darkReducer.dark);
 	const viewType = useViewType();
 	const open = useSelector(store => store.menuReducer.open);
 
@@ -31,7 +31,7 @@ export default function App() {
 	return (
 		<>
 			<div className={`App ${Dark ? 'dark' : ''} ${viewType} ${open ? 'blur' : ''}`}>
-				<Header Dark={Dark} setDark={setDark} viewType={viewType} />
+				<Header viewType={viewType} />
 				<Route exact path='/' component={MainWrap} />
 				<Route path='/department' component={Department} />
 				<Route path='/youtube' component={Youtube} />

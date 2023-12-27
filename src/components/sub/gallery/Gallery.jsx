@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as SERVER_TABLES from '../../../store/actionTables/serverTable';
 import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 
-export default function Gallery() {
+export default function Gallery({ viewType }) {
+	console.log(viewType);
 	const dispatch = useDispatch();
 	const Pics = useSelector(store => store.flickrReducer.flickr);
 	const [OpenModal, setOpenModal] = useState(false);
