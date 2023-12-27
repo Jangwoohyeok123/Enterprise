@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
+import useQueryDepartment from '../../../query/useQueryDepartment';
 
 export default function Department() {
+	const { data: json, isSuccss } = useQueryDepartment();
+
 	// state
 	const [ArticleData, setArticleData] = useState([]);
 	const [FeaturesData, setFeaturesData] = useState([]);
