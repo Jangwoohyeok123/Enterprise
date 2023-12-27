@@ -8,14 +8,12 @@ const fetchDepartment = async () => {
 	return json;
 };
 
-const useQueryDepartment = () => {
+export const useQueryDepartment = () => {
 	return useQuery(['fetchDepartment'], fetchDepartment, {
-		staleTime: 1000 * 60 * 60 * 24,
-		cacheTime: 1000 * 60 * 60 * 24,
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
-		retry: 2 // 요청 실패시 재 요청횟수
+		cacheTime: 1000 * 60 * 60 * 24,
+		staleTime: 1000 * 60 * 60 * 24,
+		retry: 3 //데이터요청 실패시 재시도 횟수, default:3
 	});
 };
-
-export default useQueryDepartment;

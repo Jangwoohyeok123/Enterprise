@@ -1,144 +1,84 @@
 {
-  "norm-people": [
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member1.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member2.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member3.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member4.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member5.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member6.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member7.jpg"
-    },
-    {
-      "name": "Christopher James",
-      "position": "Project Manager",
-      "pic": "member8.jpg"
-    }
-  ],
-  "article": {
-    "headline": "NORM ARCHITECTS STUDIO WAS FOUNDED IN 2008",
-    "mainImg": "main.jpg",
-    "subHeadline": "Much like human well-being the essence of Norm Architects work is found in balance-between richness and restraint, between order complexity.",
-    "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aut aperiam qui accusantium officia officiis, asperiores, libero at quidem alias illum. Tempora distinctio similique a, incidunt obcaecati dolorem cumque esse in dicta rerum odit, fugit cupiditate tenetur nobis, vero atque sunt quasi unde nemo eius. Facere a quas est laudantium sunt quibusdam laboriosam officia, sequi cumque earum adipisci odit expedita aut! Totam corrupti repudiandae ullam sapiente? Vitae architecto maxime incidunt! Molestias quibusdam corrupti sit modi impedit quos. Officia accusantium itaque consequatur. Id suscipit, voluptatibus harum voluptas dicta dolores incidunt minus aliquam quos. Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiores quisquam exercitationem rerum quae aperiam earum illo accusantium, labore, totam veniam aliquid officia suscipit? Eveniet dolore tenetur, id commodi, dolorum quae atque exercitationem recusandae amet nulla deserunt voluptates.dolore tenetur, id commodi, dolorum quae atque exercitationem recusandae amet nulla deserunt voluptates Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiore Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiore",
-    "features": [
-      {
-        "header": "12 Years Experience",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. tempora ex ratione"
-      },
-      {
-        "header": "145 Projects",
-        "body": "ipsudolor sitametc onsectetur adipisicingelit. Laborum delenititempora ex ratione, rerum, officia exercitationem adipi"
-      },
-      {
-        "header": "44 Awards Winning",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia "
-      },
-      {
-        "header": "39 Great Clients",
-        "body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex "
-      }
-    ]
-  },
-  "our-awards": {
-    "header": [
-      "organizer",
-      "subject",
-      "winner",
-      "date"
-    ],
-    "body": [
-      [
-        "oremipsumdolor",
-        "consequuntur sint nulla",
-        "nesciunt amet",
-        "2022 Nov 11"
-      ],
-      [
-        "oremipsumdolor",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2022 Aug 11"
-      ],
-      [
-        "nesciuntcorrupti",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2022 Feb 20"
-      ],
-      [
-        "oremipsumdolor",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2021 Oct 13"
-      ],
-      [
-        " consequuntur sint nulla ",
-        "consequuntur sint nulla",
-        "nesciunt  adipisicing",
-        "2020 Nov 17"
-      ],
-      [
-        "oremipsumdolor",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2020 Oct 5"
-      ],
-      [
-        " consequuntur sint nulla ",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2019 Sep 25"
-      ],
-      [
-        "oremipsumdolor",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2019 Mar 9"
-      ],
-      [
-        " consequuntur sint nulla ",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2017 Nov 11"
-      ],
-      [
-        "oremipsumdolor",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2017 Oct 5"
-      ],
-      [
-        "ignissimos corporisr",
-        "consequuntur sint nulla",
-        "nesciunt",
-        "2016 Oct 13"
-      ]
-    ]
-  }
+	"norm-people": [
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member1.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member2.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member3.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member4.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member5.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member6.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member7.jpg"
+		},
+		{
+			"name": "Christopher James",
+			"position": "Project Manager",
+			"pic": "member8.jpg"
+		}
+	],
+	"article": {
+		"headline": "NORM ARCHITECTS STUDIO WAS FOUNDED IN 2008",
+		"mainImg": "main.jpg",
+		"subHeadline": "Much like human well-being the essence of Norm Architects work is found in balance-between richness and restraint, between order complexity.",
+		"body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aut aperiam qui accusantium officia officiis, asperiores, libero at quidem alias illum. Tempora distinctio similique a, incidunt obcaecati dolorem cumque esse in dicta rerum odit, fugit cupiditate tenetur nobis, vero atque sunt quasi unde nemo eius. Facere a quas est laudantium sunt quibusdam laboriosam officia, sequi cumque earum adipisci odit expedita aut! Totam corrupti repudiandae ullam sapiente? Vitae architecto maxime incidunt! Molestias quibusdam corrupti sit modi impedit quos. Officia accusantium itaque consequatur. Id suscipit, voluptatibus harum voluptas dicta dolores incidunt minus aliquam quos. Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiores quisquam exercitationem rerum quae aperiam earum illo accusantium, labore, totam veniam aliquid officia suscipit? Eveniet dolore tenetur, id commodi, dolorum quae atque exercitationem recusandae amet nulla deserunt voluptates.dolore tenetur, id commodi, dolorum quae atque exercitationem recusandae amet nulla deserunt voluptates Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiore Nesciunt, facere repellendus? Voluptate veniam iste a quis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vitae et, expedita voluptatibus hic fuga reiciendis quaerat cupiditate nulla asperiore",
+		"features": [
+			{
+				"header": "12 Years Experience",
+				"body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. tempora ex ratione"
+			},
+			{
+				"header": "145 Projects",
+				"body": "ipsudolor sitametc onsectetur adipisicingelit. Laborum delenititempora ex ratione, rerum, officia exercitationem adipi"
+			},
+			{
+				"header": "44 Awards Winning",
+				"body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex ratione, rerum, officia "
+			},
+			{
+				"header": "39 Great Clients",
+				"body": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum deleniti tempora ex "
+			}
+		]
+	},
+	"our-awards": {
+		"header": ["organizer", "subject", "winner", "date"],
+		"body": [
+			["oremipsumdolor", "consequuntur sint nulla", "nesciunt amet", "2022 Nov 11"],
+			["oremipsumdolor", "consequuntur sint nulla", "nesciunt", "2022 Aug 11"],
+			["nesciuntcorrupti", "consequuntur sint nulla", "nesciunt", "2022 Feb 20"],
+			["oremipsumdolor", "consequuntur sint nulla", "nesciunt", "2021 Oct 13"],
+			[" consequuntur sint nulla ", "consequuntur sint nulla", "nesciunt  adipisicing", "2020 Nov 17"],
+			["oremipsumdolor", "consequuntur sint nulla", "nesciunt", "2020 Oct 5"],
+			[" consequuntur sint nulla ", "consequuntur sint nulla", "nesciunt", "2019 Sep 25"],
+			["oremipsumdolor", "consequuntur sint nulla", "nesciunt", "2019 Mar 9"],
+			[" consequuntur sint nulla ", "consequuntur sint nulla", "nesciunt", "2017 Nov 11"],
+			["oremipsumdolor", "consequuntur sint nulla", "nesciunt", "2017 Oct 5"],
+			["ignissimos corporisr", "consequuntur sint nulla", "nesciunt", "2016 Oct 13"]
+		]
+	}
 }

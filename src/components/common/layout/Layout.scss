@@ -4,21 +4,28 @@ main {
 	position: relative;
 
 	.title {
-		padding: 4vh 0;
+		padding: 2.5vh 0;
 		width: 80%;
+	}
+
+	.null {
+		padding: 0;
 	}
 }
 
 .Notebook {
 	.title {
-		width: 80%;
+		font-size: 2.2rem;
+		font-weight: 400;
+		width: 90%;
 	}
 }
 
 .Tablet {
 	main {
 		.title {
-			font-size: 3.4rem;
+			font-size: 2rem;
+			font-weight: 400;
 			width: 90%;
 		}
 	}
@@ -27,8 +34,9 @@ main {
 .Mobile {
 	main {
 		.title {
-			font-size: 3rem;
-			width: 90%;
+			font-size: 1.5rem;
+			font-weight: 500;
+			width: 100%;
 		}
 	}
 }

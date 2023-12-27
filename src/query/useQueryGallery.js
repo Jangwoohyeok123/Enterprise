@@ -6,23 +6,23 @@ const fetchGallery = async ({ queryKey: [_, opt] }) => {
 	const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
 
 	// flickr methods
-	const methods = {
+	const method = {
 		interest: 'flickr.interestingness.getList',
 		user: 'flickr.people.getPhotos',
 		search: 'flickr.photos.search'
 	};
 
-	// 최종 fetch url
-	const resultURLs = {
-		interest: `${baseURL}${methods.interest}`,
-		user: `${baseURL}${methods.user}&user_id=${opt.id}`,
-		search: `${baseURL}${methods.search}&tags=${opt.keyword}`
+	// 최종 fetch url = baseurl + flickr Method + option
+	const resultURL = {
+		interest: `${baseURL}${method.interest}`,
+		user: `${baseURL}${method.user}&user_id=${opt.id}`,
+		search: `${baseURL}${method.search}&tags=${opt.keyword}`
 	};
 
 	let url = '';
-	if (opt.type === 'interest') url = resultURLs.interest;
-	else if (opt.type === 'user') url = resultURLs.user;
-	else if (opt.type === 'search') url = resultURLs.search;
+	if (opt.type === 'interest') url = resultURL.interest;
+	if (opt.type === 'user') url = resultURL.user;
+	if (opt.type === 'search') url = resultURL.search;
 
 	const data = await fetch(url);
 	const json = await data.json();
