@@ -4,9 +4,10 @@ import { SlClose } from 'react-icons/sl';
 import { useDispatch, useSelector } from 'react-redux';
 import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 
-export default function Modal({ OpenModal, setOpenModal, children }) {
+export default function Modal({ children }) {
 	const dispatch = useDispatch();
 	const Modal = useSelector(store => store.modalReducer.modal);
+	console.log(Modal);
 
 	return (
 		<AnimatePresence>
@@ -35,7 +36,7 @@ export default function Modal({ OpenModal, setOpenModal, children }) {
 						}}>
 						{children}
 					</motion.div>
-					<span onClick={dispatch({ type: CLIENT_TABLES.MODAL.start, payload: false })}>
+					<span onClick={() => dispatch({ type: CLIENT_TABLES.MODAL.start, payload: false })}>
 						<SlClose />
 					</span>
 				</motion.aside>

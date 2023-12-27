@@ -7,12 +7,11 @@ import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SERVER_TABLES from '../../../store/actionTables/serverTable';
+import CLIENT_TABLES from '../../../store/actionTables/clientTable';
 
 export default function Gallery() {
 	const dispatch = useDispatch();
 	const Pics = useSelector(store => store.flickrReducer.flickr);
-	// useState
-	// const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Index, setIndex] = useState(0);
 
@@ -37,24 +36,19 @@ export default function Gallery() {
 	};
 
 	// controller - 비동기
-	// 클릭한 userId 로 전역 state 변경하기 및 화면 재 렌더링
+	// 클릭한 userId 로 전역 state 변경하기 및 화면 재렌더링
 	const setUserGallery = async clickedId => {
 		if (clickedId === userId.current) return;
 		userId.current = clickedId;
 		console.log(userId.current);
 		page.current = 'user';
-		// const photos = await fetchFlickr({ type: 'user', id: userId.current });
 		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'user', id: userId.current } });
 	};
 
-	// 클릭시 interest 로 돌아가기 'Return to Today's interest gallery' 를 말함
 	const setInterstGallery = async e => {
 		// page 가 interest 면 fetch 안함
 		if (page.current === 'interest') return;
 		page.current = 'interest';
-		// dispatch 하면 알아서 비동기 호출함
-		// const photos = await fetchFlickr({ type: 'interest' });
-		// setPics(photos);
 		dispatch({ type: SERVER_TABLES.FLICKR.start, opt: { type: 'interest' } });
 	};
 
@@ -87,6 +81,10 @@ export default function Gallery() {
 						<h3>{Pics[0].title}</h3>
 						{/* 여기 */}
 						<img
+							onClick={() => {
+								dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
+								setIndex(0);
+							}}
 							src={`https://live.staticflickr.com/${Pics[0].server}/${Pics[0].id}_${Pics[0].secret}_b.jpg`}
 							alt='picture1'
 						/>
@@ -105,12 +103,16 @@ export default function Gallery() {
 						</div>
 						<h3>{Pics[1].title}</h3>
 						<img
+							onClick={() => {
+								dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
+								setIndex(1);
+							}}
 							src={`https://live.staticflickr.com/${Pics[1].server}/${Pics[1].id}_${Pics[1].secret}_b.jpg`}
 							alt='picture2'
 						/>
 					</article>
 				</section>
-				{/* 여기 */}
+
 				<Masonry className={'cardFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 					{Pics.map((pic, idx) => {
 						if (idx < 2) return;
@@ -128,13 +130,20 @@ export default function Gallery() {
 									/>
 								</div>
 								<h3>{pic.title}</h3>
-								{/* 여기 */}
-								<img src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`} alt='picture2' />
+								<img
+									onClick={() => {
+										dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
+										setIndex(idx);
+									}}
+									src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
+									alt='picture2'
+								/>
 							</article>
 						);
 					})}
 				</Masonry>
-				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
+
+				<Modal>
 					{Pics.length !== 0 && (
 						<img
 							src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
@@ -146,6 +155,14 @@ export default function Gallery() {
 		</>
 	);
 }
+
+/* 					
+<img
+	src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
+	alt={Pics[Index].title}
+/>
+*/
+
 // 레이아웃 제약조건
 // mainLayout, subLayout 은 반복되면 안됨
 // Pics.map 이 생산하는 jsx 는 아래와 같음
