@@ -10,21 +10,28 @@ import Gallery from './components/sub/gallery/Gallery';
 import Youtube from './components/sub/youtube/Youtube';
 import './globalStyles/Reset.scss';
 import './globalStyles/Variable.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useViewType } from './hooks/useViewType';
 import Detail from './components/sub/youtube/Detail';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import CookieModal from './components/common/cookieModal/CookieModal';
+import { useCookie } from './hooks/useCookie';
+import { useGlobalData } from './hooks/useGlobalData';
 
 export default function App() {
-	const [Dark, setDark] = useState(false);
+	const { Dark } = useGlobalData();
 	const viewType = useViewType();
 	const queryClient = new QueryClient();
+	const { createCookie } = useCookie();
+
+	// App 컴포넌트가 실행되면 dark 쿠키를 만든다.
+	createCookie('dark', '', 60 * 60);
 
 	return (
 		<QueryClientProvider client={queryClient}>
 			<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
-				<Header Dark={Dark} setDark={setDark} viewType={viewType} />
+				<Header viewType={viewType} />
 				<Route exact path='/' component={MainWrap} />
 				<Route path='/department' component={Department} />
 				<Route path='/youtube' component={Youtube} />
@@ -34,6 +41,7 @@ export default function App() {
 				<Route path='/contact' component={Contact} />
 				<Route path='/detail/:id' component={Detail} />
 				<Footer />
+				<CookieModal wid={300} ht={400} />
 			</div>
 			<ReactQueryDevtools />
 		</QueryClientProvider>

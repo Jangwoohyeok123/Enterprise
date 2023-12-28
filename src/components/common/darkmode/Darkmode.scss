@@ -1,0 +1,10 @@
+.Darkmode {
+	position: relative;
+	top: 2px;
+
+	svg {
+		&:hover {
+			cursor: pointer;
+		}
+	}
+}

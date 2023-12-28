@@ -2,11 +2,16 @@ import './Header.scss';
 import { NavLink, Link } from 'react-router-dom';
 import { MdOutlineDarkMode } from 'react-icons/md';
 import { FiMenu } from 'react-icons/fi';
+import ThemeControl from '../themeControl/ThemeControl';
+import { useGlobalData } from '../../../hooks/useGlobalData';
+import DarkMode from '../darkmode/Darkmode';
 
-export default function Header({ Dark, setDark, viewType }) {
-	const handleDarkMode = () => {
-		setDark(!Dark);
-	};
+export default function Header({ viewType }) {
+	const { MenuOpen, setMenuOpen, Dark, setDark } = useGlobalData();
+	/* App 을 실행하면 다크모드 쿠키에 저장하기 */
+	/*  */
+	const handleDarkMode = () => setDark(!Dark);
+
 	return (
 		<header className='Header'>
 			<h1>
@@ -43,9 +48,10 @@ export default function Header({ Dark, setDark, viewType }) {
 				<NavLink to='/signup' className='signup' activeClassName={'on'}>
 					Signup
 				</NavLink>
-
-				<MdOutlineDarkMode size={30} onClick={handleDarkMode} />
-				{viewType == 'Tablet' || viewType == 'Mobile' ? <FiMenu size={30} /> : null}
+				<ThemeControl />
+				<DarkMode />
+				{/* <MdOutlineDarkMode size={30} onClick={handleDarkMode} />
+				{viewType == 'Tablet' || viewType == 'Mobile' ? <FiMenu size={30} /> : null} */}
 			</div>
 		</header>
 	);

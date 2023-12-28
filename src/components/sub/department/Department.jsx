@@ -3,11 +3,13 @@ import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
 import { useQueryDepartment } from '../../../query/useQueryDepartment';
 import Layout from '../../common/layout/Layout';
+import { useCookie } from '../../../hooks/useCookie';
 
 export default function Department() {
 	const { data: json, isSuccess: isDepartment } = useQueryDepartment();
 	const path = useRef(process.env.PUBLIC_URL);
 	const splitHeader = useTextMethod('split');
+	const createCookie = useCookie();
 
 	return (
 		<Layout className='Department' title={'NORM ARCHITECTS STUDIO WAS FOUNDED IN 2008'}>
@@ -15,7 +17,14 @@ export default function Department() {
 				<>
 					<section className='Department-firstSection'>
 						<div className='header'>
-							<img src={`${path.current}/img/department/${json.article.mainImg}`} alt='mainImage' />
+							<img
+								src={`${path.current}/img/department/${json.article.mainImg}`}
+								alt='mainImage'
+								onClick={() => {
+									createCookie('name', 'asd', 20);
+									console.log(document.cookie);
+								}}
+							/>
 						</div>
 						<div className='body'>
 							<h2>{json.article.subHeadline}</h2>
