@@ -109,15 +109,18 @@ $imgHeight: 60vh;
 			display: flex;
 			padding: 3vh 0;
 			justify-content: space-between;
+			font-family: var(--pointFont);
 
 			h2 {
 				width: 60%;
-				font-size: 2rem;
+				font-size: 1.5rem;
+				font-weight: 400;
 			}
 
 			h3 {
 				width: 30%;
-				font-size: 1.5rem;
+				font-size: 1.3rem;
+				font-weight: 400;
 			}
 		}
 
@@ -155,12 +158,17 @@ $imgHeight: 60vh;
 					justify-content: space-between;
 					width: 50%;
 
+					h4 {
+						font-size: 1.1rem;
+					}
+
 					.sub {
 						position: absolute;
 						bottom: 0;
 						right: 0;
 						display: flex;
 						justify-content: space-between;
+						font-size: 0.8rem;
 
 						.time {
 							display: flex;
@@ -179,6 +187,7 @@ $imgHeight: 60vh;
 			.description {
 				position: relative;
 				width: 30%;
+				font-size: 0.85rem;
 
 				.more {
 					position: absolute;
@@ -186,6 +195,7 @@ $imgHeight: 60vh;
 					right: 0;
 					display: flex;
 					gap: 5px;
+					font-size: 0.8rem;
 
 					span {
 						font-weight: 400;

@@ -54,7 +54,7 @@ export default function Youtube() {
 			<section className='Youtube-secondSection'>
 				<div className='header'>
 					<h2>Working Videos</h2>
-					<h3>description</h3>
+					<h3>Description</h3>
 				</div>
 				{Vids.map((video, idx) => {
 					const [date, tmpTime] = video.snippet.publishedAt.split('T');
