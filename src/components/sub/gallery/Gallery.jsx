@@ -55,104 +55,107 @@ export default function Gallery({ viewType }) {
 
 	return (
 		<>
-			<Layout title={''} className='Gallery'>
-				{/* Pics[0] */}
-				<section className='gridContainer'>
-					<div className='bestImage'>
-						<img src={`${path}/img/gallery/main.jpg`} alt='mainImage' />
-						<span className='small-txt'>
-							<strong>Loremics</strong> dolor
-						</span>
-						<span className='big-txt'>
-							NORM: USERS<br></br>GALLERYS
-						</span>
-					</div>
-					<article className='fixedCard1 card'>
-						<div className='user'>
-							<span className='userid'>
-								<strong>User id:</strong> {Pics[0].owner}
-							</span>
-							<IoArrowForwardCircleOutline
-								className='more icons'
-								onClick={e => {
-									setUserGallery(Pics[0].owner);
-								}}
-							/>
-						</div>
-						<h3>{Pics[0].title}</h3>
-						{/* 여기 */}
-						<img
-							onClick={() => {
-								dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
-								setIndex(0);
-							}}
-							src={`https://live.staticflickr.com/${Pics[0].server}/${Pics[0].id}_${Pics[0].secret}_b.jpg`}
-							alt='picture1'
-						/>
-					</article>
-					<article className='fixedCard2 card'>
-						<div className='user'>
-							<span className='userid'>
-								<strong>User id:</strong> {Pics[1].owner}
-							</span>
-							<IoArrowForwardCircleOutline
-								className='more icons'
-								onClick={e => {
-									setUserGallery(Pics[1].owner);
-								}}
-							/>
-						</div>
-						<h3>{Pics[1].title}</h3>
-						<img
-							onClick={() => {
-								dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
-								setIndex(1);
-							}}
-							src={`https://live.staticflickr.com/${Pics[1].server}/${Pics[1].id}_${Pics[1].secret}_b.jpg`}
-							alt='picture2'
-						/>
-					</article>
-				</section>
+			{Pics && (
+				<Layout title={''} className='Gallery'>
+					{/* Pics[0] */}
 
-				<Masonry className={'cardFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
-					{Pics.map((pic, idx) => {
-						if (idx < 2) return;
-						return (
-							<article className='card'>
-								<div className='user'>
-									<span className='userid'>
-										<strong>User id:</strong> {pic.owner}
-									</span>
-									<IoArrowForwardCircleOutline
-										className='more icons'
-										onClick={e => {
-											setUserGallery(pic.owner);
-										}}
-									/>
-								</div>
-								<h3>{pic.title}</h3>
-								<img
-									onClick={() => {
-										dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
-										setIndex(idx);
+					<section className='gridContainer'>
+						<div className='bestImage'>
+							<img src={`${path}/img/gallery/main.jpg`} alt='mainImage' />
+							<span className='small-txt'>
+								<strong>Loremics</strong> dolor
+							</span>
+							<span className='big-txt'>
+								LOGO: USERS<br></br>GALLERYS
+							</span>
+						</div>
+						<article className='fixedCard1 card'>
+							<div className='user'>
+								<span className='userid'>
+									<strong>User id:</strong> {Pics[0].owner}
+								</span>
+								<IoArrowForwardCircleOutline
+									className='more icons'
+									onClick={e => {
+										setUserGallery(Pics[0].owner);
 									}}
-									src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
-									alt='picture2'
 								/>
-							</article>
-						);
-					})}
-				</Masonry>
+							</div>
+							<h3>{Pics[0].title}</h3>
+							{/* 여기 */}
+							<img
+								onClick={() => {
+									dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
+									setIndex(0);
+								}}
+								src={`https://live.staticflickr.com/${Pics[0].server}/${Pics[0].id}_${Pics[0].secret}_b.jpg`}
+								alt='picture1'
+							/>
+						</article>
+						<article className='fixedCard2 card'>
+							<div className='user'>
+								<span className='userid'>
+									<strong>User id:</strong> {Pics[1].owner}
+								</span>
+								<IoArrowForwardCircleOutline
+									className='more icons'
+									onClick={e => {
+										setUserGallery(Pics[1].owner);
+									}}
+								/>
+							</div>
+							<h3>{Pics[1].title}</h3>
+							<img
+								onClick={() => {
+									dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
+									setIndex(1);
+								}}
+								src={`https://live.staticflickr.com/${Pics[1].server}/${Pics[1].id}_${Pics[1].secret}_b.jpg`}
+								alt='picture2'
+							/>
+						</article>
+					</section>
 
-				<Modal>
-					{Pics.length !== 0 && (
-						<img
-							src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
-							alt={Pics[Index].title}
-						/>
-					)}
-				</Modal>
-			</Layout>
+					<Masonry className={'cardFrame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+						{Pics.map((pic, idx) => {
+							if (idx < 2) return;
+							return (
+								<article className='card'>
+									<div className='user'>
+										<span className='userid'>
+											<strong>User id:</strong> {pic.owner}
+										</span>
+										<IoArrowForwardCircleOutline
+											className='more icons'
+											onClick={e => {
+												setUserGallery(pic.owner);
+											}}
+										/>
+									</div>
+									<h3>{pic.title}</h3>
+									<img
+										onClick={() => {
+											dispatch({ type: CLIENT_TABLES.MODAL.start, payload: true });
+											setIndex(idx);
+										}}
+										src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_b.jpg`}
+										alt='picture2'
+									/>
+								</article>
+							);
+						})}
+					</Masonry>
+
+					<Modal>
+						{Pics.length !== 0 && (
+							<img
+								src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
+								alt={Pics[Index].title}
+							/>
+						)}
+					</Modal>
+				</Layout>
+			)}
 		</>
 	);
 }

@@ -1,3 +1,4 @@
+// 리액트
 import './Signup.scss';
 import { useHistory } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';

@@ -16,6 +16,7 @@ import Detail from './components/sub/youtube/Detail';
 import { useDispatch, useSelector } from 'react-redux';
 import * as SERVER_TABLES from './store/actionTables/serverTable';
 import Menu from './components/common/menu/Menu';
+import CookieModal from './components/common/cookieModal/CookieModal';
 
 export default function App() {
 	const dispatch = useDispatch();
@@ -43,6 +44,9 @@ export default function App() {
 				<Footer viewType={viewType} />
 			</div>
 			<Menu></Menu>
+			<CookieModal wid={300} ht={200}>
+				<h1>쿠키팝업</h1>
+			</CookieModal>
 		</>
 	);
 }

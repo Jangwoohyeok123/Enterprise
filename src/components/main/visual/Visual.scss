@@ -1,0 +1,137 @@
+.Visual {
+	width: 100%;
+	height: calc(100vh - 90px);
+	position: relative;
+	margin: 0 auto;
+
+	.swiper {
+		width: 100%;
+		height: 100%;
+
+		.swiper-wrapper {
+			.swiper-slide {
+				padding: 100px 0px;
+
+				> .inner {
+					width: 70%;
+					height: 100%;
+					// background-color: var(--subPoint);
+					margin: 0 auto;
+					display: flex;
+					justify-content: center;
+					flex-wrap: wrap;
+					align-content: center;
+					color: var(--bgColor);
+
+					.picBox {
+						width: 40%;
+						height: 100%;
+						position: relative;
+						display: flex;
+
+						img {
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							position: absolute;
+							left: 0;
+							top: 0;
+
+							&:nth-of-type(1) {
+								top: 30px;
+								left: 30px;
+								filter: blur(20px) saturate(1);
+								opacity: 0.7;
+							}
+						}
+					}
+
+					.txtBox {
+						display: flex;
+						flex-direction: column;
+						width: 55%;
+						height: 100%;
+
+						h2 {
+							color: var(--baseColor);
+							font-size: 2.5rem;
+							font-weight: 300;
+							text-align: left;
+							width: 100%;
+							padding: 5% 10%;
+						}
+
+						a {
+							color: #fff;
+							background-color: #111;
+							border: none;
+							display: inline-block;
+							padding: 10px 30px;
+							margin-left: 10%;
+							font-size: 0.8rem;
+							width: 170px;
+							box-shadow: 10px 10px 20px rgba(var(--baseColor-code), 0.5);
+							transition-property: background-color, padding, box-shadow;
+							transition-duration: 0.5s;
+							transition-delay: 0.6s;
+
+							&::before,
+							&::after {
+								content: '';
+								position: absolute;
+								width: 10px;
+								height: 1px;
+								background: var(--bgColor);
+								transform-origin: right center;
+								right: 20px;
+								top: 50%;
+								opacity: 0;
+								transition-property: transform, opacity;
+								transition-duration: 0.8s;
+								transition-delay: 0.3s;
+							}
+
+							&::before {
+								transform: rotate(245deg);
+							}
+							&::after {
+								transform: rotate(-245deg);
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.swiper-pagination {
+			width: 70%;
+			left: 15%;
+			bottom: 30px;
+			z-index: 10;
+
+			span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				margin: 0px 5px;
+				border-radius: 5px;
+				background-color: var(--baseColor);
+				color: var(--bgColor);
+				text-indent: -9999px;
+				cursor: pointer;
+				transition: width 0.5s, background-color 0.5s;
+			}
+
+			span.swiper-pagination-bullet-active {
+				width: 60px;
+			}
+		}
+
+		.swiperController {
+			position: absolute;
+			bottom: 50px;
+			right: 100px;
+			z-index: 10;
+		}
+	}
+}

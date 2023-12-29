@@ -1,3 +1,5 @@
+// scss
+
 // 로그인 페이지는 tablet 부터 반응형 처리를 합시다!
 $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 95%;
 
@@ -158,6 +160,31 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 
 				&:hover {
 					opacity: 1;
+				}
+			}
+		}
+	}
+}
+
+.Notebook {
+	.Signup {
+		form {
+			width: 48%;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			padding: 2% 2% 2% 0;
+
+			h1 {
+				font-size: 1.7rem;
+			}
+
+			.inputs {
+				.text-input {
+					.input {
+						input {
+						}
+					}
 				}
 			}
 		}

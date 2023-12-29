@@ -18,7 +18,7 @@
 	margin: 0 auto;
 
 	h1 {
-		font-size: 1.8rem;
+		font-size: 1.5rem;
 		font-weight: 400;
 	}
 
@@ -26,6 +26,10 @@
 		display: flex;
 		gap: 50px;
 		align-items: center;
+
+		li {
+			font-size: 0.8rem;
+		}
 
 		a.on {
 			color: var(--pointColor);

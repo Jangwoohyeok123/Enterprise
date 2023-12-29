@@ -1,11 +1,9 @@
 .Form {
 	width: 100%;
-	height: 50vh;
 	position: relative;
 
 	label {
 		display: block;
-
 		padding: 10px 0 5px 0;
 	}
 
@@ -28,33 +26,44 @@
 		}
 	}
 
-	textarea {
-		padding: 5px 10px;
-		width: 100%;
-		height: 100%;
-		border: 1px solid #ddd;
-	}
-
 	.message {
 		width: 100%;
 		height: 40%;
+
+		textarea {
+			padding: 5px 10px;
+			width: 100%;
+			height: 250px;
+			border: 1px solid #ddd;
+		}
 	}
 
 	.submit {
-		color: var(--baseColor);
-		width: 80px;
-		height: 42px;
-		position: absolute;
-		bottom: 20%;
-		right: 0;
-		background-color: transparent;
-		border: 1px solid rgba(var(--baseColor-code), 0.3);
-		cursor: pointer;
-		transition: 0.3s;
+		display: flex;
+		justify-content: right;
 
-		&:hover {
-			color: var(--subPoint);
-			border-color: var(--subPoint);
+		input[type='submit'] {
+			margin: 3vh 0;
+			width: 60px;
+			height: 40px;
+			// color: var(--baseColor);
+			border: 1px solid rgba(var(--baseColor-code), 0.3);
+			cursor: pointer;
+			transition: 0.3s;
 		}
+
+		// &:hover {
+		// 	color: var(--subPoint);
+		// 	border-color: var(--subPoint);
+		// }
 	}
+}
+
+.NoteBook {
+}
+
+.Tablet {
+}
+
+.Mobile {
 }

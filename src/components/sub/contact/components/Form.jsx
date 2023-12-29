@@ -36,7 +36,9 @@ function Form({ className }) {
 				<label htmlFor='message'>Message</label>
 				<textarea name='message' id='message' placeholder='Dear Lorem&#39;s employee' />
 			</div>
-			<input className='submit' type='submit' value='Send' />
+			<div className='submit'>
+				<input type='submit' value='Send' />
+			</div>
 		</form>
 	);
 }

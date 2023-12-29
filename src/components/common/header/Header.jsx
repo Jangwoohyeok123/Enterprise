@@ -7,6 +7,7 @@ import { useState } from 'react';
 import Menu from '../menu/Menu';
 import { useDispatch, useSelector } from 'react-redux';
 import CLIENT_TABLES from '../../../store/actionTables/clientTable';
+import ThemeControl from '../themeControl/ThemeControl';
 
 export default function Header({ viewType }) {
 	const dispatch = useDispatch();
@@ -54,12 +55,15 @@ export default function Header({ viewType }) {
 								Contact
 							</NavLink>
 						</li>
+						<li>
+							<NavLink to='/signup' activeClassName={'on'}>
+								Signup
+							</NavLink>
+						</li>
 					</ul>
 					<div className='darkmode icons'>
 						<span className='icon'>
-							<Link to='/signup' className='signup'>
-								Signup
-							</Link>
+							<ThemeControl />
 						</span>
 
 						<span className='icon'>

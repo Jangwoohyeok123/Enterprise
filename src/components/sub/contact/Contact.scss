@@ -11,7 +11,7 @@
 			width: 100vw;
 			margin-left: -10vw;
 			top: -5vh;
-			height: 40vh;
+			height: 450px;
 		}
 	}
 
@@ -66,6 +66,96 @@
 		h2 {
 			font-size: 2.3rem;
 			font-weight: 500;
+		}
+	}
+}
+
+.Notebook {
+	.Contact {
+		header {
+			.mapBox {
+				margin-left: -10vw;
+				height: 400px;
+			}
+		}
+
+		.map-list {
+			padding-top: 40px;
+
+			.map {
+				width: 29%;
+
+				.info {
+					font-size: 0.8rem;
+					gap: 10px;
+				}
+			}
+		}
+
+		.mail-title {
+			h2 {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+.Tablet {
+	.Contact {
+		header {
+			.mapBox {
+				margin-left: -5vw;
+				height: 400px;
+			}
+		}
+
+		.map-list {
+			padding-top: 40px;
+
+			.map {
+				width: 29%;
+
+				.info {
+					font-size: 0.8rem;
+					gap: 10px;
+				}
+			}
+		}
+
+		.mail-title {
+			h2 {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+.Mobile {
+	.Contact {
+		header {
+			.mapBox {
+				margin-left: -2.5vw;
+				height: 45vh;
+			}
+		}
+
+		.map-list {
+			padding-top: 40px;
+
+			.map {
+				width: 29%;
+
+				.info {
+					font-size: 0.8rem;
+					gap: 10px;
+				}
+			}
+		}
+
+		.mail-title {
+			h2 {
+				font-size: 2rem;
+			}
 		}
 	}
 }
