@@ -1,6 +1,6 @@
 import './MainWrap.scss';
-import Visual from '../visual/Visual';
-import Pics from '../pics/Pics';
+import Visual from './visual/Visual';
+import Pics from './pics/Pics';
 // import Info from '../info/Info';
 
 export default function MainWrap() {

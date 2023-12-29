@@ -42,12 +42,12 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 			padding: 5% 2% 5% 0;
 
 			h1 {
-				font-size: 2.5rem;
-				font-weight: 500;
+				font-size: 3rem;
+				font-weight: 400;
 				font-family: var(--pointFont);
 				padding-bottom: 5px;
 				text-align: center;
-				letter-spacing: 2px;
+				letter-spacing: 0px;
 
 				&:hover {
 					cursor: pointer;
@@ -59,14 +59,15 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 					display: flex;
 					flex-wrap: wrap;
 					justify-content: space-between;
-					row-gap: 5px;
+					row-gap: 10px;
 
 					.input {
 						width: 100%;
 
 						label {
-							font-size: 1rem;
+							font-size: 0.8rem;
 							font-weight: 500;
+							font-family: var(--pointFont);
 							width: 100%;
 							display: block;
 							padding-bottom: 3px;
@@ -86,12 +87,13 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 
 							&::placeholder {
 								color: #777;
+								font-size: 1rem;
 							}
 						}
 
 						// sign up input 은 reset 을 무시하게 만듦
 						input[type='text'] {
-							padding: 5px 0;
+							padding: 3px 0;
 
 							&:focus {
 								outline: none;
@@ -115,7 +117,9 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 						font-weight: 500;
 						padding: 20px 0;
 						h3 {
-							font-size: 1.1rem;
+							font-size: 0.8rem;
+							font-weight: 500;
+							font-family: var(--pointFont);
 
 							strong {
 								font-size: 0.9rem;
@@ -136,6 +140,7 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 								display: flex;
 								gap: 15px;
 								align-items: center;
+								font-size: 0.9rem;
 								padding: 3px 0;
 
 								label {
@@ -150,16 +155,18 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 			input[type='submit'] {
 				width: 100%;
 				padding: 10px 0;
-				font-size: 1rem;
-				color: #000;
+				font-size: 0.9rem;
 				font-weight: 500;
-				background: linear-gradient($metal);
+				background: #ccc;
+				color: #000;
 				opacity: 0.7;
+				transition: 0.5s;
 				cursor: pointer;
-				transition: 0.3s;
 
 				&:hover {
 					opacity: 1;
+					background: #111;
+					color: #fff;
 				}
 			}
 		}
@@ -176,7 +183,7 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 			padding: 2% 2% 2% 0;
 
 			h1 {
-				font-size: 1.7rem;
+				font-size: 2rem;
 			}
 
 			.inputs {

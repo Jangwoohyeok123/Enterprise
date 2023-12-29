@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom';
 import Footer from './components/common/footer/Footer';
 import Header from './components/common/header/Header';
-import MainWrap from './components/main/mainWrap/MainWrap';
+import MainWrap from './components/main/MainWrap';
 import Signup from './components/sub/signup/Signup';
 import Community from './components/sub/community/Community';
 import Contact from './components/sub/contact/Contact';
