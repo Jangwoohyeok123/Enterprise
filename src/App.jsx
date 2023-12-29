@@ -97,3 +97,10 @@ useSelector(store => store.리듀서이름.state);
 dispatch({ type: TABLES.DEPARTMENT.start })
 
 */
+
+/* 
+	cookie 에 관하여 
+	1. 사용자가 사이트에 들어오면 쿠키화면을 보여준다.
+	2. 쿠키화면에 체크하고 닫기하면 쿠키를 생성한다.
+	3. 
+*/
