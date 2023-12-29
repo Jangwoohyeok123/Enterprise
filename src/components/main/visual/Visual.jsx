@@ -7,10 +7,24 @@ import { useSelector } from 'react-redux';
 import useTextMethod from '../../../hooks/useText';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import Btns from '../btns/Btns';
+import { useRef } from 'react';
 
 export default function Visual() {
 	const youtube = useSelector(store => store.youtubeReducer.youtube.items);
 	const shortenText = useTextMethod('shorten');
+	const swiperRef = useRef(null);
+
+	const paginationOption = useRef({
+		clickable: true,
+		renderBullet: (index, className) => {
+			return `<span class=${className}>${index + 1}</span>`;
+		}
+	});
+
+	const autoPlayOption = useRef({
+		delay: 5000,
+		disableOnInteraction: true // true 면 사용자가 클릭할 때 롤링 멈침
+	});
 
 	return (
 		<figure className='Visual'>
@@ -18,16 +32,8 @@ export default function Visual() {
 				<Swiper
 					speed={800}
 					modules={[Pagination, Autoplay]}
-					pagination={{
-						clickable: true,
-						renderBullet: (index, className) => {
-							return `<span class=${className}>${index + 1}</span>`;
-						}
-					}}
-					autoplay={{
-						delay: 5000,
-						disableOnInteraction: true // true 면 사용자가 클릭할 때 롤링 멈침
-					}}
+					pagination={paginationOption.current}
+					autoplay={autoPlayOption.current}
 					initialSlide={0}
 					loop={true}>
 					{youtube?.map((vid, idx) => {
@@ -49,7 +55,7 @@ export default function Visual() {
 							</SwiperSlide>
 						);
 					})}
-					<Btns />
+					<Btns swiperRef={swiperRef} />
 				</Swiper>
 			)}
 		</figure>
