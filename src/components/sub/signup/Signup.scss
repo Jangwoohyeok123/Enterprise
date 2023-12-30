@@ -1,8 +1,3 @@
-// scss
-
-// 로그인 페이지는 tablet 부터 반응형 처리를 합시다!
-$metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 95%;
-
 .Signup {
 	display: flex;
 	background: #efefef;
@@ -12,14 +7,21 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 	align-items: center;
 
 	fieldset {
+		/* 
+			fieldset 에서는 sideImage 와 form 을 제어한다. 
+		*/
+		/* 
+			직사각형을 유지하고 싶은데 width 와 height 를 viewport 를 기준으로 정할 경우 문제가생김 화면의 가로세로 비율에 영향을 받기 떄문임
+
+			직사각형의 황금비는 5 : 8
+		*/
 		box-shadow: 10px 10px 20px;
 		border: none;
 		width: 80%;
-		height: 80vh;
+		height: 75%;
 		background: #fff;
 		color: var(--baseColor);
 		display: flex;
-		justify-content: space-between;
 
 		.sideImage {
 			width: 50%;
@@ -35,280 +37,43 @@ $metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 9
 
 		// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
 		form {
-			width: 48%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			padding: 5% 2% 5% 0;
-
-			h1 {
-				font-size: 3rem;
-				font-weight: 400;
-				font-family: var(--pointFont);
-				padding-bottom: 5px;
-				text-align: center;
-				letter-spacing: 0px;
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
-
-			.inputs {
-				.text-input {
-					display: flex;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					row-gap: 10px;
-
-					.input {
-						width: 100%;
-
-						label {
-							font-size: 0.8rem;
-							font-weight: 500;
-							font-family: var(--pointFont);
-							width: 100%;
-							display: block;
-							padding-bottom: 3px;
-
-							strong {
-								font-size: 0.9rem;
-								font-weight: 500;
-								color: var(--pointColor);
-							}
-						}
-
-						input {
-							width: 100%;
-							background-color: #fff;
-							border-bottom: 1px solid #aaa;
-							transition: 0.3s;
-
-							&::placeholder {
-								color: #777;
-								font-size: 1rem;
-							}
-						}
-
-						// sign up input 은 reset 을 무시하게 만듦
-						input[type='text'] {
-							padding: 3px 0;
-
-							&:focus {
-								outline: none;
-								border-bottom: 1px solid #111;
-							}
-						}
-
-						input[type='password'] {
-							padding: 5px 0;
-
-							&:focus {
-								outline: none;
-								border-bottom: 1px solid #111;
-							}
-						}
-					}
-				}
-
-				.else-input {
-					.reason {
-						font-weight: 500;
-						padding: 20px 0;
-						h3 {
-							font-size: 0.8rem;
-							font-weight: 500;
-							font-family: var(--pointFont);
-
-							strong {
-								font-size: 0.9rem;
-								font-weight: 500;
-								color: var(--pointColor);
-							}
-						}
-
-						.checkboxs {
-							display: flex;
-							flex-wrap: wrap;
-							justify-content: space-between;
-							padding: 5px 0;
-
-							// checkbox 에서 label 이 문제가 있음
-							.checkbox {
-								width: 50%;
-								display: flex;
-								gap: 15px;
-								align-items: center;
-								font-size: 0.9rem;
-								padding: 3px 0;
-
-								label {
-									font-weight: 400;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			input[type='submit'] {
-				width: 100%;
-				padding: 10px 0;
-				font-size: 0.9rem;
-				font-weight: 500;
-				background: #ccc;
-				color: #000;
-				opacity: 0.7;
-				transition: 0.5s;
-				cursor: pointer;
-
-				&:hover {
-					opacity: 1;
-					background: #111;
-					color: #fff;
-				}
-			}
-		}
-	}
-}
-
-.Notebook {
-	.Signup {
-		form {
-			width: 48%;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-			padding: 2% 2% 2% 0;
-
-			h1 {
-				font-size: 2rem;
-			}
-
-			.inputs {
-				.text-input {
-					.input {
-						input {
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-.Tablet {
-	.Signup {
-		height: 80vh;
-		margin-top: 10vh;
-
-		fieldset {
-			width: 90%;
-
-			.sideImage {
-				width: 45%;
-			}
-
-			form {
-				width: 55%;
-				padding: 5% 2.5% 5% 2.5%;
-
-				.inputs {
-					.text-input {
-						row-gap: 20px;
-
-						.input {
-							label {
-								font-size: 0.8rem;
-
-								strong {
-									font-size: 0.8rem;
-									display: none;
-								}
-							}
-						}
-					}
-
-					.else-input {
-						.reason {
-							h3 {
-								strong {
-									display: none;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			img {
-				object-position: 35% 0;
-			}
-		}
-	}
-}
-
-.Mobile {
-	.Signup {
-		height: 100vh;
-
-		fieldSet {
-			box-shadow: none;
-			width: 100%;
+			width: 50%;
 			height: 100%;
-			display: block;
+			padding: 5% 5%;
 
-			background: #efefef;
+			header {
+				h1 {
+					font-size: 3rem;
+					font-weight: 500;
+					padding-bottom: 10px;
+				}
 
-			.sideImage {
-				display: none;
+				p {
+					opacity: 0.8;
+				}
 			}
 
-			form {
-				position: relative;
-				width: 95%;
-				height: 100%;
-				display: block;
-				padding: 0;
-				left: 2.5%;
-
-				h1 {
-					position: absolute;
-					top: 5%;
-					left: 50%;
-					transform: translateX(-50%);
+			.gridContainer {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 1fr 1fr 1fr;
+				grid-column-gap: 8%;
+				grid-row-gap: 0;
+				input {
+					border: 1px solid #ccc;
+					background: #ddd;
+					width: 100%;
+					height: 10px;
 				}
 
-				.inputs {
-					position: absolute;
-					top: 15%;
-				}
-
-				input[type='submit'] {
-					position: absolute;
-					bottom: 100px;
-				}
-
-				.else-input {
-					.reason {
-						h3 {
-							strong {
-								display: none;
-							}
-						}
-					}
+				.emailAddress {
+					grid-column: 1 / 3;
 				}
 			}
 		}
 	}
 }
 
-/* 생각보다 hard.. 
-모바일 화면이 되면 사인업 페이지 ...
+/* 
 
-filedSet 을 100% 로 Signup 페이지와 동일하게 만듦
-배경색은 #ddd 로 일치시킨다. 
-Enterpirse, text-input, else-input, register의 간격을 넓게 띄어서 보기 사용자가 사용하기 쉽게 만든다.
-간격은 고정pixel 보단 % 를 이용하려고 노력해보자. 화면 높이가 너무 다양하다.
 */

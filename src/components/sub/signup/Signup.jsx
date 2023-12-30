@@ -88,97 +88,53 @@ export default function Signup() {
 					<img src={`${path}/img/signup/background.jpg`} alt='' />
 				</div>
 				<form onSubmit={handleSubmit}>
-					<h1
-						onClick={() => {
-							history.push('/');
-						}}>
-						ENTERPRISE
-					</h1>
+					<header>
+						<h1
+							className='title'
+							onClick={() => {
+								history.push('/');
+							}}>
+							Welcome to Logo
+						</h1>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat cupiditate non itaque? Pariatur</p>
+					</header>
 					<legend className='hide'>signup page</legend>
 
-					<section className='inputs'>
-						<section className='text-input'>
-							<div className='text-input-1 input'>
-								{/* {Errors.userid && <strong>({Errors.userid})</strong>} */}
-								<label htmlFor='userid'>User id </label>
-								{Errors.userid ? (
-									<input
-										name='userid'
-										type='text'
-										id='name'
-										placeholder='Enter User id'
-										onChange={handleChange}
-										className='errorUserid'
-									/>
-								) : (
-									<input name='userid' type='text' id='name' placeholder='Enter User id' onChange={handleChange} />
-								)}
-							</div>
-
-							<div className='text-input-2 input'>
-								{/* {Errors.email && <strong>({Errors.email})</strong>} */}
-								<label htmlFor='email'>Email</label>
-								<input name='email' type='text' id='email' placeholder='Enter email' onChange={handleChange} />
-							</div>
-
-							<div className='text-input-3 input'>
-								{/* {Errors.password1 && <strong>({Errors.password1})</strong>} */}
-								<label htmlFor='password'>Password</label>
-								<input
-									name='password1'
-									type='password'
-									id='password'
-									placeholder='Enter new password'
-									onChange={handleChange}
-								/>
-							</div>
-
-							<div className='text-input-4 input'>
-								{/* {Errors.password2 && <strong>({Errors.password2})</strong>} */}
-								<label htmlFor='confirm-password'>Confirm password</label>
-								<input
-									name='password2'
-									type='password'
-									id='confirm-password'
-									placeholder='Enter confirm password'
-									onChange={handleChange}
-								/>
-							</div>
-						</section>
-
-						<section className='else-input'>
-							<div className='reason'>
-								{/* {Errors.reasons && <strong>({Errors.reasons})</strong>} */}
-								<h3>Sign-up Reason</h3>
-								<div className='checkboxs'>
-									<div className='checkbox'>
-										<input type='checkbox' name='reasons' value='marketing' id='Marketing' onChange={handleCheckBox} />
-										<label htmlFor='Marketing'>Marketing</label>
-									</div>
-									<div className='checkbox'>
-										<input type='checkbox' name='reasons' value='trends' id='Market Trends' onChange={handleCheckBox} />
-										<label htmlFor='Market Trends'>Market Trends</label>
-									</div>
-									<div className='checkbox'>
-										<input
-											type='checkbox'
-											name='reasons'
-											value='collaboration'
-											id='Collaboration'
-											onChange={handleCheckBox}
-										/>
-										<label htmlFor='Collaboration'>Collaboration</label>
-									</div>
-									<div className='checkbox'>
-										<input type='checkbox' name='reasons' value='others' id='Sponsorship' onChange={handleCheckBox} />
-										<label htmlFor='others'>others</label>
-									</div>
-								</div>
-							</div>
-						</section>
+					<section className='gridContainer'>
+						<div className='firstName'>
+							<label htmlFor='firstName' className='firstName-label'>
+								First Name
+							</label>
+							<input type='text' className='firstName-input' />
+						</div>
+						<div className='lastName'>
+							<label htmlFor='lastName' className='lastName-label'>
+								Last Name
+							</label>
+							<input type='text' className='lastName-input' />
+						</div>
+						<div className='emailAddress'>
+							<label htmlFor='emailAddress' className='emailAddress-label'>
+								Email Address
+							</label>
+							<input type='text' className='emailAddress-input' />
+						</div>
+						<div className='firstName'>
+							<label htmlFor='firstName' className='firstName-label'>
+								First Name
+							</label>
+							<input type='text' className='firstName-input' />
+						</div>
+						<div className='lastName'>
+							<label htmlFor='lastName' className='lastName-label'>
+								Last Name
+							</label>
+							<input type='text' className='lastName-input' />
+						</div>
 					</section>
+					<div className='asd'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, nisi?</div>
 
-					<input type='submit' value='Register' />
+					<div className='asdsadsa'>asdasdasdasd</div>
 				</form>
 			</fieldset>
 		</section>
