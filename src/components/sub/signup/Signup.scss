@@ -1,73 +1,79 @@
 .Signup {
-	display: flex;
-	background: #efefef;
 	width: 100%;
-	height: 100%;
-	justify-content: center;
-	align-items: center;
 
 	fieldset {
-		/* 
-			fieldset 에서는 sideImage 와 form 을 제어한다. 
-		*/
-		/* 
-			직사각형을 유지하고 싶은데 width 와 height 를 viewport 를 기준으로 정할 경우 문제가생김 화면의 가로세로 비율에 영향을 받기 떄문임
-
-			직사각형의 황금비는 5 : 8
-		*/
-		box-shadow: 10px 10px 20px;
+		width: 100%;
+		padding: 0 10%;
 		border: none;
-		width: 80%;
-		height: 75%;
-		background: #fff;
-		color: var(--baseColor);
-		display: flex;
-
-		.sideImage {
-			width: 50%;
-			height: 100%;
-			overflow: hidden;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-		}
+		background: var(--bgColor);
+		margin: 0 auto;
+		font-family: var(--pointFont);
 
 		// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
 		form {
-			width: 50%;
+			width: 100%;
 			height: 100%;
-			padding: 5% 5%;
+			padding: 10% 5%;
+			margin: 0 auto;
 
 			header {
-				h1 {
+				margin-bottom: 20px;
+				font-family: var(--pointFont);
+
+				.title {
+					display: flex;
+					justify-content: center;
+					width: 100%;
 					font-size: 3rem;
 					font-weight: 500;
 					padding-bottom: 10px;
 				}
 
-				p {
+				.sub-header {
+					display: flex;
+					justify-content: center;
 					opacity: 0.8;
+					padding: 0 10%;
 				}
 			}
 
-			.gridContainer {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				grid-template-rows: 1fr 1fr 1fr;
-				grid-column-gap: 8%;
-				grid-row-gap: 0;
-				input {
-					border: 1px solid #ccc;
-					background: #ddd;
-					width: 100%;
-					height: 10px;
-				}
+			.inputContainer {
+				.txt {
+					padding-bottom: 10px;
+					.big {
+						font-size: 1.8rem;
+					}
 
-				.emailAddress {
-					grid-column: 1 / 3;
+					p {
+						opacity: 0.8;
+					}
+				}
+				.container {
+					border-top: 1px solid rgba(var(--baseColor-code), 0.5);
+
+					.input {
+						display: flex;
+						border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
+						height: 60px;
+
+						label {
+							display: flex;
+							justify-content: left;
+							align-items: center;
+							width: 20%;
+							padding-left: 1%;
+						}
+
+						input {
+							display: flex;
+							justify-content: left;
+							align-items: center;
+							width: 60%;
+							background: #ccc;
+							margin: 10px;
+							border-radius: 5px;
+						}
+					}
 				}
 			}
 		}

@@ -84,9 +84,8 @@ export default function Signup() {
 	return (
 		<section className='Signup'>
 			<fieldset>
-				<div className='sideImage'>
-					<img src={`${path}/img/signup/background.jpg`} alt='' />
-				</div>
+				{/* <div className='sideImage'><img src={`${path}/img/signup/background.jpg`} alt='' /> */}
+				{/* </div> */}
 				<form onSubmit={handleSubmit}>
 					<header>
 						<h1
@@ -94,47 +93,24 @@ export default function Signup() {
 							onClick={() => {
 								history.push('/');
 							}}>
-							Welcome to Logo
+							Getting Started
 						</h1>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat cupiditate non itaque? Pariatur</p>
+						<p className='sub-header'>Creat an account to continue and connect with the people.</p>
 					</header>
 					<legend className='hide'>signup page</legend>
 
-					<section className='gridContainer'>
-						<div className='firstName'>
-							<label htmlFor='firstName' className='firstName-label'>
-								First Name
-							</label>
-							<input type='text' className='firstName-input' />
+					<div className='inputContainer'>
+						<div className='txt'>
+							<h3 className='big'>Information</h3>
+							<p>Lorem ipsum dolor sit amet.</p>
 						</div>
-						<div className='lastName'>
-							<label htmlFor='lastName' className='lastName-label'>
-								Last Name
-							</label>
-							<input type='text' className='lastName-input' />
-						</div>
-						<div className='emailAddress'>
-							<label htmlFor='emailAddress' className='emailAddress-label'>
-								Email Address
-							</label>
-							<input type='text' className='emailAddress-input' />
-						</div>
-						<div className='firstName'>
-							<label htmlFor='firstName' className='firstName-label'>
-								First Name
-							</label>
-							<input type='text' className='firstName-input' />
-						</div>
-						<div className='lastName'>
-							<label htmlFor='lastName' className='lastName-label'>
-								Last Name
-							</label>
-							<input type='text' className='lastName-input' />
-						</div>
-					</section>
-					<div className='asd'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, nisi?</div>
-
-					<div className='asdsadsa'>asdasdasdasd</div>
+						<section className='container'>
+							<div className='id input'>
+								<label htmlFor='id'>USER ID</label>
+								<input type='text' id='id' />
+							</div>
+						</section>
+					</div>
 				</form>
 			</fieldset>
 		</section>

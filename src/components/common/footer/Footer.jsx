@@ -9,7 +9,7 @@ export default function Footer() {
 
 	return (
 		<>
-			{location.pathname !== '/signup' && (
+			{location.pathname !== '' && (
 				<footer className='Footer'>
 					<ul className='top'>
 						<li className='logo'>

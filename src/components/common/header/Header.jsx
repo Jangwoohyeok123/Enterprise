@@ -24,7 +24,7 @@ export default function Header({ viewType }) {
 		<>
 			{Bl && <Menu />}
 
-			{location.pathname !== '/signup' && (
+			{location.pathname !== '' && (
 				<header className='Header'>
 					<h1>
 						<Link to='/'>LOGO</Link>
