@@ -5,87 +5,178 @@ import { useEffect, useRef, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa6';
 import { MdLockOutline } from 'react-icons/md';
 import { FaCheck } from 'react-icons/fa6';
-import { MdPermContactCalendar } from 'react-icons/md';
 import { BsCalendar3 } from 'react-icons/bs';
 import { FiSmartphone } from 'react-icons/fi';
 
 export default function Signup() {
 	const history = useHistory();
-	// reset 시 필요할 수 있기 때문에 useRef 처리한 후 state 할당
+	const path = process.env.PUBLIC_URL;
+	const refForm = useRef(null);
 	const initVal = useRef({
 		userid: '',
-		email: '',
 		password1: '',
-		password2: '',
-		reasons: [] // input checkbox 들은 배열로 관리한다.
+		password2: ''
 	});
-	// Signup page 는 value 를 담을 States 들과 Errors States 를 만들고 시작하자.
-	const [States, setStates] = useState(initVal.current);
-	const [Errors, setErrors] = useState([]);
+	const [FirstForm, setFirstForm] = useState(initVal.current);
+	const [FirstFormError, setFirstFormError] = useState(initVal.current);
 
-	const handleChange = e => {
-		// 입력할때마다 state 변경하기
-		// const { name, value } = e.target;
-		// setInputs({ ...Inputs, [name]: value });
+	const initVal2 = useRef({
+		name: '',
+		birthday: '',
+		gender: '',
+		number: ''
+	});
+	const [SecondForm, setSecondForm] = useState(initVal2.current);
+	const [SecondFormError, setSecondFormError] = useState(initVal2.current);
+	const [Genders, setGenders] = useState(['Woman', 'Man', 'Other']);
+
+	// onChnage 할 때 마다 timer 만들기
+
+	/*	 
+		event 를 이용해 input 사용하는 방법
+		name: e.target.name 속성을 통해 input 한 값의 이름을 지정할 수 있음 
+		value: e.target.value 속성을 통해 input 태그의 사용자 입력값을 사용할 수 있음 
+
+		=> e.target.name && e.target.value 는 암기해라
+	*/
+	const handleChangeFirstForm = e => {
 		const { name, value } = e.target;
-		setStates({ ...States, [name]: value });
+		setFirstForm({ ...FirstForm, [name]: value });
 	};
-	// checkArr.push(input.value)
-	const handleCheckBox = e => {
-		// 체크할때마다 state 변경하기
-		const { name } = e.target;
-		// e.target 의 부모요소를 가서 input 들 긁어오기
-		const inputs = e.target.parentElement.parentElement.querySelectorAll('input');
-		const checkArr = []; // check 한 배열을 담을 그릇
-		inputs.forEach(input => input.checked && checkArr.push(input));
-		setStates({ ...States, [name]: checkArr });
+
+	const handleChangeSecondForm = e => {
+		const { name, value } = e.target;
+		setSecondForm({ ...SecondForm, [name]: value });
+	};
+
+	const handleGender = e => {
+		const { name, value } = e.target;
+		setSecondForm({ ...SecondForm, [name]: value });
 	};
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		// Errors States 를 분석하고 Error 가 없다면 가입을 승인하고 홈으로 이동시킨다.
-		const errors = validation(States);
+		if (validationAll()) alert('server 전송');
 
-		let flag = true;
-		// 객체를 iteration 하는게 안됨
-		for (const key in errors) {
-			if (errors[key] !== '') flag = false;
-			// value 가 하나라도 없으면 flag 는 false 여야함
-			// 이런 구조는 초기값을 true 로 두고 filtering 을 한번이라도 걸리면 false 가 되도록 만드는 구조를 짜면 됨 => algorithm 도 그렇고 자주 나옴 handler 공책에 적고 외워라
+		function validationAll(State) {
+			const firstKeys = Object.keys(FirstFormError);
+			const secondKeys = Object.keys(SecondFormError);
+			let flag1 = false;
+			let flag2 = false;
+
+			for (const key in FirstFormError) {
+				if (FirstFormError[key] === '') flag1 = true;
+				else {
+					flag1 = false;
+					break;
+				}
+			}
+
+			for (const key in SecondFormError) {
+				if (SecondFormError[key] === '') flag2 = true;
+				else {
+					flag2 = false;
+					break;
+				}
+			}
+
+			// firstKeys.forEach(key => {
+			// 	console.log(firstKeys[key]);
+			// 	if (FirstFormError[key] !== '') flag = false;
+			// 	else flag = true;
+			// });
+
+			// secondKeys.forEach(key => {
+			// 	if (SecondFormError[key] !== '') flag = false;
+			// 	else flag = true;
+			// });
+
+			return flag1 && flag2;
 		}
-
-		flag ? history.push('/') : alert('가입정보를 다시 확인해주세요');
 	};
 
-	const validation = States => {
-		const error = {};
-		// email
-		const [before, after] = States.email.split('@');
-		const afters = after && after.split('.');
-		// 정규표현식
-		const spc = /[!@#$%^&*()[\]_.+]/; // 특수문자 test 용도 표현식
-		const num = /[0-9]/;
+	// userid, password1, password2
+	// name, birthday, gender, number
 
-		if (States.userid.length < 5) error.userid = '최소 5글자 이상입력하세요';
-		if (!before || !after || !afters[0] || !afters[1]) error.email = '올바른 이메일 형식을 기입하세요!';
-		if (!(States.password1.length < 8) || !spc.test(States.password1) || !num.test(States.password1))
-			error.password1 = '특수문자 및 숫자를 포함하세요.';
-		if (States.password1 !== States.password2 || States.password2.length === 0)
-			error.password2 = '비밀번호가 일치하지 않습니다.';
-		if (States.reasons.length === 0) error.reasons = 'Reason 을 하나이상 체크해주세요';
+	const validation = states => {
+		const keys = Object.keys(states);
 
-		return error;
+		if (keys.includes('userid')) {
+			const errs = {
+				userid: '',
+				password1: '',
+				password2: ''
+			};
+			// userid: 영문과 숫자로 구성돼야한다..
+			// password1: 대소문자 영문, 특수문자, 숫자로 구성돼야한다.
+			// password2: password1 과 같아야 한다.
+			// error 가 있다면 return 하고 setError 를 진행한다.
+			const useridReg = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{6,12}$/;
+			const password1Reg =
+				/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()~])[a-zA-Z0-9!@#$%^&*()]{8,16}$/;
+
+			if (!useridReg.test(states.userid)) {
+				errs.userid = 'Please provide an alternative ID.';
+			}
+			if (!password1Reg.test(states.password1))
+				errs.password1 =
+					'Please use 8 to 16 characters including uppercase and lowercase letters, numbers, and special characters.';
+			if (states.password1 !== states.password2)
+				errs.password2 = 'The passwords do not match.';
+
+			return errs;
+		} else {
+			const errs = {
+				name: '',
+				birthday: '',
+				gender: '',
+				number: ''
+			};
+			// name: 영문으로 구성돼야한다.
+			// birthday: 8자리의 수로 이뤄져야한다.
+			// gender 가 선택돼야 한다.
+			// number 가 11 자리의 숫자로 이뤄지며 앞의 3 개의 수는 010 이어야한다.
+			// error 가 있다면 return 하고 setError 를 진행한다.
+			const nameReg = /^[a-zA-Z]{3,30}$/;
+			const birthdayReg = /^[0-9]{8}$/;
+			const numberReg = /^010[0-9]{8}$/;
+
+			if (!nameReg.test(states.name)) errs.name = 'Please cofirm your name.';
+			if (birthdayReg.test(states.birthday)) checkBirthday();
+			else
+				errs.birthday =
+					'Please enter your birthdate in exactly 8 characters. ex) 20130725';
+			if (!states.gender.length) errs.gender = 'Please choose gender.';
+			if (!numberReg.test(states.number))
+				errs.number = 'The number must consist of 11 digits.';
+
+			function checkBirthday() {
+				const curYear = Number(states.birthday.slice(0, 4));
+				const curMonth = Number(states.birthday.slice(4, 6));
+				const curDay = Number(states.birthday.slice(6));
+
+				const maxYear = new Date().getFullYear();
+
+				if (
+					curYear < 1900 ||
+					curYear > maxYear ||
+					curMonth > 13 ||
+					curMonth < 1 ||
+					curDay > 31 ||
+					curDay < 1
+				) {
+					errs.birthday =
+						'Please enter your birthdate in exactly 8 characters. ex) 20130725';
+				}
+			}
+
+			return errs;
+		}
 	};
-
-	// 렌더링이 실행될때 마다 validation 을 진행하라
-	// validation 을 진행한 후 반환한 error 를 Error State 에 저장
-	// Dom 요소에 error 가 있다면 표기하기
-	useEffect(() => {
-		// validation(States);
-		setErrors(validation(States));
-	}, [States]);
-
-	const path = process.env.PUBLIC_URL;
+	// useEffect(() => {
+	// 	// validation(States);
+	// 	setErrors(validation(States));
+	// }, [States]);
 
 	return (
 		<section className='Signup'>
@@ -97,82 +188,144 @@ export default function Signup() {
 				LOGO
 			</h1>
 			<fieldset>
-				<form onSubmit={handleSubmit}>
+				<form ref={refForm}>
 					<legend className='hide'>signup page</legend>
 
 					<div className='form-list'>
 						<div className='item user'>
 							<FaRegUser className='icon' />
-							<input type='text' placeholder='Id' />
+							<input
+								type='text'
+								name='userid'
+								placeholder='Id'
+								onChange={handleChangeFirstForm}
+								onBlur={() => {
+									setFirstFormError(validation(FirstForm));
+								}}
+							/>
 						</div>
 						<div className='item password1'>
 							<MdLockOutline className='icon' />
-							<input type='password' placeholder='Password' />
+							<input
+								type='password'
+								name='password1'
+								placeholder='Password'
+								onChange={handleChangeFirstForm}
+								onBlur={() => setFirstFormError(validation(FirstForm))}
+							/>
 						</div>
 						<div className='item password2'>
 							<FaCheck className='icon' />
-							<input type='password' placeholder='Confirm Password' />
+							<input
+								type='password'
+								name='password2'
+								placeholder='Confirm Password'
+								onChange={handleChangeFirstForm}
+								onBlur={() => setFirstFormError(validation(FirstForm))}
+							/>
 						</div>
 					</div>
-					<div className='error-zone'></div>
+					<div className='error-zone'>
+						{FirstFormError.userid && (
+							<div>User id: {FirstFormError.userid}</div>
+						)}
+						{FirstFormError.password1 && (
+							<div>Password: {FirstFormError.password1}</div>
+						)}
+						{FirstFormError.password2 && (
+							<div>Confirm password:{FirstFormError.password2}</div>
+						)}
+					</div>
 					<div className='form-list'>
 						<div className='item name'>
 							<FaRegUser className='icon' />
-							<input type='text' placeholder='Name' />
+							<input
+								type='text'
+								name='name'
+								placeholder='Name'
+								onChange={handleChangeSecondForm}
+								onBlur={() => setSecondFormError(validation(SecondForm))}
+							/>
 						</div>
 						<div className='item birthday'>
 							<BsCalendar3 className='icon' />
-							<input type='text' placeholder='Birthday 8자리' />
+							<input
+								type='text'
+								name='birthday'
+								placeholder='Birthday 8 digitis'
+								onChange={handleChangeSecondForm}
+								onBlur={() => setSecondFormError(validation(SecondForm))}
+							/>
 						</div>
 						<div className='item genderContainer'>
-							<ul>
-								<li>
-									<label htmlFor='gender1'>Man</label>
-									<input type='radio' name='gender' id='gender1' value='man' />
-								</li>
-								<li>
-									<label htmlFor='gender2'>Woman</label>
-									<input type='radio' name='gender' id='gender2' value='woman' />
-								</li>
-								<li>
-									<label htmlFor='gender3'>Others</label>
-									<input type='radio' name='gender' id='gender3' value='other' />
-								</li>
+							<ul tabIndex={0}>
+								{Genders.map((gender, idx) => {
+									if (gender === SecondForm.gender) {
+										return (
+											<li key={gender + idx} className='outline'>
+												<label htmlFor={gender}>{gender}</label>
+												<input
+													type='radio'
+													name='gender'
+													id={gender}
+													value={gender}
+													onClick={handleGender}
+													onBlur={() =>
+														setSecondFormError(validation(SecondForm))
+													}
+												/>
+											</li>
+										);
+									} else {
+										return (
+											<li key={gender + idx}>
+												<label htmlFor={gender}>{gender}</label>
+												<input
+													type='radio'
+													name='gender'
+													id={gender}
+													value={gender}
+													onClick={handleGender}
+													onBlur={() =>
+														setSecondFormError(validation(SecondForm))
+													}
+												/>
+											</li>
+										);
+									}
+								})}
 							</ul>
+							{/* htmlFor, id 를 명확히 기입하지 않으면 nodeList 제어하기가 힘들다. */}
 						</div>
 						<div className='item number'>
 							<FiSmartphone className='icon' />
-							<input type='text' placeholder='Phone Number' />
+							<input
+								type='text'
+								name='number'
+								placeholder='Phone Number'
+								onChange={handleChangeSecondForm}
+								onBlur={() => setSecondFormError(validation(SecondForm))}
+							/>
 						</div>
+					</div>
+					<div className='error-zone'>
+						{SecondFormError.name && <div>Name: {SecondFormError.name}</div>}
+						{SecondFormError.birthday && (
+							<div>Birthday: {SecondFormError.birthday}</div>
+						)}
+						{SecondFormError.gender && (
+							<div>Gender: {SecondFormError.gender}</div>
+						)}
+						{SecondFormError.number && (
+							<div>Number: {SecondFormError.number}</div>
+						)}
 					</div>
 					<div className='error-zone'></div>
 				</form>
 			</fieldset>
-			<button className='submit'>SIGN UP</button>
+			<button className='submit' onClick={handleSubmit}>
+				SIGN UP
+			</button>
 		</section>
 	);
 }
-
-/*
-	Fullname:  
-	Username
-	Email
-	PhoneNumber
-	Password
-	Confirm Password
-	sign-up reason
-*/
-
-/* 
-	onChange 가 발생할 때 States 가 변경되지 않음
-*/
-
-/* [debouncing 에 관한 궁금점 해결] 
-	debouncing 하는 것은 하나의 state 를 wrapping 해서 extension 하는 것이 아니라 화면을 위한 state 와 checking 을 위한 debouncing 된 state 를 별도로 만드는 작업이다.
-*/
-
-/* 
-	submit 을 하면 전체 input 을 다시 검사한다.
-
-
-*/

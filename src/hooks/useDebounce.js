@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 
 // useDebounc 또는 useThrottle 에 들어올 인자는 컴포넌트에서 계속 반복해서 호출하는 특징이 있음
-export const useDebounce = (value, gap = 500) => {
+const useDebounce = (value, gap = 500) => {
 	const [DebouncedVal, setDebouncedVal] = useState(value);
 	const eventBlocker = useRef(null);
 
@@ -13,6 +13,8 @@ export const useDebounce = (value, gap = 500) => {
 
 	return DebouncedVal;
 };
+
+export default useDebounce;
 
 /*  Debouncing 적용하기 
 

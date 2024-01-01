@@ -8,6 +8,28 @@
 		font-weight: 500;
 	}
 
+	.error-zone {
+		color: rgb(240, 22, 66);
+		margin-top: 10px;
+
+		div {
+			padding-left: 13px;
+			padding-bottom: 3px;
+
+			&::before {
+				content: '';
+				display: inline-block;
+				width: 4px;
+				height: 4px;
+				background: rgb(240, 22, 66);
+				border-radius: 50%;
+				position: relative;
+				right: 10px;
+				bottom: 3px;
+			}
+		}
+	}
+
 	fieldset {
 		width: 500px;
 		min-height: 84vh;
@@ -37,7 +59,7 @@
 				border-radius: 5px;
 
 				&:focus {
-					outline: 1px solid #111;
+					outline: 1.5px solid #111;
 				}
 			}
 
@@ -60,7 +82,6 @@
 							justify-content: center;
 							align-items: center;
 							border: 1px solid #ccc;
-							padding: 10px 0;
 
 							&:hover {
 								border: 1px solid #111;
@@ -69,6 +90,7 @@
 							label {
 								display: flex;
 								justify-content: center;
+								padding: 10px 55px;
 							}
 
 							input {
@@ -76,6 +98,32 @@
 								width: 0;
 							}
 						}
+
+						.outline {
+							background: #111;
+							color: #fff;
+						}
+					}
+				}
+			}
+
+			.error-zone {
+				color: rgb(240, 22, 66);
+				margin-top: 10px;
+
+				div {
+					padding-left: 13px;
+
+					&::before {
+						content: '';
+						display: inline-block;
+						width: 4px;
+						height: 4px;
+						background: rgb(240, 22, 66);
+						border-radius: 50%;
+						position: relative;
+						right: 10px;
+						bottom: 3px;
 					}
 				}
 			}
@@ -91,6 +139,10 @@
 		font-weight: 500;
 		font-size: 1.3rem;
 		border-radius: 7px;
+
+		&:hover {
+			cursor: pointer;
+		}
 	}
 }
 
