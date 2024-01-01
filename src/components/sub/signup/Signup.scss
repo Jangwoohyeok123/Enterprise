@@ -1,81 +1,111 @@
 .Signup {
-	width: 100%;
+	width: 500px;
+	min-height: 100%;
+	margin: 3% auto;
+
+	h1 {
+		font-size: 1.8rem;
+		font-weight: 500;
+	}
 
 	fieldset {
-		width: 100%;
-		padding: 0 10%;
+		width: 500px;
+		min-height: 84vh;
+		padding-top: 30px;
 		border: none;
-		background: var(--bgColor);
 		margin: 0 auto;
+		background: var(--bgColor);
 		font-family: var(--pointFont);
 
-		// 위아래 간격은 위에서 padding 을 통해 제어하기로 합시다.
 		form {
-			width: 100%;
-			height: 100%;
-			padding: 10% 5%;
-			margin: 0 auto;
+			.item {
+				height: 50px;
+				display: flex;
+				align-items: center;
 
-			header {
-				margin-bottom: 20px;
-				font-family: var(--pointFont);
-
-				.title {
-					display: flex;
-					justify-content: center;
-					width: 100%;
-					font-size: 3rem;
-					font-weight: 500;
-					padding-bottom: 10px;
-				}
-
-				.sub-header {
-					display: flex;
-					justify-content: center;
-					opacity: 0.8;
-					padding: 0 10%;
+				.icon {
+					width: 40px;
+					font-size: 20px;
+					opacity: 0.85;
 				}
 			}
 
-			.inputContainer {
-				.txt {
-					padding-bottom: 10px;
-					.big {
-						font-size: 1.8rem;
-					}
+			input[type='text'],
+			input[type='password'] {
+				width: 100%;
+				margin-right: 2%;
+				border-radius: 5px;
 
-					p {
-						opacity: 0.8;
-					}
+				&:focus {
+					outline: 1px solid #111;
 				}
-				.container {
-					border-top: 1px solid rgba(var(--baseColor-code), 0.5);
+			}
 
-					.input {
+			.form-list {
+				width: 100%;
+				border: 1px solid #bbb;
+				margin-top: 10px;
+				border-radius: 7px;
+
+				.genderContainer {
+					ul {
 						display: flex;
-						border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
-						height: 60px;
+						justify-content: center;
+						width: 100%;
+						border-radius: 7px;
 
-						label {
+						li {
+							width: 32%;
 							display: flex;
-							justify-content: left;
+							justify-content: center;
 							align-items: center;
-							width: 20%;
-							padding-left: 1%;
-						}
+							border: 1px solid #ccc;
+							padding: 10px 0;
 
-						input {
-							display: flex;
-							justify-content: left;
-							align-items: center;
-							width: 60%;
-							background: #ccc;
-							margin: 10px;
-							border-radius: 5px;
+							&:hover {
+								border: 1px solid #111;
+							}
+
+							label {
+								display: flex;
+								justify-content: center;
+							}
+
+							input {
+								visibility: hidden;
+								width: 0;
+							}
 						}
 					}
 				}
 			}
+		}
+	}
+
+	button {
+		width: 100%;
+		height: 50px;
+		border: none;
+		background: #111;
+		color: #fff;
+		font-weight: 500;
+		font-size: 1.3rem;
+		border-radius: 7px;
+	}
+}
+
+.Mobile {
+	.Signup {
+		width: 100%;
+		padding: 2% 1%;
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		fieldset {
+			width: 100%;
+			padding-top: 20px;
 		}
 	}
 }

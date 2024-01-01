@@ -2,6 +2,12 @@
 import './Signup.scss';
 import { useHistory } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { FaRegUser } from 'react-icons/fa6';
+import { MdLockOutline } from 'react-icons/md';
+import { FaCheck } from 'react-icons/fa6';
+import { MdPermContactCalendar } from 'react-icons/md';
+import { BsCalendar3 } from 'react-icons/bs';
+import { FiSmartphone } from 'react-icons/fi';
 
 export default function Signup() {
 	const history = useHistory();
@@ -83,36 +89,66 @@ export default function Signup() {
 
 	return (
 		<section className='Signup'>
+			<h1
+				className='title'
+				onClick={() => {
+					history.push('/');
+				}}>
+				LOGO
+			</h1>
 			<fieldset>
-				{/* <div className='sideImage'><img src={`${path}/img/signup/background.jpg`} alt='' /> */}
-				{/* </div> */}
 				<form onSubmit={handleSubmit}>
-					<header>
-						<h1
-							className='title'
-							onClick={() => {
-								history.push('/');
-							}}>
-							Getting Started
-						</h1>
-						<p className='sub-header'>Creat an account to continue and connect with the people.</p>
-					</header>
 					<legend className='hide'>signup page</legend>
 
-					<div className='inputContainer'>
-						<div className='txt'>
-							<h3 className='big'>Information</h3>
-							<p>Lorem ipsum dolor sit amet.</p>
+					<div className='form-list'>
+						<div className='item user'>
+							<FaRegUser className='icon' />
+							<input type='text' placeholder='Id' />
 						</div>
-						<section className='container'>
-							<div className='id input'>
-								<label htmlFor='id'>USER ID</label>
-								<input type='text' id='id' />
-							</div>
-						</section>
+						<div className='item password1'>
+							<MdLockOutline className='icon' />
+							<input type='password' placeholder='Password' />
+						</div>
+						<div className='item password2'>
+							<FaCheck className='icon' />
+							<input type='password' placeholder='Confirm Password' />
+						</div>
 					</div>
+					<div className='error-zone'></div>
+					<div className='form-list'>
+						<div className='item name'>
+							<FaRegUser className='icon' />
+							<input type='text' placeholder='Name' />
+						</div>
+						<div className='item birthday'>
+							<BsCalendar3 className='icon' />
+							<input type='text' placeholder='Birthday 8자리' />
+						</div>
+						<div className='item genderContainer'>
+							<ul>
+								<li>
+									<label htmlFor='gender1'>Man</label>
+									<input type='radio' name='gender' id='gender1' value='man' />
+								</li>
+								<li>
+									<label htmlFor='gender2'>Woman</label>
+									<input type='radio' name='gender' id='gender2' value='woman' />
+								</li>
+								<li>
+									<label htmlFor='gender3'>Others</label>
+									<input type='radio' name='gender' id='gender3' value='other' />
+								</li>
+							</ul>
+						</div>
+						<div className='item number'>
+							<FiSmartphone className='icon' />
+							<input type='text' placeholder='Phone Number' />
+						</div>
+					</div>
+					<div className='error-zone'></div>
 				</form>
 			</fieldset>
+			<button className='submit'>SIGN UP</button>
 		</section>
 	);
 }
