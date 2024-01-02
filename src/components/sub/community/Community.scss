@@ -39,7 +39,9 @@
 					border: none;
 					background: transparent;
 					cursor: pointer;
-					font-size: 1rem;
+					font-size: 0.8rem;
+					font-weight: 500;
+					opacity: 0.8;
 					color: var(--baseColor);
 					transition: 0.15s;
 
@@ -70,7 +72,7 @@
 				.posting {
 					// Edit Mode 의 css, Read Mode 의 css 를 만들어라
 					h4 {
-						font-weight: 500;
+						font-weight: 400;
 						padding-bottom: 3vh;
 					}
 
@@ -88,6 +90,8 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					font-size: 0.8rem;
+					opacity: 0.9;
 
 					.left {
 						display: flex;

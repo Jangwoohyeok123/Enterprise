@@ -82,9 +82,8 @@ export default function Gallery() {
 					</div>
 					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {
-							let picTitle = pic.title.split(' ');
+							let picTitle = pic.title;
 							if (pic.title.length > 50) picTitle = picTitle.slice(0, 50).concat('...');
-							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
 							return (
 								<article key={idx}>
@@ -104,21 +103,20 @@ export default function Gallery() {
 												<div className='noti'>{pic.owner}'s gallery</div>
 											</div>
 										</div>
-										<h3>
-											{picTitle}
-											<br></br>
-											{/* {bottom.length ? bottom : 'Dream'} */}
-										</h3>
+										<h3>{picTitle}</h3>
 									</div>
 
-									<img
-										src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-										alt={`${pic.title}`}
-										onClick={() => {
-											setOpenModal(true);
-											setIndex(idx);
-										}}
-									/>
+									<div className='img'>
+										<img
+											src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+											alt={`${pic.title}`}
+											onClick={() => {
+												setOpenModal(true);
+												setIndex(idx);
+											}}
+										/>
+										<div className='overlay'></div>
+									</div>
 								</article>
 							);
 						})}

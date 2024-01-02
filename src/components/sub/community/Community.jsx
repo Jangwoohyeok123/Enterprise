@@ -16,12 +16,18 @@ export default function Community() {
 	const refBody = useRef(null);
 	const refEditTitle = useRef(null);
 	const refEditBody = useRef(null);
+	const refCurUserId = useRef(null);
 
 	const fetchPosts = async () => {
-		const data = await fetch(`${path.current}/DB/community.json`);
+		const data = await fetch(
+			`${path.current}/DB/community.json`
+		);
 		const json = await data.json();
 		json.posts.forEach(post => (post.enableUpdate = false));
-		localStorage.setItem('posts', JSON.stringify(json.posts));
+		localStorage.setItem(
+			'posts',
+			JSON.stringify(json.posts)
+		);
 		setPosts(json.posts);
 	};
 
@@ -32,7 +38,9 @@ export default function Community() {
 
 	const createPost = () => {
 		const time = new Date();
-		const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+		const current = `${time.getFullYear()}-${
+			time.getMonth() + 1
+		}-${time.getDate()}`;
 
 		setPosts([
 			{
@@ -53,6 +61,8 @@ export default function Community() {
 		setPosts(
 			Posts.map((post, idx) => {
 				if (selectedIndex === idx) post.enableUpdate = true;
+				else post.enableUpdate = false;
+
 				return post;
 			})
 		);
@@ -60,17 +70,20 @@ export default function Community() {
 
 	const closeEditMode = selectedIndex => {
 		setIsEdit(!IsEdit);
+
 		setPosts(
 			Posts.map((post, idx) => {
 				const time = new Date();
-				const current = `${time.getFullYear()}-${time.getMonth() + 1}-${time.getDate()}`;
+				const current = `${time.getFullYear()}-${
+					time.getMonth() + 1
+				}-${time.getDate()}`;
 
 				if (selectedIndex === idx) {
 					return {
 						title: refEditTitle.current.value,
 						body: refEditBody.current.value,
 						enableUpdate: false,
-						userid: '96229824@N06',
+						userid: refCurUserId.current.innerText,
 						time: '(latest) ' + current
 					};
 				}
@@ -79,9 +92,12 @@ export default function Community() {
 		);
 	};
 
-	const deletePost = deleteIndex => {
-		if (!window.confirm('해당 게시글을 삭제하겠습니까?')) return;
-		setPosts(Posts.filter((_, idx) => idx !== deleteIndex));
+	const deletePost = selectedIndex => {
+		if (!window.confirm('해당 게시글을 삭제하겠습니까?'))
+			return;
+		setPosts(
+			Posts.filter((_, idx) => idx !== selectedIndex)
+		);
 	};
 
 	useEffect(() => {
@@ -89,17 +105,28 @@ export default function Community() {
 	}, []);
 
 	return (
-		<Layout title={Title} className='Community'>
+		<Layout title={''} className='Community'>
 			<header>
 				<div className='img'>
-					<img src={`${path.current}/img/community/main.jpg`} alt='main image' />
+					<img
+						src={`${path.current}/img/community/main.jpg`}
+						alt='main image'
+					/>
 				</div>
 			</header>
 
 			<section className='body'>
 				<aside className='createPost'>
-					<input type='text' placeholder='title' ref={refTitle} />
-					<textarea cols='30' rows='5' placeholder='body' ref={refBody}></textarea>
+					<input
+						type='text'
+						placeholder='title'
+						ref={refTitle}
+					/>
+					<textarea
+						cols='30'
+						rows='5'
+						placeholder='body'
+						ref={refBody}></textarea>
 
 					<nav>
 						<button onClick={resetInput}>Reset</button>
@@ -114,19 +141,30 @@ export default function Community() {
 							return (
 								<article key={idx} className='post'>
 									<div className='posting'>
-										<input type='text' defaultValue={post.title} ref={refEditTitle} />
-										<textarea cols='30' rows='4' defaultValue={post.body} ref={refEditBody}></textarea>
+										<input
+											type='text'
+											defaultValue={post.title}
+											ref={refEditTitle}
+										/>
+										<textarea
+											cols='30'
+											rows='4'
+											defaultValue={post.body}
+											ref={refEditBody}></textarea>
 									</div>
 									<div className='profile'>
 										<div className='left'>
 											<span>
 												<strong>User id: </strong>
-												{post.userid}
+												<span ref={refCurUserId}>
+													{post.userid}
+												</span>
 											</span>
 										</div>
 										<div className='right'>
 											<span>Date: {post.time}</span>
-											<span onClick={() => closeEditMode(idx)}>
+											<span
+												onClick={() => closeEditMode(idx)}>
 												<FiEdit3 />
 											</span>
 											<span onClick={() => deletePost(idx)}>
