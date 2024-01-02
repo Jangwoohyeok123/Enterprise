@@ -60,8 +60,13 @@ export default function Contact() {
 	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
 	useEffect(() => {
 		mapOption.current.center = getCenterPosition();
-		mapInstance.current = new kakao.current.maps.Map(mapElement.current, mapOption.current);
-		marker.current = new kakao.current.maps.Marker({ position: mapOption.current.center });
+		mapInstance.current = new kakao.current.maps.Map(
+			mapElement.current,
+			mapOption.current
+		);
+		marker.current = new kakao.current.maps.Marker({
+			position: mapOption.current.center
+		});
 		marker.current.setMap(mapInstance.current);
 	}, [MapInfo]);
 
@@ -74,12 +79,13 @@ export default function Contact() {
 							<header>
 								<article className='mapBox' ref={mapElement}></article>
 							</header>
-
 							<div className='map-list'>
 								<div className='kakao map'>
 									<button onClick={e => changeMap(e)}>kakao</button>
 									<div className='info'>
-										<span className='address'>Address: 162 Yanghwa-ro, Mapo-gu, Seoul</span>
+										<span className='address'>
+											Address: 162 Yanghwa-ro, Mapo-gu, Seoul
+										</span>
 										<span className='number'>Phone: 02-6010-0104</span>
 										<span className='email'>Email: dkanvk1@gmail.com</span>
 									</div>
@@ -87,7 +93,10 @@ export default function Contact() {
 								<div className='naver map'>
 									<button onClick={e => changeMap(e)}>naver</button>
 									<div className='info'>
-										<span className='address'>Address: 6 Buljeong-ro, Bundang-gu, Seongnam-si, Gyeonggi-do</span>
+										<span className='address'>
+											Address: 6 Buljeong-ro, Bundang-gu, Seongnam-si,
+											Gyeonggi-do
+										</span>
 										<span className='number'>Phone: 1588-3830</span>
 										<span className='email'>Email: dkanvk1@naver.com</span>
 									</div>
@@ -95,7 +104,9 @@ export default function Contact() {
 								<div className='seoul map'>
 									<button onClick={e => changeMap(e)}>seoul</button>
 									<div className='info'>
-										<span className='address'>Address: 267 Namdaemunno 5(o)-ga, Jung-gu, Seoul</span>
+										<span className='address'>
+											Address: 267 Namdaemunno 5(o)-ga, Jung-gu, Seoul
+										</span>
 										<span className='number'>Phone: 02-3709-0019</span>
 										<span className='email'>Email: dkanvk1@gmail.com</span>
 									</div>

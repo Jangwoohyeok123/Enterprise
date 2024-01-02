@@ -110,19 +110,33 @@
 		}
 
 		.map-list {
-			padding-top: 40px;
+			padding-top: 10px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
 
 			.map {
-				width: 29%;
+				width: 100%;
+				height: 100px;
+				margin-bottom: 10px;
 
 				.info {
-					font-size: 0.8rem;
-					gap: 10px;
+					position: relative;
+					width: 100%;
+					height: 100px;
+					padding-right: 25px;
+					left: 20%;
+					bottom: 52px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					gap: 5px;
 				}
 			}
 		}
 
 		.mail-title {
+			margin-top: 4vh;
 			h2 {
 				font-size: 2rem;
 			}
@@ -139,20 +153,57 @@
 			}
 		}
 
+		h3 {
+			font-size: 1rem;
+			padding-bottom: 10px;
+		}
+
 		.map-list {
-			padding-top: 40px;
+			padding-top: 15px;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
 
 			.map {
-				width: 29%;
+				width: 100%;
+				height: 100px;
+				margin-bottom: 10px;
+
+				button {
+					border: none;
+					position: relative;
+					padding: 12px;
+
+					left: 15px;
+					bottom: 15px;
+					background: var(--subPoint);
+					font-size: 0.9rem;
+					cursor: pointer;
+					transition: 0.2s;
+
+					&:hover {
+						color: var(--pointColor);
+					}
+				}
 
 				.info {
+					position: relative;
+					width: 70%;
+					height: 125px;
+
+					left: 27%;
+					bottom: 54px;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					gap: 5px;
 					font-size: 0.8rem;
-					gap: 10px;
 				}
 			}
 		}
 
 		.mail-title {
+			margin-top: 10vh;
 			h2 {
 				font-size: 2rem;
 			}
