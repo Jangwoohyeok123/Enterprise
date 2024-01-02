@@ -1,138 +1,168 @@
-// 로그인 페이지는 tablet 부터 반응형 처리를 합시다!
-$metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 95%;
-
 .Signup {
-	display: flex;
-	background: linear-gradient($metal);
-	width: 100%;
-	min-height: 100vh;
-	justify-content: center;
-	align-items: center;
+	width: 500px;
+	min-height: 100%;
+	margin: 3% auto;
+
+	h1 {
+		font-size: 1.8rem;
+		font-weight: 500;
+	}
+
+	.error-zone {
+		color: rgb(240, 22, 66);
+		margin-top: 10px;
+
+		div {
+			padding-left: 13px;
+			padding-bottom: 3px;
+			width: 100%;
+
+			&::before {
+				content: '';
+				display: inline-block;
+				width: 4px;
+				height: 4px;
+				background: rgb(240, 22, 66);
+				border-radius: 50%;
+				position: relative;
+				right: 10px;
+				bottom: 3px;
+			}
+		}
+	}
 
 	fieldset {
+		width: 100%;
+		min-height: 80vh;
+		padding-top: 10px;
 		border: none;
-		width: 700px;
-		height: 70vh;
-		background: #eee;
-		color: var(--inputColor);
-		padding: 20px 30px;
-
-		h1 {
-			font-size: 2.5rem;
-			font-weight: 500;
-		}
+		margin: 0 auto;
+		background: var(--bgColor);
+		font-family: var(--pointFont);
 
 		form {
-			margin-bottom: 50px;
-
-			.text-input {
+			.item {
+				height: 50px;
 				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				row-gap: 20px;
-				margin: 30px 0 40px 0;
+				align-items: center;
 
-				.input {
-					width: 47%;
-					height: 60px;
+				.icon {
+					width: 10%;
+					font-size: 20px;
+					opacity: 0.85;
+				}
+			}
 
-					label {
-						font-size: 1.1rem;
-						font-weight: 500;
+			input[type='text'],
+			input[type='password'] {
+				width: 100%;
+				margin-right: 2%;
+				border-radius: 5px;
+
+				&:focus {
+					outline: 1.5px solid #111;
+				}
+			}
+
+			.form-list {
+				width: 100%;
+				border: 1px solid #bbb;
+				margin-top: 10px;
+				border-radius: 7px;
+
+				.genderContainer {
+					ul {
+						display: flex;
+						justify-content: center;
 						width: 100%;
-						display: block;
-						padding-bottom: 3px;
-					}
+						border-radius: 7px;
 
-					// 왜 reset 이 안먹는지 나중에 생각할 것
-					input {
-						width: 100%;
-						background-color: #fff;
+						li {
+							width: 32%;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							border: 1px solid #ccc;
 
-						&::placeholder {
-							background-color: #fff;
+							&:hover {
+								border: 1px solid #111;
+							}
+
+							label {
+								display: flex;
+								justify-content: center;
+								padding: 10px 10%;
+							}
+
+							input {
+								visibility: hidden;
+								width: 0;
+							}
+						}
+
+						.outline {
+							background: #111;
+							color: #fff;
 						}
 					}
 				}
 			}
 
-			.else-input {
-				margin-bottom: 40px;
+			.error-zone {
+				color: rgb(240, 22, 66);
+				margin-top: 10px;
 
-				h3 {
-					font-size: 1.3rem;
-					font-weight: 600;
-					margin-bottom: 13px;
-				}
+				div {
+					padding-left: 13px;
 
-				.checkboxs {
-					display: flex;
-					justify-content: space-between;
-
-					.checkbox {
-						display: flex;
-						gap: 8px;
-						font-size: 1rem;
+					&::before {
+						content: '';
+						display: inline-block;
+						width: 4px;
+						height: 4px;
+						background: rgb(240, 22, 66);
+						border-radius: 50%;
+						position: relative;
+						right: 10px;
+						bottom: 3px;
 					}
-				}
-			}
-
-			input[type='submit'] {
-				width: 100%;
-				padding: 15px 0;
-				font-size: 1rem;
-				color: #000;
-				font-weight: 500;
-				background: linear-gradient($metal);
-				opacity: 0.7;
-				cursor: pointer;
-				transition: 0.3s;
-
-				&:hover {
-					opacity: 1;
-				}
-			}
-		}
-
-		.sns {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-			gap: 10px;
-
-			.google {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 25px;
-				width: 40px;
-				height: 40px;
-				border: 1px solid #bbb;
-				border-radius: 50%;
-				cursor: pointer;
-				transition: 0.3s;
-
-				&:hover {
-					border-color: #777;
-				}
-			}
-
-			.kakao {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				font-size: 25px;
-				width: 40px;
-				height: 40px;
-				border: 1px solid #bbb;
-				border-radius: 50%;
-				cursor: pointer;
-				transition: 0.3s;
-
-				&:hover {
-					border-color: #777;
 				}
 			}
 		}
 	}
+
+	button {
+		width: 100%;
+		height: 50px;
+		border: none;
+		background: #111;
+		color: #fff;
+		font-weight: 500;
+		font-size: 1.3rem;
+		border-radius: 7px;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
+
+.Mobile {
+	.Signup {
+		width: 100%;
+		padding: 2% 1%;
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		fieldset {
+			width: 100%;
+			padding-top: 20px;
+		}
+	}
+}
+
+/* 
+
+*/
