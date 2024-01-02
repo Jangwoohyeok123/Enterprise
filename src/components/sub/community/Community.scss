@@ -39,11 +39,10 @@
 					border: none;
 					background: transparent;
 					cursor: pointer;
-					font-size: 0.8rem;
-					font-weight: 500;
-					opacity: 0.8;
+					font-size: 1rem;
 					color: var(--baseColor);
 					transition: 0.15s;
+					font-size: 0.9rem;
 
 					&:hover {
 						color: var(--subPoint);
@@ -67,12 +66,14 @@
 				justify-content: space-between;
 				width: 100%;
 				height: 200px;
-				border-top: 1px solid rgba(var(--baseColor-code), 0.3);
+				border-top: 1px solid
+					rgba(var(--baseColor-code), 0.3);
 
 				.posting {
 					// Edit Mode 의 css, Read Mode 의 css 를 만들어라
 					h4 {
 						font-weight: 400;
+						font-size: 1.3rem;
 						padding-bottom: 3vh;
 					}
 
@@ -90,13 +91,12 @@
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
+					gap: 20px;
 					font-size: 0.8rem;
-					opacity: 0.9;
 
 					.left {
 						display: flex;
 						align-items: center;
-						gap: 20px;
 
 						span:nth-of-type(1) {
 							color: var(--baseColor);
@@ -126,6 +126,82 @@
 
 							&:hover {
 								cursor: default;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.Notebook {
+	.Community {
+		header {
+			height: 380px;
+		}
+	}
+}
+
+.Tablet,
+.Mobile {
+	.Community {
+		header {
+			height: 250px;
+			margin-bottom: 30px;
+		}
+
+		.body {
+			flex-direction: column;
+
+			.createPost {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+
+			.posts {
+				width: 100%;
+
+				.post {
+					height: 23vh;
+				}
+			}
+		}
+	}
+}
+
+.Mobile {
+	.Community {
+		width: 100%;
+		padding: 0 2%;
+
+		header {
+			height: 150px;
+		}
+
+		// createPost 와 posts 는 width 100% 가 적용된 상태들
+		.createPost {
+		}
+
+		.body {
+			.posts {
+				.post {
+					height: 30vh;
+
+					.profile {
+						font-size: 0.7rem;
+						position: relative;
+						gap: 0px;
+						top: 10px;
+
+						.left {
+							position: relative;
+							top: 2px;
+						}
+
+						.right {
+							.icon {
+								font-size: 0.8rem;
 							}
 						}
 					}

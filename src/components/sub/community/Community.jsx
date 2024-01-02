@@ -4,15 +4,24 @@ import { useEffect, useRef, useState } from 'react';
 import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useQueryCommunity } from '../../../query/useQueryCommunity';
+// import { useMutation } from 'react-query';
+// import axios from 'axios';
 
 export default function Community() {
 	// state
 	const [Title, setTitle] = useState("User's Community");
 	const [Posts, setPosts] = useState([]);
 	const [IsEdit, setIsEdit] = useState(false);
-	const { data: osts, isSuccess } = useQueryCommunity();
+	// const { data: Posts, isSuccess: isCommunity } =
+	// 	useQueryCommunity();
+	// const {
+	// 	mutate,
+	// 	isLoading,
+	// 	isError,
+	// 	isSuccess: isMutation
+	// } = useMutation();
 
-	console.log(osts);
+	// console.log(posts);
 
 	// ref
 	const path = useRef(process.env.PUBLIC_URL);
