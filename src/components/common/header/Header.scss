@@ -1,12 +1,13 @@
 .Header {
 	width: 100%;
 	padding: 1.5vh 10vw;
+	height: 60px;
 	// 반응형에 벗어나게 만듦
 	background: #333;
 	color: #efefef;
 	position: sticky;
 	top: 0;
-	z-index: 1000;
+	z-index: 10;
 	// variable 처리하기
 
 	// 반응형 처리하고 싶은 요소가 있다면 전역변수를 사용해라
@@ -17,7 +18,7 @@
 	margin: 0 auto;
 
 	h1 {
-		font-size: 1.8rem;
+		font-size: 1.5rem;
 		font-weight: 400;
 	}
 
@@ -26,56 +27,83 @@
 		gap: 50px;
 		align-items: center;
 
+		li {
+			font-size: 0.8rem;
+		}
+
 		a.on {
 			color: var(--pointColor);
 			font-weight: bold;
 		}
 	}
 
-	.darkmode {
-		svg {
-			&:hover {
-				cursor: pointer;
-			}
-		}
-	}
-
 	.icons {
 		display: flex;
+		justify-content: space-between;
 		align-items: center;
 		text-transform: uppercase;
 		gap: 20px;
 
+		.icon {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 30px;
+			cursor: pointer;
+		}
+
+		// icon 과 signup 의 비율은 2:1
 		.signup {
 			position: relative;
-			top: 2px;
+			font-size: 15px;
 			border: 1px solid #efefef;
 			padding: 3px 15px;
 			border-radius: 50px;
-
-			&.on {
-				font-weight: bold;
-				color: var(--pointColor);
-				border-color: var(--pointColor);
-				outline: 1px solid var(--pointColor);
-			}
 		}
 	}
 }
 
-.Tablet,
-.Mobile {
+.Notebook {
+}
+
+.Tablet {
 	.Header {
+		width: 100%;
 		padding: 1.5vh 5vw;
 		ul {
 			display: none;
 		}
-		.icons {
-			display: flex;
-			gap: 20px;
-		}
 	}
 }
 
 .Mobile {
+	.Header {
+		height: 50px;
+		padding: 1.2vh 3vw;
+
+		h1 {
+			font-size: 1.3rem;
+		}
+		ul {
+			display: none;
+		}
+		.icons {
+			gap: 10px;
+			position: relative;
+			top: 1px;
+
+			.icon {
+				font-size: 20px;
+			}
+
+			.signup {
+				position: relative;
+				font-size: 0.8rem;
+				top: 0px;
+				border: 1px solid #efefef;
+				padding: 1px 5px;
+				border-radius: 50px;
+			}
+		}
+	}
 }

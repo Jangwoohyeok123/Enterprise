@@ -29,6 +29,7 @@ footer {
 		text-transform: uppercase;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 		li {
+			font-size: 0.7rem;
 			letter-spacing: 1px;
 			line-height: 1.7;
 
@@ -47,6 +48,7 @@ footer {
 		}
 	}
 	.bottom {
+		font-size: 0.6rem;
 		padding: 7vh;
 		text-align: center;
 		width: 100%;
@@ -84,13 +86,16 @@ footer {
 .Tablet {
 	footer {
 		padding: 3vh 5vw;
+		font-size: 0.8rem;
 	}
 }
 
 .Mobile {
 	footer {
-		padding: 3vh 5vw;
+		font-size: 0.6rem;
+		padding: 0;
 		h6 {
+			font-size: 2rem;
 			display: flex;
 			justify-content: center;
 			padding: 0;
@@ -103,7 +108,7 @@ footer {
 			flex-direction: column;
 			align-items: center;
 			text-align: center;
-			gap: 20px;
+			gap: 15px;
 
 			div {
 				line-height: 2;

@@ -1,8 +1,9 @@
 body {
 	// fontFamily
 	--baseFont: 'Noto Sans', sans-serif;
-	--pointFont: 'Inter', sans-serif;
+	--pointFont: 'Roboto', sans-serif;
 	// fontWeight
+	--metal: 45deg, #aaa 5%, #ccc 10%, #aaa 30%, #bbb 50%, #ccc 60%, #ddd 80%, #999 95%;
 
 	--bodySize: 15px;
 	// fontEffect
@@ -18,7 +19,8 @@ body {
 	--bgColor: #efefef;
 	--inputBgColor: #fff;
 	--inputColor: #333;
-	--placeholderColor: #888;
+	--placeholderColor: #666;
+	--menuBgColor: #333;
 
 	// mode viewSize
 	--Tablet: 100%;
@@ -29,5 +31,5 @@ body {
 	--baseColor: #efefef;
 	--baseColor-code: 255, 255, 255;
 	--bgColor: #333;
-	--inputBgColor: #efefef;
+	--inputBgColor: #dfdfdf;
 }

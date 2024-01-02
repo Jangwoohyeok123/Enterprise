@@ -5,34 +5,20 @@ import './Youtube.scss';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { IoArrowForwardCircleOutline } from 'react-icons/io5';
+import { useQueryYoutube, useQueryYoutubeDetail } from '../../../query/useQueryYoutube';
 
 export default function Youtube() {
-	const [Vids, setVids] = useState([]);
+	const { data: Vids, isSuccess } = useQueryYoutube();
 
 	// custom hook
 	const viewType = useViewType();
 	const wordSlice = useTextMethod('wordSlice');
 	const charSlice = useTextMethod('charSlice');
 
-	const fetchYoutube = async () => {
-		const api비밀키 = process.env.REACT_APP_YOUTUBE_API; // Cloud 에서 받아옴
-		const 저장소이름 = process.env.REACT_APP_YOUTUBE_LIST; // youtube url 뒤에 있음
-		const 요청사진개수 = 5;
-		const 최종주소 = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api비밀키}&part=snippet&playlistId=${저장소이름}&maxResults=${요청사진개수}`;
-		const data = await fetch(최종주소);
-		const json = await data.json();
-		setVids(json.items); // 요청 함수
-	};
-
 	const path = useRef(process.env.PUBLIC_URL);
 
-	// 줄세우기 함수
-	useEffect(() => {
-		fetchYoutube();
-	}, []);
-
 	return (
-		<Layout title={'We provide a simplified build process'} className='Youtube'>
+		<Layout title={''} className='Youtube'>
 			<section className='Youtube-firstSection'>
 				<div className='leftImg'>
 					<div className='text'>
@@ -68,37 +54,38 @@ export default function Youtube() {
 			<section className='Youtube-secondSection'>
 				<div className='header'>
 					<h2>Working Videos</h2>
-					<h3>description</h3>
+					<h3>Description</h3>
 				</div>
-				{Vids.map((video, idx) => {
-					const [date, tmpTime] = video.snippet.publishedAt.split('T');
-					const time = tmpTime.slice(0, tmpTime.length - 1);
-					return (
-						<article key={video + idx}>
-							<div className='video'>
-								<Link className='img' to={`/detail/${video.id}`}>
-									<img src={video.snippet.thumbnails.standard.url} alt={video.snippet.title} />
-								</Link>
-								<div className='text'>
-									<h4>{wordSlice(video.snippet.title)}</h4>
-									<div className='sub'>
-										<div className='time'>
-											<span>{date}</span>
-											<span>{time}</span>
+				{isSuccess &&
+					Vids.map((video, idx) => {
+						const [date, tmpTime] = video.snippet.publishedAt.split('T');
+						const time = tmpTime.slice(0, tmpTime.length - 1);
+						return (
+							<article key={video + idx}>
+								<div className='video'>
+									<Link className='img' to={`/detail/${video.id}`}>
+										<img src={video.snippet.thumbnails.standard.url} alt={video.snippet.title} />
+									</Link>
+									<div className='text'>
+										<h4>{wordSlice(video.snippet.title)}</h4>
+										<div className='sub'>
+											<div className='time'>
+												<span>{date}</span>
+												<span>{time}</span>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div className='description'>
-								<p>{charSlice(video.snippet.description, 190)} ...</p>
-								<Link className='more' to={`/detail/${video.id}`}>
-									<span>more</span>
-									<IoArrowForwardCircleOutline className='icon' />
-								</Link>
-							</div>
-						</article>
-					);
-				})}
+								<div className='description'>
+									<p>{charSlice(video.snippet.description, 190)} ...</p>
+									<Link className='more' to={`/detail/${video.id}`}>
+										<span>more</span>
+										<IoArrowForwardCircleOutline className='icon' />
+									</Link>
+								</div>
+							</article>
+						);
+					})}
 			</section>
 		</Layout>
 	);
@@ -116,4 +103,8 @@ export default function Youtube() {
 			wordSlice(video.snippet.title, 5)
 			wordSlice(video.snippet.description, 50)
 			video.snippet.thumbnails.standard.url} alt={video.snippet.title}
+*/
+
+/* 
+  home 을 갔다가 Youtube 로 가면 문제가 없는데 youtube 로 바로가면 문제가 생김
 */

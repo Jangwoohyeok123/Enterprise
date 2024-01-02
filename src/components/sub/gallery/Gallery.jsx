@@ -22,16 +22,16 @@ export default function Gallery() {
 
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
-	const notiOpen = (e) => {
+	const notiOpen = e => {
 		e.currentTarget.children[1].style.visibility = 'visible';
 	};
 
-	const notiClose = (e) => {
+	const notiClose = e => {
 		e.currentTarget.children[1].style.visibility = 'hidden';
 	};
 
 	// controller - 비동기
-	const setUserGallery = async (clickedId) => {
+	const setUserGallery = async clickedId => {
 		if (clickedId === userId.current) return;
 		userId.current = clickedId;
 		page.current = 'user';
@@ -39,7 +39,7 @@ export default function Gallery() {
 		setPics(photos);
 	};
 
-	const setInterstGallery = async (e) => {
+	const setInterstGallery = async e => {
 		// page 가 interest 면 fetch 안함
 		if (page.current === 'interest') return;
 		page.current = 'interest';
@@ -47,7 +47,7 @@ export default function Gallery() {
 		setPics(photos);
 	};
 
-	const fetchFlickr = async (opt) => {
+	const fetchFlickr = async opt => {
 		const num = 36;
 		const flickr_api = process.env.REACT_APP_FLICKR_API;
 		const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
@@ -82,8 +82,8 @@ export default function Gallery() {
 					</div>
 					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {
-							const picTitle = pic.title.split(' ');
-							const top = charSlice(picTitle.slice(0, picTitle.length / 2 + 1).join(''), 24);
+							let picTitle = pic.title.split(' ');
+							if (pic.title.length > 50) picTitle = picTitle.slice(0, 50).concat('...');
 							const bottom = charSlice(picTitle.slice(picTitle.length / 2 + 1).join(''), 24);
 
 							return (
@@ -97,7 +97,7 @@ export default function Gallery() {
 											<div className='more' onMouseOver={notiOpen} onMouseOut={notiClose}>
 												<IoArrowForwardCircleOutline
 													className='more icons'
-													onClick={(e) => {
+													onClick={e => {
 														setUserGallery(pic.owner);
 													}}
 												/>
@@ -105,9 +105,9 @@ export default function Gallery() {
 											</div>
 										</div>
 										<h3>
-											{top}
+											{picTitle}
 											<br></br>
-											{bottom.length ? bottom : 'Dream'}
+											{/* {bottom.length ? bottom : 'Dream'} */}
 										</h3>
 									</div>
 
