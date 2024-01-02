@@ -5,11 +5,11 @@ const path = process.env.PUBLIC_URL;
 const fetchCommunity = async () => {
 	const response = await fetch(`${path}/DB/community.json`);
 	const json = await response.json();
-	return json;
+	return json.posts;
 };
 
-export const useQueryDepartment = () => {
-	return useQuery(['fetchDepartment'], fetchCommunity, {
+export const useQueryCommunity = () => {
+	return useQuery(['fetchCommunity'], fetchCommunity, {
 		staleTime: 1000 * 60 * 60 * 24,
 		cacheTime: 1000 * 60 * 60 * 24,
 		refetchOnMount: false,

@@ -3,12 +3,16 @@ import Layout from '../../common/layout/Layout';
 import { useEffect, useRef, useState } from 'react';
 import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useQueryCommunity } from '../../../query/useQueryCommunity';
 
 export default function Community() {
 	// state
 	const [Title, setTitle] = useState("User's Community");
 	const [Posts, setPosts] = useState([]);
 	const [IsEdit, setIsEdit] = useState(false);
+	const { data: osts, isSuccess } = useQueryCommunity();
+
+	console.log(osts);
 
 	// ref
 	const path = useRef(process.env.PUBLIC_URL);
