@@ -44,8 +44,14 @@ export default function Visual() {
 								{/* 첫 렌더링시 1부터 시작하지 않고 4부터 시작함 */}
 								<div className='inner'>
 									<div className='picBox'>
-										<img src={vid.snippet.thumbnails.standard.url} alt={vid.snippet.title} />
-										<img src={vid.snippet.thumbnails.standard.url} alt={vid.snippet.title} />
+										<img
+											src={vid.snippet.thumbnails.standard.url}
+											alt={vid.snippet.title}
+										/>
+										<img
+											src={vid.snippet.thumbnails.standard.url}
+											alt={vid.snippet.title}
+										/>
 									</div>
 									<div className='txtBox'>
 										<h2>{shortenText(vid.snippet.title, 50)}</h2>
@@ -71,4 +77,16 @@ export default function Visual() {
 	3. swiper 객체의 메소드를 사용한다. 
 
 	=> swiper 객체를 사용하는 컴포넌트는 스타일일 지정할 때 z-index 를 다뤄야 한다.
+*/
+
+/* 
+	1. swiper 컴포넌트의 기본 사용법
+	2. useSwiper 라는 전용 hook 을 자식컴포넌트에서 호출하는 구조임
+	3. 참조객체를 자식컴포넌트에게 전달해 부모와 자식이 swiper 를 공유한다. 
+*/
+
+/*
+  React.createElement('tag name', {...props}, children)
+	ex) React.createElement('p', {className: 'abc'}, 'text')
+	=> <p className='abc'>text</p>
 */

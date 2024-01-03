@@ -5,30 +5,32 @@ import './Contact.scss';
 import Form from './components/Form';
 
 export default function Contact() {
-	const mapElement = useRef(null); // mapFrame
+	const mapElementForGenerate = useRef(null); // 지도생성시 필요한 요소
 	const mapInstance = useRef(null); // mapInstance
 	const marker = useRef(null); // marker
-	const viewFrame = useRef(null);
+	const mapTypeController = useRef(null);
+	const zoomController = useRef(null);
 
-	const kakao = useRef(window.kakao);
+	const kakao = useRef(window.kakao.maps);
+	console.log(kakao.current);
 
 	const [MapInfo, setMapInfo] = useState([
 		{
 			active: true, // none
 			title: 'kakao', // title
-			center: new kakao.current.maps.LatLng(37.55637, 126.92392393) // latlng
+			center: new kakao.current.LatLng(37.55637, 126.92392393) // latlng
 			// marker imgSrc
 			// marker imgSize
 		},
 		{
 			active: false,
 			title: 'naver',
-			center: new kakao.current.maps.LatLng(37.3589, 127.1052131)
+			center: new kakao.current.LatLng(37.3589, 127.1052131)
 		},
 		{
 			active: false,
 			title: 'seoul',
-			center: new kakao.current.maps.LatLng(37.5567, 126.97597)
+			center: new kakao.current.LatLng(37.5567, 126.97597)
 		}
 	]);
 
@@ -53,21 +55,32 @@ export default function Contact() {
 
 	// kakao api 는 속성의 key 가 center 가 아니면 에러남
 	const mapOption = useRef({
-		center: new kakao.current.maps.LatLng(37.55637, 126.92392393),
+		center: new kakao.current.LatLng(37.55637, 126.92392393),
 		level: 3
 	});
 
 	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
 	useEffect(() => {
 		mapOption.current.center = getCenterPosition();
-		mapInstance.current = new kakao.current.maps.Map(
-			mapElement.current,
+		mapInstance.current = new kakao.current.Map(
+			mapElementForGenerate.current,
 			mapOption.current
 		);
-		marker.current = new kakao.current.maps.Marker({
+		marker.current = new kakao.current.Marker({
 			position: mapOption.current.center
 		});
 		marker.current.setMap(mapInstance.current);
+		mapInstance.current.setZoomable(false);
+		mapTypeController.current = new kakao.current.MapTypeControl();
+		mapInstance.current.addControl(
+			mapTypeController.current,
+			kakao.current.ControlPosition.TOPRIGHT
+		);
+		zoomController.current = new kakao.current.ZoomControl();
+		mapInstance.current.addControl(
+			zoomController.current,
+			kakao.current.ControlPosition.RIGHT
+		);
 	}, [MapInfo]);
 
 	return (
@@ -77,7 +90,9 @@ export default function Contact() {
 					return (
 						<div key={info + idx}>
 							<header>
-								<article className='mapBox' ref={mapElement}></article>
+								<article
+									className='mapBox'
+									ref={mapElementForGenerate}></article>
 							</header>
 							<div className='map-list'>
 								<div className='kakao map'>
