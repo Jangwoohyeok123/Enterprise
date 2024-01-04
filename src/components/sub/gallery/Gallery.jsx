@@ -8,7 +8,9 @@ import Modal from '../../common/modal/Modal';
 
 export default function Gallery() {
 	// useState
-	const [Title, setTitle] = useState('Our users post creative and interesting photos on our app');
+	const [Title, setTitle] = useState(
+		'Our users post creative and interesting photos on our app'
+	);
 	const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Index, setIndex] = useState(0);
@@ -80,10 +82,13 @@ export default function Gallery() {
 						<IoArrowBack className='icons' />
 						Return to Today's Gallery Rankings
 					</div>
-					<Masonry className={'frame'} options={{ transitionDuration: '0.5s', gutter: 20 }}>
+					<Masonry
+						className={'frame'}
+						options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{Pics.map((pic, idx) => {
 							let picTitle = pic.title;
-							if (pic.title.length > 50) picTitle = picTitle.slice(0, 50).concat('...');
+							if (pic.title.length > 50)
+								picTitle = picTitle.slice(0, 50).concat('...');
 
 							return (
 								<article key={idx}>
@@ -91,9 +96,14 @@ export default function Gallery() {
 										<div className='services'>
 											<div className='info'>
 												<span>User id: </span>
-												<span onClick={() => setUserGallery(pic.owner)}>{pic.owner}</span>
+												<span onClick={() => setUserGallery(pic.owner)}>
+													{pic.owner}
+												</span>
 											</div>
-											<div className='more' onMouseOver={notiOpen} onMouseOut={notiClose}>
+											<div
+												className='more'
+												onMouseOver={notiOpen}
+												onMouseOut={notiClose}>
 												<IoArrowForwardCircleOutline
 													className='more icons'
 													onClick={e => {
@@ -136,3 +146,31 @@ export default function Gallery() {
 		</>
 	);
 }
+
+/* 
+[ Controls ]
+
+Interest Gallery 를 누르면 handleInterest
+
+My Gallery 를 누르면 handleMine
+
+controls > form 을 누르면 handleSearch 실행
+
+handleInterest
+=> activateBtn 호출
+=> flickr interest fetching
+
+handleMine 
+=> activateBtn 호출
+=> flickr user fetching
+
+handleSearch 
+=> activateBtn 호출
+=> flickr search fetching
+=> search.current true 처리
+
+[ search.current ]
+
+서칭이 성공하고, 데이터를 갖고
+리액트 쿼리에서 isSuccess 를 사용하면 필요없다.
+*/
