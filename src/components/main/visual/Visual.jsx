@@ -25,7 +25,7 @@ export default function Visual() {
 	// modules={[Navigation, Pagination]} slidesPerView={3}
 
 	return (
-		<figure className='Visual myScroll'>
+		<figure className='Visual'>
 			<Swiper {...swiperOpt}>
 				{isSuccess &&
 					data.map((el, idx) => {
