@@ -8,6 +8,7 @@ import { useRef } from 'react';
 
 export default function MainWrap() {
 	const refBtns = useRef(null);
+
 	return (
 		<div className='MainWrap'>
 			<Visual />

@@ -14,10 +14,11 @@
 		height: 10px;
 		background: var(--baseColor);
 		border-radius: 5px;
+		transition: 0.3s;
 		cursor: pointer;
 
 		&.on {
-			background: var(--pointColor);
+			background: var(--subPoint);
 			height: 100px;
 		}
 	}
