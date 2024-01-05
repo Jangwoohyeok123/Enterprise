@@ -9,7 +9,6 @@ import useThrottle from '../../../hooks/useThrottle';
 
 // 컴포넌트를 재활용하고 싶을때는 props 를 잘 활용하자!
 export default function Btns({ frame, items, base, isAuto }) {
-	const [Mounted, setMounted] = useState(true);
 	const defOpt = useRef({
 		frame: '.App',
 		items: '.myScroll',
@@ -24,20 +23,8 @@ export default function Btns({ frame, items, base, isAuto }) {
 	const isMotion = useRef(false);
 
 	const activation = () => {
-		/*  
-		사건은? 스크롤마다 발생
-		
-		스크롤 마다 현재 scroll 이 얼마나 진행됐는지 체크한 후 section 의 offsetTop[0 ~ section 개수] 보다 클 경우 activattion 진행한다. 
-	*/
-		/* 
-		부모 컴포넌트가 사라지면 
-	*/
-		if (!Mounted) return;
 		const scroll = app.current.scrollTop;
 
-		/* 
-			for-if return 문으로 배열탐색할 때 가장 먼저 조건맞는 것을 액티브함
-		*/
 		secs.current.forEach((sec, idx) => {
 			if (scroll >= secs.current[idx].offsetTop - baseline.current) {
 				Array.from(btns.current.children).forEach(btn =>
@@ -47,12 +34,24 @@ export default function Btns({ frame, items, base, isAuto }) {
 				return;
 			}
 		});
+
+		/* 
+			for-if return 문으로 배열탐색할 때 가장 먼저 조건맞는 것을 액티브함
+		*/
+
+		/*  
+		사건은? 스크롤마다 발생
+		
+		스크롤 마다 현재 scroll 이 얼마나 진행됐는지 체크한 후 section 의 offsetTop[0 ~ section 개수] 보다 클 경우 activattion 진행한다. 
+	*/
+		/* 
+		부모 컴포넌트가 사라지면 
+	*/
 	};
 
 	const moveScroll = idx => {
 		// 모션중이면 이동안함
 		if (isMotion.current) return;
-
 		isMotion.current = true;
 		new Anime(
 			app.current,
@@ -73,6 +72,8 @@ export default function Btns({ frame, items, base, isAuto }) {
 		const btnsArr = Array.from(btns.current.children);
 		const activeEl = btns.current.querySelector('li.on');
 		const activeIndex = btnsArr.indexOf(activeEl);
+
+		console.log('autoscroll');
 
 		if (e.deltaY > 0) {
 			// 0 이상이면 수직으로 내리면 active 된 것이 Num 이 아니면
@@ -108,10 +109,6 @@ export default function Btns({ frame, items, base, isAuto }) {
 			app.current.removeEventListener('wheel', autoScroll);
 		};
 	});
-
-	useEffect(() => {
-		return () => setMounted(false);
-	}, []);
 
 	return (
 		<ul className='Btns' ref={btns}>
