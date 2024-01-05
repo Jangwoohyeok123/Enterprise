@@ -7,7 +7,6 @@ const fetchYoutube = async () => {
 	const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&playlistId=${pid}&maxResults=${num}`;
 	const response = await fetch(baseURL);
 	const json = await response.json();
-	console.log('fetch');
 	console.log(json.items);
 
 	return json.items;

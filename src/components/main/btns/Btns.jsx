@@ -7,23 +7,35 @@ import useThrottle from '../../../hooks/useThrottle';
 // DOM.scrollY : browser(DOM 요소)를 스크롤할때마다 스크롤되고 있는 맨 위에서부터의 거리값
 // DOM.offsetTop: 문서에서 해당 돔 요소의 세로 위치값
 
-export default function Btns() {
+// 컴포넌트를 재활용하고 싶을때는 props 를 잘 활용하자!
+export default function Btns({ frame, items, base, isAuto }) {
+	const defOpt = useRef({
+		frame: '.App',
+		items: '.myScroll',
+		base: -window.innerHeight / 2,
+		isAuto: false
+	});
 	const [Num, setNum] = useState(0);
 	const secs = useRef(null);
 	const app = useRef(null);
 	const btns = useRef(null);
+	const baseline = useRef(window.innerHeight / 3);
+	const isMotion = useRef(false);
 
 	const activation = () => {
 		/*  
-		언제 발생? 스크롤마다 발생
+		사건은? 스크롤마다 발생
 		
 		스크롤 마다 현재 scroll 이 얼마나 진행됐는지 체크한 후 section 의 offsetTop[0 ~ section 개수] 보다 클 경우 activattion 진행한다. 
 	*/
 
 		const scroll = app.current.scrollTop;
 
+		/* 
+			for-if return 문으로 배열탐색할 때 가장 먼저 조건맞는 것을 액티브함
+		*/
 		secs.current.forEach((sec, idx) => {
-			if (scroll >= secs.current[idx].offsetTop) {
+			if (scroll >= secs.current[idx].offsetTop - baseline.current) {
 				Array.from(btns.current.children).forEach(btn =>
 					btn.classList.remove('on')
 				);
@@ -33,13 +45,62 @@ export default function Btns() {
 		});
 	};
 
+	const moveScroll = idx => {
+		// 모션중이면 이동안함
+		if (isMotion.current) return;
+
+		isMotion.current = true;
+		new Anime(
+			app.current,
+			{
+				scroll:
+					idx == 0
+						? secs.current[idx].offsetTop - 60
+						: secs.current[idx].offsetTop
+			},
+			{ callback: () => (isMotion.current = false) }
+		);
+	};
+
+	const autoScroll = e => {
+		/* 
+			사건은? 
+		*/
+		const btnsArr = Array.from(btns.current.children);
+		const activeEl = btns.current.querySelector('li.on');
+		const activeIndex = btnsArr.indexOf(activeEl);
+
+		if (e.deltaY > 0) {
+			// 0 이상이면 수직으로 내리면 active 된 것이 Num 이 아니면
+			// Num - 1 은 section index 를 의미
+			// 스크롤 내릴 때 activeIndex 와 section 인덱스가 다르면 activeIndex 를 변경한다.
+			activeIndex !== Num - 1 && moveScroll(activeIndex + 1);
+		} else {
+			activeIndex !== 0 && moveScroll(activeIndex - 1);
+		}
+	};
+
+	const modifyPos = () => {
+		const btnsArr = Array.from(btns.current.children);
+		const activeEl = btns.current.querySeletor('li.on');
+		const activeIndex = btnsArr.indexOf(activeEl);
+		app.current.scrollTop = secs.current[activeIndex].offsetTop;
+	};
+
 	useEffect(() => {
 		app.current = document.querySelector('.App');
 		secs.current = document.querySelectorAll('.myScroll');
-
-		app.current.addEventListener('scroll', activation);
-
 		setNum(secs.current.length);
+
+		app.current.addEventListener('resize', modifyPos);
+		app.current.addEventListener('scroll', activation);
+		app.current.addEventListener('wheel', autoScroll);
+
+		return () => {
+			app.current.removeEventListener('resize', modifyPos);
+			app.current.removeEventListener('scroll', activation);
+			app.current.removeEventListener('wheel', autoScroll);
+		};
 	});
 
 	return (
