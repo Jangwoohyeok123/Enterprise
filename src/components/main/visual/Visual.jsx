@@ -11,11 +11,12 @@ import { useEffect } from 'react';
 
 export default function Visual() {
 	const num = useRef(4);
-	const { isSuccess, data } = useQueryYoutube();
 	const swipeRef = useRef(null);
+	const { isSuccess, data } = useQueryYoutube();
 	const [PrevIndex, setPrevIndex] = useState(0);
 	const [Index, setIndex] = useState(0);
 	const [NextIndex, setNextIndex] = useState(0);
+
 	const swiperOpt = useRef({
 		modules: [Autoplay],
 		loop: true,

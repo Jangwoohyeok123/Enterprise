@@ -9,6 +9,7 @@ import useThrottle from '../../../hooks/useThrottle';
 
 // 컴포넌트를 재활용하고 싶을때는 props 를 잘 활용하자!
 export default function Btns({ frame, items, base, isAuto }) {
+	const [Mounted, setMounted] = useState(true);
 	const defOpt = useRef({
 		frame: '.App',
 		items: '.myScroll',
@@ -28,7 +29,10 @@ export default function Btns({ frame, items, base, isAuto }) {
 		
 		스크롤 마다 현재 scroll 이 얼마나 진행됐는지 체크한 후 section 의 offsetTop[0 ~ section 개수] 보다 클 경우 activattion 진행한다. 
 	*/
-
+		/* 
+		부모 컴포넌트가 사라지면 
+	*/
+		if (!Mounted) return;
 		const scroll = app.current.scrollTop;
 
 		/* 
@@ -54,7 +58,7 @@ export default function Btns({ frame, items, base, isAuto }) {
 			app.current,
 			{
 				scroll:
-					idx == 0
+					idx === 0
 						? secs.current[idx].offsetTop - 60
 						: secs.current[idx].offsetTop
 			},
@@ -87,21 +91,27 @@ export default function Btns({ frame, items, base, isAuto }) {
 		app.current.scrollTop = secs.current[activeIndex].offsetTop;
 	};
 
+	const throttledActivation = useThrottle(activation);
+
 	useEffect(() => {
 		app.current = document.querySelector('.App');
 		secs.current = document.querySelectorAll('.myScroll');
 		setNum(secs.current.length);
 
 		app.current.addEventListener('resize', modifyPos);
-		app.current.addEventListener('scroll', activation);
+		app.current.addEventListener('scroll', throttledActivation);
 		app.current.addEventListener('wheel', autoScroll);
 
 		return () => {
 			app.current.removeEventListener('resize', modifyPos);
-			app.current.removeEventListener('scroll', activation);
+			app.current.removeEventListener('scroll', throttledActivation);
 			app.current.removeEventListener('wheel', autoScroll);
 		};
 	});
+
+	useEffect(() => {
+		return () => setMounted(false);
+	}, []);
 
 	return (
 		<ul className='Btns' ref={btns}>
