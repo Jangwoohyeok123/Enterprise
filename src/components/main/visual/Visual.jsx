@@ -10,7 +10,7 @@ import { useQueryYoutube } from '../../../query/useQueryYoutube';
 import { useEffect } from 'react';
 
 export default function Visual() {
-	const num = useRef(4);
+	const num = useRef(3); // 몇 개의 사진을 루프돌릴건지를 정하는 변수
 	const swipeRef = useRef(null);
 	const { isSuccess, data } = useQueryYoutube();
 	const [PrevIndex, setPrevIndex] = useState(0);
