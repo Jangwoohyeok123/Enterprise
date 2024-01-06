@@ -3,7 +3,7 @@
 	--gap: 20px;
 
 	h1 {
-		padding-bottom: 4vh;
+		padding: 3vh 0 10vh;
 	}
 
 	.icons {
@@ -14,20 +14,68 @@
 		position: relative;
 		padding-bottom: 8vh;
 
-		.back {
-			position: absolute;
-			right: 0;
-			top: -33px;
+		.tab {
 			display: flex;
-			align-items: center;
-			gap: 8px;
-			transition: 0.3s;
+			justify-content: space-between;
+			padding-bottom: 2vh;
 
-			&:hover {
-				cursor: pointer;
-				color: var(--subPoint);
+			.menu {
+				display: flex;
+				border-bottom: 1px solid #ccc;
+
+				span {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 150px;
+					padding: 10px;
+					text-align: center;
+				}
+
+				span.on {
+					border-bottom: 1px solid var(--subPoint);
+				}
+			}
+
+			.search {
+				display: flex;
+				gap: 20px;
+				position: relative;
+
+				input {
+					width: 200px;
+					border-radius: 20px;
+					padding: 5px;
+					padding-left: 40px;
+
+					&:focus {
+						outline: 2px solid var(--subPoint);
+					}
+				}
+
+				.icon {
+					position: absolute;
+					left: 15px;
+					top: 14px;
+					opacity: 0.7;
+				}
 			}
 		}
+
+		// .back {
+		// 	position: absolute;
+		// 	right: 0;
+		// 	top: -33px;
+		// 	display: flex;
+		// 	align-items: center;
+		// 	gap: 8px;
+		// 	transition: 0.3s;
+
+		// 	&:hover {
+		// 		cursor: pointer;
+		// 		color: var(--subPoint);
+		// 	}
+		// }
 
 		.frame {
 			display: flex;

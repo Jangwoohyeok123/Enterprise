@@ -5,6 +5,8 @@ import './Gallery.scss';
 import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
+import { FaSearch } from 'react-icons/fa';
+import { useQueryGallery } from '../../../query/useQueryGallery';
 
 export default function Gallery() {
 	// useState
@@ -18,12 +20,27 @@ export default function Gallery() {
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const page = useRef(''); // page 이동시 필요한 ref
+	const tab = useRef('');
 
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
-
+	useQueryGallery('interest');
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
+	const activation = clickedIdx => {
+		Array.from(tab.current.children).forEach(el => {
+			el.classList.remove('on');
+		});
+
+		Array.from(tab.current.children).forEach((menu, index) => {
+			if (index === clickedIdx) {
+				menu.classList.add('on');
+				if (clickedIdx === 0) {
+				}
+			}
+		});
+	};
+
 	const notiOpen = e => {
 		e.currentTarget.children[1].style.visibility = 'visible';
 	};
@@ -82,6 +99,16 @@ export default function Gallery() {
 						<IoArrowBack className='icons' />
 						Return to Today's Gallery Rankings
 					</div> */}
+					<div className='tab'>
+						<span className='menu' ref={tab}>
+							<span onClick={() => activation(0)}>Interest Gallery</span>
+							<span onClick={() => activation(1)}>My Gallery</span>
+						</span>
+						<span className='search'>
+							<input type='text' placeholder='Search'></input>
+							<FaSearch className='icon' />
+						</span>
+					</div>
 					<Masonry
 						className={'frame'}
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
