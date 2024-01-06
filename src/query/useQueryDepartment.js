@@ -17,3 +17,6 @@ export const useQueryDepartment = () => {
 		retry: 3 //데이터요청 실패시 재시도 횟수, default:3
 	});
 };
+
+// useQuery 를 통해서 갖고오고
+// isSuccess 를 통해서 useEffect 를 없앤다.

@@ -21,7 +21,6 @@
 
 			.menu {
 				display: flex;
-				border-bottom: 1px solid #ccc;
 
 				span {
 					display: flex;
@@ -30,10 +29,12 @@
 					width: 150px;
 					padding: 10px;
 					text-align: center;
+					border: 1px solid rgba(var(--baseColor-code), 0.2);
 				}
 
 				span.on {
-					border-bottom: 1px solid var(--subPoint);
+					border: 1px solid var(--subPoint);
+					color: var(--subPoint);
 				}
 			}
 

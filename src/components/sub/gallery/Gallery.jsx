@@ -9,6 +9,13 @@ import { FaSearch } from 'react-icons/fa';
 import { useQueryGallery } from '../../../query/useQueryGallery';
 
 export default function Gallery() {
+	const { data: interest, isSuccess: isInterest } = useQueryGallery({
+		type: 'interest'
+	});
+	const { data: myGallery, isSuccess: isMyGallery } = useQueryGallery({
+		type: 'user'
+	});
+
 	// useState
 	const [Title, setTitle] = useState(
 		'Our users post creative and interesting photos on our app'
@@ -24,7 +31,7 @@ export default function Gallery() {
 
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
-	useQueryGallery('interest');
+
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
 	const activation = clickedIdx => {
@@ -33,10 +40,16 @@ export default function Gallery() {
 		});
 
 		Array.from(tab.current.children).forEach((menu, index) => {
-			if (index === clickedIdx) {
+			if (index === clickedIdx && index === 0) {
 				menu.classList.add('on');
-				if (clickedIdx === 0) {
-				}
+				console.log('interest');
+				setPics(interest.photos.photo);
+			}
+
+			if (index === clickedIdx && index === 1) {
+				menu.classList.add('on');
+				console.log('my gallery');
+				setPics(myGallery.photos.photo);
 			}
 		});
 	};
@@ -63,6 +76,8 @@ export default function Gallery() {
 		if (page.current === 'interest') return;
 		page.current = 'interest';
 		const photos = await fetchFlickr({ type: 'interest' });
+		console.log('inSetIntersetGallery');
+		console.log(photos);
 		setPics(photos);
 	};
 
@@ -89,16 +104,14 @@ export default function Gallery() {
 
 	useEffect(() => {
 		setInterstGallery();
+		// setPics(interest.photos.photo);
+		tab.current.children[0].classList.add('on');
 	}, []);
 
 	return (
 		<>
 			<Layout title={Title} className='Gallery'>
 				<section className='frameWrap'>
-					{/* <div className='back' onClick={setInterstGallery}>
-						<IoArrowBack className='icons' />
-						Return to Today's Gallery Rankings
-					</div> */}
 					<div className='tab'>
 						<span className='menu' ref={tab}>
 							<span onClick={() => activation(0)}>Interest Gallery</span>
@@ -112,54 +125,53 @@ export default function Gallery() {
 					<Masonry
 						className={'frame'}
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
-						{Pics.map((pic, idx) => {
-							let picTitle = pic.title;
-							if (pic.title.length > 50)
-								picTitle = picTitle.slice(0, 50).concat('...');
+						{isInterest &&
+							Pics.map((pic, idx) => {
+								let picTitle = pic.title;
+								if (pic.title.length > 50)
+									picTitle = picTitle.slice(0, 50).concat('...');
 
-							return (
-								<article key={idx}>
-									<div className='txt'>
-										<div className='services'>
-											<div className='info'>
-												<span>User id: </span>
-												<span onClick={() => setUserGallery(pic.owner)}>
-													{pic.owner}
-												</span>
+								return (
+									<article key={idx}>
+										<div className='txt'>
+											<div className='services'>
+												<div className='info'>
+													<span>User id: </span>
+													<span onClick={() => setUserGallery(pic.owner)}>
+														{pic.owner}
+													</span>
+												</div>
+												<div
+													className='more'
+													onMouseOver={notiOpen}
+													onMouseOut={notiClose}>
+													<IoArrowForwardCircleOutline
+														className='more icons'
+														onClick={e => {
+															setUserGallery(pic.owner);
+														}}
+													/>
+													<div className='noti'>{pic.owner}'s gallery</div>
+												</div>
 											</div>
-											<div
-												className='more'
-												onMouseOver={notiOpen}
-												onMouseOut={notiClose}>
-												<IoArrowForwardCircleOutline
-													className='more icons'
-													onClick={e => {
-														setUserGallery(pic.owner);
-													}}
-												/>
-												<div className='noti'>{pic.owner}'s gallery</div>
-											</div>
+											<h3>{picTitle}</h3>
 										</div>
-										<h3>{picTitle}</h3>
-									</div>
 
-									<div className='img'>
-										<img
-											src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-											alt={`${pic.title}`}
-											onClick={() => {
-												setOpenModal(true);
-												setIndex(idx);
-											}}
-										/>
-										<div className='overlay'></div>
-									</div>
-								</article>
-							);
-						})}
+										<div className='img'>
+											<img
+												src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
+												alt={`${pic.title}`}
+												onClick={() => {
+													setOpenModal(true);
+													setIndex(idx);
+												}}
+											/>
+											<div className='overlay'></div>
+										</div>
+									</article>
+								);
+							})}
 					</Masonry>
-
-					{/* 이벤트가 발생할 때 전달할 속성은 state 로 처리한다. */}
 				</section>
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 const fetchGallery = async ({ queryKey: [_, opt] }) => {
-	const num = 38;
+	const num = 36;
 	const flickr_api = process.env.REACT_APP_FLICKR_API;
 	const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
 
@@ -30,6 +30,7 @@ const fetchGallery = async ({ queryKey: [_, opt] }) => {
 };
 
 export const useQueryGallery = opt => {
+	if (opt.type === 'user' && !opt.id) opt.id = '25986582@N05';
 	return useQuery(['fetchGallery', opt], fetchGallery, {
 		staleTime: 1000 * 60 * 60 * 24,
 		acheTime: 1000 * 60 * 60 * 24,
