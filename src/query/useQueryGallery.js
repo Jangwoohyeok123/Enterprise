@@ -26,7 +26,7 @@ const fetchGallery = async ({ queryKey: [_, opt] }) => {
 
 	const data = await fetch(url);
 	const json = await data.json();
-	return json;
+	return json.photos.photo;
 };
 
 export const useQueryGallery = opt => {

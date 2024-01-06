@@ -9,18 +9,18 @@ import { FaSearch } from 'react-icons/fa';
 import { useQueryGallery } from '../../../query/useQueryGallery';
 
 export default function Gallery() {
-	const { data: interest, isSuccess: isInterest } = useQueryGallery({
-		type: 'interest'
-	});
-	const { data: myGallery, isSuccess: isMyGallery } = useQueryGallery({
-		type: 'user'
-	});
+	const [Opt, setOpt] = useState({ type: 'interest' });
+	const {
+		data: Pics,
+		isSuccess,
+		refetch
+	} = useQueryGallery({ type: 'interest' });
 
 	// useState
 	const [Title, setTitle] = useState(
 		'Our users post creative and interesting photos on our app'
 	);
-	const [Pics, setPics] = useState([]);
+	// const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Index, setIndex] = useState(0);
 
@@ -29,9 +29,6 @@ export default function Gallery() {
 	const page = useRef(''); // page 이동시 필요한 ref
 	const tab = useRef('');
 	const searchInput = useRef('');
-
-	// useCustomHook
-	const charSlice = useTextMethod('charSlice');
 
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
@@ -71,18 +68,16 @@ export default function Gallery() {
 		userId.current = clickedId;
 		page.current = 'user';
 		const photos = await fetchFlickr({ type: 'user', id: userId.current });
-		setPics(photos);
 	};
 
 	// btn-1
 	const setInterstGallery = async e => {
-		// page 가 interest 면 fetch 안함
-		console.log('setInterest Gallery');
-		if (page.current === 'interest') return;
-		page.current = 'interest';
-		const photos = await fetchFlickr({ type: 'interest' });
-
-		setPics(photos);
+		// // page 가 interest 면 fetch 안함
+		// console.log('setInterest Gallery');
+		// if (page.current === 'interest') return;
+		// page.current = 'interest';
+		// const photos = await fetchFlickr({ type: 'interest' });
+		// caching data 가 있으면 cache 데이터를 쓰고 caching 이 되지 않으면 fetching 하고
 	};
 
 	// btn-2
@@ -114,20 +109,25 @@ export default function Gallery() {
 		return photos;
 	};
 
-	useEffect(() => {
-		setInterstGallery();
-		// setPics(interest.photos.photo);
-		tab.current.children[0].classList.add('on');
-	}, []);
-
 	return (
 		<>
 			<Layout title={Title} className='Gallery'>
 				<section className='frameWrap'>
 					<div className='tab'>
 						<span className='menu' ref={tab}>
-							<span onClick={() => activation(0)}>Interest Gallery</span>
-							<span onClick={() => activation(1)}>My Gallery</span>
+							<span
+								onClick={() => {
+									activation(0);
+									setInterstGallery();
+								}}>
+								Interest Gallery
+							</span>
+							<span
+								onClick={() => {
+									activation(1);
+								}}>
+								My Gallery
+							</span>
 						</span>
 
 						<form className='search' onSubmit={handleSearch}>
@@ -138,7 +138,7 @@ export default function Gallery() {
 					<Masonry
 						className={'frame'}
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
-						{isInterest &&
+						{isSuccess &&
 							Pics.map((pic, idx) => {
 								let picTitle = pic.title;
 								if (pic.title.length > 50)
@@ -188,7 +188,7 @@ export default function Gallery() {
 				</section>
 
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
-					{Pics.length !== 0 && (
+					{isSuccess && (
 						<img
 							src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`}
 							alt={Pics[Index].title}
