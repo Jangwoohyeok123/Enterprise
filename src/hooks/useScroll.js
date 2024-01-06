@@ -6,16 +6,21 @@ import { useRef, useEffect } from 'react';
 
   ex) navigation 을 클릭해서 화면이동이 일어날 때 화면이동이 일어나게 만듦
 */
-export function useScrollIn(frame) {
-	const frameRef = useRef(null);
+export function useScroll(el = '.App') {
+	const app = useRef(null);
 
-	const scrollTo = targetPost => {
-		new Anime(frameRef.current, { scroll: targetPost });
+	const scrollTo = targetPosition => {
+		new Anime(app.current, { scroll: targetPosition });
+	};
+
+	const getCurrentScroll = () => {
+		const scroll = app.current.scrollTop;
+		return scroll;
 	};
 
 	useEffect(() => {
-		frameRef.current = document.querySelector(frame);
-	}, []);
+		app.current = document.querySelector(el);
+	}, [el]);
 
-	return { scrollTo };
+	return { scrollTo, getCurrentScroll, app };
 }

@@ -27,14 +27,20 @@ export default function Btns({ frame, items, base, isAuto }) {
 
 		secs.current.forEach((sec, idx) => {
 			if (scroll >= secs.current[idx].offsetTop - baseline.current) {
-				Array.from(btns.current.children).forEach(btn =>
-					btn.classList.remove('on')
-				);
-				btns.current.children[idx].classList.add('on');
+				const btnsArr = btns.current?.querySelectorAll('li');
+				btnsArr?.forEach(btn => btn.classList.remove('on'));
+				btns.current?.querySelectorAll('li')[idx]?.classList.add('on');
 				return;
 			}
 		});
 
+		// if (scroll >= secs.current[idx].offsetTop - baseline.current) {
+		// 	Array.from(btns.current.children).forEach(btn =>
+		// 		btn.classList.remove('on')
+		// 	);
+		// 	btns.current.children[idx].classList.add('on');
+		// 	return;
+		// }
 		/* 
 			for-if return 문으로 배열탐색할 때 가장 먼저 조건맞는 것을 액티브함
 		*/

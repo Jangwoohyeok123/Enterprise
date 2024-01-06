@@ -78,10 +78,10 @@ export default function Gallery() {
 		<>
 			<Layout title={Title} className='Gallery'>
 				<section className='frameWrap'>
-					<div className='back' onClick={setInterstGallery}>
+					{/* <div className='back' onClick={setInterstGallery}>
 						<IoArrowBack className='icons' />
 						Return to Today's Gallery Rankings
-					</div>
+					</div> */}
 					<Masonry
 						className={'frame'}
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
