@@ -28,6 +28,7 @@ export default function Gallery() {
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const page = useRef(''); // page 이동시 필요한 ref
 	const tab = useRef('');
+	const searchInput = useRef('');
 
 	// useCustomHook
 	const charSlice = useTextMethod('charSlice');
@@ -35,23 +36,25 @@ export default function Gallery() {
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
 	const activation = clickedIdx => {
-		Array.from(tab.current.children).forEach(el => {
-			el.classList.remove('on');
-		});
+		const btns = Array.from(tab.current.children);
+		btns.forEach(btn => btn.classList.remove('on'));
+		btns[clickedIdx].classList.add('on');
 
-		Array.from(tab.current.children).forEach((menu, index) => {
-			if (index === clickedIdx && index === 0) {
-				menu.classList.add('on');
-				console.log('interest');
-				setPics(interest.photos.photo);
-			}
-
-			if (index === clickedIdx && index === 1) {
-				menu.classList.add('on');
-				console.log('my gallery');
-				setPics(myGallery.photos.photo);
-			}
-		});
+		// Array.from(tab.current.children).forEach(el => {
+		// 	el.classList.remove('on');
+		// });
+		// Array.from(tab.current.children).forEach((menu, index) => {
+		// 	if (index === clickedIdx && index === 0) {
+		// 		menu.classList.add('on');
+		// 		console.log('interest');
+		// 		setPics(interest.photos.photo);
+		// 	}
+		// 	if (index === clickedIdx && index === 1) {
+		// 		menu.classList.add('on');
+		// 		console.log('my gallery');
+		// 		setPics(myGallery.photos.photo);
+		// 	}
+		// });
 	};
 
 	const notiOpen = e => {
@@ -71,14 +74,23 @@ export default function Gallery() {
 		setPics(photos);
 	};
 
+	// btn-1
 	const setInterstGallery = async e => {
 		// page 가 interest 면 fetch 안함
+		console.log('setInterest Gallery');
 		if (page.current === 'interest') return;
 		page.current = 'interest';
 		const photos = await fetchFlickr({ type: 'interest' });
-		console.log('inSetIntersetGallery');
-		console.log(photos);
+
 		setPics(photos);
+	};
+
+	// btn-2
+
+	// search
+	const handleSearch = e => {
+		e.preventDefault();
+		// fetching 한 다음 setting post 해야함
 	};
 
 	const fetchFlickr = async opt => {
@@ -117,10 +129,11 @@ export default function Gallery() {
 							<span onClick={() => activation(0)}>Interest Gallery</span>
 							<span onClick={() => activation(1)}>My Gallery</span>
 						</span>
-						<span className='search'>
-							<input type='text' placeholder='Search'></input>
-							<FaSearch className='icon' />
-						</span>
+
+						<form className='search' onSubmit={handleSearch}>
+							<input type='text' placeholder='Search' ref={searchInput}></input>
+							<FaSearch className='icon' onClick={handleSearch} />
+						</form>
 					</div>
 					<Masonry
 						className={'frame'}
@@ -173,6 +186,7 @@ export default function Gallery() {
 							})}
 					</Masonry>
 				</section>
+
 				<Modal OpenModal={OpenModal} setOpenModal={setOpenModal}>
 					{Pics.length !== 0 && (
 						<img
