@@ -10,23 +10,18 @@ import { useQueryGallery } from '../../../query/useQueryGallery';
 
 export default function Gallery() {
 	const [Opt, setOpt] = useState({ type: 'interest' });
-	const {
-		data: Pics,
-		isSuccess,
-		refetch
-	} = useQueryGallery({ type: 'interest' });
+	const { data: Pics, isSuccess } = useQueryGallery(Opt); // Opt 는 setOpt 가 변경될 때 마다 바뀔 거고 쿼리키가 바뀔때마다 리액트는 캐싱할 것임
 
 	// useState
 	const [Title, setTitle] = useState(
 		'Our users post creative and interesting photos on our app'
 	);
-	// const [Pics, setPics] = useState([]);
 	const [OpenModal, setOpenModal] = useState(false);
-	const [Index, setIndex] = useState(0);
+	const [Index, setIndex] = useState(0); // for Modal
 
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
-	const page = useRef(''); // page 이동시 필요한 ref
+	// const page = useRef(''); // page 이동시 필요한 ref
 	const tab = useRef('');
 	const searchInput = useRef('');
 
@@ -34,24 +29,9 @@ export default function Gallery() {
 	// setState 를 호출하면서 props 를 setting 하는 함수
 	const activation = clickedIdx => {
 		const btns = Array.from(tab.current.children);
+		// useRef 를 통해서 관리되는 값은 state 가 변경돼도 달라지지 않는다.
 		btns.forEach(btn => btn.classList.remove('on'));
 		btns[clickedIdx].classList.add('on');
-
-		// Array.from(tab.current.children).forEach(el => {
-		// 	el.classList.remove('on');
-		// });
-		// Array.from(tab.current.children).forEach((menu, index) => {
-		// 	if (index === clickedIdx && index === 0) {
-		// 		menu.classList.add('on');
-		// 		console.log('interest');
-		// 		setPics(interest.photos.photo);
-		// 	}
-		// 	if (index === clickedIdx && index === 1) {
-		// 		menu.classList.add('on');
-		// 		console.log('my gallery');
-		// 		setPics(myGallery.photos.photo);
-		// 	}
-		// });
 	};
 
 	const notiOpen = e => {
@@ -66,47 +46,13 @@ export default function Gallery() {
 	const setUserGallery = async clickedId => {
 		if (clickedId === userId.current) return;
 		userId.current = clickedId;
-		page.current = 'user';
-		const photos = await fetchFlickr({ type: 'user', id: userId.current });
+		// page.current = 'user';
+		// const photos = await fetchFlickr({ type: 'user', id: userId.current });
 	};
 
-	// btn-1
-	const setInterstGallery = async e => {
-		// // page 가 interest 면 fetch 안함
-		// console.log('setInterest Gallery');
-		// if (page.current === 'interest') return;
-		// page.current = 'interest';
-		// const photos = await fetchFlickr({ type: 'interest' });
-		// caching data 가 있으면 cache 데이터를 쓰고 caching 이 되지 않으면 fetching 하고
-	};
-
-	// btn-2
-
-	// search
-	const handleSearch = e => {
+	const handleSubmit = e => {
 		e.preventDefault();
-		// fetching 한 다음 setting post 해야함
-	};
-
-	const fetchFlickr = async opt => {
-		const num = 36;
-		const flickr_api = process.env.REACT_APP_FLICKR_API;
-		const baseURL = `https://www.flickr.com/services/rest/?&api_key=${flickr_api}&per_page=${num}&format=json&nojsoncallback=1&method=`;
-		const method_interest = 'flickr.interestingness.getList';
-		const method_user = 'flickr.people.getPhotos';
-		const method_search = 'flickr.photos.search'; //search method 추가
-		const interestURL = `${baseURL}${method_interest}`;
-		const userURL = `${baseURL}${method_user}&user_id=${opt.id}`;
-		const searchURL = `${baseURL}${method_search}&tags=${opt.keyword}`; //search url 추가
-		let url = '';
-		opt.type === 'user' && (url = userURL);
-		opt.type === 'interest' && (url = interestURL);
-		opt.type === 'search' && (url = searchURL);
-		const data = await fetch(url);
-		const json = await data.json();
-		const photos = json.photos.photo;
-
-		return photos;
+		setOpt({ type: 'search', keyword: searchInput.current.value });
 	};
 
 	return (
@@ -118,23 +64,25 @@ export default function Gallery() {
 							<span
 								onClick={() => {
 									activation(0);
-									setInterstGallery();
+									setOpt({ type: 'interest' });
 								}}>
 								Interest Gallery
 							</span>
 							<span
 								onClick={() => {
 									activation(1);
+									setOpt({ type: 'user', id: userId.current });
 								}}>
 								My Gallery
 							</span>
 						</span>
 
-						<form className='search' onSubmit={handleSearch}>
+						<form className='search' onSubmit={e => handleSubmit(e)}>
 							<input type='text' placeholder='Search' ref={searchInput}></input>
-							<FaSearch className='icon' onClick={handleSearch} />
+							<FaSearch className='icon' onClick={e => handleSubmit(e)} />
 						</form>
 					</div>
+
 					<Masonry
 						className={'frame'}
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
