@@ -98,7 +98,10 @@ export default function Gallery() {
 											<div className='services'>
 												<div className='info'>
 													<span>User id: </span>
-													<span onClick={() => setUserGallery(pic.owner)}>
+													<span
+														onClick={() =>
+															setOpt({ type: 'user', id: pic.owner })
+														}>
 														{pic.owner}
 													</span>
 												</div>
@@ -108,9 +111,9 @@ export default function Gallery() {
 													onMouseOut={notiClose}>
 													<IoArrowForwardCircleOutline
 														className='more icons'
-														onClick={e => {
-															setUserGallery(pic.owner);
-														}}
+														onClick={e =>
+															setOpt({ type: 'user', id: pic.owner })
+														}
 													/>
 													<div className='noti'>{pic.owner}'s gallery</div>
 												</div>
