@@ -26,6 +26,8 @@ const fetchGallery = async ({ queryKey: [_, opt] }) => {
 
 	const data = await fetch(url);
 	const json = await data.json();
+	if (json.photos.photo.length === 0)
+		throw new Error('photo length 가 0입니다.');
 	return json.photos.photo;
 };
 

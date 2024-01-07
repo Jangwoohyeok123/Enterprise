@@ -7,10 +7,13 @@ import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
 import { FaSearch } from 'react-icons/fa';
 import { useQueryGallery } from '../../../query/useQueryGallery';
+import { useViewType } from '../../../hooks/useViewType';
 
 export default function Gallery() {
 	const [Opt, setOpt] = useState({ type: 'interest' });
-	const { data: Pics, isSuccess } = useQueryGallery(Opt); // Opt 는 setOpt 가 변경될 때 마다 바뀔 거고 쿼리키가 바뀔때마다 리액트는 캐싱할 것임
+	const { data: Pics, isSuccess, error, isError } = useQueryGallery(Opt); // Opt 는 setOpt 가 변경될 때 마다 바뀔 거고 쿼리키가 바뀔때마다 리액트는 캐싱할 것임
+
+	if (isError) alert('fetching 된 데이터가 없다.'); // 나중에 처리하자
 
 	// useState
 	const [Title, setTitle] = useState(
@@ -21,9 +24,9 @@ export default function Gallery() {
 
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
-	// const page = useRef(''); // page 이동시 필요한 ref
 	const tab = useRef('');
 	const searchInput = useRef('');
+	const viewType = useViewType();
 
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
@@ -53,29 +56,52 @@ export default function Gallery() {
 	const handleSubmit = e => {
 		e.preventDefault();
 		setOpt({ type: 'search', keyword: searchInput.current.value });
+		Array.from(tab.current.children).forEach(menu => {
+			menu.classList.remove('on');
+		});
 	};
 
 	return (
 		<>
+			{viewType === 'Mobile' && (
+				<span className='menu' ref={tab}>
+					<span
+						onClick={() => {
+							activation(0);
+							setOpt({ type: 'interest' });
+						}}>
+						Interest Gallery
+					</span>
+					<span
+						onClick={() => {
+							activation(1);
+							setOpt({ type: 'user', id: userId.current });
+						}}>
+						My Gallery
+					</span>
+				</span>
+			)}
 			<Layout title={Title} className='Gallery'>
 				<section className='frameWrap'>
 					<div className='tab'>
-						<span className='menu' ref={tab}>
-							<span
-								onClick={() => {
-									activation(0);
-									setOpt({ type: 'interest' });
-								}}>
-								Interest Gallery
+						{viewType !== 'Mobile' && (
+							<span className='menu' ref={tab}>
+								<span
+									onClick={() => {
+										activation(0);
+										setOpt({ type: 'interest' });
+									}}>
+									Interest Gallery
+								</span>
+								<span
+									onClick={() => {
+										activation(1);
+										setOpt({ type: 'user', id: userId.current });
+									}}>
+									My Gallery
+								</span>
 							</span>
-							<span
-								onClick={() => {
-									activation(1);
-									setOpt({ type: 'user', id: userId.current });
-								}}>
-								My Gallery
-							</span>
-						</span>
+						)}
 
 						<form className='search' onSubmit={e => handleSubmit(e)}>
 							<input type='text' placeholder='Search' ref={searchInput}></input>
@@ -88,6 +114,7 @@ export default function Gallery() {
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{isSuccess &&
 							Pics.map((pic, idx) => {
+								console.log(Pics);
 								let picTitle = pic.title;
 								if (pic.title.length > 50)
 									picTitle = picTitle.slice(0, 50).concat('...');
@@ -99,8 +126,9 @@ export default function Gallery() {
 												<div className='info'>
 													<span>User id: </span>
 													<span
-														onClick={() =>
-															setOpt({ type: 'user', id: pic.owner })
+														onClick={
+															() => setOpt({ type: 'user', id: pic.owner })
+															// 여기 수정해라 !! 클릭하면 tab 메뉴 초기화
 														}>
 														{pic.owner}
 													</span>
