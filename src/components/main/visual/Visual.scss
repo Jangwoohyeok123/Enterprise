@@ -1,30 +1,108 @@
 .Visual {
-	width: 100;
+	width: 100%;
 	height: calc(100vh - 60px);
 	position: relative;
 	overflow: hidden;
 
 	.txtBox {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 2;
 		width: 40%;
 		height: 100%;
-		padding-left: 10vw;
-	}
-
-	.swiper {
+		padding-left: 15vw;
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: 0px;
+		left: 0;
+		z-index: 2;
+
+		ul {
+			width: 100%;
+			height: 100%;
+			position: relative;
+
+			li {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: flex;
+				flex-wrap: wrap;
+				align-content: center;
+				font-size: 3rem;
+				opacity: 0;
+				z-index: 1;
+				transform: scale(1.5);
+				transition: opacity 1s, transform 1s;
+
+				h3 {
+					font-weight: normal;
+					color: var(--baseColor);
+					margin-bottom: 60px;
+				}
+
+				a {
+					display: inline-block;
+					padding: 8px 20px;
+					font-size: 0.8rem;
+					font-weight: bold;
+					color: transparent;
+					position: relative;
+					text-indent: -80px;
+					cursor: pointer;
+					transition-duration: 0.5s;
+					transition-delay: 0.5s;
+
+					&::before,
+					&::after {
+						content: '';
+						position: absolute;
+						width: 100%;
+						height: 1px;
+						background-color: rgba(var(--baseColor-code), 0.5);
+						opacity: 0;
+						left: -50px;
+						transition-property: opacity, left;
+						transition-duration: 0.5s;
+					}
+
+					&::before {
+						top: 0;
+						transition-delay: 0.3s;
+					}
+					&::after {
+						bottom: 0;
+						transition-delay: 0.9s;
+					}
+				}
+			}
+			li.on {
+				opacity: 1;
+				transform: scale(1);
+				z-index: 5;
+
+				a {
+					color: var(--baseColor);
+					text-indent: 0px;
+
+					&::before,
+					&::after {
+						left: 0;
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+	.swiper {
 		display: inline-block;
 		width: 80%;
 		height: 100%;
-		padding: 20vh 0px;
+		padding: 10vw 0px;
+		position: absolute;
+		top: 0;
+		right: 0;
 
 		.swiper-wrapper {
-			height: 100%;
+			height: inherit;
 
 			.swiper-slide {
 				width: 100%;
@@ -35,15 +113,16 @@
 					height: 100%;
 					position: relative;
 					opacity: 0.4;
-					transform: scale(0.7);
+					transform: scale(0.5);
+					position: relative;
 					transition: opacity 0.5s, transform 0.5s;
 
 					> p {
 						position: absolute;
-						top: 0;
-						left: 0;
 						width: 100%;
 						height: 100%;
+						top: 0;
+						left: 0;
 						overflow: hidden;
 
 						&:nth-of-type(1) {
@@ -62,23 +141,24 @@
 				}
 			}
 
+			//prev-style
 			.swiper-slide-prev {
 				.pic {
-					transform: scale(1.3);
+					transform: scale(1.5);
 					opacity: 0;
 				}
 			}
-
+			//active-style
 			.swiper-slide-active {
 				.pic {
 					transform: scale(1);
 					opacity: 1;
 				}
 			}
-
+			//active-style
 			.swiper-slide-next {
 				.pic {
-					transform: scale(0.6);
+					transform: scale(0.7);
 					opacity: 0.5;
 				}
 			}
@@ -88,10 +168,10 @@
 	.pagination {
 		position: absolute;
 		bottom: 100px;
-		left: 10vw;
-		z-index: 6;
+		left: 15%;
 		display: flex;
 		gap: 10px;
+		z-index: 6;
 
 		li {
 			width: 10px;
@@ -106,32 +186,114 @@
 	}
 
 	.barFrame {
+		width: 70%;
+		height: 2px;
 		position: absolute;
 		bottom: 50px;
 		left: 15%;
 		background: #888;
-		width: 70%;
-		height: 2px;
 
 		.bar {
-			position: absolite;
-			top: 0;
-			left: 0;
 			width: 0%;
 			height: 100%;
 			background: var(--subPoint);
+			position: absolute;
+			top: 0;
+			left: 0;
 			transition: width 0.5s;
 		}
 	}
-
 	.counter {
 		position: absolute;
 		bottom: 80px;
-		right: 10vw;
-		color: var(--subPoint);
+		right: 15vw;
+		color: var(--baseColor);
 		font-size: 1.5rem;
+
+		strong {
+			font-size: 2.5rem;
+		}
 	}
 
+	//preview thumbnails
 	.preview {
+		p {
+			width: 120px;
+			height: 60px;
+			overflow: hidden;
+			position: absolute;
+			bottom: 5vh;
+			cursor: pointer;
+			z-index: 6;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		p.prevBox {
+			left: 50px;
+		}
+		p.nextBox {
+			right: 50px;
+		}
+	}
+}
+
+.Mobile,
+.Tablet {
+	.Visual {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		gap: 60px;
+
+		.txtBox {
+			width: 100%;
+			height: 30%;
+			padding-left: 0;
+			padding: 5vh 10vw;
+			position: relative;
+			top: 100px;
+
+			h3 {
+				font-size: 2.5rem;
+			}
+		}
+		.swiper {
+			width: 100%;
+			height: 70%;
+			padding: 5vh 10vw;
+			position: relative;
+
+			.swiper-wrapper {
+				.swiper-slide {
+					height: 100%;
+				}
+			}
+		}
+	}
+}
+
+//dark theme style
+.Dark {
+	.Visual {
+		.swiper {
+			.swiper-wrapper {
+				.swiper-slide {
+					.pic {
+						> p {
+							&:nth-of-type(1) {
+								filter: blur(30px) saturate(0.8);
+								transform: translate(20px, 20px);
+								opacity: 0.2;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
