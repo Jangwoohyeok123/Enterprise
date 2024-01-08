@@ -6,7 +6,7 @@ export default function useTextMethod(type) {
 		return (txt, isUpper = true, separator = ' ') => {
 			const resultTxt = txt
 				.split(/-|_|\+/)
-				.map((chunk) => chunk.toUpperCase())
+				.map(chunk => chunk.toUpperCase())
 				.join(separator);
 
 			return resultTxt;
@@ -17,19 +17,20 @@ export default function useTextMethod(type) {
 	if (type === 'split') {
 		return (txt, isUpper = true) => {
 			const arr = txt.split(/-|_|\+|' '/);
-			return isUpper ? arr.map((txt) => txt.toUpperCase()) : arr;
+			return isUpper ? arr.map(txt => txt.toUpperCase()) : arr;
 		};
 	}
 
-	// 받아온 data 의 글자가 layout 을 벗어나 곤란할 때
+	// txt 가 layout 을 벗어나 곤란할 때 단어단위로 자르기
 	if (type === 'wordSlice') {
 		// slice 할 txt 와 최종적으로 받고 싶은 글자 수
 		return (txt, num) => {
-			const result = txt.split(' ').slice(0, num).join(' ');
+			const result = txt.trim().split(' ').slice(0, num).join(' ');
 			return result;
 		};
 	}
 
+	// txt 가 layout 을 벗어나 곤란할 때 character 단위로 자르기
 	if (type === 'charSlice') {
 		// slice 할 txt 와 최종적으로 받고 싶은 글자 수
 		return (txt, num) => {

@@ -1,0 +1,16 @@
+.TopButton {
+	font-family: var(--pointFont);
+	font-size: 1rem;
+	position: fixed;
+	top: 90%;
+	right: 3%;
+	width: 60px;
+	height: 60px;
+	background: var(--baseColor);
+	color: var(--bgColor);
+	border: none;
+
+	.icon {
+		font-size: 1.7rem;
+	}
+}

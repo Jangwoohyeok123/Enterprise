@@ -5,7 +5,10 @@ import './Youtube.scss';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { IoArrowForwardCircleOutline } from 'react-icons/io5';
-import { useQueryYoutube, useQueryYoutubeDetail } from '../../../query/useQueryYoutube';
+import {
+	useQueryYoutube,
+	useQueryYoutubeDetail
+} from '../../../query/useQueryYoutube';
 
 export default function Youtube() {
 	const { data: Vids, isSuccess } = useQueryYoutube();
@@ -29,14 +32,18 @@ export default function Youtube() {
 				</div>
 
 				<div className='right'>
-					<img src={`${path.current}/img/youtube/main.jpg`} alt='modern-house' />
+					<img
+						src={`${path.current}/img/youtube/main.jpg`}
+						alt='modern-house'
+					/>
 
 					<div className='text'>
 						<h2>Our Trusted Partners</h2>
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis ad molestias quis accusamus voluptates
-							aperiam sint mollitia numquam at quidem vel tenetur, perspiciatis cum. Perspiciatis, possimus rem. Nulla,
-							tempora facere?
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+							ad molestias quis accusamus voluptates aperiam sint mollitia
+							numquam at quidem vel tenetur, perspiciatis cum. Perspiciatis,
+							possimus rem. Nulla, tempora facere?
 						</p>
 						<div className='partners'>
 							<span>Crystoper</span>
@@ -64,7 +71,10 @@ export default function Youtube() {
 							<article key={video + idx}>
 								<div className='video'>
 									<Link className='img' to={`/detail/${video.id}`}>
-										<img src={video.snippet.thumbnails.standard.url} alt={video.snippet.title} />
+										<img
+											src={video.snippet.thumbnails.standard.url}
+											alt={video.snippet.title}
+										/>
 									</Link>
 									<div className='text'>
 										<h4>{wordSlice(video.snippet.title)}</h4>

@@ -6,8 +6,9 @@ import ThemeControl from '../themeControl/ThemeControl';
 import { useGlobalData } from '../../../hooks/useGlobalData';
 import DarkMode from '../darkmode/Darkmode';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Menu from '../menu/Menu';
+import { useScroll } from '../../../hooks/useScroll';
 
 export default function Header({ viewType }) {
 	const { OpenMenu, setOpenMenu, Dark, setDark } = useGlobalData();
@@ -16,6 +17,7 @@ export default function Header({ viewType }) {
 	const handleDarkMode = () => setDark(!Dark);
 	const location = useLocation();
 	const [Bl, setMenu] = useState(true);
+
 	return (
 		<>
 			{Bl && <Menu />}

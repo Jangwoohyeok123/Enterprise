@@ -1,26 +1,33 @@
 import Anime from '../asset/anime';
-import { useRef, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
-/* 
-  scroll 기능을 훅으로 만들어 놓음 
+export function useScroll(customHandler, baseLine = -window.innerHeight / 2) {
+	const refEl = useRef(null);
+	const [Frame, setFrame] = useState(null);
 
-  ex) navigation 을 클릭해서 화면이동이 일어날 때 화면이동이 일어나게 만듦
-*/
-export function useScroll(el = '.App') {
-	const app = useRef(null);
-
-	const scrollTo = targetPosition => {
-		new Anime(app.current, { scroll: targetPosition });
+	const scrollTo = targetPos => {
+		Frame && new Anime(Frame, { scroll: targetPos });
 	};
 
-	const getCurrentScroll = () => {
-		const scroll = app.current.scrollTop;
-		return scroll;
-	};
+	const getCurrentScroll = useCallback(() => {
+		const scroll = Frame.scrollTop - baseLine;
+		const modifiedScroll = scroll - refEl.current?.offsetTop;
+		return modifiedScroll;
+	}, [Frame, baseLine]);
+
+	const handleScroll = useCallback(() => {
+		const scroll = getCurrentScroll();
+		if (scroll >= 0) customHandler(scroll);
+	}, [getCurrentScroll, customHandler]);
 
 	useEffect(() => {
-		app.current = document.querySelector(el);
-	}, [el]);
+		setFrame(document.querySelector('.App'));
+	}, []);
 
-	return { scrollTo, getCurrentScroll, app };
+	useEffect(() => {
+		Frame?.addEventListener('scroll', handleScroll);
+		return () => Frame?.removeEventListener('scroll', handleScroll);
+	}, [Frame, handleScroll]);
+
+	return { scrollTo, getCurrentScroll, Frame, refEl };
 }

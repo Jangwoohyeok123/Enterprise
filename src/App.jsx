@@ -18,6 +18,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CookieModal from './components/common/cookieModal/CookieModal';
 import { useCookie } from './hooks/useCookie';
 import { useGlobalData } from './hooks/useGlobalData';
+import TopButton from './components/common/topButton/TopButton';
 
 export default function App() {
 	const { Dark } = useGlobalData();
@@ -42,6 +43,7 @@ export default function App() {
 				<Route path='/detail/:id' component={Detail} />
 				<Footer />
 				<CookieModal wid={300} ht={400} />
+				<TopButton />
 			</div>
 			<ReactQueryDevtools />
 		</QueryClientProvider>

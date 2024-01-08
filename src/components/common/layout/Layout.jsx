@@ -3,23 +3,17 @@ import './Layout.scss';
 import { useScroll } from '../../../hooks/useScroll';
 
 export default function Layout({ children, title, className }) {
-	const { scrollTo, getCurrentScroll, scrollFrame } = useScroll();
 	const refFrame = useRef(null);
 	const refTitle = useRef(null);
-	const refBtnTop = useRef(null);
 
-	const handleScroll = useCallback(
-		num => {
-			getCurrentScroll() >= num
-				? refBtnTop.current?.classList.add('on')
-				: refBtnTop.current?.classList.remove('on');
-		},
-		[getCurrentScroll]
-	);
+	const handleScroll = scroll => {
+		console.log(scroll);
+	};
 
+	const { scrollTo, refEl } = useScroll(handleScroll, 0);
 	useEffect(() => {
 		scrollTo(0);
-	}, [scrollTo]);
+	}, []);
 
 	return (
 		<main className={className} ref={refFrame}>
@@ -27,10 +21,6 @@ export default function Layout({ children, title, className }) {
 				{title}
 			</h1>
 			{children}
-			<button
-				ref={refBtnTop}
-				className='btnTop'
-				onClick={() => console.log('hello world')}></button>
 		</main>
 	);
 }

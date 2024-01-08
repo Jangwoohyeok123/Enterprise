@@ -28,6 +28,8 @@ export default function Gallery() {
 	const searchInput = useRef('');
 	const viewType = useViewType();
 
+	const txtSlice = useTextMethod('wordSlice');
+
 	// controller - 동기
 	// setState 를 호출하면서 props 를 setting 하는 함수
 	const activation = clickedIdx => {
@@ -45,14 +47,6 @@ export default function Gallery() {
 		e.currentTarget.children[1].style.visibility = 'hidden';
 	};
 
-	// controller - 비동기
-	const setUserGallery = async clickedId => {
-		if (clickedId === userId.current) return;
-		userId.current = clickedId;
-		// page.current = 'user';
-		// const photos = await fetchFlickr({ type: 'user', id: userId.current });
-	};
-
 	const handleSubmit = e => {
 		e.preventDefault();
 		setOpt({ type: 'search', keyword: searchInput.current.value });
@@ -60,6 +54,10 @@ export default function Gallery() {
 			menu.classList.remove('on');
 		});
 	};
+
+	useEffect(() => {
+		tab.current.children[0].classList.add('on');
+	}, []);
 
 	return (
 		<>
@@ -146,7 +144,7 @@ export default function Gallery() {
 													<div className='noti'>{pic.owner}'s gallery</div>
 												</div>
 											</div>
-											<h3>{picTitle}</h3>
+											<h3>{txtSlice(picTitle, 5)}</h3>
 										</div>
 
 										<div className='img'>
