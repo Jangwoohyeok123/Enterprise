@@ -1,6 +1,5 @@
 import './Visual.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -10,17 +9,20 @@ import { useQueryYoutube } from '../../../query/useQueryYoutube';
 import { useEffect } from 'react';
 
 export default function Visual() {
-	const num = useRef(4); // 몇 개의 사진을 루프돌릴건지를 정하는 변수
+	const num = useRef(4); // 루프될 사진개수
 	const swipeRef = useRef(null);
 	const { isSuccess, data } = useQueryYoutube();
 	const [PrevIndex, setPrevIndex] = useState(0);
-	const [Index, setIndex] = useState(0);
 	const [NextIndex, setNextIndex] = useState(0);
+	const [Index, setIndex] = useState(0);
+	const test = useRef(null);
 
+	// 정리 > txt정리 > visual.md 의 설명을 참조할 것
 	const swiperOpt = useRef({
 		modules: [Autoplay],
 		loop: true,
-		slidesPerView: 1,
+		autoplay: { delay: 2000, disableOnInteraction: true },
+		slidesPerView: 2,
 		spaceBetween: 50,
 		centeredSlides: true,
 		loopedSlides: num.current,
@@ -36,7 +38,6 @@ export default function Visual() {
 				? setNextIndex(0)
 				: setNextIndex(swiper.realIndex + 1);
 		},
-		autoplay: { delay: 2000, disableOnInteraction: true },
 		breakpoints: {
 			1050: { slidesPerView: 2 },
 			1400: { slidesPerView: 3 }
@@ -52,7 +53,6 @@ export default function Visual() {
 	};
 
 	useEffect(() => {}, []);
-	// modules={[Navigation, Pagination]} slidesPerView={3}
 
 	return (
 		<figure className='Visual myScroll'>
@@ -76,15 +76,21 @@ export default function Visual() {
 					data.map((el, idx) => {
 						if (idx >= num.current) return null;
 						return (
-							<SwiperSlide key={el.id}>
+							/* 
+								1. 두 개의 사진이 겹쳐보이게 css 처리한다.
+								2. SwiperSlide 의 자식요소들은 하나의 slide 단위로 처리된다.
+							*/
+							<SwiperSlide key={el.id} ref={test}>
 								<div className='pic'>
 									<p>
+										{/* blur */}
 										<img
 											src={el.snippet.thumbnails.standard.url}
 											alt={el.snippet.title}
 										/>
 									</p>
 									<p>
+										{/* 보이는 이미지 */}
 										<img
 											src={el.snippet.thumbnails.standard.url}
 											alt={el.snippet.title}
