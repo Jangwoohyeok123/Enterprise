@@ -7,6 +7,41 @@ export default function Pics() {
 	const tit2 = useRef(null);
 	const tit3 = useRef(null);
 
+	// const num = useRef(4); // 루프될 사진개수
+	// const swipeRef = useRef(null);
+
+	// const [PrevIndex, setPrevIndex] = useState(0);
+	// const [NextIndex, setNextIndex] = useState(0);
+	// const [Index, setIndex] = useState(0);
+	// const test = useRef(null);
+
+	// 정리 > txt정리 > visual.md 의 설명을 참조할 것
+	// const swiperOpt = useRef({
+	// 	modules: [Autoplay],
+	// 	speed: 800,
+	// 	loop: true,
+	// 	autoplay: { delay: 4000, disableOnInteraction: true },
+	// 	slidesPerView: 1,
+	// 	spaceBetween: 50,
+	// 	centeredSlides: true,
+	// 	loopedSlides: num.current,
+	// 	onSwiper: swiper => {
+	// 		swipeRef.current = swiper;
+	// 	},
+	// 	onSlideChange: swiper => {
+	// 		setIndex(swiper.realIndex);
+	// 		swiper.realIndex === 0
+	// 			? setPrevIndex(num.current - 1)
+	// 			: setPrevIndex(swiper.realIndex - 1);
+	// 		swiper.realIndex === num.current - 1
+	// 			? setNextIndex(0)
+	// 			: setNextIndex(swiper.realIndex + 1);
+	// 	},
+	// 	breakpoints: {
+	// 		1050: { slidesPerView: 3 },
+	// 		1400: { slidesPerView: 3 }
+	// 	}
+	// });
 	/*
 	  핸들러는 parallax 기능을 담고 있으며 useScroll 에 전달한다.
 	  인자로 전달한 scroll 은 modifiedScroll 로 변환된다.

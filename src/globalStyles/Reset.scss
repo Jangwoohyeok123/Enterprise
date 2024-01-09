@@ -96,6 +96,15 @@ h6 {
 		border-radius: 4px;
 		background: #ccc;
 	}
+
+	&.main {
+		&::-webkit-scrollbar {
+			display: none;
+		}
+		&::-webkit-scrollbar-thumb {
+			display: none;
+		}
+	}
 }
 
 .blur {

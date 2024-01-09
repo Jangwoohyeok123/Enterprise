@@ -1,206 +1,124 @@
 .Visual {
-	width: 100%;
-	height: calc(100vh - 90px);
+	width: 100vw;
+	height: calc(100vh - 60px);
 	position: relative;
 	overflow: hidden;
 
-	.txtBox {
-		width: 40%;
-		height: calc(100vh - 90px);
-		padding-left: 15%;
-		position: absolute;
-
-		ul {
-			width: 100%;
-			height: 100%;
-			position: relative;
-
-			li {
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				display: flex;
-				flex-wrap: wrap;
-				align-content: center;
-				font-size: 3rem;
-				opacity: 0;
-				z-index: 1;
-				transform: scale(1.5);
-				transition: opacity 1s, transform 1s;
-
-				h3 {
-					color: var(--baseColor);
-					margin-bottom: 50px;
-				}
-
-				a {
-					font-size: 10rem;
-					color: #111;
-				}
-			}
-
-			li.on {
-				opacity: 1;
-				transform: scale(1);
-			}
-		}
+	video {
+		/* 고정 위치: fixed 해야 예쁨*/
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		min-width: 100%; /* 최소 너비를 화면 너비와 같게 설정 */
+		min-height: calc(100vh - 60px); /* 최소 높이를 화면 높이와 같게 설정 */
+		opacity: 0.9;
+		z-index: 0; /* 다른 요소보다 앞에 위치 */
 	}
 
-	// jsx 에 없지만 swiper 가 제공하는 요소 - 1
-	.swiper {
-		display: inline-block;
-		width: 80%;
-		height: 100%;
-		padding: 10vw 0px;
+	// 공통 스타일
+	#circle {
+		perspective: 1500px; // 3d 요소의 중심에서 멀어진 거리
+		width: 450px;
+		height: 700px;
 		position: absolute;
-		top: 0;
-		right: 0;
+		top: 50%;
+		left: 50%;
+		margin-top: -350px;
+		margin-left: -225px;
 
-		// jsx 에 없지만 swiper 가 제공하는 요소 - 2
-		.swiper-wrapper {
-			height: inherit;
+		// 공통 스타일
+		article {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			// background: rgba(255, 255, 255, 0.01);
+			// 초기 투명도 조정
 
-			// jsx 에 없지만 swiper 가 제공하는 요소 - 3
-			.swiper-slide {
+			// 공통 스타일
+			h1 {
+				position: absolute;
+				left: 0;
+				top: 0;
+				font-size: 2.5rem;
+				opacity: 0;
+				transition: all 0.5s;
+			}
+
+			// 공통 스타일
+			.inner {
 				width: 100%;
-				height: inherit;
+				height: 100%;
+				border: 1px solid #555;
+				background: rgba(255, 255, 255, 0.06);
+				padding: 40px 40px;
+				// position: relative;
+				opacity: 0.7;
+				overflow: hidden;
+				cursor: pointer;
+				transition: all 0.5s;
 
-				// SwiperSlide 아래 영역: swiper 의 각 slide 에 적용될 css
-				.pic {
+				.imgBox {
 					width: 100%;
-					height: 100%;
-					position: relative;
-					opacity: 1;
-					transform: scale(0.5);
-					position: relative;
-					transition: opacity 0.8s, transform 0.8s;
-					// transition: swiper가 제공한 transition 을 custom 한다.
+					height: 70%;
+					overflow: hidden;
 
-					// 사진 2개를 담고 있는 태그
-					> p {
-						position: absolute;
+					img {
 						width: 100%;
 						height: 100%;
-						top: 0;
-						left: 0;
-						overflow: hidden;
-
-						// blur 처리될 사진 => 두개의 사진에서 첫 사진은 blur 용도로 사용
-						&:nth-of-type(1) {
-							filter: blur(30px);
-							transform: translate(40px, 40px);
-							opacity: 0.8;
-						}
-
-						// 보이는 사진
-						img {
-							width: 100%;
-							height: 100%;
-							object-fit: cover;
-							transform: scale(1.5);
-						}
+						object-fit: cover;
+						transform: scale(1.5);
 					}
 				}
 			}
 
-			//prev-style: 화면상 왼쪽으로 이동시 사라지는 사진의 모습을 정의
-			.swiper-slide-prev {
-				.pic {
-					transform: scale(1.5);
-					opacity: 0;
-				}
-			}
-			//active-style: 화면상 가운데 이미지로 주된 이미지의 모습을 정의
-			.swiper-slide-active {
-				.pic {
-					transform: scale(1);
-					opacity: 1;
-				}
-			}
-			//active-style: 화면상 오른쪽 이미지로 active 가 되기전 사진을 정의
-			.swiper-slide-next {
-				.pic {
-					transform: scale(0.7);
-					opacity: 0.4;
-				}
+			.inner:hover {
+				background: rgba(255, 255, 255, 0.15);
+				transform: scale(1.03);
 			}
 		}
-	}
 
-	//preview thumbnails
-	.preview {
-		p {
-			width: 120px;
-			height: 60px;
-			overflow: hidden;
-			position: absolute;
-			bottom: 5vh;
-			cursor: pointer;
-			z-index: 6;
-
-			img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
+		// 공통 스타일
+		article:hover {
+			h1 {
+				// hover 시 제목이 서서히 나타남
+				top: -70px;
+				opacity: 1;
+				color: #efefef;
 			}
 		}
-		p.prevBox {
-			left: 50px;
+
+		/* 
+			- rotateY 는 Y 축을 기준으로 45 deg 씩 돌려버리는 것 
+			- translateZ 는 z 축을 기준으로 이동하는 거리임
+			만약, perspective 가 1500px 이고 rotateY 가 0 일 때, translateZ 가 1500px 이면 원기둥의 중심부터의 거리와 translateZ 의 거리가 같아져 화면상에서 1번 article 즉, face1 을 볼 수 없게 된다. 
+			- 원기둥은 translateZ 이 반지름이 돼 원주를 구성한다.
+			- 현재 원기둥과 perspective 의 차이는 750 px 인 상황이다. 
+		*/
+		.face1 {
+			transform: rotateY(0deg) translateZ(750px);
 		}
-		p.nextBox {
-			right: 50px;
+		.face2 {
+			transform: rotateY(45deg) translateZ(750px);
 		}
-	}
-
-	.pagination {
-		position: absolute;
-		bottom: 100px;
-		left: 15%;
-		display: flex;
-		gap: 10px;
-		z-index: 6;
-
-		li {
-			width: 10px;
-			height: 10px;
-			background: #888;
-			cursor: pointer;
-
-			&.on {
-				background: var(--pointColor);
-			}
+		.face3 {
+			transform: rotateY(90deg) translateZ(750px);
 		}
-	}
-
-	.barFrame {
-		width: 70%;
-		height: 2px;
-		position: absolute;
-		bottom: 50px;
-		left: 15%;
-		background: #888;
-
-		.bar {
-			width: 0%;
-			height: 100%;
-			background: var(--pointColor);
-			position: absolute;
-			top: 0;
-			left: 0;
-			transition: width 0.5s;
+		.face4 {
+			transform: rotateY(135deg) translateZ(750px);
 		}
-	}
-	.counter {
-		position: absolute;
-		bottom: 80px;
-		right: 15vw;
-		color: var(--baseColor);
-		font-size: 1.5rem;
-
-		strong {
-			font-size: 2.5rem;
+		.face5 {
+			transform: rotateY(180deg) translateZ(750px);
+		}
+		.face6 {
+			transform: rotateY(225deg) translateZ(750px);
+		}
+		.face7 {
+			transform: rotateY(270deg) translateZ(750px);
+		}
+		.face8 {
+			transform: rotateY(315deg) translateZ(750px);
 		}
 	}
 }

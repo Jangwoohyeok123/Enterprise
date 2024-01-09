@@ -17,19 +17,24 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import CookieModal from './components/common/cookieModal/CookieModal';
 import { useCookie } from './hooks/useCookie';
 import { useGlobalData } from './hooks/useGlobalData';
+import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function App() {
 	const { Dark } = useGlobalData();
 	const viewType = useViewType();
 	const queryClient = new QueryClient();
 	const { createCookie } = useCookie();
+	const location = useLocation();
 
 	// App 컴포넌트가 실행되면 dark 쿠키를 만든다.
 	createCookie('dark', '', 60 * 60);
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<div className={`App ${Dark ? 'dark' : ''} ${viewType}`}>
+			<div
+				className={`App ${Dark ? 'dark' : ''} ${viewType} ${
+					location.pathname === '/' && 'main'
+				}`}>
 				<Header viewType={viewType} />
 				<Route exact path='/' component={MainWrap} />
 				<Route path='/department' component={Department} />
