@@ -31,10 +31,7 @@ export default function App() {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<div
-				className={`App ${Dark ? 'dark' : ''} ${viewType} ${
-					location.pathname === '/' && 'main'
-				}`}>
+			<div className={`App ${Dark ? 'dark' : ''} ${viewType} `}>
 				<Header viewType={viewType} />
 				<Route exact path='/' component={MainWrap} />
 				<Route path='/department' component={Department} />
@@ -51,3 +48,11 @@ export default function App() {
 		</QueryClientProvider>
 	);
 }
+
+// main 에서 scroll 없애고 싶으면
+
+/* 
+${
+	location.pathname === '/' && 'main'
+}
+*/
