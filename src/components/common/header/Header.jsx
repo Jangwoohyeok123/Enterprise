@@ -16,12 +16,9 @@ export default function Header({ viewType }) {
 	/*  */
 	const handleDarkMode = () => setDark(!Dark);
 	const location = useLocation();
-	const [Bl, setMenu] = useState(true);
 
 	return (
 		<>
-			{Bl && <Menu />}
-
 			{location.pathname !== '/signup' && (
 				<header className='Header'>
 					<h1>
