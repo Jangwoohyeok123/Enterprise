@@ -1,6 +1,6 @@
 .Sec1 {
 	position: relative;
-	height: 200vh;
+	height: 1850px;
 	width: 100%;
 	background: #dfdfdf;
 	box-sizing: border-box;
@@ -10,6 +10,7 @@
 	h2 {
 		font-family: var(--pointFont);
 		font-weight: 300;
+		opacity: 0.6;
 	}
 
 	h2 {
@@ -17,200 +18,146 @@
 	}
 
 	.wrap {
+		position: relative;
 		width: 100%;
 		height: 100%;
-		padding: 0 5%;
+		padding: 15% 5%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 20px;
 
-		.item1 {
-			position: relative;
-			width: 90%;
-			height: 27%;
+		.subtit1 {
+			position: absolute;
+			top: 120px;
+			left: 13%;
+			letter-spacing: 10px;
+			font-weight: 600;
+		}
 
-			.left {
-				position: absolute;
-				top: 20%;
-				left: 5%;
-				width: 40%;
-				height: 70%;
-				display: flex;
-				flex-direction: column;
-				gap: 30px;
+		.subtit2 {
+			position: absolute;
+			top: 120px;
+			right: 10%;
+			font-size: 0.5rem;
+			letter-spacing: 2px;
+			font-weight: 500;
+			opacity: 0.5;
+		}
 
-				.subtit {
-					font-family: var(--pointFont);
-					font-weight: 600;
-					letter-spacing: 10px;
-					padding-left: 20%;
-				}
+		.item {
+			display: flex;
+			align-content: center;
+			gap: 100px;
+			width: 100%;
+			height: 23%;
 
-				.sec1Img {
-					height: 100%;
-				}
+			.img {
+				width: 45%;
+				height: 100%;
 			}
 
-			.right {
-				position: absolute;
-				top: 25%;
-				right: 5%;
-				width: 40%;
+			.txt {
 				display: flex;
 				flex-direction: column;
-				gap: 12px;
+				justify-content: center;
+				gap: 10px;
+				width: 40%;
 
 				.numbering {
 					display: flex;
 					align-items: baseline;
-					opacity: 0.5;
-
-					span {
-						opacity: 0.8;
-					}
+					gap: 5px;
 				}
 
 				.intro {
 					display: flex;
 					flex-direction: column;
-					gap: 6px;
+					gap: 5px;
 
-					p {
-						line-height: 1.5;
-						opacity: 0.9;
+					h3 {
+						font-size: 1.6rem;
+						font-weight: 500;
 					}
 				}
 
 				.to {
-					padding-top: 12px;
+					opacity: 1;
 					font-weight: 500;
+					padding-top: 23px;
 				}
 			}
 		}
 
-		.item2 {
-			position: relative;
-			width: 90%;
-			height: 27%;
+		.item:nth-child(even) {
+			display: flex;
+			flex-direction: row-reverse;
 
-			.left {
-				position: absolute;
-				top: 20%;
-				left: 5%;
+			.txt {
 				width: 40%;
-				height: 70%;
-				display: flex;
-				flex-direction: column;
-				gap: 30px;
-
-				.subtit {
-					font-family: var(--pointFont);
-					font-weight: 600;
-					letter-spacing: 10px;
-					padding-left: 20%;
-				}
-
-				.sec1Img {
-					height: 100%;
-				}
 			}
 
-			.right {
-				position: absolute;
-				top: 25%;
-				right: 5%;
-				width: 40%;
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-
-				.numbering {
-					display: flex;
-					align-items: baseline;
-					opacity: 0.5;
-
-					span {
-						opacity: 0.8;
-					}
-				}
-
-				.intro {
-					display: flex;
-					flex-direction: column;
-					gap: 6px;
-
-					p {
-						line-height: 1.5;
-						opacity: 0.9;
-					}
-				}
-
-				.to {
-					padding-top: 12px;
-					font-weight: 500;
-				}
-			}
-		}
-
-		.item3 {
-			position: relative;
-			width: 90%;
-			height: 27%;
-
-			.left {
-				position: absolute;
-				top: 20%;
-				left: 5%;
-				width: 40%;
-				height: 70%;
-				display: flex;
-				flex-direction: column;
-				gap: 30px;
-
-				.subtit {
-					font-family: var(--pointFont);
-					font-weight: 600;
-					letter-spacing: 10px;
-					padding-left: 20%;
-				}
-
-				.sec1Img {
-					height: 100%;
-				}
-			}
-
-			.right {
-				position: absolute;
-				top: 25%;
-				right: 5%;
-				width: 40%;
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-
-				.numbering {
-					display: flex;
-					align-items: baseline;
-					opacity: 0.5;
-
-					span {
-						opacity: 0.8;
-					}
-				}
-
-				.intro {
-					display: flex;
-					flex-direction: column;
-					gap: 6px;
-
-					p {
-						line-height: 1.5;
-						opacity: 0.9;
-					}
-				}
-
-				.to {
-					padding-top: 12px;
-					font-weight: 500;
-				}
+			.to {
+				color: var(--subPoint);
 			}
 		}
 	}
 } //
+
+// .left {
+// 	position: absolute;
+// 	top: 0;
+// 	left: 5%;
+// 	width: 40%;
+// 	height: 100%;
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: 30px;
+
+// 	.subtit {
+// 		font-family: var(--pointFont);
+// 		font-weight: 600;
+// 		letter-spacing: 10px;
+// 		padding-left: 20%;
+// 	}
+
+// 	.sec1Img {
+// 		height: 100%;
+// 	}
+// }
+
+// .right {
+// 	position: absolute;
+// 	top: 25%;
+// 	right: 5%;
+// 	width: 40%;
+// 	display: flex;
+// 	flex-direction: column;
+// 	gap: 12px;
+
+// 	.numbering {
+// 		display: flex;
+// 		align-items: baseline;
+// 		opacity: 0.5;
+
+// 		span {
+// 			opacity: 0.8;
+// 		}
+// 	}
+
+// 	.intro {
+// 		display: flex;
+// 		flex-direction: column;
+// 		gap: 6px;
+
+// 		p {
+// 			line-height: 1.5;
+// 			opacity: 0.9;
+// 		}
+// 	}
+
+// 	.to {
+// 		padding-top: 12px;
+// 		font-weight: 500;
+// 	}
+// }
