@@ -1,26 +1,39 @@
-import './Visual.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 import { Autoplay } from 'swiper';
+import './Visual.scss';
+import 'swiper/css';
 import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQueryYoutube } from '../../../query/useQueryYoutube';
-import { useEffect } from 'react';
 
 export default function Visual() {
+	const num = useRef(8);
+	const swipeRef = useRef(null);
 	const { isSuccess, data } = useQueryYoutube();
-	const path = useRef(process.env.PUBLIC_URL);
-	const arr = useRef([
-		'Best Performance',
-		'Lorem Current',
-		'Road Racer',
-		'Hello Editor',
-		"What's new",
-		'Lorem ipsum',
-		'Go away',
-		'Animal Hanlder'
-	]);
+	const [PrevIndex, setPrevIndex] = useState(0);
+	const [Index, setIndex] = useState(0);
+	const [NextIndex, setNextIndex] = useState(0);
+
+	const swiperOpt = useRef({
+		modules: [Autoplay],
+		loop: true,
+		slidesPerView: 1,
+		spaceBetween: 50,
+		centeredSlides: true,
+		loopedSlides: num.current,
+		autoplay: { delay: 3000, disableOnInteraction: true },
+		breakpoints: { 1000: { slidesPerView: 2 }, 1400: { slidesPerView: 3 } },
+		onSwiper: swiper => (swipeRef.current = swiper),
+		onSlideChange: swiper => {
+			setIndex(swiper.realIndex);
+			swiper.realIndex === 0
+				? setPrevIndex(num.current - 1)
+				: setPrevIndex(swiper.realIndex - 1);
+			swiper.realIndex === num.current - 1
+				? setNextIndex(0)
+				: setNextIndex(swiper.realIndex + 1);
+		}
+	});
 
 	const trimTitle = title => {
 		let resultTit = '';
@@ -32,29 +45,93 @@ export default function Visual() {
 
 	return (
 		<figure className='Visual myScroll'>
-			<video
-				src={`${path.current}/img/main/mainVideo.mp4`}
-				loop
-				autoPlay
-				muted></video>
-			<section id='circle'>
+			<div className='txtBox'>
+				<ul>
+					{isSuccess &&
+						data.map((el, idx) => {
+							if (idx >= num.current) return null;
+
+							return (
+								<li key={el.id} className={idx === Index ? 'on' : ''}>
+									<h3>{trimTitle(el.snippet.title)}</h3>
+
+									<Link to={`/detail/${el.id}`}>View Detail</Link>
+								</li>
+							);
+						})}
+				</ul>
+			</div>
+
+			<Swiper {...swiperOpt.current}>
 				{isSuccess &&
 					data.map((el, idx) => {
+						if (idx >= num.current) return null;
 						return (
-							<article className={`face${idx + 1}`}>
-								<h1>{arr.current[idx]}</h1>
-								<div className='inner'>
-									<div className='imgBox'>
+							<SwiperSlide key={el.id}>
+								<div className='pic'>
+									<p>
 										<img
 											src={el.snippet.thumbnails.standard.url}
 											alt={el.snippet.title}
 										/>
-									</div>
+									</p>
+									<p>
+										<img
+											src={el.snippet.thumbnails.standard.url}
+											alt={el.snippet.title}
+										/>
+									</p>
 								</div>
-							</article>
+							</SwiperSlide>
 						);
 					})}
-			</section>
+			</Swiper>
+
+			<nav className='preview'>
+				{isSuccess && (
+					<>
+						<p
+							className='prevBox'
+							onClick={() => swipeRef.current.slidePrev(400)}>
+							<img
+								src={data[PrevIndex].snippet.thumbnails.default.url}
+								alt={data[PrevIndex].snippet.title}
+							/>
+						</p>
+						<p
+							className='nextBox'
+							onClick={() => swipeRef.current.slideNext(400)}>
+							<img
+								src={data[NextIndex].snippet.thumbnails.default.url}
+								alt={data[NextIndex].snippet.title}
+							/>
+						</p>
+					</>
+				)}
+			</nav>
+
+			<ul className='pagination'>
+				{Array(num.current)
+					.fill()
+					.map((_, idx) => {
+						return (
+							<li
+								key={idx}
+								className={idx === Index ? 'on' : ''}
+								onClick={() => swipeRef.current.slideToLoop(idx, 400)}></li>
+						);
+					})}
+			</ul>
+
+			<div className='barFrame'>
+				<p
+					className='bar'
+					style={{ width: (100 / num.current) * (Index + 1) + '%' }}></p>
+			</div>
+
+			<div className='counter'>
+				<strong>0{Index + 1}</strong>/<span>0{num.current}</span>
+			</div>
 		</figure>
 	);
 }

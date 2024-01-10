@@ -6,9 +6,12 @@
 
 	.txtBox {
 		width: 40%;
-		height: calc(100vh - 90px);
-		padding-left: 15%;
+		height: 100%;
+		padding-left: 15vw;
 		position: absolute;
+		top: 0px;
+		left: 0;
+		z-index: 2;
 
 		ul {
 			width: 100%;
@@ -31,24 +34,46 @@
 				transition: opacity 1s, transform 1s;
 
 				h3 {
+					font-size: 2.2rem;
+					font-weight: normal;
 					color: var(--baseColor);
-					margin-bottom: 50px;
+					margin-bottom: 60px;
 				}
 
 				a {
-					font-size: 10rem;
-					color: #111;
+					display: inline-block;
+					padding: 8px 20px;
+					font-size: 0.8rem;
+					font-weight: bold;
+					color: transparent;
+					position: relative;
+					text-indent: -80px;
+					cursor: pointer;
+					background: var(--bgColor);
+					transition-duration: 0.5s;
+					transition-delay: 0.5s;
+					transition-delay: background 1s;
 				}
 			}
-
 			li.on {
 				opacity: 1;
 				transform: scale(1);
+				z-index: 5;
+
+				a {
+					color: var(--bgColor);
+					text-indent: 0px;
+					background: var(--baseColor);
+
+					&::before,
+					&::after {
+						left: 0;
+						opacity: 1;
+					}
+				}
 			}
 		}
 	}
-
-	// jsx 에 없지만 swiper 가 제공하는 요소 - 1
 	.swiper {
 		display: inline-block;
 		width: 80%;
@@ -58,27 +83,22 @@
 		top: 0;
 		right: 0;
 
-		// jsx 에 없지만 swiper 가 제공하는 요소 - 2
 		.swiper-wrapper {
 			height: inherit;
 
-			// jsx 에 없지만 swiper 가 제공하는 요소 - 3
 			.swiper-slide {
 				width: 100%;
 				height: inherit;
 
-				// SwiperSlide 아래 영역: swiper 의 각 slide 에 적용될 css
 				.pic {
 					width: 100%;
 					height: 100%;
 					position: relative;
-					opacity: 1;
+					opacity: 0.4;
 					transform: scale(0.5);
 					position: relative;
-					transition: opacity 0.8s, transform 0.8s;
-					// transition: swiper가 제공한 transition 을 custom 한다.
+					transition: opacity 0.5s, transform 0.5s;
 
-					// 사진 2개를 담고 있는 태그
 					> p {
 						position: absolute;
 						width: 100%;
@@ -87,14 +107,12 @@
 						left: 0;
 						overflow: hidden;
 
-						// blur 처리될 사진 => 두개의 사진에서 첫 사진은 blur 용도로 사용
 						&:nth-of-type(1) {
-							filter: blur(30px);
+							filter: blur(30px) saturate(1.2);
 							transform: translate(40px, 40px);
 							opacity: 0.8;
 						}
 
-						// 보이는 사진
 						img {
 							width: 100%;
 							height: 100%;
@@ -105,27 +123,78 @@
 				}
 			}
 
-			//prev-style: 화면상 왼쪽으로 이동시 사라지는 사진의 모습을 정의
+			//prev-style
 			.swiper-slide-prev {
 				.pic {
 					transform: scale(1.5);
 					opacity: 0;
 				}
 			}
-			//active-style: 화면상 가운데 이미지로 주된 이미지의 모습을 정의
+			//active-style
 			.swiper-slide-active {
 				.pic {
 					transform: scale(1);
 					opacity: 1;
 				}
 			}
-			//active-style: 화면상 오른쪽 이미지로 active 가 되기전 사진을 정의
+			//active-style
 			.swiper-slide-next {
 				.pic {
 					transform: scale(0.7);
-					opacity: 0.4;
+					opacity: 0.5;
 				}
 			}
+		}
+	}
+
+	.pagination {
+		position: absolute;
+		bottom: 100px;
+		left: 15%;
+		display: flex;
+		gap: 10px;
+		z-index: 6;
+
+		li {
+			width: 10px;
+			height: 10px;
+			background: #888;
+			cursor: pointer;
+			border-radius: 50%;
+
+			&.on {
+				background: var(--subPoint);
+			}
+		}
+	}
+
+	.barFrame {
+		width: 70%;
+		height: 2px;
+		position: absolute;
+		bottom: 50px;
+		left: 15%;
+		background: #888;
+
+		.bar {
+			width: 0%;
+			height: 100%;
+			background: var(--subPoint);
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition: width 0.5s;
+		}
+	}
+	.counter {
+		position: absolute;
+		bottom: 80px;
+		right: 15vw;
+		color: var(--baseColor);
+		font-size: 1.5rem;
+
+		strong {
+			font-size: 2.5rem;
 		}
 	}
 
@@ -153,60 +222,46 @@
 			right: 50px;
 		}
 	}
+}
 
-	.pagination {
-		position: absolute;
-		bottom: 100px;
-		left: 15%;
+.mobile,
+.tablet {
+	.Visual {
 		display: flex;
-		gap: 10px;
-		z-index: 6;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-content: center;
+		gap: 60px;
 
-		li {
-			width: 10px;
-			height: 10px;
-			background: #888;
-			cursor: pointer;
+		.txtBox {
+			width: 100%;
+			height: 30%;
+			padding-left: 0;
+			padding: 5vh 10vw;
+			position: relative;
+			top: 100px;
 
-			&.on {
-				background: var(--pointColor);
+			h3 {
+				font-size: 2.5rem;
 			}
 		}
-	}
+		.swiper {
+			width: 100%;
+			height: 70%;
+			padding: 5vh 10vw;
+			position: relative;
 
-	.barFrame {
-		width: 70%;
-		height: 2px;
-		position: absolute;
-		bottom: 50px;
-		left: 15%;
-		background: #888;
-
-		.bar {
-			width: 0%;
-			height: 100%;
-			background: var(--pointColor);
-			position: absolute;
-			top: 0;
-			left: 0;
-			transition: width 0.5s;
-		}
-	}
-	.counter {
-		position: absolute;
-		bottom: 80px;
-		right: 15vw;
-		color: var(--baseColor);
-		font-size: 1.5rem;
-
-		strong {
-			font-size: 2.5rem;
+			.swiper-wrapper {
+				.swiper-slide {
+					height: 100%;
+				}
+			}
 		}
 	}
 }
 
 //dark theme style
-.Dark {
+.dark {
 	.Visual {
 		.swiper {
 			.swiper-wrapper {
