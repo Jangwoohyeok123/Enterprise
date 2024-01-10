@@ -1,57 +1,100 @@
 .Visual {
-	width: 100;
-	height: calc(100vh - 60px);
+	width: 100%;
+	height: calc(100vh - 90px);
 	position: relative;
 	overflow: hidden;
 
 	.txtBox {
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 2;
 		width: 40%;
-		height: 100%;
-		padding-left: 10vw;
+		height: calc(100vh - 90px);
+		padding-left: 15%;
+		position: absolute;
+
+		ul {
+			width: 100%;
+			height: 100%;
+			position: relative;
+
+			li {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: flex;
+				flex-wrap: wrap;
+				align-content: center;
+				font-size: 3rem;
+				opacity: 0;
+				z-index: 1;
+				transform: scale(1.5);
+				transition: opacity 1s, transform 1s;
+
+				h3 {
+					color: var(--baseColor);
+					margin-bottom: 50px;
+				}
+
+				a {
+					font-size: 10rem;
+					color: #111;
+				}
+			}
+
+			li.on {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
 	}
 
+	// jsx 에 없지만 swiper 가 제공하는 요소 - 1
 	.swiper {
-		position: absolute;
-		top: 0;
-		right: 0;
 		display: inline-block;
 		width: 80%;
 		height: 100%;
-		padding: 20vh 0px;
+		padding: 10vw 0px;
+		position: absolute;
+		top: 0;
+		right: 0;
 
+		// jsx 에 없지만 swiper 가 제공하는 요소 - 2
 		.swiper-wrapper {
-			height: 100%;
+			height: inherit;
 
+			// jsx 에 없지만 swiper 가 제공하는 요소 - 3
 			.swiper-slide {
 				width: 100%;
 				height: inherit;
 
+				// SwiperSlide 아래 영역: swiper 의 각 slide 에 적용될 css
 				.pic {
 					width: 100%;
 					height: 100%;
 					position: relative;
-					opacity: 0.4;
-					transform: scale(0.7);
-					transition: opacity 0.5s, transform 0.5s;
+					opacity: 1;
+					transform: scale(0.5);
+					position: relative;
+					transition: opacity 0.8s, transform 0.8s;
+					// transition: swiper가 제공한 transition 을 custom 한다.
 
+					// 사진 2개를 담고 있는 태그
 					> p {
 						position: absolute;
-						top: 0;
-						left: 0;
 						width: 100%;
 						height: 100%;
+						top: 0;
+						left: 0;
 						overflow: hidden;
 
+						// blur 처리될 사진 => 두개의 사진에서 첫 사진은 blur 용도로 사용
 						&:nth-of-type(1) {
-							filter: blur(30px) saturate(1.2);
+							filter: blur(30px);
 							transform: translate(40px, 40px);
 							opacity: 0.8;
 						}
 
+						// 보이는 사진
 						img {
 							width: 100%;
 							height: 100%;
@@ -62,36 +105,62 @@
 				}
 			}
 
+			//prev-style: 화면상 왼쪽으로 이동시 사라지는 사진의 모습을 정의
 			.swiper-slide-prev {
 				.pic {
-					transform: scale(1.3);
+					transform: scale(1.5);
 					opacity: 0;
 				}
 			}
-
+			//active-style: 화면상 가운데 이미지로 주된 이미지의 모습을 정의
 			.swiper-slide-active {
 				.pic {
 					transform: scale(1);
 					opacity: 1;
 				}
 			}
-
+			//active-style: 화면상 오른쪽 이미지로 active 가 되기전 사진을 정의
 			.swiper-slide-next {
 				.pic {
-					transform: scale(0.6);
-					opacity: 0.5;
+					transform: scale(0.7);
+					opacity: 0.4;
 				}
 			}
+		}
+	}
+
+	//preview thumbnails
+	.preview {
+		p {
+			width: 120px;
+			height: 60px;
+			overflow: hidden;
+			position: absolute;
+			bottom: 5vh;
+			cursor: pointer;
+			z-index: 6;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		p.prevBox {
+			left: 50px;
+		}
+		p.nextBox {
+			right: 50px;
 		}
 	}
 
 	.pagination {
 		position: absolute;
 		bottom: 100px;
-		left: 10vw;
-		z-index: 6;
+		left: 15%;
 		display: flex;
 		gap: 10px;
+		z-index: 6;
 
 		li {
 			width: 10px;
@@ -100,38 +169,59 @@
 			cursor: pointer;
 
 			&.on {
-				background: var(--subPoint);
+				background: var(--pointColor);
 			}
 		}
 	}
 
 	.barFrame {
+		width: 70%;
+		height: 2px;
 		position: absolute;
 		bottom: 50px;
 		left: 15%;
 		background: #888;
-		width: 70%;
-		height: 2px;
 
 		.bar {
-			position: absolite;
-			top: 0;
-			left: 0;
 			width: 0%;
 			height: 100%;
-			background: var(--subPoint);
+			background: var(--pointColor);
+			position: absolute;
+			top: 0;
+			left: 0;
 			transition: width 0.5s;
 		}
 	}
-
 	.counter {
 		position: absolute;
 		bottom: 80px;
-		right: 10vw;
-		color: var(--subPoint);
+		right: 15vw;
+		color: var(--baseColor);
 		font-size: 1.5rem;
-	}
 
-	.preview {
+		strong {
+			font-size: 2.5rem;
+		}
+	}
+}
+
+//dark theme style
+.Dark {
+	.Visual {
+		.swiper {
+			.swiper-wrapper {
+				.swiper-slide {
+					.pic {
+						> p {
+							&:nth-of-type(1) {
+								filter: blur(30px) saturate(0.8);
+								transform: translate(20px, 20px);
+								opacity: 0.2;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
