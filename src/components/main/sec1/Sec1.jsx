@@ -2,19 +2,18 @@ import { useState } from 'react';
 import { useScroll } from '../../../hooks/useScroll';
 import Image from '../../common/img/Image';
 import './Sec1.scss';
+import Linetext from '../linetext/Linetext';
 
 export default function Sec1() {
 	const handleScroll = modifiedScroll => {};
 	const [SecArr, setSecArr] = useState([1, 2, 3]);
 
-	const { refEl } = useScroll(handleScroll);
 	const path = process.env.PUBLIC_URL;
 
 	return (
 		<section className='Sec1 myScroll'>
+			<Linetext tit1='NORM SERVICES' tit2='LSOSERVIESSDAMPJALL' />
 			<div className='wrap'>
-				<div className='subtit1'>NORM SERVICES</div>
-				<div className='subtit2'>LSOSERVIESSDAMPJALL</div>
 				{SecArr.map((_, idx) => {
 					const number = idx + 1;
 					return (

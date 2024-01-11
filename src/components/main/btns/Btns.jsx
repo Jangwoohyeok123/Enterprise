@@ -34,6 +34,19 @@ export default function Btns({ frame, items, base, isAuto }) {
 			}
 		});
 
+		/* 
+			const scroll = app.current.scrollTop;
+
+			secs.current.forEach((sec, idx) => {
+				if (scroll >= secs.current[idx].offsetTop - baseline.current) {
+					const btnsArr = btns.current?.querySelectorAll('li');
+					btnsArr?.forEach(btn => btn.classList.remove('on'));
+					btns.current?.querySelectorAll('li')[idx]?.classList.add('on');
+				}
+			})
+		
+		*/
+
 		// if (scroll >= secs.current[idx].offsetTop - baseline.current) {
 		// 	Array.from(btns.current.children).forEach(btn =>
 		// 		btn.classList.remove('on')

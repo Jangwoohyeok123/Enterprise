@@ -1,0 +1,22 @@
+.Linetext {
+	font-family: var(--pointFont);
+	position: absolute;
+	left: 10%;
+	top: 100px;
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.subtit1 {
+		letter-spacing: 15px;
+		font-weight: 600;
+	}
+
+	.subtit2 {
+		font-size: 0.5rem;
+		letter-spacing: 2px;
+		font-weight: 500;
+		opacity: 0.5;
+	}
+}
