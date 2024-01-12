@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Linetext from '../linetext/Linetext';
 import './Sec2.scss';
 import { FaRegSmile } from 'react-icons/fa';
+import { CiFaceSmile } from 'react-icons/ci';
 import Card from '../card/Card';
 
 export default function Sec2() {
@@ -33,7 +34,7 @@ export default function Sec2() {
 			<Linetext tit1='NORM SERVICES' tit2='LSOSERVIESSDAMPJALL' />
 
 			<div className='wrap'>
-				<Card Icon={FaRegSmile} />
+				<Card Icon={CiFaceSmile} />
 			</div>
 		</section>
 	);
