@@ -35,7 +35,7 @@
 		left: 50%;
 		margin-top: -400px;
 		margin-left: -300px;
-		// transform-style: preserve-3d;
+		transform-style: preserve-3d;
 		animation: rolling linear 30s infinite;
 
 		// 공통 스타일
@@ -45,8 +45,8 @@
 			position: absolute;
 			top: 0px;
 			left: 0px;
-			// backface-visibility: hidden;
-			// background: rgba(255, 255, 255, 0.01);
+			backface-visibility: hidden;
+			background: rgba(255, 255, 255, 0.01);
 			// 초기 투명도 조정
 
 			// 공통 스타일
@@ -66,7 +66,7 @@
 				border: 1px solid #555;
 				background: rgba(255, 255, 255, 0.06);
 				padding: 40px 40px;
-				// position: relative;
+				position: relative;
 				opacity: 0.7;
 				overflow: hidden;
 				cursor: pointer;
@@ -110,29 +110,29 @@
 			- 현재 원기둥과 perspective 의 차이는 750 px 인 상황이다. 
 		*/
 		.face1 {
-			transform: rotateY(0deg) translateZ(-1500px);
+			transform: rotateY(0deg) translateZ(-764px);
 		}
-		// .face2 {
-		// 	transform: rotateY(45deg) translateZ(-2500px);
-		// }
-		// .face3 {
-		// 	transform: rotateY(90deg) translateZ(-100px);
-		// }
-		// .face4 {
-		// 	transform: rotateY(135deg) translateZ(-100px);
-		// }
-		// .face5 {
-		// 	transform: rotateY(180deg) translateZ(-100px);
-		// }
-		// .face6 {
-		// 	transform: rotateY(225deg) translateZ(-100px);
-		// }
-		// .face7 {
-		// 	transform: rotateY(270deg) translateZ(-100px);
-		// }
-		// .face8 {
-		// 	transform: rotateY(315deg) translateZ(-100px);
-		// }
+		.face2 {
+			transform: rotateY(45deg) translateZ(-764px);
+		}
+		.face3 {
+			transform: rotateY(90deg) translateZ(-764px);
+		}
+		.face4 {
+			transform: rotateY(135deg) translateZ(-764px);
+		}
+		.face5 {
+			transform: rotateY(180deg) translateZ(-764px);
+		}
+		.face6 {
+			transform: rotateY(225deg) translateZ(-764px);
+		}
+		.face7 {
+			transform: rotateY(270deg) translateZ(-764px);
+		}
+		.face8 {
+			transform: rotateY(315deg) translateZ(-764px);
+		}
 	}
 }
 
