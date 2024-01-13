@@ -19,10 +19,6 @@ export default function Sec2() {
 		TiMessage
 	];
 
-	useEffect(() => {
-		console.log(data);
-	});
-
 	return (
 		<section className='Sec2'>
 			<Linetext tit1='NORM SERVICES' tit2='LSOSERVIESSDAMPJALL' />

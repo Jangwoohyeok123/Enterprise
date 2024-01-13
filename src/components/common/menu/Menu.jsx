@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { SlClose } from 'react-icons/sl';
 import { NavLink, Link } from 'react-router-dom';
 import { useGlobalData } from '../../../hooks/useGlobalData';
+import { useEffect } from 'react';
 
 export default function Menu() {
 	const { OpenMenu, setOpenMenu } = useGlobalData();
