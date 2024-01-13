@@ -15,6 +15,9 @@ export default function Header({ viewType }) {
 	/* App 을 실행하면 다크모드 쿠키에 저장하기 */
 	/*  */
 	const handleDarkMode = () => setDark(!Dark);
+	const handleMenu = () => {
+		setOpenMenu(!OpenMenu);
+	};
 	const location = useLocation();
 
 	return (
@@ -65,9 +68,9 @@ export default function Header({ viewType }) {
 							<MdOutlineDarkMode onClick={handleDarkMode} />
 						</span>
 
-						{viewType == 'Tablet' || viewType == 'Mobile' ? (
-							<span className='icon'>
-								<FiMenu onClick={() => setOpenMenu(!OpenMenu)} />
+						{viewType === 'Tablet' || viewType === 'Mobile' ? (
+							<span className='icon' onClick={handleMenu}>
+								<FiMenu />
 							</span>
 						) : null}
 					</div>

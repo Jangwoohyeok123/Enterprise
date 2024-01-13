@@ -34,9 +34,8 @@ export default function Sec1() {
 									<p>
 										Lorem ipsum dolor sit amet consectetur adipisicing elit.
 										Quaerat aspernatur distinctio quas. Eos perspiciatis facere
-										aut dolorem quam corrupti aliquid, dolorum, saepe quas
-										quaerat beatae qui? Reiciendis id nam sint! Lorem ipsum
-										dolor sit amet.
+										aut dolorem quam corrupti aliquid, dolorum, saepe quasaut
+										dolorem quam corrupti aliquid, dolorum, saepe quas
 									</p>
 								</div>
 								<span className='to'>DEPARTMENT</span>

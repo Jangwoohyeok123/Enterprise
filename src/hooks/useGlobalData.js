@@ -3,12 +3,13 @@ import { createContext, useContext, useState } from 'react';
 export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-	const [OpenMenu, setOpenMenu] = useState(false);
+	const [OpenMenu, setOpenMenu] = useState(true);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Dark, setDark] = useState(false);
 
 	return (
-		<GlobalContext.Provider value={{ OpenMenu, setOpenMenu, OpenModal, setOpenModal, Dark, setDark }}>
+		<GlobalContext.Provider
+			value={{ OpenMenu, setOpenMenu, OpenModal, setOpenModal, Dark, setDark }}>
 			{children}
 		</GlobalContext.Provider>
 	);

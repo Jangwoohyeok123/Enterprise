@@ -59,6 +59,10 @@
 			.img {
 				width: 45%;
 				height: 100%;
+
+				img {
+					aspect-ratio: 16/9;
+				}
 			}
 
 			.txt {
@@ -84,12 +88,20 @@
 						font-size: 1.6rem;
 						font-weight: 500;
 					}
+
+					/* 3 줄 이상 넘어가지 않기 */
+					p {
+						display: -webkit-box;
+						-webkit-line-clamp: 3;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+					}
 				}
 
 				.to {
 					opacity: 1;
 					font-weight: 500;
-					padding-top: 23px;
+					padding-top: 18px;
 				}
 			}
 		}
@@ -103,4 +115,13 @@
 			}
 		}
 	}
+}
+
+.Notebook {
+	.wrap {
+		gap: 100px;
+	}
+}
+
+.Tablet {
 }

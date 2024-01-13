@@ -5,8 +5,6 @@ import { NavLink, Link } from 'react-router-dom';
 import { useGlobalData } from '../../../hooks/useGlobalData';
 
 export default function Menu() {
-	// const dispatch = useDispatch();
-	// const open = useSelector(store => store.menuReducer.open);
 	const { OpenMenu, setOpenMenu } = useGlobalData();
 
 	return (
@@ -21,7 +19,11 @@ export default function Menu() {
 					variants={{
 						hidden: { opacity: 0, x: '-100%' },
 						visible: { opacity: 1, x: '0%' },
-						exit: { opacity: 0, x: '-100%', transition: { delay: 0.3, duration: 0.6 } }
+						exit: {
+							opacity: 0,
+							x: '-100%',
+							transition: { delay: 0.3, duration: 0.6 }
+						}
 					}}>
 					<div className='layout'>
 						<div className='top'>
