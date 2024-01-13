@@ -14,8 +14,8 @@ const fetchYoutube = async () => {
 
 export const useQueryYoutube = () => {
 	return useQuery(['fetchYoutube'], fetchYoutube, {
-		staleTime: 1000 * 60 * 60 * 24,
-		cacheTime: 1000 * 60 * 60 * 24,
+		staleTime: 2000,
+		cacheTime: 1000 * 3000,
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
 		retry: 2

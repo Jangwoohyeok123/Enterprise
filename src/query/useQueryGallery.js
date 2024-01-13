@@ -34,8 +34,8 @@ const fetchGallery = async ({ queryKey: [_, opt] }) => {
 export const useQueryGallery = opt => {
 	if (opt.type === 'user' && !opt.id) opt.id = '25986582@N05';
 	return useQuery(['fetchGallery', opt], fetchGallery, {
-		staleTime: 1000 * 60 * 60 * 24,
-		acheTime: 1000 * 60 * 60 * 24,
+		staleTime: 4000,
+		cacheTime: 1000 * 60 * 60 * 24,
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
 		retry: 3
