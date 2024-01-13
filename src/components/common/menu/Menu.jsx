@@ -6,7 +6,12 @@ import { useGlobalData } from '../../../hooks/useGlobalData';
 import { useEffect } from 'react';
 
 export default function Menu() {
+	console.log('render');
 	const { OpenMenu, setOpenMenu } = useGlobalData();
+
+	useEffect(() => {
+		alert('Menu render');
+	}, [OpenMenu]);
 
 	return (
 		<AnimatePresence>

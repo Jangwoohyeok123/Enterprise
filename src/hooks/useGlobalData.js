@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from 'react';
 export const GlobalContext = createContext();
 
 export function GlobalProvider({ children }) {
-	const [OpenMenu, setOpenMenu] = useState(true);
+	const [OpenMenu, setOpenMenu] = useState(false);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Dark, setDark] = useState(false);
 
@@ -15,8 +15,14 @@ export function GlobalProvider({ children }) {
 	);
 }
 
-//useContext로 반환한 전체 전역데이터를 내보는 커스텀훅 생성후 export
+// GlobalContext 안에 선언됐던 value 를 전달해주는 훅이다.
+// 훅 사용자는 const {state, modifyFc} = useGlobalData();
 export function useGlobalData() {
 	const globalData = useContext(GlobalContext);
 	return globalData;
 }
+
+/* 
+
+
+*/
