@@ -9,7 +9,10 @@ const fetchSec2 = async () => {
 
 // fetch 함수의 key 를 부여해야 함
 export const useQuerySec2 = () => {
-	return useQuery(['fetchMainSection2'], fetchSec2, {});
+	return useQuery(['fetchMainSection2'], fetchSec2, {
+		staleTime: 1000,
+		cacheTime: 1000 * 30
+	});
 };
 
 /* 
@@ -21,6 +24,6 @@ export const useQuerySec2 = () => {
 */
 
 /* 
-  staleTime 은 fresh 가 풀리는 시간
-  cacheTime 은 fresh
+  staleTime 은 stale 이 되는 시간 
+  cacheTime 은 fetching 한 이후부터 caching 이 진행되는 시간
 */
