@@ -18,6 +18,7 @@ import CookieModal from './components/common/cookieModal/CookieModal';
 import { useCookie } from './hooks/useCookie';
 import { useGlobalData } from './hooks/useGlobalData';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import Menu from './components/common/menu/Menu';
 
 export default function App() {
 	const { Dark } = useGlobalData();
@@ -42,6 +43,7 @@ export default function App() {
 				<Route path='/contact' component={Contact} />
 				<Route path='/detail/:id' component={Detail} />
 				<Footer />
+				<Menu />
 				<CookieModal wid={300} ht={400} />
 			</div>
 			<ReactQueryDevtools />
