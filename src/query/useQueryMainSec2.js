@@ -4,7 +4,8 @@ const fetchSec2 = async () => {
 	const path = process.env.PUBLIC_URL;
 	const res = await fetch(`${path}/DB/main.json`);
 	const json = await res.json();
-	console.log(json);
+
+	return json.sec2;
 };
 
 // fetch 함수의 key 를 부여해야 함
