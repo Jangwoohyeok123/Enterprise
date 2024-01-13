@@ -9,7 +9,6 @@ import Sec2 from '../sec2/Sec2';
 
 export default function MainWrap() {
 	const location = useLocation();
-	console.log(location.pathname);
 
 	return (
 		<div className='MainWrap'>

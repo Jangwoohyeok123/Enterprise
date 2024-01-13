@@ -2,16 +2,36 @@
 	margin: 0 auto;
 	width: 100%;
 	background: var(--bgColor);
-	padding: 200px 0;
+	padding: 200px 0 150px 0;
 	position: relative;
 
 	.wrap {
-		width: 80%;
+		width: 100%;
 		padding: 0 10%;
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
 
 		.styletxt {
 			letter-spacing: 15px;
 			font-weight: 600;
+		}
+	}
+
+	.specialCard {
+		font-family: var(--pointFont);
+		margin-top: 70px;
+		width: 30%;
+		color: var(--bgColor);
+		background: rgba(var(--baseColor-code), 0.5);
+
+		h3 {
+			padding: 5%;
+		}
+
+		span {
+			padding: 0 5%;
+			color: var(--subPoint);
 		}
 	}
 }

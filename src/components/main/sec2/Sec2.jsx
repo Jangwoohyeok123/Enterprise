@@ -31,13 +31,14 @@ export default function Sec2() {
 					data.map((el, idx) => {
 						return (
 							<>
-								<Card Icon={Icons[idx]} />
-								<h3>{el.title}</h3>
-								<p>{el.body}</p>
+								<Card Icon={Icons[idx]} title={el.title} content={el.body} />
 							</>
 						);
 					})}
-				<div>asd</div>
+				<div className='specialCard'>
+					<h3>Our Works</h3>
+					<span>Loremipsumdolor</span>
+				</div>
 			</div>
 		</section>
 	);
