@@ -21,8 +21,8 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import Menu from './components/common/menu/Menu';
 
 export default function App() {
-	const { Dark } = useGlobalData();
-	const viewType = useViewType();
+	const { Dark, ViewType } = useGlobalData();
+
 	const queryClient = new QueryClient();
 	const { createCookie } = useCookie();
 	const location = useLocation();
@@ -32,8 +32,8 @@ export default function App() {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<div className={`App ${Dark ? 'dark' : ''} ${viewType} `}>
-				<Header viewType={viewType} />
+			<div className={`App ${Dark ? 'dark' : ''} ${ViewType} `}>
+				<Header />
 				<Route exact path='/' component={MainWrap} />
 				<Route path='/department' component={Department} />
 				<Route path='/youtube' component={Youtube} />

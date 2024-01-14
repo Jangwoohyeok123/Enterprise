@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { useViewType } from './useViewType';
 
 export const GlobalContext = createContext();
 
@@ -6,10 +7,20 @@ export function GlobalProvider({ children }) {
 	const [OpenMenu, setOpenMenu] = useState(false);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Dark, setDark] = useState(false);
+	const { ViewType, setViewType } = useViewType();
 
 	return (
 		<GlobalContext.Provider
-			value={{ OpenMenu, setOpenMenu, OpenModal, setOpenModal, Dark, setDark }}>
+			value={{
+				ViewType,
+				setViewType,
+				OpenMenu,
+				setOpenMenu,
+				OpenModal,
+				setOpenModal,
+				Dark,
+				setDark
+			}}>
 			{children}
 		</GlobalContext.Provider>
 	);

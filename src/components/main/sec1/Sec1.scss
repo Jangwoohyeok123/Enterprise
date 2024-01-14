@@ -119,9 +119,65 @@
 
 .Notebook {
 	.wrap {
-		gap: 100px;
+		row-gap: 50px;
+
+		.item {
+			.txt {
+				.numbering {
+					h2 {
+						font-size: 2.5rem;
+					}
+				}
+				.to {
+					padding-top: 7px;
+				}
+			}
+		}
 	}
 }
 
 .Tablet {
+	.wrap {
+		row-gap: 80px;
+
+		.item {
+			gap: 7%;
+
+			.img {
+				width: 60%;
+				height: 100%;
+
+				img {
+					object-fit: cover;
+					aspect-ratio: auto;
+				}
+			}
+
+			.txt {
+				.numbering {
+					gap: 5px;
+
+					h2 {
+						font-size: 2.5rem;
+					}
+				}
+
+				.intro {
+					gap: 5px;
+
+					h3 {
+						font-size: 1.3rem;
+					}
+
+					p {
+						font-size: 0.9rem;
+					}
+				}
+
+				.to {
+					padding-top: 5px;
+				}
+			}
+		}
+	}
 }

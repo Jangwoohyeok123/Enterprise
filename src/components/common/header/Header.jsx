@@ -10,10 +10,11 @@ import { useContext, useRef, useState } from 'react';
 import Menu from '../menu/Menu';
 import { useScroll } from '../../../hooks/useScroll';
 
-export default function Header({ viewType }) {
+export default function Header() {
 	// const { OpenMenu, setOpenMenu, Dark, setDark } = useGlobalData();
 	/* App 을 실행하면 다크모드 쿠키에 저장하기 */
-	const { Dark, setDark, OpenMenu, setOpenMenu } = useContext(GlobalContext);
+	const { Dark, setDark, OpenMenu, setOpenMenu, ViewType, setViewType } =
+		useContext(GlobalContext);
 	/*  */
 	const handleDarkMode = () => setDark(!Dark);
 	const handleMenu = () => {
@@ -71,7 +72,7 @@ export default function Header({ viewType }) {
 							<MdOutlineDarkMode onClick={handleDarkMode} />
 						</span>
 
-						{viewType === 'Tablet' || viewType === 'Mobile' ? (
+						{ViewType === 'Tablet' || ViewType === 'Mobile' ? (
 							<span className='icon' onClick={handleMenu}>
 								<FiMenu />
 							</span>
