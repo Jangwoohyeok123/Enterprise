@@ -1,11 +1,17 @@
 import './Card.scss';
 
-export default function Card({ Icon, title, content }) {
+export default function Card({ Icon, title, content, specialCard }) {
 	return (
+
+	);
+}
+
+
+/* 
+
 		<div className='Card'>
-			<Icon size={70} className='icon' />
+			<Icon className='icon' />
 			<h3>{title}</h3>
 			<p>{content}</p>
 		</div>
-	);
-}
+*/

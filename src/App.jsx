@@ -22,7 +22,6 @@ import Menu from './components/common/menu/Menu';
 
 export default function App() {
 	const { Dark, ViewType } = useGlobalData();
-
 	const queryClient = new QueryClient();
 	const { createCookie } = useCookie();
 	const location = useLocation();
