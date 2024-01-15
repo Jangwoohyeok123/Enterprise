@@ -34,8 +34,8 @@ const fetchGallery = async ({ queryKey: [_, opt] }) => {
 export const useQueryGallery = opt => {
 	if (opt.type === 'user' && !opt.id) opt.id = '25986582@N05';
 	return useQuery(['fetchGallery', opt], fetchGallery, {
-		staleTime: 4000,
-		cacheTime: 1000 * 10,
+		staleTime: 2000, // active 상태에서 2초뒤면 stale 상태가 됨
+		cacheTime: 1000 * 5, // 5초 뒤에 inactive 상태면 삭제됨
 		refetchOnMount: false,
 		refetchOnWindowFocus: false,
 		retry: 3
