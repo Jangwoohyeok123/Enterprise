@@ -32,23 +32,37 @@
 			font-size: 1.8rem;
 			padding-bottom: 3%;
 		}
+
+		p {
+		}
 	}
 }
 
-.Tablet {
+.Tablet,
+.Mobile {
 	.Card {
 		width: 48%;
-		padding-bottom: 20px;
+	}
+	h3 {
+		font-size: 1.2rem;
+		padding: 5% 0 3% 0;
+	}
+}
+
+.Mobile {
+	.Card {
+		width: 46%;
+		display: -webkit-box;
+		-webkit-line-clamp: 6;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 
 		.icon {
-			width: 45px;
-			height: 45px;
-			opacity: 0.5;
+			width: 30px;
+			height: 30px;
 		}
 
 		h3 {
-			font-size: 1.8rem;
-			padding-bottom: 3%;
 		}
 	}
 }

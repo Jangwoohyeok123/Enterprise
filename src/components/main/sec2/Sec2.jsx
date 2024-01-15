@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Linetext from '../linetext/Linetext';
 import './Sec2.scss';
 import { FaRegSmile } from 'react-icons/fa';
@@ -11,13 +11,13 @@ import { useQuerySec2 } from '../../../query/useQueryMainSec2';
 
 export default function Sec2() {
 	const { isSuccess, data } = useQuerySec2();
-	const Icons = [
+	const Icons = useRef([
 		FaRegSmile,
 		MdOutlineBolt,
 		HiOutlineLightBulb,
 		BiDollar,
 		TiMessage
-	];
+	]);
 
 	return (
 		<section className='Sec2'>
@@ -27,14 +27,23 @@ export default function Sec2() {
 					data.map((el, idx) => {
 						return (
 							<>
-								<Card Icon={Icons[idx]} title={el.title} content={el.body} />
+								<Card
+									key={idx}
+									Icon={Icons.current[idx]}
+									title={el.title}
+									content={el.body}
+								/>
 							</>
 						);
 					})}
-				<div className='specialCard'>
-					<h3>Our Works</h3>
-					<span>Loremipsumdolor</span>
-				</div>
+				<Card
+					SpecialCard={
+						<div className='specialCard'>
+							<h3>Our Works</h3>
+							<span>Loremipsumdolor</span>
+						</div>
+					}
+				/>
 			</div>
 		</section>
 	);
@@ -47,6 +56,9 @@ export default function Sec2() {
 						<Card Icon={BiDollar} />
 						<Card Icon={TiMessage} />
 					
-
+				<div className='specialCard'>
+					<h3>Our Works</h3>
+					<span>Loremipsumdolor</span>
+				</div>
 
 */

@@ -21,7 +21,7 @@
 	.specialCard {
 		font-family: var(--pointFont);
 		margin-top: 70px;
-		width: 30%;
+		width: 48%;
 		color: var(--bgColor);
 		background: rgba(var(--baseColor-code), 0.5);
 
@@ -33,5 +33,44 @@
 			padding: 0 5%;
 			color: var(--subPoint);
 		}
+	}
+}
+
+// card 는 현재 notebook 부터 width 30% => 48% => 46%
+// special 카드를 쓸 경우 참고할 것
+// special-card 의 marign-top 은 notebook, tablet, phone
+.Notebook {
+	.specialCard {
+		width: 30%;
+	}
+}
+
+.Tablet,
+.Mobile {
+	.Sec2 {
+		.wrap {
+			gap: 0;
+			row-gap: 20px;
+		}
+
+		.specialCard {
+			// width: ;
+		}
+	}
+}
+
+.Mobile {
+	.Sec2 {
+		padding: 100px 0;
+		.wrap {
+			padding: 0 5%;
+			column-gap: 20px;
+			row-gap: 50px;
+		}
+	}
+
+	.specialCard {
+		margin-top: 30px;
+		width: 46%;
 	}
 }
