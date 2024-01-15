@@ -20,3 +20,30 @@
 		opacity: 0.5;
 	}
 }
+
+.Tablet {
+	.Linetext {
+		.subtit1 {
+			letter-spacing: 10px;
+			font-weight: 600;
+		}
+	}
+}
+
+.Mobile {
+	.Linetext {
+		top: 40px;
+		width: 90%;
+		left: 5%;
+
+		.subtit1 {
+			font-size: 0.8rem;
+			font-weight: 600;
+			letter-spacing: 3px;
+		}
+
+		.subtit2 {
+			font-size: 0.4rem;
+		}
+	}
+}

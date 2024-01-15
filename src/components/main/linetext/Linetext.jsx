@@ -8,6 +8,3 @@ export default function Linetext({ tit1, tit2 }) {
 		</div>
 	);
 }
-
-// NORM SERVICES
-// LSOSERVIESSDAMPJALL
