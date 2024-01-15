@@ -20,6 +20,7 @@ export default function Youtube() {
 
 	const path = useRef(process.env.PUBLIC_URL);
 
+	// component 분리하기
 	return (
 		<Layout title={''} className='Youtube'>
 			<section className='Youtube-firstSection'>
