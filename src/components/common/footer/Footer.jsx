@@ -1,6 +1,12 @@
 import { useRef } from 'react';
 import './Footer.scss';
-import { FaFacebookF, FaTwitter, FaYoutube, FaGoogle, FaSpotify } from 'react-icons/fa';
+import {
+	FaFacebookF,
+	FaTwitter,
+	FaYoutube,
+	FaGoogle,
+	FaSpotify
+} from 'react-icons/fa';
 import { useLocation } from 'react-router-dom';
 //npm i react-icons
 
