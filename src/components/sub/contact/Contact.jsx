@@ -18,10 +18,7 @@ export default function Contact() {
 		{
 			active: true, // none
 			title: 'kakao', // title
-			center: new kakao.current.LatLng(
-				37.55637,
-				126.92392393
-			) // latlng
+			center: new kakao.current.LatLng(37.55637, 126.92392393) // latlng
 			// marker imgSrc
 			// marker imgSize
 		},
@@ -52,18 +49,13 @@ export default function Contact() {
 		rendering 된 이후 active 된 것 state 에서 state 를 반복하면서 active post 찾기
 	*/
 	const getCenterPosition = () => {
-		const info = MapInfo.filter(
-			(el, idx) => el.active === true
-		);
+		const info = MapInfo.filter((el, idx) => el.active === true);
 		return info[0].center;
 	};
 
 	// kakao api 는 속성의 key 가 center 가 아니면 에러남
 	const mapOption = useRef({
-		center: new kakao.current.LatLng(
-			37.55637,
-			126.92392393
-		),
+		center: new kakao.current.LatLng(37.55637, 126.92392393),
 		level: 3
 	});
 
@@ -79,14 +71,12 @@ export default function Contact() {
 		});
 		marker.current.setMap(mapInstance.current);
 		mapInstance.current.setZoomable(false);
-		mapTypeController.current =
-			new kakao.current.MapTypeControl();
+		mapTypeController.current = new kakao.current.MapTypeControl();
 		mapInstance.current.addControl(
 			mapTypeController.current,
 			kakao.current.ControlPosition.TOPRIGHT
 		);
-		zoomController.current =
-			new kakao.current.ZoomControl();
+		zoomController.current = new kakao.current.ZoomControl();
 		mapInstance.current.addControl(
 			zoomController.current,
 			kakao.current.ControlPosition.RIGHT
@@ -106,54 +96,34 @@ export default function Contact() {
 							</header>
 							<div className='map-list'>
 								<div className='kakao map'>
-									<button onClick={e => changeMap(e)}>
-										kakao
-									</button>
+									<button onClick={e => changeMap(e)}>kakao</button>
 									<div className='info'>
 										<span className='address'>
-											Address: 162 Yanghwa-ro, Mapo-gu,
-											Seoul
+											Address: 162 Yanghwa-ro, Mapo-gu, Seoul
 										</span>
-										<span className='number'>
-											Phone: 02-6010-0104
-										</span>
-										<span className='email'>
-											Email: dkanvk1@gmail.com
-										</span>
+										<span className='number'>Phone: 02-6010-0104</span>
+										<span className='email'>Email: dkanvk1@gmail.com</span>
 									</div>
 								</div>
 								<div className='naver map'>
-									<button onClick={e => changeMap(e)}>
-										naver
-									</button>
+									<button onClick={e => changeMap(e)}>naver</button>
 									<div className='info'>
 										<span className='address'>
-											Address: 6 Buljeong-ro, Bundang-gu,
-											Seongnam-si, Gyeonggi-do
+											Address: 6 Buljeong-ro, Bundang-gu, Seongnam-si,
+											Gyeonggi-do
 										</span>
-										<span className='number'>
-											Phone: 1588-3830
-										</span>
-										<span className='email'>
-											Email: dkanvk1@naver.com
-										</span>
+										<span className='number'>Phone: 1588-3830</span>
+										<span className='email'>Email: dkanvk1@naver.com</span>
 									</div>
 								</div>
 								<div className='seoul map'>
-									<button onClick={e => changeMap(e)}>
-										seoul
-									</button>
+									<button onClick={e => changeMap(e)}>seoul</button>
 									<div className='info'>
 										<span className='address'>
-											Address: 267 Namdaemunno 5(o)-ga,
-											Jung-gu, Seoul
+											Address: 267 Namdaemunno 5(o)-ga, Jung-gu, Seoul
 										</span>
-										<span className='number'>
-											Phone: 02-3709-0019
-										</span>
-										<span className='email'>
-											Email: dkanvk1@gmail.com
-										</span>
+										<span className='number'>Phone: 02-3709-0019</span>
+										<span className='email'>Email: dkanvk1@gmail.com</span>
 									</div>
 								</div>
 							</div>
