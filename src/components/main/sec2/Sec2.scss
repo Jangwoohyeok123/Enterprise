@@ -21,7 +21,7 @@
 	.specialCard {
 		font-family: var(--pointFont);
 		margin-top: 70px;
-		width: 48%;
+		width: 30%;
 		color: var(--bgColor);
 		background: rgba(var(--baseColor-code), 0.5);
 
@@ -56,6 +56,12 @@
 		.specialCard {
 			// width: ;
 		}
+	}
+}
+
+.Tablet {
+	.specialCard {
+		width: 48%;
 	}
 }
 

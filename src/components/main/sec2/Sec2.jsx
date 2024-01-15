@@ -48,17 +48,3 @@ export default function Sec2() {
 		</section>
 	);
 }
-
-/* 
-	<Card Icon={FaRegSmile} />
-						<Card Icon={MdOutlineBolt} />
-						<Card Icon={HiOutlineLightBulb} />
-						<Card Icon={BiDollar} />
-						<Card Icon={TiMessage} />
-					
-				<div className='specialCard'>
-					<h3>Our Works</h3>
-					<span>Loremipsumdolor</span>
-				</div>
-
-*/
