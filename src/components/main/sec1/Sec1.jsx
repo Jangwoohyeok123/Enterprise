@@ -17,7 +17,7 @@ export default function Sec1() {
 				{SecArr.map((_, idx) => {
 					const number = idx + 1;
 					return (
-						<div className={`item`}>
+						<div className='item'>
 							<div className='img'>
 								<Image
 									className='sec1Img'
