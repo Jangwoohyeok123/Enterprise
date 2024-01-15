@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import './Sec1.scss';
+import Partners from '../partners/Partners';
 
 export default function Sec1() {
 	const path = useRef(process.env.PUBLIC_URL);
@@ -25,16 +26,7 @@ export default function Sec1() {
 						at quidem vel tenetur, perspiciatis cum. Perspiciatis, possimus rem.
 						Nulla, tempora facere?
 					</p>
-					<div className='partners'>
-						<span>Crystoper</span>
-						<span>Author</span>
-						<span>Author</span>
-						<span>Author</span>
-						<span>Author Kirem</span>
-						<span>Author</span>
-						<span>CatDoru</span>
-						<div className='card'>&ABDGO</div>
-					</div>
+					<Partners />
 				</div>
 			</div>
 		</section>

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { useGlobalData } from '../../../../../hooks/useGlobalData';
 import useTextMethod from '../../../../../hooks/useText';
 import { useQueryYoutube } from '../../../../../query/useQueryYoutube';
 import './Sec2.scss';
@@ -9,7 +8,6 @@ export default function Sec2() {
 	const { data: Vids, isSuccess } = useQueryYoutube();
 
 	// custom hook
-	const { ViewType } = useGlobalData();
 	const wordSlice = useTextMethod('wordSlice');
 	const charSlice = useTextMethod('charSlice');
 
