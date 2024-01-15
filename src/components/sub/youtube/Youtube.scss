@@ -1,107 +1,4 @@
-$imgHeight: 60vh;
-
 .Youtube {
-	&-firstSection {
-		display: flex;
-		gap: 1%;
-		.leftImg {
-			position: relative;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			text-align: center;
-			width: 50%;
-			background: #111;
-			height: $imgHeight;
-
-			.text {
-				color: #fff;
-				div:nth-of-type(1) {
-					font-size: 0.8rem;
-				}
-
-				div:nth-of-type(2) {
-					font-size: 3rem;
-					font-weight: 300;
-				}
-			}
-
-			.circle {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				position: absolute;
-				left: 50%;
-				bottom: 10%;
-				width: 70px;
-				height: 70px;
-				transform: translateX(-50%);
-				background: #fff;
-				border-radius: 50%;
-				color: #111;
-			}
-		}
-
-		.right {
-			overflow: hidden;
-			width: 50%;
-			height: 100%;
-
-			img {
-				width: 100%;
-				height: $imgHeight;
-				object-fit: cover;
-			}
-
-			.text {
-				h2 {
-					padding-top: 4vh;
-					font-size: 2rem;
-				}
-
-				p {
-					letter-spacing: 0.5;
-					line-height: 1.7;
-					padding: 1vh 0;
-				}
-
-				.partners {
-					position: relative;
-					display: flex;
-					flex-direction: column;
-					gap: 5px;
-
-					span {
-						width: 100%;
-						display: flex;
-						align-items: center;
-						color: rgba(var(--baseColor-code), 0.5);
-						padding: 13px 0;
-						border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
-					}
-
-					span:nth-of-type(2) {
-						color: rgba(var(--baseColor-code), 1);
-						font-weight: 600;
-					}
-
-					.card {
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						position: absolute;
-						width: 160px;
-						height: 100px;
-						background: black;
-						color: #fff;
-						right: 10%;
-						top: 6%;
-					}
-				}
-			}
-		}
-	}
-
 	&-secondSection {
 		padding: 10vh 0;
 
@@ -201,26 +98,9 @@ $imgHeight: 60vh;
 	}
 }
 
-.Notebook {
-}
-
 .Tablet,
 .Mobile {
 	.Youtube {
-		&-firstSection {
-			display: block;
-			.leftImg {
-				width: 100%;
-			}
-
-			.right {
-				width: 100%;
-				img {
-					display: none;
-				}
-			}
-		}
-
 		&-secondSection {
 			.header {
 				h3 {
@@ -273,7 +153,4 @@ $imgHeight: 60vh;
 			}
 		}
 	}
-}
-
-.Mobile {
 }
