@@ -1,8 +1,5 @@
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import useTextMethod from '../../../../../hooks/useText';
 import { useQueryYoutube } from '../../../../../query/useQueryYoutube';
 import './Sec2.scss';
-import { IoArrowForwardCircleOutline } from 'react-icons/io5';
 import Card from './card/Card';
 
 export default function Sec2() {
