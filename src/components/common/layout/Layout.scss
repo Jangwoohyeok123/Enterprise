@@ -3,10 +3,25 @@ main {
 	margin: 0 auto;
 	position: relative;
 
+	.layoutImageBox {
+		width: 100vw;
+		height: 35vh;
+		overflow: hidden;
+		margin-left: -10vw;
+
+		img {
+			width: 100%;
+			height: 100%;
+			z-index: 0;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+
 	.title {
 		font-family: var(--pointFont);
 		position: absolute;
-		top: 10vh;
+		top: 15vh;
 		color: #333;
 		font-weight: 400;
 		z-index: 1;

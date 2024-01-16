@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import Layout from '../../common/layout/Layout';
 import Sec1 from './comp/sec1/Sec1';
 import Sec2 from './comp/sec2/Sec2';
@@ -5,8 +6,13 @@ import './Youtube.scss';
 
 export default function Youtube() {
 	// component 분리하기
+	const path = useRef(process.env.PUBLIC_URL);
+
 	return (
-		<Layout title={'Exciting Youtube'} className='Youtube'>
+		<Layout
+			title={'Exciting Youtube'}
+			src={`${path.current}/img/youtube/main.jpg`}
+			className='Youtube'>
 			<Sec1 />
 			<Sec2 />
 		</Layout>
