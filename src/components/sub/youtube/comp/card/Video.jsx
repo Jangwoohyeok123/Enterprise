@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import useTextMethod from '../../../../../../hooks/useText';
+import useTextMethod from '../../../../../hooks/useText';
 import './Video.scss';
 
 export default function Video({ video }) {

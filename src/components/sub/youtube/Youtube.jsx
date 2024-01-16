@@ -1,20 +1,32 @@
 import { useRef } from 'react';
 import Layout from '../../common/layout/Layout';
-import Sec1 from './comp/sec1/Sec1';
-import Sec2 from './comp/sec2/Sec2';
 import './Youtube.scss';
+import { useQueryYoutube } from '../../../query/useQueryYoutube';
+import Card from './comp/card/Card';
 
 export default function Youtube() {
 	// component 분리하기
 	const path = useRef(process.env.PUBLIC_URL);
+
+	const { data: Vids, isSuccess } = useQueryYoutube();
 
 	return (
 		<Layout
 			title={'Exciting Youtube'}
 			src={`${path.current}/img/youtube/main.jpg`}
 			className='Youtube'>
-			<Sec1 />
-			<Sec2 />
+			(
+			<section className='Youtube-Section'>
+				<div className='header'>
+					<h2>Working Videos</h2>
+					<h3>Description</h3>
+				</div>
+				{isSuccess &&
+					Vids.map((video, idx) => {
+						return <Card video={video} idx={idx} />;
+					})}
+			</section>
+			);
 		</Layout>
 	);
 }
