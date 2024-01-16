@@ -10,7 +10,6 @@ export default function Description({ video }) {
 		<div className='description'>
 			<p>{charSlice(video.snippet.description, 190)} ...</p>
 			<Link className='more' to={`/detail/${video.id}`}>
-				<span>more</span>
 				<IoArrowForwardCircleOutline className='icon' />
 			</Link>
 		</div>
