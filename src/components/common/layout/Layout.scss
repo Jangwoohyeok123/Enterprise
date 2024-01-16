@@ -4,11 +4,12 @@ main {
 	position: relative;
 
 	.title {
-		font-size: 3rem;
-		font-weight: 400;
 		font-family: var(--pointFont);
-		padding: 2.5vh 0;
-		width: 80%;
+		position: absolute;
+		top: 10vh;
+		color: #333;
+		font-weight: 400;
+		z-index: 1;
 	}
 }
 

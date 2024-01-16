@@ -6,7 +6,7 @@ import './Youtube.scss';
 export default function Youtube() {
 	// component 분리하기
 	return (
-		<Layout title={''} className='Youtube'>
+		<Layout title={'Exciting Youtube'} className='Youtube'>
 			<Sec1 />
 			<Sec2 />
 		</Layout>

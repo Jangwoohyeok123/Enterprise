@@ -1,4 +1,13 @@
 .Youtube {
+	h1 {
+		font-family: var(--pointFont);
+		position: absolute;
+		top: 10vh;
+		color: #333;
+		font-weight: 400;
+		z-index: 1;
+	}
+
 	h2 {
 		font-size: 1.8rem;
 	}
