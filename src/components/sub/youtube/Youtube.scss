@@ -47,14 +47,23 @@
 .Tablet {
 	.Youtube {
 		h2 {
-			font-size: 1rem;
+			font-size: 1.8rem;
 		}
 
 		h3 {
-			font-size: 1.3rem;
+			font-size: 1.5rem;
 		}
 
 		h4 {
+			font-size: 1.5rem;
+		}
+
+		p {
+			font-size: 1rem;
+		}
+
+		span {
+			font-size: 0.85rem;
 		}
 	}
 }
@@ -62,14 +71,19 @@
 .Mobile {
 	.Youtube {
 		h2 {
-			font-size: 1rem;
-		}
-
-		h3 {
-			font-size: 1.3rem;
+			font-size: 1.8rem;
 		}
 
 		h4 {
+			font-size: 1.2rem;
+		}
+
+		p {
+			font-size: 1rem;
+		}
+
+		span {
+			font-size: 0.7rem;
 		}
 	}
 }
