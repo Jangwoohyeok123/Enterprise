@@ -15,7 +15,6 @@ export default function Youtube() {
 			title={'Exciting Youtube'}
 			src={`${path.current}/img/youtube/main.jpg`}
 			className='Youtube'>
-			(
 			<section className='Youtube-Section'>
 				<div className='header'>
 					<h2>Working Videos</h2>
@@ -26,7 +25,6 @@ export default function Youtube() {
 						return <Card video={video} idx={idx} />;
 					})}
 			</section>
-			);
 		</Layout>
 	);
 }
