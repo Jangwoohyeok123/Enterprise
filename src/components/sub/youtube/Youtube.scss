@@ -1,2 +1,75 @@
 .Youtube {
+	h2 {
+		font-size: 1.8rem;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+	}
+
+	h4 {
+		font-size: 1.2rem;
+	}
+
+	p {
+		font-size: 1rem;
+	}
+
+	span {
+		font-size: 0.85rem;
+	}
+}
+
+.Notebook {
+	.Youtube {
+		h2 {
+			font-size: 1.5rem;
+		}
+
+		h3 {
+			font-size: 1.2rem;
+		}
+
+		h4 {
+			font-size: 1rem;
+		}
+
+		p {
+			font-size: 0.8rem;
+		}
+
+		span {
+			font-size: 0.7rem;
+		}
+	}
+}
+
+.Tablet {
+	.Youtube {
+		h2 {
+			font-size: 1rem;
+		}
+
+		h3 {
+			font-size: 1.3rem;
+		}
+
+		h4 {
+		}
+	}
+}
+
+.Mobile {
+	.Youtube {
+		h2 {
+			font-size: 1rem;
+		}
+
+		h3 {
+			font-size: 1.3rem;
+		}
+
+		h4 {
+		}
+	}
 }

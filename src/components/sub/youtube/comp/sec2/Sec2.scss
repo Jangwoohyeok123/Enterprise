@@ -5,16 +5,7 @@
 		display: flex;
 		padding: 3vh 0;
 		justify-content: space-between;
-
-		h2 {
-			width: 60%;
-			font-size: 2rem;
-		}
-
-		h3 {
-			width: 30%;
-			font-size: 1.5rem;
-		}
+		font-family: var(--pointFont);
 	}
 
 	article {
@@ -91,6 +82,28 @@
 					position: relative;
 					top: 4px;
 				}
+			}
+		}
+	}
+}
+
+.Notebook {
+	.Youtube-secondSection {
+		p {
+			font-size: 0.8rem;
+			opacity: 0.9;
+		}
+
+		article {
+			.video {
+				.text {
+					h4 {
+						font-size: 1.1rem;
+					}
+				}
+			}
+
+			.description {
 			}
 		}
 	}
