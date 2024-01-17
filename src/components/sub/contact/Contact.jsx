@@ -3,6 +3,7 @@ import { useThrottle } from '../../../hooks/useThrottle';
 import Layout from '../../common/layout/Layout';
 import Form from './components/Form';
 import './Contact.scss';
+import ControlBox from './components/ControlBox';
 
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
@@ -126,24 +127,16 @@ export default function Contact() {
 			</div>
 
 			<div id='mapSection'>
-				<div className='controlBox'>
-					<nav className='branch'>
-						{mapInfo.current.map((el, idx) =>
-							//prettier-ignore
-							<button key={idx} onClick={() => setIndex(idx)} className={idx === Index ? 'on' : ''}>{el.title}</button>
-						)}
-					</nav>
-
-					<nav className='info'>
-						<button onClick={() => setTraffic(!Traffic)}>
-							{Traffic ? 'Traffic OFF' : 'Traffic ON'}
-						</button>
-						<button onClick={() => setView(!View)}>
-							{View ? 'map' : 'road view'}
-						</button>
-						<button onClick={setCenter}>위치 초기화</button>
-					</nav>
-				</div>
+				<ControlBox
+					mapInfo={mapInfo}
+					Index={Index}
+					setIndex={setIndex}
+					Traffic={Traffic}
+					setTraffic={setTraffic}
+					View={View}
+					setView={setView}
+					setCenter={setCenter}
+				/>
 
 				<section className='tab'>
 					<article
