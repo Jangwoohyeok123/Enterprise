@@ -139,6 +139,7 @@ export default function Contact() {
 								<span>Lorem ipsum dolor sit amet.</span>
 							</div>
 							<Form className='Form' />
+							<button onClick={setCenter}>중심으로 </button>
 						</div>
 					);
 				} else {
