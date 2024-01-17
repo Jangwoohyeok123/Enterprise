@@ -4,6 +4,7 @@ import Layout from '../../common/layout/Layout';
 import Form from './components/Form';
 import './Contact.scss';
 import ControlBox from './components/ControlBox';
+import GetTouchSection from './components/GetTouchSection';
 
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
@@ -122,6 +123,8 @@ export default function Contact() {
 			title={'Contact us'}
 			className='Contact'
 			src={`${path}/img/temps/temp2.jpg`}>
+			<GetTouchSection />
+
 			<div id='mailSection'>
 				<Form />
 			</div>

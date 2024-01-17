@@ -27,16 +27,10 @@ function Form({ className }) {
 	};
 
 	return (
-		// component 분리하면 [ 대문자 시작 + 태그 이름 ] 의 class
-		<form
-			ref={form}
-			onSubmit={sendEmail}
-			className={className}>
+		<form ref={form} onSubmit={sendEmail} className={className}>
 			<div className='profile'>
 				<div className='address'>
-					<label htmlFor='email_address'>
-						Email Address
-					</label>
+					<label htmlFor='email_address'>Email Address</label>
 					<input
 						type='text'
 						id='email_address'
@@ -47,12 +41,7 @@ function Form({ className }) {
 				</div>
 				<div className='name'>
 					<label htmlFor='name'>Name</label>
-					<input
-						type='text'
-						id='name'
-						name='user_name'
-						placeholder='name'
-					/>
+					<input type='text' id='name' name='user_name' placeholder='name' />
 				</div>
 			</div>
 			<div className='message'>
