@@ -45,6 +45,13 @@ export default function Contact() {
 		);
 	};
 
+	// 현재 active 상태의 MapInfo 를 이용해서 setCenter 를 호출한다.
+	// useEffect 로 resize 시 마다 thottle 을 적용해서 호출시켜라
+	const setCenter = () => {
+		const activeIndex = MapInfo.findIndex(info => info.active);
+		mapInstance.current.setCenter(MapInfo[activeIndex].center);
+	};
+
 	/* 
 		rendering 된 이후 active 된 것 state 에서 state 를 반복하면서 active post 찾기
 	*/
@@ -60,6 +67,7 @@ export default function Contact() {
 	});
 
 	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
+	// tab 키를 통해서 Info 가 바뀔떄마다 새로운 객체 생성(기능생성)
 	useEffect(() => {
 		mapOption.current.center = getCenterPosition();
 		mapInstance.current = new kakao.current.Map(
@@ -82,6 +90,10 @@ export default function Contact() {
 			kakao.current.ControlPosition.RIGHT
 		);
 	}, [MapInfo]);
+
+	useEffect(() => {
+		window.addEventListener('resize', () => {});
+	}, []);
 
 	return (
 		<Layout title={''} className={'Contact'}>
