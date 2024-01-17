@@ -3,24 +3,27 @@ import Layout from '../../common/layout/Layout';
 import emailjs from '@emailjs/browser';
 import './Contact.scss';
 import Form from './components/Form';
+import useThrottle from '../../../hooks/useThrottle';
 
 export default function Contact() {
-	const mapElementForGenerate = useRef(null); // 지도생성시 필요한 요소
+	const mapFrame = useRef(null); // 지도생성시 필요한 요소
 	const mapInstance = useRef(null); // mapInstance
 	const marker = useRef(null); // marker
 	const mapTypeController = useRef(null);
 	const zoomController = useRef(null);
-
 	const kakao = useRef(window.kakao.maps);
-	console.log(kakao.current);
+
+	// kakao api 는 속성의 key 가 center 가 아니면 에러남
+	const mapOption = useRef({
+		center: new kakao.current.LatLng(37.55637, 126.92392393),
+		level: 3
+	});
 
 	const [MapInfo, setMapInfo] = useState([
 		{
 			active: true, // none
 			title: 'kakao', // title
-			center: new kakao.current.LatLng(37.55637, 126.92392393) // latlng
-			// marker imgSrc
-			// marker imgSize
+			center: new kakao.current.LatLng(37.55637, 126.92392393)
 		},
 		{
 			active: false,
@@ -45,33 +48,24 @@ export default function Contact() {
 		);
 	};
 
-	// 현재 active 상태의 MapInfo 를 이용해서 setCenter 를 호출한다.
-	// useEffect 로 resize 시 마다 thottle 을 적용해서 호출시켜라
-	const setCenter = () => {
-		const activeIndex = MapInfo.findIndex(info => info.active);
-		mapInstance.current.setCenter(MapInfo[activeIndex].center);
-	};
-
-	/* 
-		rendering 된 이후 active 된 것 state 에서 state 를 반복하면서 active post 찾기
-	*/
 	const getCenterPosition = () => {
 		const info = MapInfo.filter((el, idx) => el.active === true);
 		return info[0].center;
 	};
 
-	// kakao api 는 속성의 key 가 center 가 아니면 에러남
-	const mapOption = useRef({
-		center: new kakao.current.LatLng(37.55637, 126.92392393),
-		level: 3
-	});
+	const setCenter = () => {
+		const activeIndex = MapInfo.findIndex(info => info.active);
+		mapInstance.current.setCenter(MapInfo[activeIndex].center);
+	};
+
+	const throttledSetCenter = useThrottle(setCenter);
 
 	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
 	// tab 키를 통해서 Info 가 바뀔떄마다 새로운 객체 생성(기능생성)
 	useEffect(() => {
 		mapOption.current.center = getCenterPosition();
 		mapInstance.current = new kakao.current.Map(
-			mapElementForGenerate.current,
+			mapFrame.current,
 			mapOption.current
 		);
 		marker.current = new kakao.current.Marker({
@@ -92,7 +86,9 @@ export default function Contact() {
 	}, [MapInfo]);
 
 	useEffect(() => {
-		window.addEventListener('resize', () => {});
+		window.addEventListener('resize', throttledSetCenter);
+
+		return window.removeEventListener('resize', throttledSetCenter);
 	}, []);
 
 	return (
@@ -102,9 +98,7 @@ export default function Contact() {
 					return (
 						<div key={info + idx}>
 							<header>
-								<article
-									className='mapBox'
-									ref={mapElementForGenerate}></article>
+								<article className='mapBox' ref={mapFrame}></article>
 							</header>
 							<div className='map-list'>
 								<div className='kakao map'>
