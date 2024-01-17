@@ -120,7 +120,7 @@ export default function Contact() {
 		<Layout
 			title={'Contact us'}
 			className='Contact'
-			src={`${path}/img/temps/temp1.jpg`}>
+			src={`${path}/img/temps/temp2.jpg`}>
 			<div id='mailSection'>
 				<Form />
 			</div>

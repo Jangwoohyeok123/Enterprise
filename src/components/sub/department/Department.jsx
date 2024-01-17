@@ -13,17 +13,11 @@ export default function Department() {
 	return (
 		<Layout
 			className='Department'
-			title={'NORM ARCHITECTS STUDIO WAS FOUNDED IN 2008'}>
+			title={'DEPARTMENT'}
+			src={`${path.current}/img/temps/temp1.jpg`}>
 			{isDepartment && (
 				<>
 					<section className='Department-firstSection'>
-						<div className='header'>
-							<img
-								className='mainImage'
-								src={`${path.current}/img/department/${json.article.mainImg}`}
-								alt='mainImage'
-							/>
-						</div>
 						<div className='body'>
 							<h2>{json.article.subHeadline}</h2>
 							<div>

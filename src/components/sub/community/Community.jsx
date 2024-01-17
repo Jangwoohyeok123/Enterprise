@@ -4,24 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { useQueryCommunity } from '../../../query/useQueryCommunity';
-// import { useMutation } from 'react-query';
-// import axios from 'axios';
 
 export default function Community() {
 	// state
 	const [Title, setTitle] = useState("User's Community");
 	const [Posts, setPosts] = useState([]);
 	const [IsEdit, setIsEdit] = useState(false);
-	// const { data: Posts, isSuccess: isCommunity } =
-	// 	useQueryCommunity();
-	// const {
-	// 	mutate,
-	// 	isLoading,
-	// 	isError,
-	// 	isSuccess: isMutation
-	// } = useMutation();
-
-	// console.log(posts);
 
 	// ref
 	const path = useRef(process.env.PUBLIC_URL);
@@ -32,15 +20,10 @@ export default function Community() {
 	const refCurUserId = useRef(null);
 
 	const fetchPosts = async () => {
-		const data = await fetch(
-			`${path.current}/DB/community.json`
-		);
+		const data = await fetch(`${path.current}/DB/community.json`);
 		const json = await data.json();
 		json.posts.forEach(post => (post.enableUpdate = false));
-		localStorage.setItem(
-			'posts',
-			JSON.stringify(json.posts)
-		);
+		localStorage.setItem('posts', JSON.stringify(json.posts));
 		setPosts(json.posts);
 	};
 
@@ -106,11 +89,8 @@ export default function Community() {
 	};
 
 	const deletePost = selectedIndex => {
-		if (!window.confirm('해당 게시글을 삭제하겠습니까?'))
-			return;
-		setPosts(
-			Posts.filter((_, idx) => idx !== selectedIndex)
-		);
+		if (!window.confirm('해당 게시글을 삭제하겠습니까?')) return;
+		setPosts(Posts.filter((_, idx) => idx !== selectedIndex));
 	};
 
 	useEffect(() => {
@@ -118,23 +98,13 @@ export default function Community() {
 	}, []);
 
 	return (
-		<Layout title={''} className='Community'>
-			<header>
-				<div className='img'>
-					<img
-						src={`${path.current}/img/community/main.jpg`}
-						alt='main image'
-					/>
-				</div>
-			</header>
-
+		<Layout
+			title={'Community'}
+			className='Community'
+			src={`${path.current}/img/community/main.jpg`}>
 			<section className='body'>
 				<aside className='createPost'>
-					<input
-						type='text'
-						placeholder='title'
-						ref={refTitle}
-					/>
+					<input type='text' placeholder='title' ref={refTitle} />
 					<textarea
 						cols='30'
 						rows='5'
@@ -169,15 +139,12 @@ export default function Community() {
 										<div className='left'>
 											<span>
 												<strong>User id: </strong>
-												<span ref={refCurUserId}>
-													{post.userid}
-												</span>
+												<span ref={refCurUserId}>{post.userid}</span>
 											</span>
 										</div>
 										<div className='right'>
 											<span>Date: {post.time}</span>
-											<span
-												onClick={() => closeEditMode(idx)}>
+											<span onClick={() => closeEditMode(idx)}>
 												<FiEdit3 />
 											</span>
 											<span onClick={() => deletePost(idx)}>

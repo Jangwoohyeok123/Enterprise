@@ -59,6 +59,8 @@ export default function Gallery() {
 		tab.current.children[0].classList.add('on');
 	}, []);
 
+	const path = useRef(process.env.PUBLIC_URL);
+
 	return (
 		<>
 			{viewType === 'Mobile' && (
@@ -79,7 +81,10 @@ export default function Gallery() {
 					</span>
 				</span>
 			)}
-			<Layout title={Title} className='Gallery'>
+			<Layout
+				title={'Gallery'}
+				className='Gallery'
+				src={`${path.current}/img/temps/temp7.jpg`}>
 				<section className='frameWrap'>
 					<div className='tab'>
 						{viewType !== 'Mobile' && (
