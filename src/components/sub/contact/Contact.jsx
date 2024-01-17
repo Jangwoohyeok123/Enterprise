@@ -4,57 +4,11 @@ import Layout from '../../common/layout/Layout';
 import './Contact.scss';
 import emailjs from '@emailjs/browser';
 import { useThrottle } from '../../../hooks/useThrottle';
+import Form from './components/Form';
 
 export default function Contact() {
-	const form = useRef();
-
-	const resetForm = () => {
-		const elArr = form.current.children;
-
-		Array.from(elArr).forEach(el => {
-			console.log(el);
-			if (
-				el.name === 'user_name' ||
-				el.name === 'user_email' ||
-				el.name === 'message'
-			)
-				el.value = '';
-		});
-	};
-
-	const sendEmail = e => {
-		e.preventDefault();
-
-		const [user, email] = form.current.querySelectorAll('input');
-		const txtArea = form.current.querySelector('textarea');
-
-		if (!user.value || !email.value || !txtArea.value)
-			return alert('이름, 답장받을 이메일주소 문의내용을 모두 입력하세요.');
-
-		emailjs
-			.sendForm(
-				'service_ag7z96s',
-				'template_oh9ajns',
-				form.current,
-				'23g8RepczesqKPoIX'
-			)
-			.then(
-				result => {
-					alert('문의 내용이 성공적으로 전송되었습니다.');
-					resetForm();
-				},
-				error => {
-					alert(
-						'일시적인 장애로 문의 전송에 실패했습니다. 다음의 메일주소로 보내주세요.'
-					);
-					resetForm();
-				}
-			);
-	};
-
 	const path = process.env.PUBLIC_URL;
 	const kakao = useRef(window.kakao);
-	console.log(kakao);
 
 	const [Index, setIndex] = useState(0);
 	const [Traffic, setTraffic] = useState(false);
@@ -170,15 +124,7 @@ export default function Contact() {
 			className='Contact'
 			src={`${path}/img/temps/temp1.jpg`}>
 			<div id='mailSection'>
-				<form ref={form} onSubmit={sendEmail}>
-					<label>Name</label>
-					<input type='text' name='user_name' />
-					<label>Email</label>
-					<input type='email' name='user_email' />
-					<label>Message</label>
-					<textarea name='message' />
-					<input type='submit' value='Send' />
-				</form>
+				<Form />
 			</div>
 
 			<div id='mapSection'>
