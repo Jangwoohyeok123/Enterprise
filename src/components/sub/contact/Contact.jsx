@@ -1,153 +1,210 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Layout from '../../common/layout/Layout';
-import emailjs from '@emailjs/browser';
+
 import './Contact.scss';
-import Form from './components/Form';
-import useThrottle from '../../../hooks/useThrottle';
+import emailjs from '@emailjs/browser';
+import { useThrottle } from '../../../hooks/useThrottle';
 
 export default function Contact() {
-	const mapFrame = useRef(null); // 지도생성시 필요한 요소
-	const mapInstance = useRef(null); // mapInstance
-	const marker = useRef(null); // marker
-	const mapTypeController = useRef(null);
-	const zoomController = useRef(null);
-	const kakao = useRef(window.kakao.maps);
+	const form = useRef();
 
-	// kakao api 는 속성의 key 가 center 가 아니면 에러남
-	const mapOption = useRef({
-		center: new kakao.current.LatLng(37.55637, 126.92392393),
-		level: 3
-	});
+	const resetForm = () => {
+		const elArr = form.current.children;
 
-	const [MapInfo, setMapInfo] = useState([
+		Array.from(elArr).forEach(el => {
+			console.log(el);
+			if (
+				el.name === 'user_name' ||
+				el.name === 'user_email' ||
+				el.name === 'message'
+			)
+				el.value = '';
+		});
+	};
+
+	const sendEmail = e => {
+		e.preventDefault();
+
+		const [user, email] = form.current.querySelectorAll('input');
+		const txtArea = form.current.querySelector('textarea');
+
+		if (!user.value || !email.value || !txtArea.value)
+			return alert('이름, 답장받을 이메일주소 문의내용을 모두 입력하세요.');
+
+		emailjs
+			.sendForm(
+				'service_ag7z96s',
+				'template_oh9ajns',
+				form.current,
+				'23g8RepczesqKPoIX'
+			)
+			.then(
+				result => {
+					alert('문의 내용이 성공적으로 전송되었습니다.');
+					resetForm();
+				},
+				error => {
+					alert(
+						'일시적인 장애로 문의 전송에 실패했습니다. 다음의 메일주소로 보내주세요.'
+					);
+					resetForm();
+				}
+			);
+	};
+
+	const kakao = useRef(window.kakao);
+	console.log(kakao);
+
+	const [Index, setIndex] = useState(0);
+	const [Traffic, setTraffic] = useState(false);
+	const [View, setView] = useState(false);
+
+	const mapFrame = useRef(null);
+	const viewFrame = useRef(null);
+
+	const marker = useRef(null);
+	const mapInstance = useRef(null);
+
+	//지점마다 출력할 정보를 개별적인 객체로 묶어서 배열로 그룹화
+	const mapInfo = useRef([
 		{
-			active: true, // none
-			title: 'kakao', // title
-			center: new kakao.current.LatLng(37.55637, 126.92392393)
-		},
-		{
-			active: false,
-			title: 'naver',
-			center: new kakao.current.LatLng(37.3589, 127.1052131)
-		},
-		{
-			active: false,
 			title: 'seoul',
-			center: new kakao.current.LatLng(37.5567, 126.97597)
+			latlng: new kakao.current.maps.LatLng(37.5567, 126.97597),
+			imgSrc: `${process.env.PUBLIC_URL}/img/marker1.png`,
+			imgSize: new kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
+		},
+		{
+			title: 'naver',
+			latlng: new kakao.current.maps.LatLng(37.3589, 127.1052131),
+			imgSrc: `${process.env.PUBLIC_URL}/img/marker2.png`,
+			imgSize: new kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
+		},
+		{
+			title: 'kakao',
+			latlng: new kakao.current.maps.LatLng(37.55637, 126.92392393),
+			imgSrc: `${process.env.PUBLIC_URL}/img/marker3.png`,
+			imgSize: new kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		}
 	]);
 
-	const changeMap = (e, idx) => {
-		setMapInfo(
-			MapInfo.map((info, idx) => {
-				if (e.target.innerText === info.title) {
-					info.active = true;
-				} else info.active = false;
-				return info;
-			})
+	//마커 인스턴스 생성
+	marker.current = new kakao.current.maps.Marker({
+		position: mapInfo.current[Index].latlng,
+		image: new kakao.current.maps.MarkerImage(
+			mapInfo.current[Index].imgSrc,
+			mapInfo.current[Index].imgSize,
+			mapInfo.current[Index].imgOpt
+		)
+	});
+
+	const roadview = useCallback(() => {
+		console.log('roadview');
+		new kakao.current.maps.RoadviewClient().getNearestPanoId(
+			mapInfo.current[Index].latlng,
+			50,
+			panoId => {
+				new kakao.current.maps.Roadview(viewFrame.current).setPanoId(
+					panoId,
+					mapInfo.current[Index].latlng
+				);
+			}
 		);
-	};
+	}, [Index]);
 
-	const getCenterPosition = () => {
-		const info = MapInfo.filter((el, idx) => el.active === true);
-		return info[0].center;
-	};
-
-	const setCenter = () => {
-		const activeIndex = MapInfo.findIndex(info => info.active);
-		mapInstance.current.setCenter(MapInfo[activeIndex].center);
-	};
+	const setCenter = useCallback(() => {
+		console.log('setCenter');
+		mapInstance.current.setCenter(mapInfo.current[Index].latlng);
+	}, [Index]);
 
 	const throttledSetCenter = useThrottle(setCenter);
 
-	// useEffect 는 렌더링된 이후에 생성된 것으로 ref 까지 이뤄진 상태이다.
-	// tab 키를 통해서 Info 가 바뀔떄마다 새로운 객체 생성(기능생성)
+	//컴포넌트 마운트시 참조객체에 담아놓은 돔 프레임에 지도 인스턴스 출력 및 마커 세팅
 	useEffect(() => {
-		mapOption.current.center = getCenterPosition();
-		mapInstance.current = new kakao.current.Map(
-			mapFrame.current,
-			mapOption.current
-		);
-		marker.current = new kakao.current.Marker({
-			position: mapOption.current.center
+		mapFrame.current.innerHTML = '';
+		viewFrame.current.innerHTML = '';
+		mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
+			center: mapInfo.current[Index].latlng,
+			level: 3
 		});
 		marker.current.setMap(mapInstance.current);
+		setTraffic(false);
+		setView(false);
+
+		mapInstance.current.addControl(
+			new kakao.current.maps.MapTypeControl(),
+			kakao.current.maps.ControlPosition.TOPRIGHT
+		);
+		mapInstance.current.addControl(
+			new kakao.current.maps.ZoomControl(),
+			kakao.current.maps.ControlPosition.RIGHT
+		);
 		mapInstance.current.setZoomable(false);
-		mapTypeController.current = new kakao.current.MapTypeControl();
-		mapInstance.current.addControl(
-			mapTypeController.current,
-			kakao.current.ControlPosition.TOPRIGHT
-		);
-		zoomController.current = new kakao.current.ZoomControl();
-		mapInstance.current.addControl(
-			zoomController.current,
-			kakao.current.ControlPosition.RIGHT
-		);
-	}, [MapInfo]);
+	}, [Index]);
 
 	useEffect(() => {
 		window.addEventListener('resize', throttledSetCenter);
+		return () => window.removeEventListener('resize', throttledSetCenter);
+	}, [throttledSetCenter]);
 
-		return window.removeEventListener('resize', throttledSetCenter);
-	}, []);
+	useEffect(() => {
+		View && viewFrame.current.children.length === 0 && roadview();
+	}, [View, roadview]);
+
+	useEffect(() => {
+		Traffic
+			? mapInstance.current.addOverlayMapTypeId(
+					kakao.current.maps.MapTypeId.TRAFFIC
+			  )
+			: mapInstance.current.removeOverlayMapTypeId(
+					kakao.current.maps.MapTypeId.TRAFFIC
+			  );
+	}, [Traffic]);
 
 	return (
-		<Layout title={''} className={'Contact'}>
-			{MapInfo.map((info, idx) => {
-				if (info.active) {
-					return (
-						<div key={info + idx}>
-							<header>
-								<article className='mapBox' ref={mapFrame}></article>
-							</header>
-							<div className='map-list'>
-								<div className='kakao map'>
-									<button onClick={e => changeMap(e)}>kakao</button>
-									<div className='info'>
-										<span className='address'>
-											Address: 162 Yanghwa-ro, Mapo-gu, Seoul
-										</span>
-										<span className='number'>Phone: 02-6010-0104</span>
-										<span className='email'>Email: dkanvk1@gmail.com</span>
-									</div>
-								</div>
-								<div className='naver map'>
-									<button onClick={e => changeMap(e)}>naver</button>
-									<div className='info'>
-										<span className='address'>
-											Address: 6 Buljeong-ro, Bundang-gu, Seongnam-si,
-											Gyeonggi-do
-										</span>
-										<span className='number'>Phone: 1588-3830</span>
-										<span className='email'>Email: dkanvk1@naver.com</span>
-									</div>
-								</div>
-								<div className='seoul map'>
-									<button onClick={e => changeMap(e)}>seoul</button>
-									<div className='info'>
-										<span className='address'>
-											Address: 267 Namdaemunno 5(o)-ga, Jung-gu, Seoul
-										</span>
-										<span className='number'>Phone: 02-3709-0019</span>
-										<span className='email'>Email: dkanvk1@gmail.com</span>
-									</div>
-								</div>
-							</div>
+		<Layout title={'Contact'} className='Contact'>
+			<div id='mailSection'>
+				<form ref={form} onSubmit={sendEmail}>
+					<label>Name</label>
+					<input type='text' name='user_name' />
+					<label>Email</label>
+					<input type='email' name='user_email' />
+					<label>Message</label>
+					<textarea name='message' />
+					<input type='submit' value='Send' />
+				</form>
+			</div>
 
-							<div className='mail-title'>
-								<h2>SEND US MESSAGE</h2>
-								<span>Lorem ipsum dolor sit amet.</span>
-							</div>
-							<Form className='Form' />
-							<button onClick={setCenter}>중심으로 </button>
-						</div>
-					);
-				} else {
-					return null;
-				}
-			})}
+			<div id='mapSection'>
+				<div className='controlBox'>
+					<nav className='branch'>
+						{mapInfo.current.map((el, idx) =>
+							//prettier-ignore
+							<button key={idx} onClick={() => setIndex(idx)} className={idx === Index ? 'on' : ''}>{el.title}</button>
+						)}
+					</nav>
+
+					<nav className='info'>
+						<button onClick={() => setTraffic(!Traffic)}>
+							{Traffic ? 'Traffic OFF' : 'Traffic ON'}
+						</button>
+						<button onClick={() => setView(!View)}>
+							{View ? 'map' : 'road view'}
+						</button>
+						<button onClick={setCenter}>위치 초기화</button>
+					</nav>
+				</div>
+				<section className='tab'>
+					<article
+						className={`mapBox ${View ? '' : 'on'}`}
+						ref={mapFrame}></article>
+					<article
+						className={`viewBox ${View ? 'on' : ''}`}
+						ref={viewFrame}></article>
+				</section>
+			</div>
 		</Layout>
 	);
 }
-
-// https://www.pinterest.co.kr/pin/688698968048455898/

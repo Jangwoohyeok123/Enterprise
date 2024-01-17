@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './Btns.scss';
 import Anime from '../../../asset/anime';
-import useThrottle from '../../../hooks/useThrottle';
+import { useThrottle } from '../../../hooks/useThrottle';
 
 // scrollTop: 화면보다 큰 요소가 있을 때 그 요소에서 수직으로 스크롤된 거리를 나타내는 요소 속성이다. 만약, viewport 의 height 가 500px 이고 요소의 height 가 800px 인 경우 300 => 즉, scrollTop 은 요소를 얼마나 scroll 했는지를 말하고 대부분은 app 에다가 적용해 전체화면으로 다룬다.
 // DOM.scrollY : browser(DOM 요소)를 스크롤할때마다 스크롤되고 있는 맨 위에서부터의 거리값
