@@ -52,7 +52,8 @@ export default function Contact() {
 			);
 	};
 
-	const kakao = useRef(window.kakao.maps);
+	const path = process.env.PUBLIC_URL;
+	const kakao = useRef(window.kakao);
 	console.log(kakao);
 
 	const [Index, setIndex] = useState(0);
@@ -69,31 +70,31 @@ export default function Contact() {
 	const mapInfo = useRef([
 		{
 			title: 'seoul',
-			latlng: new kakao.current.LatLng(37.5567, 126.97597),
+			latlng: new kakao.current.maps.LatLng(37.5567, 126.97597),
 			imgSrc: `${process.env.PUBLIC_URL}/img/marker1.png`,
-			imgSize: new kakao.current.Size(232, 99),
-			imgPos: { offset: new kakao.current.Point(116, 99) }
+			imgSize: new kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		},
 		{
 			title: 'naver',
-			latlng: new kakao.current.LatLng(37.3589, 127.1052131),
+			latlng: new kakao.current.maps.LatLng(37.3589, 127.1052131),
 			imgSrc: `${process.env.PUBLIC_URL}/img/marker2.png`,
-			imgSize: new kakao.current.Size(232, 99),
-			imgPos: { offset: new kakao.current.Point(116, 99) }
+			imgSize: new kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		},
 		{
 			title: 'kakao',
-			latlng: new kakao.current.LatLng(37.55637, 126.92392393),
+			latlng: new kakao.current.maps.LatLng(37.55637, 126.92392393),
 			imgSrc: `${process.env.PUBLIC_URL}/img/marker3.png`,
-			imgSize: new kakao.current.Size(232, 99),
-			imgPos: { offset: new kakao.current.Point(116, 99) }
+			imgSize: new kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		}
 	]);
 
 	//마커 인스턴스 생성
-	marker.current = new kakao.current.Marker({
+	marker.current = new kakao.current.maps.Marker({
 		position: mapInfo.current[Index].latlng,
-		image: new kakao.current.MarkerImage(
+		image: new kakao.current.maps.MarkerImage(
 			mapInfo.current[Index].imgSrc,
 			mapInfo.current[Index].imgSize,
 			mapInfo.current[Index].imgOpt
@@ -102,11 +103,11 @@ export default function Contact() {
 
 	const roadview = useCallback(() => {
 		console.log('roadview');
-		new kakao.current.RoadviewClient().getNearestPanoId(
+		new kakao.current.maps.RoadviewClient().getNearestPanoId(
 			mapInfo.current[Index].latlng,
 			50,
 			panoId => {
-				new kakao.current.Roadview(viewFrame.current).setPanoId(
+				new kakao.current.maps.Roadview(viewFrame.current).setPanoId(
 					panoId,
 					mapInfo.current[Index].latlng
 				);
@@ -125,7 +126,7 @@ export default function Contact() {
 	useEffect(() => {
 		mapFrame.current.innerHTML = '';
 		viewFrame.current.innerHTML = '';
-		mapInstance.current = new kakao.current.Map(mapFrame.current, {
+		mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
 			center: mapInfo.current[Index].latlng,
 			level: 3
 		});
@@ -134,12 +135,12 @@ export default function Contact() {
 		setView(false);
 
 		mapInstance.current.addControl(
-			new kakao.current.MapTypeControl(),
-			kakao.current.ControlPosition.TOPRIGHT
+			new kakao.current.maps.MapTypeControl(),
+			kakao.current.maps.ControlPosition.TOPRIGHT
 		);
 		mapInstance.current.addControl(
-			new kakao.current.ZoomControl(),
-			kakao.current.ControlPosition.RIGHT
+			new kakao.current.maps.ZoomControl(),
+			kakao.current.maps.ControlPosition.RIGHT
 		);
 		mapInstance.current.setZoomable(false);
 	}, [Index]);
@@ -155,14 +156,19 @@ export default function Contact() {
 
 	useEffect(() => {
 		Traffic
-			? mapInstance.current.addOverlayMapTypeId(kakao.current.MapTypeId.TRAFFIC)
+			? mapInstance.current.addOverlayMapTypeId(
+					kakao.current.maps.MapTypeId.TRAFFIC
+			  )
 			: mapInstance.current.removeOverlayMapTypeId(
-					kakao.current.MapTypeId.TRAFFIC
+					kakao.current.maps.MapTypeId.TRAFFIC
 			  );
 	}, [Traffic]);
 
 	return (
-		<Layout title={'Contact'} className='Contact'>
+		<Layout
+			title={'Contact'}
+			className='Contact'
+			src={`${path}/img/temps/temp1.jpg`}>
 			<div id='mailSection'>
 				<form ref={form} onSubmit={sendEmail}>
 					<label>Name</label>
