@@ -125,30 +125,32 @@ export default function Contact() {
 			src={`${path}/img/temps/temp2.jpg`}>
 			<GetTouchSection />
 
-			<div id='mailSection'>
-				<Form />
-			</div>
+			<div className='contactWrap'>
+				<div id='mailSection'>
+					<Form />
+				</div>
 
-			<div id='mapSection'>
-				<ControlBox
-					mapInfo={mapInfo}
-					Index={Index}
-					setIndex={setIndex}
-					Traffic={Traffic}
-					setTraffic={setTraffic}
-					View={View}
-					setView={setView}
-					setCenter={setCenter}
-				/>
+				<div id='mapSection'>
+					<ControlBox
+						mapInfo={mapInfo}
+						Index={Index}
+						setIndex={setIndex}
+						Traffic={Traffic}
+						setTraffic={setTraffic}
+						View={View}
+						setView={setView}
+						setCenter={setCenter}
+					/>
 
-				<section className='tab'>
-					<article
-						className={`mapBox ${View ? '' : 'on'}`}
-						ref={mapFrame}></article>
-					<article
-						className={`viewBox ${View ? 'on' : ''}`}
-						ref={viewFrame}></article>
-				</section>
+					<section className='tab'>
+						<article
+							className={`mapBox ${View ? '' : 'on'}`}
+							ref={mapFrame}></article>
+						<article
+							className={`viewBox ${View ? 'on' : ''}`}
+							ref={viewFrame}></article>
+					</section>
+				</div>
 			</div>
 		</Layout>
 	);

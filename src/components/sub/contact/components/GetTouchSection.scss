@@ -1,4 +1,48 @@
 .GetTouchSection {
 	width: 100%;
 	height: 50vh;
+	p {
+		opacity: 0.6;
+	}
+
+	.introduce {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 10vh;
+
+		h1 {
+			font-size: 2.5rem;
+			padding-bottom: 10px;
+		}
+	}
+
+	.infos {
+		width: 80%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		padding-top: 60px;
+
+		.info {
+			width: 30%;
+			display: flex;
+			gap: 20px;
+
+			.iconBox {
+				height: 100%;
+				color: blue;
+				opacity: 0.65;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.txtBox {
+				h3 {
+					padding-bottom: 5px;
+				}
+			}
+		}
+	}
 }
