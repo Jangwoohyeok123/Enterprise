@@ -8,55 +8,32 @@
 		padding: 10px 0 5px 0;
 	}
 
-	.profile {
-		display: flex;
-		justify-content: space-between;
-
-		input[type='text'] {
-			width: 100%;
-			border: 1px solid #ddd;
-			padding: 5px 10px;
-		}
-
-		.address {
-			width: 49%;
-		}
-
-		.name {
-			width: 49%;
-		}
+	.hidden {
+		position: absolute;
+		top: 0;
+		left: -1000px;
 	}
 
 	.message {
-		width: 100%;
-		height: 40%;
+		display: flex;
+		justify-content: center;
 
 		textarea {
-			padding: 5px 10px;
-			width: 100%;
-			height: 250px;
-			border: 1px solid #ddd;
+			width: 50%;
 		}
 	}
 
-	.submit {
+	.details {
 		display: flex;
-		justify-content: right;
+		justify-content: center;
+		gap: 25px;
+		padding: 100px 25% 0;
 
-		input[type='submit'] {
-			margin: 3vh 0;
-			width: 60px;
-			height: 40px;
-			// color: var(--baseColor);
-			border: 1px solid rgba(var(--baseColor-code), 0.3);
-			cursor: pointer;
-			transition: 0.3s;
+		.address {
 		}
 
-		// &:hover {
-		// 	color: var(--subPoint);
-		// 	border-color: var(--subPoint);
-		// }
+		.name {
+		}
 	}
 }
 

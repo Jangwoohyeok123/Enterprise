@@ -127,6 +127,12 @@ export default function Contact() {
 
 			<div className='contactWrap'>
 				<div id='mailSection'>
+					<div className='mailTitle'>
+						<h2>Drop Us A Line</h2>
+						<p>Whether you have a question about features,</p>
+						<p>trials, pricing, need a demo, or anything else, our</p>
+						<p>team is ready to answer.</p>
+					</div>
 					<Form />
 				</div>
 

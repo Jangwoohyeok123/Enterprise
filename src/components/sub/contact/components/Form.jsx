@@ -27,31 +27,39 @@ function Form({ className }) {
 	};
 
 	return (
-		<form ref={form} onSubmit={sendEmail} className={className}>
+		<form ref={form} onSubmit={sendEmail} className='Form'>
 			<div className='profile'>
+				<div className='message'>
+					<label htmlFor='message' className='hidden'>
+						Message
+					</label>
+					<textarea
+						name='message'
+						id='message'
+						placeholder='Dear Lorem&#39;s employee'
+					/>
+				</div>
+
 				<div className='address'>
-					<label htmlFor='email_address'>Email Address</label>
+					<label htmlFor='email_address' className='hidden'>
+						Email Address
+					</label>
 					<input
 						type='text'
 						id='email_address'
 						name='to_email'
 						defaultValue=''
-						placeholder='organizer@gmail.com'
+						placeholder='Email'
 					/>
 				</div>
 				<div className='name'>
-					<label htmlFor='name'>Name</label>
-					<input type='text' id='name' name='user_name' placeholder='name' />
+					<label htmlFor='name' className='hidden'>
+						Name
+					</label>
+					<input type='text' id='name' name='user_name' placeholder='Name' />
 				</div>
 			</div>
-			<div className='message'>
-				<label htmlFor='message'>Message</label>
-				<textarea
-					name='message'
-					id='message'
-					placeholder='Dear Lorem&#39;s employee'
-				/>
-			</div>
+
 			<div className='submit'>
 				<input type='submit' value='Send' />
 			</div>
