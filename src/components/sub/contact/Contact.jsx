@@ -5,6 +5,7 @@ import Form from './components/Form';
 import './Contact.scss';
 import ControlBox from './components/ControlBox';
 import GetTouchSection from './components/GetTouchSection';
+import Tab from './components/Maps';
 
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
@@ -148,14 +149,7 @@ export default function Contact() {
 						setCenter={setCenter}
 					/>
 
-					<section className='tab'>
-						<article
-							className={`mapBox ${View ? '' : 'on'}`}
-							ref={mapFrame}></article>
-						<article
-							className={`viewBox ${View ? 'on' : ''}`}
-							ref={viewFrame}></article>
-					</section>
+					<Tab mapFrame={mapFrame} viewFrame={viewFrame} View={View} />
 				</div>
 			</div>
 		</Layout>
