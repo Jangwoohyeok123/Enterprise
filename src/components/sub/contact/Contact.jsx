@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
-import Layout from '../../common/layout/Layout';
-
-import './Contact.scss';
-import emailjs from '@emailjs/browser';
 import { useThrottle } from '../../../hooks/useThrottle';
+import Layout from '../../common/layout/Layout';
 import Form from './components/Form';
+import './Contact.scss';
 
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
@@ -120,7 +118,7 @@ export default function Contact() {
 
 	return (
 		<Layout
-			title={'Contact'}
+			title={'Contact us'}
 			className='Contact'
 			src={`${path}/img/temps/temp1.jpg`}>
 			<div id='mailSection'>
@@ -146,6 +144,7 @@ export default function Contact() {
 						<button onClick={setCenter}>위치 초기화</button>
 					</nav>
 				</div>
+
 				<section className='tab'>
 					<article
 						className={`mapBox ${View ? '' : 'on'}`}
