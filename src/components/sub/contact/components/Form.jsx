@@ -37,6 +37,7 @@ function Form({ className }) {
 						name='message'
 						id='message'
 						placeholder='Dear Lorem&#39;s employee'
+						rows={8}
 					/>
 				</div>
 

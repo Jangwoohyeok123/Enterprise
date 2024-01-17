@@ -14,25 +14,50 @@
 		left: -1000px;
 	}
 
-	.message {
+	.profile {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
+		align-items: center;
+		width: 100%;
 
-		textarea {
-			width: 50%;
+		.message {
+			display: flex;
+			justify-content: center;
+
+			textarea {
+				width: 380px;
+				margin-bottom: 30px;
+			}
 		}
-	}
-
-	.details {
-		display: flex;
-		justify-content: center;
-		gap: 25px;
-		padding: 100px 25% 0;
 
 		.address {
+			input {
+				width: 170px;
+				margin-right: 40px;
+			}
 		}
 
 		.name {
+			input {
+				width: 170px;
+			}
+		}
+	}
+
+	.submit {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin-top: 30px;
+
+		input {
+			padding: 8px 174px;
+			color: var(--bgColor);
+			font-weight: 500;
+			background-color: var(--baseColor);
+			border-radius: 30px;
+			cursor: pointer;
 		}
 	}
 }
