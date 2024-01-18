@@ -1,4 +1,18 @@
 .Branch {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 150px;
+	height: 5%;
+
 	button {
+		padding: 10px;
+		// background: var(--subPoint);
+		border-radius: 5px;
+		border: none;
+		color: white;
 	}
 }
