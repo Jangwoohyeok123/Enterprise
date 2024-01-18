@@ -3,7 +3,7 @@ import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
 import { useQueryDepartment } from '../../../query/useQueryDepartment';
 import Layout from '../../common/layout/Layout';
-import Sec3 from './component/sec3/Sec3';
+import DepartmentSec3 from './component/departmentSec3/Sec3';
 
 export default function Department() {
 	const { data: json, isSuccess: isDepartment } = useQueryDepartment();
@@ -56,32 +56,7 @@ export default function Department() {
 							})}
 						</div>
 					</section>
-					<Sec3 json={json} />
-					{/* <section className='Department-thirdSection'>
-						{splitHeader('our-awards', true).map((title, idx) => {
-							return <h3 key={title + idx}>{title}</h3>;
-						})}
-						<div className='awards-table'>
-							<thead>
-								<tr>
-									{json['our-awards'].header.map((col, idx) => {
-										return <th key={col + idx}>{col}</th>;
-									})}
-								</tr>
-							</thead>
-							<tbody>
-								{json['our-awards'].body.map((row, idx) => {
-									return (
-										<tr key={row + idx}>
-											{row.map((data, idx) => {
-												return <td key={data + idx}>{data}</td>;
-											})}
-										</tr>
-									);
-								})}
-							</tbody>
-						</div>
-					</section> */}
+					<DepartmentSec3 json={json} />
 				</>
 			)}
 		</Layout>
