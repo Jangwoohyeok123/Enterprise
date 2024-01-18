@@ -11,12 +11,10 @@ import Tab from './components/Maps';
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
 	const kakao = useRef(window.kakao);
-
 	const [Index, setIndex] = useState(0);
 	const [View, setView] = useState(false);
 
-	const mapFrame = useRef(null);
-
+	const mapFrame = useRef(null); // default map
 	const marker = useRef(null);
 	const mapInstance = useRef(null);
 
@@ -25,21 +23,21 @@ export default function Contact() {
 		{
 			title: 'seoul',
 			latlng: new kakao.current.maps.LatLng(37.5567, 126.97597),
-			imgSrc: `${process.env.PUBLIC_URL}/img/marker1.png`,
+			imgSrc: `${process.env.PUBLIC_URL}/img/marker/marker1.png`,
 			imgSize: new kakao.current.maps.Size(232, 99),
 			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		},
 		{
 			title: 'naver',
 			latlng: new kakao.current.maps.LatLng(37.3589, 127.1052131),
-			imgSrc: `${process.env.PUBLIC_URL}/img/marker2.png`,
+			imgSrc: `${process.env.PUBLIC_URL}/img/marker/marker2.png`,
 			imgSize: new kakao.current.maps.Size(232, 99),
 			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		},
 		{
 			title: 'kakao',
 			latlng: new kakao.current.maps.LatLng(37.55637, 126.92392393),
-			imgSrc: `${process.env.PUBLIC_URL}/img/marker3.png`,
+			imgSrc: `${process.env.PUBLIC_URL}/img/marker/marker3.png`,
 			imgSize: new kakao.current.maps.Size(232, 99),
 			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
 		}
