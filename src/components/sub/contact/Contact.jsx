@@ -7,16 +7,15 @@ import ControlBox from './components/ControlBox';
 import GetTouchSection from './components/GetTouchSection';
 import Tab from './components/Maps';
 
+//  roadview 빼기
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
 	const kakao = useRef(window.kakao);
 
 	const [Index, setIndex] = useState(0);
-	const [Traffic, setTraffic] = useState(false);
 	const [View, setView] = useState(false);
 
 	const mapFrame = useRef(null);
-	const viewFrame = useRef(null);
 
 	const marker = useRef(null);
 	const mapInstance = useRef(null);
@@ -56,20 +55,6 @@ export default function Contact() {
 		)
 	});
 
-	const roadview = useCallback(() => {
-		console.log('roadview');
-		new kakao.current.maps.RoadviewClient().getNearestPanoId(
-			mapInfo.current[Index].latlng,
-			50,
-			panoId => {
-				new kakao.current.maps.Roadview(viewFrame.current).setPanoId(
-					panoId,
-					mapInfo.current[Index].latlng
-				);
-			}
-		);
-	}, [Index]);
-
 	const setCenter = useCallback(() => {
 		console.log('setCenter');
 		mapInstance.current.setCenter(mapInfo.current[Index].latlng);
@@ -80,13 +65,12 @@ export default function Contact() {
 	//컴포넌트 마운트시 참조객체에 담아놓은 돔 프레임에 지도 인스턴스 출력 및 마커 세팅
 	useEffect(() => {
 		mapFrame.current.innerHTML = '';
-		viewFrame.current.innerHTML = '';
 		mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
 			center: mapInfo.current[Index].latlng,
 			level: 3
 		});
 		marker.current.setMap(mapInstance.current);
-		setTraffic(false);
+
 		setView(false);
 
 		mapInstance.current.addControl(
@@ -104,20 +88,6 @@ export default function Contact() {
 		window.addEventListener('resize', throttledSetCenter);
 		return () => window.removeEventListener('resize', throttledSetCenter);
 	}, [throttledSetCenter]);
-
-	useEffect(() => {
-		View && viewFrame.current.children.length === 0 && roadview();
-	}, [View, roadview]);
-
-	useEffect(() => {
-		Traffic
-			? mapInstance.current.addOverlayMapTypeId(
-					kakao.current.maps.MapTypeId.TRAFFIC
-			  )
-			: mapInstance.current.removeOverlayMapTypeId(
-					kakao.current.maps.MapTypeId.TRAFFIC
-			  );
-	}, [Traffic]);
 
 	return (
 		<Layout
@@ -138,13 +108,11 @@ export default function Contact() {
 				</div>
 
 				<div id='mapSection'>
-					<Tab mapFrame={mapFrame} viewFrame={viewFrame} View={View} />
+					<Tab mapFrame={mapFrame} View={View} />
 					<ControlBox
 						mapInfo={mapInfo}
 						Index={Index}
 						setIndex={setIndex}
-						Traffic={Traffic}
-						setTraffic={setTraffic}
 						View={View}
 						setView={setView}
 						setCenter={setCenter}
