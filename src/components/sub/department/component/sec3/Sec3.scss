@@ -1,2 +1,89 @@
 .Sec3 {
+	border-top: 1px solid rgba(var(--baseColor-code), 0.4);
+	padding-top: 30px;
+	padding-bottom: 100px;
+
+	.awards-table {
+		text-align: left;
+		width: 100%;
+		margin-top: 4vh;
+
+		tr {
+			padding: 15px 0;
+		}
+
+		thead {
+			display: block;
+			width: 100%;
+
+			tr {
+				display: flex;
+				width: 100%;
+
+				th {
+					flex: 1;
+				}
+			}
+		}
+
+		tbody {
+			display: block;
+			width: 100%;
+
+			tr {
+				display: flex;
+				width: 100%;
+				border-top: 1px solid rgba(var(--baseColor-code), 0.4);
+
+				td {
+					padding-right: 20px;
+					flex: 1;
+					font-size: 0.9rem;
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+}
+
+.Mobile {
+	.Sec3 {
+		.awards-table {
+			tr {
+				padding: 10px 0;
+			}
+
+			thead {
+				display: block;
+				width: 100%;
+
+				tr {
+					display: flex;
+					width: 100%;
+
+					th {
+						text-align: center;
+						flex: 1;
+					}
+				}
+			}
+
+			tbody {
+				display: block;
+				width: 100%;
+
+				tr {
+					display: flex;
+					width: 100%;
+
+					td {
+						width: 25%;
+						padding-right: 0;
+						padding: 5px;
+						word-break: break-all;
+					}
+				}
+			}
+		}
+	}
 }

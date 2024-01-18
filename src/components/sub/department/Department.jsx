@@ -3,6 +3,7 @@ import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
 import { useQueryDepartment } from '../../../query/useQueryDepartment';
 import Layout from '../../common/layout/Layout';
+import Sec3 from './component/sec3/Sec3';
 
 export default function Department() {
 	const { data: json, isSuccess: isDepartment } = useQueryDepartment();
@@ -55,7 +56,8 @@ export default function Department() {
 							})}
 						</div>
 					</section>
-					<section className='Department-thirdSection'>
+					<Sec3 json={json} />
+					{/* <section className='Department-thirdSection'>
 						{splitHeader('our-awards', true).map((title, idx) => {
 							return <h3 key={title + idx}>{title}</h3>;
 						})}
@@ -79,7 +81,7 @@ export default function Department() {
 								})}
 							</tbody>
 						</div>
-					</section>
+					</section> */}
 				</>
 			)}
 		</Layout>
