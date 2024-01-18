@@ -1,7 +1,7 @@
 .Form {
 	width: 100%;
 	position: relative;
-	margin-bottom: 5vh;
+	padding: 0vh 8vw 5vh;
 
 	label {
 		display: block;
@@ -17,30 +17,33 @@
 	.profile {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
-		width: 100%;
 
 		.message {
+			width: 100%;
 			display: flex;
 			justify-content: center;
 
 			textarea {
-				width: 380px;
+				width: 100%;
 				margin-bottom: 30px;
 			}
 		}
 
 		.address {
+			width: 48%;
+
 			input {
-				width: 170px;
-				margin-right: 40px;
+				width: 100%;
 			}
 		}
 
 		.name {
+			width: 48%;
+
 			input {
-				width: 170px;
+				width: 100%;
 			}
 		}
 	}
@@ -52,7 +55,8 @@
 		margin-top: 30px;
 
 		input {
-			padding: 8px 174px;
+			width: 100%;
+			padding: 8px 0;
 			color: var(--bgColor);
 			font-weight: 500;
 			background-color: var(--baseColor);

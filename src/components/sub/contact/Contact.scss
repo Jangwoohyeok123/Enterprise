@@ -9,7 +9,7 @@
 	.layoutImageBox {
 		margin-left: 0;
 	}
-	// -----------------------------------------------
+	// --------------------------------------------------
 
 	.contactWrap {
 		p {
@@ -17,7 +17,7 @@
 		}
 
 		display: flex;
-		padding-top: 80px;
+		margin-top: 10vh; // => 반응형 처리해야함
 
 		#mailSection {
 			width: 50vw;
