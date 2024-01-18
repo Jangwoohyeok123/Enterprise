@@ -29,28 +29,30 @@ export default function GetTouchSection() {
 
 	return (
 		<section className='GetTouchSection'>
-			<div className='introduce'>
-				<h1>Get In Touch With Us</h1>
-				<p>
-					Please contact us using the information below. To locate contacts in
-					the Business
-				</p>
-				<p>office closet to you, visit out office websites.</p>
-			</div>
+			<div>
+				<div className='introduce'>
+					<h1>Get In Touch With Us</h1>
+					<p>
+						Please contact us using the information below. To locate contacts in
+						the Business
+					</p>
+					<p>office closet to you, visit out office websites.</p>
+				</div>
 
-			<div className='infos'>
-				{infos.current.map((info, idx) => {
-					return (
-						<div className='info'>
-							<div className='iconBox'>{info.icon}</div>
-							<div className='txtBox'>
-								<h3>{info.title}</h3>
-								<p>{info.line1}</p>
-								<p>{info.line2}</p>
+				<div className='infos'>
+					{infos.current.map((info, idx) => {
+						return (
+							<div className='info'>
+								<div className='iconBox'>{info.icon}</div>
+								<div className='txtBox'>
+									<h3>{info.title}</h3>
+									<p>{info.line1}</p>
+									<p>{info.line2}</p>
+								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})}
+				</div>
 			</div>
 		</section>
 	);
