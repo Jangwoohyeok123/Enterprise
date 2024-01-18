@@ -138,6 +138,7 @@ export default function Contact() {
 				</div>
 
 				<div id='mapSection'>
+					<Tab mapFrame={mapFrame} viewFrame={viewFrame} View={View} />
 					<ControlBox
 						mapInfo={mapInfo}
 						Index={Index}
@@ -148,8 +149,6 @@ export default function Contact() {
 						setView={setView}
 						setCenter={setCenter}
 					/>
-
-					<Tab mapFrame={mapFrame} viewFrame={viewFrame} View={View} />
 				</div>
 			</div>
 		</Layout>
