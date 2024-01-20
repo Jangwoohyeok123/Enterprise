@@ -3,69 +3,22 @@
 	border-bottom: 1px solid rgba(var(--baseColor-code), 0.3);
 	padding-bottom: 2vh;
 	margin-bottom: 2vh;
-	height: 30vh;
+	height: 400px;
 	display: flex;
 	justify-content: space-between;
+}
 
-	// .Video {
-	// 	display: flex;
-	// 	gap: 15px;
-	// 	width: 60%;
-	// 	justify-content: space-between;
+.Notebook {
+	.Youtue-Card {
+	}
+}
 
-	// 	.img {
-	// 		display: inline-block;
-	// 		width: 60%;
-	// 		height: 100%;
-	// 		overflow: hidden;
-	// 		position: relative;
+.Tablet {
+	.Youtube-Card {
+	}
+}
 
-	// 		// overlay
-	// 		// &::before {
-	// 		// 	content: '';
-	// 		// 	position: absolute;
-	// 		// 	z-index: 1;
-	// 		// 	top: 50%;
-	// 		// 	bottom: 0;
-	// 		// 	left: 50%;
-	// 		// 	right: 0;
-	// 		// 	width: 80px;
-	// 		// 	height: 70px;
-	// 		// 	background: #111;
-	// 		// }
-
-	// 		img {
-	// 			width: 100%;
-	// 			object-fit: cover;
-	// 			transform: scale(1.7);
-	// 		}
-	// 	}
-
-	// 	.text {
-	// 		position: relative;
-	// 		display: flex;
-	// 		flex-direction: column;
-	// 		justify-content: space-between;
-	// 		width: 50%;
-
-	// 		.sub {
-	// 			position: absolute;
-	// 			bottom: 0;
-	// 			right: 0;
-	// 			display: flex;
-	// 			justify-content: space-between;
-
-	// 			.time {
-	// 				display: flex;
-	// 				gap: 5px;
-	// 			}
-
-	// 			.icon {
-	// 				display: flex;
-	// 				align-items: center;
-	// 				gap: 5px;
-	// 			}
-	// 		}
-	// 	}
-	// }
+.Mobile {
+	.Youtue-Card {
+	}
 }
