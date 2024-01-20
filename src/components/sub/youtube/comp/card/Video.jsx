@@ -8,7 +8,6 @@ export default function Video({ video }) {
 	const wordSlice = useTextMethod('wordSlice');
 	const [date, tmpTime] = video.snippet.publishedAt.split('T');
 	const time = tmpTime.slice(0, tmpTime.length - 1);
-	const RefvideoContainer = useRef(null);
 
 	useEffect(() => {
 		const videoContainers = document.querySelectorAll('.videoContainer');
@@ -29,7 +28,7 @@ export default function Video({ video }) {
 
 	return (
 		<div className='Video'>
-			<div className='videoContainer' ref={RefvideoContainer}>
+			<div className='videoContainer'>
 				<Link className='videoImg' to={`/detail/${video.id}`}>
 					<img
 						src={video.snippet.thumbnails.standard.url}
