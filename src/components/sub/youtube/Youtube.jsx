@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Layout from '../../common/layout/Layout';
 import './Youtube.scss';
 import { useQueryYoutube } from '../../../query/useQueryYoutube';
@@ -7,8 +7,7 @@ import Card from './comp/card/Card';
 export default function Youtube() {
 	// component 분리하기
 	const path = useRef(process.env.PUBLIC_URL);
-
-	const { data: Vids, isSuccess } = useQueryYoutube();
+	const { data: Vids, isSuccess, isLoading, isError } = useQueryYoutube();
 
 	return (
 		<Layout

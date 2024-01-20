@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import useTextMethod from '../../../../../hooks/useText';
-import { IoLogoYoutube } from 'react-icons/io5';
 import { MdPlayArrow } from 'react-icons/md';
-import { SiYoutube } from 'react-icons/si';
 import './Video.scss';
 import { useEffect, useRef } from 'react';
 
@@ -38,7 +36,9 @@ export default function Video({ video }) {
 						alt={video.snippet.title}
 					/>
 				</Link>
-				<MdPlayArrow className='playicon' />
+				<Link to={`/detail/${video.id}`}>
+					<MdPlayArrow className='playicon' />
+				</Link>
 			</div>
 			<div className='text'>
 				<h4>{wordSlice(video.snippet.title)}</h4>
