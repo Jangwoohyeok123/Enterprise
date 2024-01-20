@@ -1,6 +1,6 @@
-import Description from './Description';
-import Video from './Video';
 import './Card.scss';
+import Description from '../description/Description';
+import Video from '../video/Video';
 
 export default function Card({ video, idx }) {
 	return (
