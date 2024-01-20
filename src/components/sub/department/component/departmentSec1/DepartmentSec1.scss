@@ -1,2 +1,39 @@
 .DepartmentSec1 {
+	.sec1Container {
+		display: flex;
+		margin: 7vh 0;
+
+		h2 {
+			width: 50%;
+			padding-right: 10%;
+			line-height: 1.5;
+			font-size: 1.8rem;
+		}
+
+		div {
+			width: 50%;
+
+			p:nth-child(1) {
+				padding-bottom: 5vh;
+			}
+
+			.cards {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: space-between;
+
+				.card {
+					width: 45%;
+					padding: 5vh 0;
+					border-top: 1px solid rgba(var(--baseColor-code), 0.4);
+
+					h4 {
+						width: 60%;
+						padding-bottom: 1.3vh;
+					}
+				}
+			}
+		}
+	}
 }
