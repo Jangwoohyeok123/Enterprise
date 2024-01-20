@@ -3,17 +3,17 @@
 		display: flex;
 		margin: 7vh 0;
 
-		h2 {
+		.left {
 			width: 50%;
 			padding-right: 10%;
 			line-height: 1.5;
 			font-size: 1.8rem;
 		}
 
-		div {
+		.right {
 			width: 50%;
 
-			p:nth-child(1) {
+			.body {
 				padding-bottom: 5vh;
 			}
 
@@ -30,7 +30,81 @@
 
 					h4 {
 						width: 60%;
+						display: -webkit-inline-box;
+						-webkit-line-clamp: 2;
+						-webkit-box-orient: vertical;
+						overflow: hidden;
+						overflow-wrap: break-word;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Tablet 은 ui margin 제어를 통해 컨셉을 유지한다.
+.Tablet {
+	.sec1Container {
+		.left {
+			width: 50%;
+			padding-right: 10%;
+			font-size: 1.2rem;
+		}
+
+		.right {
+			width: 50%;
+
+			.cards {
+				.card {
+					h4 {
+						width: 80%;
 						padding-bottom: 1.3vh;
+					}
+				}
+			}
+		}
+	}
+}
+
+// 모바일부터 cards layout 을 손보는식으로 간다.
+.Mobile {
+	.sec1Container {
+		display: block;
+
+		.left {
+			width: 100%;
+			padding-right: 0;
+			font-size: 1.6rem;
+			font-weight: 500;
+			line-height: 1.3;
+			display: -webkit-inline-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			overflow-wrap: break-word;
+		}
+
+		.right {
+			width: 100%;
+			font-size: 1rem;
+			padding-top: 3vh;
+
+			.body {
+				opacity: 0.9;
+			}
+
+			.cards {
+				.card {
+					padding: 3vh 0;
+
+					h4 {
+						width: 100%;
+						font-size: 1.3rem;
+						font-weight: 500;
+						height: 50px;
+						display: flex;
+						align-items: center;
+						margin-bottom: 1vh;
 					}
 				}
 			}
