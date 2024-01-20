@@ -1,5 +1,5 @@
 import useTextMethod from '../../../../../hooks/useText';
-import './Sec3.scss';
+import './DepartmentSec3.scss';
 
 export default function DepartmentSec3({ json }) {
 	const splitHeader = useTextMethod('split');

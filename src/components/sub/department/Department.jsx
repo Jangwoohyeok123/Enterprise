@@ -3,7 +3,7 @@ import './Department.scss';
 import useTextMethod from '../../../hooks/useText';
 import { useQueryDepartment } from '../../../query/useQueryDepartment';
 import Layout from '../../common/layout/Layout';
-import DepartmentSec3 from './component/departmentSec3/Sec3';
+import DepartmentSec3 from './component/departmentSec3/DepartmentSec3';
 
 export default function Department() {
 	const { data: json, isSuccess: isDepartment } = useQueryDepartment();
