@@ -3,7 +3,7 @@ import Layout from '../../common/layout/Layout';
 import './Youtube.scss';
 import { useQueryYoutube } from '../../../query/useQueryYoutube';
 import Card from './comp/card/Card';
-import Service from './comp/service/Service';
+import Tab from './comp/tab/Tab';
 
 export default function Youtube() {
 	// component 분리하기
@@ -15,7 +15,7 @@ export default function Youtube() {
 			title={'Youtube'}
 			src={`${path.current}/img/youtube/main.jpg`}
 			className='Youtube'>
-			<Service />
+			<Tab />
 			<section className='Youtube-Section'>
 				{isSuccess &&
 					Vids.map((video, idx) => {

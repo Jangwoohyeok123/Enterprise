@@ -1,0 +1,63 @@
+.Tab {
+	display: flex;
+	justify-content: space-between;
+	padding-bottom: 2vh;
+
+	.menu {
+		display: flex;
+
+		span {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 150px;
+			padding: 10px;
+			text-align: center;
+			border: 1px solid rgba(var(--baseColor-code), 0.2);
+		}
+
+		span.on {
+			border: 1px solid var(--subPoint);
+			color: var(--subPoint);
+		}
+	}
+
+	.search {
+		display: flex;
+		gap: 20px;
+		position: relative;
+
+		input {
+			width: 200px;
+			border-radius: 20px;
+			padding: 5px;
+			padding-left: 40px;
+
+			&:focus {
+				outline: 2px solid var(--subPoint);
+			}
+		}
+
+		.icon {
+			position: absolute;
+			left: 15px;
+			top: 14px;
+			opacity: 0.7;
+			cursor: pointer;
+		}
+	}
+}
+
+.Tablet {
+	.Tab {
+		.menu {
+		}
+	}
+}
+
+.Mobile {
+	.Tab {
+		.menu {
+		}
+	}
+}

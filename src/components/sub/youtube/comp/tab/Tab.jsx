@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import './Service.scss';
+import './Tab.scss';
 
-export default function Service() {
+export default function Tab() {
 	const [Categorys, setCategorys] = useState([]);
 
 	return (
-		<figure className='Service'>
+		<figure className='Tab'>
 			<div className='Service-title'>Working Vides & Description</div>
 			<div className='category'>
 				<span className='sports'>Sports</span>

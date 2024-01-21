@@ -8,6 +8,7 @@ import Modal from '../../common/modal/Modal';
 import { FaSearch } from 'react-icons/fa';
 import { useQueryGallery } from '../../../query/useQueryGallery';
 import { useViewType } from '../../../hooks/useViewType';
+import Tab from './comp/Tab';
 
 export default function Gallery() {
 	const [Opt, setOpt] = useState({ type: 'interest' });
@@ -86,32 +87,14 @@ export default function Gallery() {
 				className='Gallery'
 				src={`${path.current}/img/temps/temp7.jpg`}>
 				<section className='frameWrap'>
-					<div className='tab'>
-						{viewType !== 'Mobile' && (
-							<span className='menu' ref={tab}>
-								<span
-									onClick={() => {
-										activation(0);
-										setOpt({ type: 'interest' });
-									}}>
-									Interest Gallery
-								</span>
-								<span
-									onClick={() => {
-										activation(1);
-										setOpt({ type: 'user', id: userId.current });
-									}}>
-									My Gallery
-								</span>
-							</span>
-						)}
-
-						<form className='search' onSubmit={e => handleSubmit(e)}>
-							<input type='text' placeholder='Search' ref={searchInput}></input>
-							<FaSearch className='icon' onClick={e => handleSubmit(e)} />
-						</form>
-					</div>
-
+					<Tab
+						tab={tab}
+						searchInput={searchInput}
+						activation={activation}
+						setOpt={setOpt}
+						userId={userId}
+						handleSubmit={handleSubmit}
+					/>
 					<Masonry
 						className={'frame'}
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
