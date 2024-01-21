@@ -1,0 +1,11 @@
+.Service {
+	width: 100vw;
+	margin-left: -10vw;
+	height: 40px;
+	border-bottom: 1px solid rgba(var(--baseColor-code), 0.4);
+	margin-bottom: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 10vw;
+}

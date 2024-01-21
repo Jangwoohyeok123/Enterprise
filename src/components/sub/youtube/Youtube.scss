@@ -18,6 +18,9 @@
 	span {
 		font-size: 0.85rem;
 	}
+
+	&-Section {
+	}
 }
 
 .Notebook {
@@ -65,6 +68,18 @@
 		span {
 			font-size: 0.85rem;
 		}
+
+		&-Section {
+			.header {
+				h2 {
+					font-size: 2rem;
+				}
+
+				h3 {
+					display: none;
+				}
+			}
+		}
 	}
 }
 
@@ -85,80 +100,17 @@
 		span {
 			font-size: 0.7rem;
 		}
-	}
-}
 
-.Youtube-Section {
-	padding: 7vh 0;
+		&-Section {
+			.header {
+				h2 {
+					font-size: 2rem;
+				}
 
-	.header {
-		display: flex;
-		padding: 3vh 0;
-		justify-content: space-between;
-		font-family: var(--pointFont);
-	}
-}
-
-.Notebook {
-	.Youtube-secondSection {
-		p {
-			font-size: 0.8rem;
-			opacity: 0.9;
+				h3 {
+					display: none;
+				}
+			}
 		}
 	}
 }
-
-// .Tablet,
-// .Mobile {
-// 	.Youtube-secondSection {
-// 		.header {
-// 			h3 {
-// 				display: none;
-// 			}
-// 		}
-
-// 		article {
-// 			display: flex;
-// 			flex-direction: column;
-// 			gap: 5px;
-
-// 			.video {
-// 				display: block;
-// 				width: 100%;
-// 				padding-bottom: 2vh;
-
-// 				.img {
-// 					display: block;
-// 					width: 100%;
-
-// 					img {
-// 						height: 30vh;
-// 					}
-// 				}
-
-// 				.text {
-// 					display: block;
-// 					width: 100%;
-
-// 					h4 {
-// 						padding: 1vh 0;
-// 					}
-
-// 					.sub {
-// 						position: relative;
-// 						display: flex;
-// 						justify-content: right;
-
-// 						.time {
-// 						}
-// 					}
-// 				}
-// 			}
-
-// 			.description {
-// 				width: 100%;
-// 				display: block;
-// 			}
-// 		}
-// 	}
-// }
