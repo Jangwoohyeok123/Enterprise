@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import './GetTouchSection.scss';
 import { CiMap } from 'react-icons/ci';
 import { IoIosPhonePortrait } from 'react-icons/io';
@@ -6,12 +6,12 @@ import { IoMailOpenOutline } from 'react-icons/io5';
 import { useGlobalData } from '../../../../../hooks/useGlobalData';
 
 export default function GetTouchSection() {
+	const { ViewType } = useGlobalData();
 	const infos = useRef([
 		{
 			icon: <CiMap />,
 			title: 'Office',
-			line1: '2CA, Downtow, New Okland United states',
-			line2: 'United states'
+			line1: '2CA, Downtow, New Okland United states'
 		},
 		{
 			icon: <IoIosPhonePortrait />,
@@ -45,7 +45,13 @@ export default function GetTouchSection() {
 								<div className='iconBox'>{info.icon}</div>
 								<div className='txtBox'>
 									<h3>{info.title}</h3>
-									<p>{info.line1}</p>
+									<p
+										style={{
+											width:
+												idx === 0 && ViewType !== 'Mobile' ? '200px' : 'auto'
+										}}>
+										{info.line1}
+									</p>
 									<p>{info?.line2}</p>
 								</div>
 							</div>

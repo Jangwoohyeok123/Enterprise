@@ -38,7 +38,6 @@
 				height: 70px;
 				margin: 0 auto;
 				color: #007bff;
-				// opacity: 0.65;
 
 				svg {
 					width: 100%;
@@ -54,6 +53,7 @@
 				}
 
 				p {
+					margin: 0 auto;
 					text-align: center;
 				}
 			}
@@ -87,6 +87,7 @@
 
 .Mobile {
 	.GetTouchSection {
+		height: 500px;
 		margin-top: 50px;
 		.introduce {
 			h1 {
@@ -101,7 +102,9 @@
 		.infos {
 			display: block;
 			margin-top: 20px;
+
 			.info {
+				margin-left: -5vw;
 				display: flex;
 				width: 100%;
 				justify-content: left;

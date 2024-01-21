@@ -17,14 +17,15 @@
 		}
 
 		display: flex;
-		margin-top: 10vh; // => 반응형 처리해야함
+		flex-direction: column-reverse;
+		margin-top: 30px; // => 반응형 처리해야함
 
 		#mailSection {
-			width: 50vw;
+			width: 100vw;
 
 			.mailTitle {
 				text-align: center;
-				padding: 10vh 5vw;
+				padding: 70px 5vw 30px;
 
 				h2 {
 					padding-bottom: 10px;
@@ -38,8 +39,18 @@
 		}
 
 		#mapSection {
-			width: 50vw;
+			width: 100vw;
+			height: 500px;
 			position: relative;
+		}
+	}
+}
+
+.Mobile {
+	.Contact {
+		.contactWrap {
+			#mapSection {
+			}
 		}
 	}
 }
