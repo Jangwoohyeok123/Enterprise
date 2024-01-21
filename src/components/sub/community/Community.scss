@@ -155,24 +155,13 @@
 
 .Mobile {
 	.Community {
-		width: 100%;
-		padding: 0 2%;
-
-		header {
-			height: 150px;
-		}
-
-		// createPost 와 posts 는 width 100% 가 적용된 상태들
-		.createPost {
-		}
-
 		.body {
 			.posts {
 				.post {
 					height: 30vh;
 
 					.profile {
-						font-size: 0.7rem;
+						font-size: 0.75rem;
 						position: relative;
 						gap: 0px;
 						top: 10px;
@@ -183,8 +172,8 @@
 						}
 
 						.right {
-							.icon {
-								font-size: 0.8rem;
+							.date {
+								display: none;
 							}
 						}
 					}
