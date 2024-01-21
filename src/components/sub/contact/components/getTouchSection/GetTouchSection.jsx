@@ -6,38 +6,26 @@ import { IoMailOpenOutline } from 'react-icons/io5';
 import { useGlobalData } from '../../../../../hooks/useGlobalData';
 
 export default function GetTouchSection() {
-	console.log('render');
-	const { ViewType } = useGlobalData();
-	// const iconSize = useRef(70);
-	const [IconSize, setIconSize] = useState(70);
-
 	const infos = useRef([
 		{
-			icon: <CiMap size={IconSize} />,
+			icon: <CiMap />,
 			title: 'Office',
-			line1: '2CA, Downtow, New Okland',
+			line1: '2CA, Downtow, New Okland United states',
 			line2: 'United states'
 		},
 		{
-			icon: <IoIosPhonePortrait size={IconSize} />,
+			icon: <IoIosPhonePortrait />,
 			title: 'Call Us',
-			line1: '(+1)2020 3990 00 456',
-			line2: '(+1)2020 3990 01 012'
+			line1: '(+1) 2020 3990 00 456',
+			line2: '(+1) 2020 3990 01 012'
 		},
 		{
-			icon: <IoMailOpenOutline size={IconSize} />,
+			icon: <IoMailOpenOutline />,
 			title: 'Send Us',
 			line1: 'dobussiness27@naver.com',
 			line2: 'ikarus39912@gmail.com'
 		}
 	]);
-
-	useEffect(() => {
-		console.log(ViewType === 'Mobile');
-		if (ViewType === 'Mobile') setIconSize(30);
-	}, []);
-
-	console.log(ViewType);
 
 	return (
 		<section className='GetTouchSection'>
@@ -58,7 +46,7 @@ export default function GetTouchSection() {
 								<div className='txtBox'>
 									<h3>{info.title}</h3>
 									<p>{info.line1}</p>
-									<p>{info.line2}</p>
+									<p>{info?.line2}</p>
 								</div>
 							</div>
 						);

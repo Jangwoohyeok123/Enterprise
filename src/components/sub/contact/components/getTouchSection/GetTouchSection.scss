@@ -32,36 +32,46 @@
 
 		.info {
 			width: 30%;
-			display: flex;
-			gap: 20px;
 
 			.iconBox {
-				height: 100%;
+				width: 60px;
+				height: 70px;
+				margin: 0 auto;
 				color: #007bff;
 				// opacity: 0.65;
-				display: flex;
-				justify-content: center;
-				align-items: center;
+
+				svg {
+					width: 100%;
+					height: 100%;
+				}
 			}
 
 			.txtBox {
+				text-align: center;
 				h3 {
 					padding-bottom: 5px;
+					font-size: 1.7rem;
+				}
+
+				p {
+					text-align: center;
 				}
 			}
 		}
 	}
 }
 
-.Tablet,
-.Mobile {
+.Tablet {
 	.GetTouchSection {
 		.infos {
+			width: 85%;
 			.info {
 				display: block;
 
 				.iconBox {
-					height: 100px;
+					width: 50px;
+					height: 70px;
+					margin: 0 auto;
 				}
 				.txtBox {
 					text-align: center;
@@ -80,13 +90,14 @@
 		margin-top: 50px;
 		.introduce {
 			h1 {
-				font-size: 2rem;
+				font-size: 1.6rem;
 			}
 			p {
 				word-break: keep-all;
 				width: 300px;
 			}
 		}
+
 		.infos {
 			display: block;
 			margin-top: 20px;
@@ -96,14 +107,21 @@
 				justify-content: left;
 
 				.iconBox {
+					width: 40px;
 					height: 100px;
 					font-size: 30px;
 				}
 
 				.txtBox {
 					text-align: left;
+					width: 70%;
+
+					h3 {
+						font-size: 1.1rem;
+					}
 
 					p {
+						font-size: 0.9rem;
 						text-align: left;
 					}
 				}
