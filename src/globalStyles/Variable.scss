@@ -18,6 +18,7 @@ body {
 	--baseColor: #333;
 	--baseColor-code: 51, 51, 51;
 	--bgColor: #efefef;
+	--bgColor-code: 239, 239, 239;
 	--inputBgColor: #fff;
 	--inputColor: #333;
 	--placeholderColor: #666;
@@ -31,6 +32,7 @@ body {
 .dark {
 	--baseColor: #efefef;
 	--baseColor-code: 255, 255, 255;
+	--bgColor-code: 51, 51, 51;
 	--bgColor: #333;
 	--inputBgColor: #dfdfdf;
 }

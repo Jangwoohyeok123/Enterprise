@@ -2,10 +2,35 @@
 	width: 100vw;
 	margin-left: -10vw;
 	height: 40px;
-	border-bottom: 1px solid rgba(var(--baseColor-code), 0.4);
-	margin-bottom: 30px;
+	border-bottom: 1px solid rgba(var(--baseColor-code), 0.2);
+	margin-bottom: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 10vw;
+	background: #333;
+	color: #efefef;
+
+	&-title {
+		font-family: var(--pointFont);
+		padding: 10px 20px 10px 0;
+	}
+
+	.category {
+		span {
+			padding: 10px 20px;
+		}
+
+		span:last-child {
+			padding-right: 0;
+		}
+	}
+}
+
+.Tablet {
+	.Service {
+		&-title {
+			display: none;
+		}
+	}
 }
