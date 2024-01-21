@@ -136,32 +136,6 @@
 }
 
 .Mobile {
-	.menu {
-		display: flex;
-		width: 90%;
-		margin: 0 5%;
-		margin-top: 3%;
-		height: 45px;
-		justify-content: space-between;
-
-		span {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 45%;
-			background: #fff;
-			border-radius: 30px;
-			padding: 10px;
-			text-align: center;
-			// border: 1px solid rgba(var(--baseColor-code), 0.2);
-		}
-
-		span.on {
-			border: 1px solid var(--subPoint);
-			color: var(--subPoint);
-		}
-	}
-
 	.Gallery {
 		--num: 1;
 		position: relative;

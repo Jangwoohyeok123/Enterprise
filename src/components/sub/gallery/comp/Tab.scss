@@ -1,23 +1,24 @@
 .Tab {
 	display: flex;
 	justify-content: space-between;
-	padding-bottom: 2vh;
 
 	.menu {
 		display: flex;
+		gap: 20px;
 
 		span {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: 150px;
-			padding: 10px;
+			padding: 10px 20px;
 			text-align: center;
-			border: 1px solid rgba(var(--baseColor-code), 0.2);
+		}
+
+		span:first-child {
+			padding-left: 0;
 		}
 
 		span.on {
-			border: 1px solid var(--subPoint);
 			color: var(--subPoint);
 		}
 	}
@@ -30,20 +31,25 @@
 		input {
 			width: 200px;
 			border-radius: 20px;
-			padding: 5px;
+			padding: 3px 5px;
 			padding-left: 40px;
 
 			&:focus {
 				outline: 2px solid var(--subPoint);
 			}
+
+			&::placeholder {
+				font-size: 0.9rem;
+			}
 		}
 
 		.icon {
 			position: absolute;
-			left: 15px;
-			top: 14px;
+			left: 11px;
+			top: 8px;
 			opacity: 0.7;
 			cursor: pointer;
+			color: #333;
 		}
 	}
 }
@@ -57,7 +63,43 @@
 
 .Mobile {
 	.Tab {
+		width: 100vw;
+		height: 50px;
+
 		.menu {
+			width: auto;
+			height: 100%;
+			gap: 10px;
+
+			span {
+				border-radius: 0;
+				background: #333;
+				border: none;
+				padding: 0;
+				font-size: 0.6rem;
+				width: auto;
+			}
+
+			span.on {
+				border: none;
+			}
+		}
+
+		.search {
+			input {
+				width: 150px;
+				padding: 4px 30px;
+				font-size: 0.8rem;
+
+				&::placeholder {
+					font-size: 0.8rem;
+				}
+			}
+
+			.icon {
+				font-size: 0.8rem;
+				top: 6px;
+			}
 		}
 	}
 }
