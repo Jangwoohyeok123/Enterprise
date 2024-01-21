@@ -196,8 +196,3 @@ export default function Community() {
 
 // Read Mode 일 때는 Read 모드 출력하기
 // Edit Mode 일 때는 클릭한 post 만 edit 가능학세 만들기
-
-/* 
-
-
-*/
