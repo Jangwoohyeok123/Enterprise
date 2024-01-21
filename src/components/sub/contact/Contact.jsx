@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useThrottle } from '../../../hooks/useThrottle';
 import Layout from '../../common/layout/Layout';
-import Form from './components/Form';
+import Form from './components/form/Form';
 import './Contact.scss';
-import ControlBox from './components/ControlBox';
-import GetTouchSection from './components/GetTouchSection';
-import Tab from './components/Maps';
+import ControlBox from './components/controlBox/ControlBox';
+import GetTouchSection from './components/getTouchSection/GetTouchSection';
+import Tab from './components/maps/Maps';
 
 //  roadview 빼기
 export default function Contact() {

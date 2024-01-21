@@ -1,6 +1,6 @@
-import Branch from './Branch';
+import Branch from '../branch/Branch';
 import './ControlBox.scss';
-import Info from './Info';
+import Info from '../info/Info';
 
 export default function ControlBox({
 	mapInfo,
