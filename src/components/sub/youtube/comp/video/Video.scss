@@ -1,7 +1,7 @@
 .Video {
 	display: flex;
 	gap: 15px;
-	width: 60%;
+	width: 100%;
 	justify-content: space-between;
 
 	.videoContainer {
@@ -74,12 +74,25 @@
 	}
 }
 
-.Tablet {
-	.Video {
-	}
-}
-
+// tablet, mobile 은 block
+.Tablet,
 .Mobile {
 	.Video {
+		display: block;
+		width: 100%;
+		margin-bottom: 30px;
+
+		.videoContainer {
+			width: 100%;
+		}
+
+		.text {
+			display: block;
+			width: 100%;
+
+			.sub {
+				bottom: -30px;
+			}
+		}
 	}
 }

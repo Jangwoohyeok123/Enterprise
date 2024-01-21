@@ -13,12 +13,17 @@
 	}
 }
 
+// Tablet 부터는 Video 도 새로로 떨어진다. 1. 영상 2. title 3. arrow
 .Tablet {
 	.Youtube-Card {
+		display: block;
+		height: auto;
 	}
 }
 
 .Mobile {
-	.Youtue-Card {
+	.Youtube-Card {
+		display: block;
+		height: auto;
 	}
 }

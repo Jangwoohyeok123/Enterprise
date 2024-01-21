@@ -27,8 +27,10 @@
 	}
 }
 
-.Tablet {
+.Tablet,
+.Mobile {
 	.Service {
+		justify-content: right;
 		&-title {
 			display: none;
 		}
