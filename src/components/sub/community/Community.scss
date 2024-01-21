@@ -24,6 +24,7 @@
 
 	.body {
 		display: flex;
+		margin-top: 50px;
 
 		.createPost {
 			width: 30%;
@@ -66,8 +67,7 @@
 				justify-content: space-between;
 				width: 100%;
 				height: 200px;
-				border-top: 1px solid
-					rgba(var(--baseColor-code), 0.3);
+				border-top: 1px solid rgba(var(--baseColor-code), 0.3);
 
 				.posting {
 					// Edit Mode 의 css, Read Mode 의 css 를 만들어라

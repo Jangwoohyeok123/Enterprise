@@ -17,6 +17,7 @@
 		.frame {
 			display: flex;
 			flex-wrap: wrap;
+			margin-top: 50px;
 
 			article {
 				width: calc((100% - var(--gap) * (var(--num) - 1)) / var(--num));
