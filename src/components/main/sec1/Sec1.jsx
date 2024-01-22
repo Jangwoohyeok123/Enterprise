@@ -5,19 +5,18 @@ import './Sec1.scss';
 import Linetext from '../linetext/Linetext';
 
 export default function Sec1() {
-	const handleScroll = modifiedScroll => {};
 	const [SecArr, setSecArr] = useState([1, 2, 3]);
 
 	const path = process.env.PUBLIC_URL;
 
 	return (
-		<section className='Sec1 myScroll'>
+		<section className='Sec1'>
 			<Linetext tit1='NORM SERVICES' tit2='LSOSERVIESSDAMPJALL' />
 			<div className='wrap'>
 				{SecArr.map((_, idx) => {
 					const number = idx + 1;
 					return (
-						<div className='item'>
+						<div className='item myScroll'>
 							<div className='img'>
 								<Image
 									className='sec1Img'

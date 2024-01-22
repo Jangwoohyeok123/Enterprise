@@ -1,20 +1,11 @@
 import { useCallback, useEffect, useRef } from 'react';
 import './Layout.scss';
 import { useScroll } from '../../../hooks/useScroll';
-import ScrollKey from '../scrollkey/ScrollKey';
 
 export default function Layout({ children, title, src, className }) {
 	const refFrame = useRef(null);
 	const refTitle = useRef(null);
-
-	const handleScroll = scroll => {
-		console.log(scroll);
-	};
-
-	const { scrollTo, refEl } = useScroll(handleScroll, 0);
-	useEffect(() => {
-		scrollTo(0);
-	}, []);
+	const refBtnTop = useRef(null);
 
 	return (
 		<main className={className} ref={refFrame}>
@@ -28,7 +19,6 @@ export default function Layout({ children, title, src, className }) {
 				{title}
 			</h1>
 
-			<ScrollKey />
 			{children}
 		</main>
 	);

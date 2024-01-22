@@ -1,8 +1,49 @@
 .ScrollKey {
+	position: fixed;
+	bottom: 3%;
+	right: 3%;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+
 	.top {
+		width: 30px;
+		height: 30px;
+		background-color: var(--baseColor);
+		border-radius: 50%;
+
+		&::after {
+			content: '';
+			display: block;
+			position: relative;
+			left: 9.5px;
+			top: 7px;
+			width: 0; // x 축 있다고 상상
+			height: 0; // y 축 있다고 상상
+			border-bottom: 12px solid var(--subPoint); // background 적용 필요조건 1. border-bottom 설정
+			border-left: 7px solid transparent; // background 적용 필요조건 2. border-left 설정
+			border-right: 7px solid transparent; // 삼각형 조건 1. border-right 를 지정함으로서 직사각형 생성되며 transparent 를 통해 left, right 는 background 지정안해서 삼각형으로 보임
+		}
 	}
 
 	.bottom {
+		width: 30px;
+		height: 30px;
+		background-color: var(--baseColor);
+		border-radius: 50%;
+
+		&::after {
+			content: '';
+			display: block;
+			position: relative;
+			left: 9.5px;
+			top: 10px;
+			width: 0; // x 축 있다고 상상
+			height: 0; // y 축 있다고 상상
+			border-top: 12px solid var(--subPoint); // background 적용 필요조건 1. border-bottom 설정
+			border-left: 7px solid transparent; // background 적용 필요조건 2. border-left 설정
+			border-right: 7px solid transparent; // 삼각형 조건 1. border-right 를 지정함으로서 직사각형 생성되며 transparent 를 통해 left, right 는 background 지정안해서 삼각형으로 보임
+		}
 	}
 }
 

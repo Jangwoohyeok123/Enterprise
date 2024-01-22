@@ -1,14 +1,16 @@
-// import Info from '../info/Info';
 import Visual from '../visual/Visual';
 import './MainWrap.scss';
-import Btns from '../btns/Btns';
-import { useRef } from 'react';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import Sec1 from '../sec1/Sec1';
 import Sec2 from '../sec2/Sec2';
+import { useScroll } from '../../../hooks/useScroll';
+import { useEffect } from 'react';
 
 export default function MainWrap() {
-	const location = useLocation();
+	const { scrollTo } = useScroll();
+
+	useEffect(() => {
+		scrollTo(0);
+	}, [scrollTo]);
 
 	return (
 		<div className='MainWrap'>
@@ -19,3 +21,5 @@ export default function MainWrap() {
 		</div>
 	);
 }
+
+// sec1 의 offsetTop 을 알면 new Anime 를 통해 이동할 수 있음

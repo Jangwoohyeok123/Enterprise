@@ -19,6 +19,7 @@ import { useCookie } from './hooks/useCookie';
 import { useGlobalData } from './hooks/useGlobalData';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import Menu from './components/common/menu/Menu';
+import ScrollKey from './components/common/scrollKey/ScrollKey';
 
 export default function App() {
 	const { Dark, ViewType } = useGlobalData();
@@ -45,6 +46,7 @@ export default function App() {
 				<Menu />
 				<CookieModal wid={300} ht={400} />
 			</div>
+			<ScrollKey />
 			<ReactQueryDevtools />
 		</QueryClientProvider>
 	);
