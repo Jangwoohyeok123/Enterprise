@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef } from 'react';
 import './Layout.scss';
 import { useScroll } from '../../../hooks/useScroll';
+import ScrollKey from '../scrollkey/ScrollKey';
 
 export default function Layout({ children, title, src, className }) {
 	const refFrame = useRef(null);
@@ -27,6 +28,7 @@ export default function Layout({ children, title, src, className }) {
 				{title}
 			</h1>
 
+			<ScrollKey />
 			{children}
 		</main>
 	);
