@@ -16,7 +16,7 @@ export default function Sec1() {
 				{SecArr.map((_, idx) => {
 					const number = idx + 1;
 					return (
-						<div className='item myScroll'>
+						<div className='item scrollTarget'>
 							<div className='img'>
 								<Image
 									className='sec1Img'

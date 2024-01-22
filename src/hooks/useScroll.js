@@ -20,6 +20,7 @@ export function useScroll(customHandler, baseLine = -window.innerHeight / 2) {
 	}, [Frame, baseLine]);
 
 	const handleScroll = useCallback(() => {
+		console.log('sdasd');
 		const scroll = getCurrentScroll();
 		customHandler && customHandler(scroll);
 	}, [getCurrentScroll, customHandler]);
