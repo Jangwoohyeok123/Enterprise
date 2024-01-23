@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import useTextMethod from '../../../../../hooks/useText';
 import { MdPlayArrow } from 'react-icons/md';
 import './Video.scss';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 export default function Video({ video }) {
 	const wordSlice = useTextMethod('wordSlice');

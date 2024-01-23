@@ -8,7 +8,7 @@ import Modal from '../../common/modal/Modal';
 import { FaSearch } from 'react-icons/fa';
 import { useQueryGallery } from '../../../query/useQueryGallery';
 import { useViewType } from '../../../hooks/useViewType';
-import Tab from './comp/Tab';
+import Tab from './comp/Tab/Tab';
 
 export default function Gallery() {
 	const [Opt, setOpt] = useState({ type: 'interest' });
