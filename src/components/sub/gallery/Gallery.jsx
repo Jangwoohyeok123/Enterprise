@@ -26,7 +26,7 @@ export default function Gallery() {
 	// useRef
 	const userId = useRef('128267964@N02'); // user's gallery 에 필요
 	const tab = useRef('');
-	const searchInput = useRef('');
+	// const searchInput = useRef('');
 	const viewType = useViewType();
 
 	const txtSlice = useTextMethod('wordSlice');
@@ -46,14 +46,6 @@ export default function Gallery() {
 
 	const notiClose = e => {
 		e.currentTarget.children[1].style.visibility = 'hidden';
-	};
-
-	const handleSubmit = e => {
-		e.preventDefault();
-		setOpt({ type: 'search', keyword: searchInput.current.value });
-		Array.from(tab.current.children).forEach(menu => {
-			menu.classList.remove('on');
-		});
 	};
 
 	useEffect(() => {
@@ -89,11 +81,9 @@ export default function Gallery() {
 				<section className='frameWrap'>
 					<Tab
 						tab={tab}
-						searchInput={searchInput}
 						activation={activation}
 						setOpt={setOpt}
 						userId={userId}
-						handleSubmit={handleSubmit}
 					/>
 					<Masonry
 						className={'frame'}

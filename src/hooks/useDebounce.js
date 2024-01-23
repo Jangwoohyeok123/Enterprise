@@ -3,14 +3,11 @@ import { useRef, useState, useEffect } from 'react';
 export const useDebounce = (value, gap = 500) => {
 	const [Mounted, setMounted] = useState(true);
 	const [DebouncedVal, setDebouncedVal] = useState(value);
-	const eventBlocker = useRef(null); //setTimeout의 리턴값을 받을 참조객체
-
-	//인수로 받은 state값이 변경될때마다 setTimeout구문의 호출을 계속 초기화
+	const eventBlocker = useRef(null);
 	clearTimeout(eventBlocker.current);
 
-	//아래 setTimeout에 의해서 원래 state값이 0.5초 뒤에 무조건 변경되는 구조
-	//만약 0.5초안에 다시 value로 전달된 state가 전달되면 setTimeout의 리턴값을 초기화
-	//setTimouet의 리턴값을 clearTimeout으로 초기화 시키 (지연시간 0.5초를 무시하고 다시 처음부터 0.5초 기다리도록 초기화)
+	// 훅을 호출한 컴포넌트가 언마운트되면 Mounted state 가 false 가 됨
+	// 이벤트 큐에 등록된 콜백함수는 Mounte 가 false 기 때문에 value 에 접근못함
 	eventBlocker.current = setTimeout(() => {
 		Mounted && setDebouncedVal(value);
 	}, gap);

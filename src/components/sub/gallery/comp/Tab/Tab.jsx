@@ -1,14 +1,7 @@
 import Form from '../Form/Form';
 import './Tab.scss';
 
-export default function Tab({
-	tab,
-	searchInput,
-	activation,
-	setOpt,
-	userId,
-	handleSubmit
-}) {
+export default function Tab({ tab, activation, setOpt, userId }) {
 	return (
 		<div className='Tab'>
 			<span className='menu' ref={tab}>
@@ -28,7 +21,7 @@ export default function Tab({
 				</span>
 			</span>
 
-			<Form handleSubmit={handleSubmit} searchInput={searchInput} />
+			<Form setOpt={setOpt} tab={tab} />
 		</div>
 	);
 }
