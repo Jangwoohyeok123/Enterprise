@@ -1,12 +1,13 @@
 // 리액트
 import './Signup.scss';
 import { useHistory } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { FaRegUser } from 'react-icons/fa6';
 import { MdLockOutline } from 'react-icons/md';
 import { FaCheck } from 'react-icons/fa6';
 import { BsCalendar3 } from 'react-icons/bs';
 import { FiSmartphone } from 'react-icons/fi';
+import { useDebounce } from '../../../hooks/useDebounce';
 
 export default function Signup() {
 	const history = useHistory();
@@ -17,12 +18,10 @@ export default function Signup() {
 		password1: '',
 		password2: ''
 	});
-	const [FirstForm, setFirstForm] = useState(
-		initVal.current
-	);
-	const [FirstFormError, setFirstFormError] = useState(
-		initVal.current
-	);
+	const [FirstForm, setFirstForm] = useState(initVal.current);
+	const DebouncedVal = useDebounce(FirstForm);
+
+	const [FirstFormError, setFirstFormError] = useState(initVal.current);
 
 	const initVal2 = useRef({
 		name: '',
@@ -30,27 +29,11 @@ export default function Signup() {
 		gender: '',
 		number: ''
 	});
-	const [SecondForm, setSecondForm] = useState(
-		initVal2.current
-	);
-	const [SecondFormError, setSecondFormError] = useState(
-		initVal2.current
-	);
-	const [Genders, setGenders] = useState([
-		'Woman',
-		'Man',
-		'Other'
-	]);
+	const [SecondForm, setSecondForm] = useState(initVal2.current);
+	const DebouncedVal2 = useDebounce(SecondForm);
+	const [SecondFormError, setSecondFormError] = useState(initVal2.current);
+	const [Genders, setGenders] = useState(['Woman', 'Man', 'Other']);
 
-	// onChnage 할 때 마다 timer 만들기
-
-	/*	 
-		event 를 이용해 input 사용하는 방법
-		name: e.target.name 속성을 통해 input 한 값의 이름을 지정할 수 있음 
-		value: e.target.value 속성을 통해 input 태그의 사용자 입력값을 사용할 수 있음 
-
-		=> e.target.name && e.target.value 는 암기해라
-	*/
 	const handleChangeFirstForm = e => {
 		const { name, value } = e.target;
 		setFirstForm({ ...FirstForm, [name]: value });
@@ -92,23 +75,9 @@ export default function Signup() {
 				}
 			}
 
-			// firstKeys.forEach(key => {
-			// 	console.log(firstKeys[key]);
-			// 	if (FirstFormError[key] !== '') flag = false;
-			// 	else flag = true;
-			// });
-
-			// secondKeys.forEach(key => {
-			// 	if (SecondFormError[key] !== '') flag = false;
-			// 	else flag = true;
-			// });
-
 			return flag1 && flag2;
 		}
 	};
-
-	// userid, password1, password2
-	// name, birthday, gender, number
 
 	const validation = states => {
 		const keys = Object.keys(states);
@@ -153,24 +122,18 @@ export default function Signup() {
 			const birthdayReg = /^[0-9]{8}$/;
 			const numberReg = /^010[0-9]{8}$/;
 
-			if (!nameReg.test(states.name))
-				errs.name = 'Please cofirm your name.';
-			if (birthdayReg.test(states.birthday))
-				checkBirthday();
+			if (!nameReg.test(states.name)) errs.name = 'Please cofirm your name.';
+			if (birthdayReg.test(states.birthday)) checkBirthday();
 			else
 				errs.birthday =
 					'Please enter your birthdate in exactly 8 characters. ex) 20130725';
-			if (!states.gender.length)
-				errs.gender = 'Please choose gender.';
+			if (!states.gender.length) errs.gender = 'Please choose gender.';
 			if (!numberReg.test(states.number))
-				errs.number =
-					'The number must consist of 11 digits.';
+				errs.number = 'The number must consist of 11 digits.';
 
 			function checkBirthday() {
 				const curYear = Number(states.birthday.slice(0, 4));
-				const curMonth = Number(
-					states.birthday.slice(4, 6)
-				);
+				const curMonth = Number(states.birthday.slice(4, 6));
 				const curDay = Number(states.birthday.slice(6));
 
 				const maxYear = new Date().getFullYear();
@@ -191,10 +154,6 @@ export default function Signup() {
 			return errs;
 		}
 	};
-	// useEffect(() => {
-	// 	// validation(States);
-	// 	setErrors(validation(States));
-	// }, [States]);
 
 	return (
 		<section className='Signup'>
@@ -229,9 +188,7 @@ export default function Signup() {
 								name='password1'
 								placeholder='Password'
 								onChange={handleChangeFirstForm}
-								onBlur={() =>
-									setFirstFormError(validation(FirstForm))
-								}
+								onBlur={() => setFirstFormError(validation(FirstForm))}
 							/>
 						</div>
 						<div className='item password2'>
@@ -241,9 +198,7 @@ export default function Signup() {
 								name='password2'
 								placeholder='Confirm Password'
 								onChange={handleChangeFirstForm}
-								onBlur={() =>
-									setFirstFormError(validation(FirstForm))
-								}
+								onBlur={() => setFirstFormError(validation(FirstForm))}
 							/>
 						</div>
 					</div>
@@ -252,14 +207,10 @@ export default function Signup() {
 							<div>User id: {FirstFormError.userid}</div>
 						)}
 						{FirstFormError.password1 && (
-							<div>
-								Password: {FirstFormError.password1}
-							</div>
+							<div>Password: {FirstFormError.password1}</div>
 						)}
 						{FirstFormError.password2 && (
-							<div>
-								Confirm password:{FirstFormError.password2}
-							</div>
+							<div>Confirm password:{FirstFormError.password2}</div>
 						)}
 					</div>
 					<div className='form-list'>
@@ -270,9 +221,7 @@ export default function Signup() {
 								name='name'
 								placeholder='Name'
 								onChange={handleChangeSecondForm}
-								onBlur={() =>
-									setSecondFormError(validation(SecondForm))
-								}
+								onBlur={() => setSecondFormError(validation(SecondForm))}
 							/>
 						</div>
 						<div className='item birthday'>
@@ -282,9 +231,7 @@ export default function Signup() {
 								name='birthday'
 								placeholder='Birthday 8 digitis'
 								onChange={handleChangeSecondForm}
-								onBlur={() =>
-									setSecondFormError(validation(SecondForm))
-								}
+								onBlur={() => setSecondFormError(validation(SecondForm))}
 							/>
 						</div>
 						<div className='item genderContainer'>
@@ -292,12 +239,8 @@ export default function Signup() {
 								{Genders.map((gender, idx) => {
 									if (gender === SecondForm.gender) {
 										return (
-											<li
-												key={gender + idx}
-												className='outline'>
-												<label htmlFor={gender}>
-													{gender}
-												</label>
+											<li key={gender + idx} className='outline'>
+												<label htmlFor={gender}>{gender}</label>
 												<input
 													type='radio'
 													name='gender'
@@ -305,9 +248,7 @@ export default function Signup() {
 													value={gender}
 													onClick={handleGender}
 													onBlur={() =>
-														setSecondFormError(
-															validation(SecondForm)
-														)
+														setSecondFormError(validation(SecondForm))
 													}
 												/>
 											</li>
@@ -315,9 +256,7 @@ export default function Signup() {
 									} else {
 										return (
 											<li key={gender + idx}>
-												<label htmlFor={gender}>
-													{gender}
-												</label>
+												<label htmlFor={gender}>{gender}</label>
 												<input
 													type='radio'
 													name='gender'
@@ -325,9 +264,7 @@ export default function Signup() {
 													value={gender}
 													onClick={handleGender}
 													onBlur={() =>
-														setSecondFormError(
-															validation(SecondForm)
-														)
+														setSecondFormError(validation(SecondForm))
 													}
 												/>
 											</li>
@@ -344,20 +281,14 @@ export default function Signup() {
 								name='number'
 								placeholder='Phone Number'
 								onChange={handleChangeSecondForm}
-								onBlur={() =>
-									setSecondFormError(validation(SecondForm))
-								}
+								onBlur={() => setSecondFormError(validation(SecondForm))}
 							/>
 						</div>
 					</div>
 					<div className='error-zone'>
-						{SecondFormError.name && (
-							<div>Name: {SecondFormError.name}</div>
-						)}
+						{SecondFormError.name && <div>Name: {SecondFormError.name}</div>}
 						{SecondFormError.birthday && (
-							<div>
-								Birthday: {SecondFormError.birthday}
-							</div>
+							<div>Birthday: {SecondFormError.birthday}</div>
 						)}
 						{SecondFormError.gender && (
 							<div>Gender: {SecondFormError.gender}</div>

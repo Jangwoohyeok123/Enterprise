@@ -69,12 +69,12 @@ export default function Test() {
 	useEffect(() => {
 		// frame 이 필요하다.
 		wrap.current = document.querySelector(resultOpt.current.frame);
-		// scroll 이 일어날 때마다 영역을 확인해가며 activation 을 시도한다.
-		wrap.current.addEventListener('scroll', throttledActivation);
+
 		// section 의 개수를 Number 로 지정한다.
 		setNum(secs.current.length);
 
-		window.addEventListener('resize', throttledModifyPos);
+
+		// scroll 이 일어날 때마다 영역을 확인해가며 activation 을 시도한다.
 		wrap.current.addEventListener('scroll', throttledActivation);
 	}, []);
 
