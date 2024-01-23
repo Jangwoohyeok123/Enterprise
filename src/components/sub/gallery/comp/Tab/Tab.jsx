@@ -1,4 +1,4 @@
-import Form from '../Form/Form';
+import SearchBar from '../Form/Form';
 import './Tab.scss';
 
 export default function Tab({ tab, activation, setOpt, userId }) {
@@ -21,7 +21,7 @@ export default function Tab({ tab, activation, setOpt, userId }) {
 				</span>
 			</span>
 
-			<Form setOpt={setOpt} tab={tab} />
+			<SearchBar setOpt={setOpt} tab={tab} />
 		</div>
 	);
 }

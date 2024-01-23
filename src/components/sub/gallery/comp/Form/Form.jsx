@@ -3,7 +3,7 @@ import './Form.scss';
 import { useEffect, useState } from 'react';
 import { useDebounce } from '../../../../../hooks/useDebounce';
 
-export default function Form({ setOpt, tab }) {
+export default function SearchBar({ setOpt, tab }) {
 	const [SearchInput, setSearchInput] = useState('');
 	const DebouncedVal = useDebounce(SearchInput);
 
