@@ -40,7 +40,6 @@
 		flex-direction: column;
 		justify-content: space-between;
 		width: 50%;
-
 		.sub {
 			position: absolute;
 			bottom: 0;
@@ -66,10 +65,8 @@
 
 .Notebook {
 	.Video {
-		.text {
-			h4 {
-				font-size: 1.8rem;
-			}
+		.text-title {
+			font-size: 1.3rem;
 		}
 	}
 }
@@ -84,6 +81,10 @@
 
 		.videoContainer {
 			width: 100%;
+
+			.videoImg {
+				height: 250px;
+			}
 		}
 
 		.text {

@@ -40,7 +40,7 @@ export default function Video({ video }) {
 				</Link>
 			</div>
 			<div className='text'>
-				<h4>{wordSlice(video.snippet.title)}</h4>
+				<h4 className='text-title'>{wordSlice(video.snippet.title)}</h4>
 				<div className='sub'>
 					<div className='time'>
 						<span>{date}</span>

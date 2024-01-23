@@ -15,7 +15,6 @@ export default function Youtube() {
 			title={'Youtube'}
 			src={`${path.current}/img/youtube/main.jpg`}
 			className='Youtube'>
-			{/* <Tab /> */}
 			<section className='Youtube-Section'>
 				{isSuccess &&
 					Vids.map((video, idx) => {
