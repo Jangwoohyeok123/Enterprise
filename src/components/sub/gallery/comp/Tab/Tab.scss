@@ -1,2 +1,43 @@
 .Tab {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+
+	.menu {
+		display: flex;
+		gap: 20px;
+
+		span {
+			text-align: center;
+			width: 150px;
+			padding: 10px;
+			opacity: 0.6;
+			transition: color 0.5s;
+			border-bottom: 1px solid rgba(var(--baseColor-code), 0.4);
+			position: relative;
+			cursor: pointer;
+
+			&.on {
+				opacity: 1;
+				color: var(--subPoint);
+				border-bottom: 0;
+				font-weight: 500;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 0;
+				height: 1px;
+				background-color: var(--subPoint);
+				transition: width 0.5s;
+			}
+
+			&.on::before {
+				width: 100%;
+			}
+		}
+	}
 }
