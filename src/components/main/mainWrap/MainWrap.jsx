@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef } from 'react';
 
 export default function MainWrap() {
 	const { scrollTo, Frame } = useScroll();
-	const scrollTarget = useRef(null);
+	const scrollTargets = useRef(null);
 	const scrollCount = useRef(2);
 
 	// window.innerWidth, window.innerHeight * 3 - 140
@@ -15,68 +15,35 @@ export default function MainWrap() {
 
 	useEffect(() => {
 		scrollTo(0);
-		scrollTarget.current = Frame?.querySelector('.scrollTarget');
+		scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
+		// Frame 동기화 문제
+		if (Frame) {
+			console.log(scrollTargets.current[0].offsetTop);
+			console.log(scrollTargets.current[1].offsetTop);
+			console.log(scrollTargets.current[2].offsetTop);
+		}
+
 		Frame?.addEventListener('mousewheel', () => {
-			if (scrollCount.current === 2) {
-				scrollTo(window.innerWidth);
+			if (Frame && scrollCount.current === 2) {
+				scrollTo(
+					scrollTargets.current[0].offsetTop + (window.innerHeight / 5) * 4
+				);
 				--scrollCount.current;
 				return;
 			}
 			if (scrollCount.current === 1) {
-				scrollTo(window.innerHeight * 3 - 140);
+				scrollTo(
+					scrollTargets.current[1].offsetTop + (window.innerHeight / 5) * 4
+				);
 				--scrollCount.current;
 				return;
 			}
 		});
-	}, [scrollTo]);
-
-	// const move = useCallback(() => {
-	// 	new Anime(
-	// 		Frame,
-	// 		{ scroll: scrollTarget.current.offsetTop },
-	// 		{
-	// 			callback: () => --init.current
-	// 		}
-	// 	);
-	// }, [Frame]);
-
-	// const initAutoScroll = useCallback(
-	// 	e => {
-	// 		if (init.current && e.deltaY > 0) {
-	// 			new Anime(
-	// 				Frame,
-	// 				{ scroll: scrollTarget.current.offsetTop },
-	// 				{
-	// 					callback: () => --init.current
-	// 				}
-	// 			);
-	// 		}
-	// 	},
-	// 	[Frame]
-	// );
-
-	// const initAutoScroll = useCallback(
-	// 	e => {
-	// 		console.log('hello');
-	// 		if (init.current && e.deltaY > 0) {
-	// 			new Anime(
-	// 				Frame,
-	// 				{ scroll: scrollTarget.current.offsetTop },
-	// 				{
-	// 					callback: () => --init.current
-	// 				}
-	// 			);
-	// 		}
-	// 	},
-	// 	[Frame]
-	// );
+	}, [scrollTo, Frame]);
 
 	// useEffect(() => {
-	// 	// 이동할 scrollTraget 을 찾아야한다.
-	// 	scrollTarget.current = Frame?.querySelector('.scrollTarget');
-	// 	Frame?.addEventListener('mousewheel', initAutoScroll);
-	// 	return Frame?.removeEventListener('mousewheel', initAutoScroll);
-	// }, [Frame, initAutoScroll]);
+	// 	console.log(scrollTargets?.current[0].offsetTop);
+	// }, [scrollTargets.current]);
 
 	return (
 		<div className='MainWrap'>
