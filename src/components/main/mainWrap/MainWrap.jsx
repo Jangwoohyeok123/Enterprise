@@ -1,9 +1,10 @@
-import Visual from '../visual/Visual';
+import Visual from '../movies/Movies';
 import './MainWrap.scss';
 import Sec1 from '../sec1/Sec1';
 import Sec2 from '../sec2/Sec2';
 import { useScroll } from '../../../hooks/useScroll';
 import { useCallback, useEffect, useRef } from 'react';
+import Movies from '../movies/Movies';
 
 export default function MainWrap() {
 	const { scrollTo, Frame } = useScroll();
@@ -43,7 +44,7 @@ export default function MainWrap() {
 
 	return (
 		<div className='MainWrap'>
-			<Visual />
+			<Movies />
 			<Sec1 />
 			<Sec2 />
 		</div>
