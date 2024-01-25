@@ -13,7 +13,7 @@ export default function Youtube() {
 	return (
 		<Layout
 			title={'Youtube'}
-			src={`${path.current}/img/youtube/main.jpg`}
+			src={`${path.current}/movies/movie2.jpg`}
 			className='Youtube'>
 			<section className='Youtube-Section'>
 				{isSuccess &&

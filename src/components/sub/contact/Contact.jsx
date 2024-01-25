@@ -91,7 +91,7 @@ export default function Contact() {
 		<Layout
 			title={'Contact us'}
 			className='Contact'
-			src={`${path}/img/temps/temp2.jpg`}>
+			src={`${path}/movies/movie5.jpg`}>
 			<GetTouchSection />
 
 			<div className='contactWrap'>

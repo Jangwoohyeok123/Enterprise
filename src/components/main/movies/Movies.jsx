@@ -12,6 +12,7 @@ import { Parallax, Pagination, Navigation } from 'swiper/modules';
 
 export default function Movies() {
 	const path = useRef(process.env.PUBLIC_URL);
+	const pages = useRef([1, 2, 3, 4, 5]);
 	const video = useRef(null);
 
 	useEffect(() => {
@@ -45,7 +46,7 @@ export default function Movies() {
 					<div className='mainCard'>
 						<div className='title'></div>
 						<div className='desc'></div>
-						<img src='' alt='' />
+						<img src={`${path.current}/movies/movie1.jpg`} alt='subPage' />
 					</div>
 				</SwiperSlide>
 				{/* <SwiperSlide>

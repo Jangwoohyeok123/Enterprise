@@ -15,7 +15,7 @@ export default function Department() {
 		<Layout
 			className='Department'
 			title={'DEPARTMENT'}
-			src={`${path.current}/img/temps/temp1.jpg`}>
+			src={`${path.current}/movies/movie1.jpg`}>
 			{isDepartment && (
 				<>
 					<DepartmentSec1 json={json} />

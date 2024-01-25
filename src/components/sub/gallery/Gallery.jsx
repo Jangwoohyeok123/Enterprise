@@ -77,7 +77,7 @@ export default function Gallery() {
 			<Layout
 				title={'Gallery'}
 				className='Gallery'
-				src={`${path.current}/img/temps/temp7.jpg`}>
+				src={`${path.current}/movies/movie3.jpg`}>
 				<section className='frameWrap'>
 					<Tab
 						tab={tab}

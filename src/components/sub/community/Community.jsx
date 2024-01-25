@@ -101,7 +101,7 @@ export default function Community() {
 		<Layout
 			title={'Community'}
 			className='Community'
-			src={`${path.current}/img/community/main.jpg`}>
+			src={`${path.current}/movies/movie4.jpg`}>
 			<section className='body'>
 				<aside className='createPost'>
 					<input type='text' placeholder='title' ref={refTitle} />
