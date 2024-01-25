@@ -40,4 +40,4 @@ export function useTargetScroll(count) {
 			console.log(scrollTargets.current[1].offsetTop);
 			console.log(scrollTargets.current[2].offsetTop);
 
-			*/
+*/
