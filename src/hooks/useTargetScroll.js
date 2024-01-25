@@ -13,7 +13,9 @@ export function useTargetScroll(count) {
 		// Frame 동기화 문제
 		if (Frame) {
 			scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
-			Frame.addEventListener('mousewheel', () => {});
+			Frame.addEventListener('mousewheel', () => {
+				//
+			});
 		}
 	}, [Frame]);
 }

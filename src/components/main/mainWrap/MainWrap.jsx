@@ -41,14 +41,9 @@ export default function MainWrap() {
 		});
 	}, [scrollTo, Frame]);
 
-	// useEffect(() => {
-	// 	console.log(scrollTargets?.current[0].offsetTop);
-	// }, [scrollTargets.current]);
-
 	return (
 		<div className='MainWrap'>
 			<Visual />
-			{/* <Btns /> */}
 			<Sec1 />
 			<Sec2 />
 		</div>
