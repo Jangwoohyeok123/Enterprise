@@ -1,16 +1,34 @@
 {
 	"movies": [
 		{
-			"title": "Christopher James",
-			"movie": "movie1.mp4"
+			"title": "DEPARTMENT",
+			"desc": "Our department, renowned for excellence in both teaching and research, offers a dynamic and innovative educational experience. We boast a diverse range of programs, encompassing",
+			"link": "department",
+			"src": "moive1.jpg"
 		},
 		{
-			"title": "Christopher James",
-			"movie": "movie2.mp4"
+			"title": "YOUTUBE",
+			"desc": "Our department, renowned for excellence in both teaching and research, offers a dynamic and innovative educational experience. We boast a diverse range of programs, encompassing",
+			"link": "youtube",
+			"src": "moive2.jpg"
 		},
 		{
-			"title": "Christopher James",
-			"movie": "movie3..mp4"
+			"title": "GALLERY",
+			"desc": "Our department, renowned for excellence in both teaching and research, offers a dynamic and innovative educational experience. We boast a diverse range of programs, encompassing",
+			"link": "gallery",
+			"src": "moive3.jpg"
+		},
+		{
+			"title": "COMMUNITY",
+			"desc": "Our department, renowned for excellence in both teaching and research, offers a dynamic and innovative educational experience. We boast a diverse range of programs, encompassing",
+			"link": "community",
+			"src": "moive4.jpg"
+		},
+		{
+			"title": "CONTACT",
+			"desc": "Our department, renowned for excellence in both teaching and research, offers a dynamic and innovative educational experience. We boast a diverse range of programs, encompassing",
+			"link": "contact",
+			"src": "moive5.jpg"
 		}
 	],
 

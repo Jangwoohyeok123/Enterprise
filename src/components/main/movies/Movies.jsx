@@ -9,10 +9,10 @@ import './Movies.scss';
 
 // import required modules
 import { Parallax, Pagination, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function Movies() {
 	const path = useRef(process.env.PUBLIC_URL);
-	const pages = useRef([1, 2, 3, 4, 5]);
 	const video = useRef(null);
 
 	useEffect(() => {
@@ -44,40 +44,23 @@ export default function Movies() {
 					data-swiper-parallax='0%'></video>
 				<SwiperSlide>
 					<div className='mainCard'>
-						<div className='title'></div>
-						<div className='desc'></div>
-						<img src={`${path.current}/movies/movie1.jpg`} alt='subPage' />
-					</div>
-				</SwiperSlide>
-				{/* <SwiperSlide>
-					<div className='mainCard'>
-						<div className='title'>Slide 1</div>
-						<div className='text'>
-							<p>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-							</p>
+						<div className='wrap'>
+							<img src={`${path.current}/movies/movie1.jpg`} alt='subPage' />
+							<div className='text'>
+								<div className='title'>DEPARTMENT</div>
+								<div className='desc'>
+									Our department, renowned for excellence in both teaching and
+									research, offers a dynamic and innovative educational
+									experience. We boast a diverse range of programs, encompassing
+								</div>
+
+								<Link to='/department'>
+									<button>Go to page</button>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</SwiperSlide>
-				<SwiperSlide>
-					<div className='title' data-swiper-parallax='-300'>
-						Slide 3
-					</div>
-					<div className='subtitle' data-swiper-parallax='-200'>
-						Subtitle
-					</div>
-					<div className='text' data-swiper-parallax='-100'>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-							dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-							laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-							Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-							Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-							ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-							tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-						</p>
-					</div>
-				</SwiperSlide> */}
 			</Swiper>
 		</div>
 	);
