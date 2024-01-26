@@ -1,10 +1,10 @@
-import Visual from '../movies/Movies';
 import './MainWrap.scss';
 import Sec1 from '../sec1/Sec1';
 import Sec2 from '../sec2/Sec2';
 import { useScroll } from '../../../hooks/useScroll';
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Movies from '../movies/Movies';
+import { useQueryMain } from '../../../query/useQueryMain';
 
 export default function MainWrap() {
 	const { scrollTo, Frame } = useScroll();

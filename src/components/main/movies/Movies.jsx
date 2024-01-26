@@ -10,58 +10,95 @@ import './Movies.scss';
 // import required modules
 import { Parallax, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useQueryMain } from '../../../query/useQueryMain';
 
 export default function Movies() {
+	const { data, isSuccess } = useQueryMain();
 	const path = useRef(process.env.PUBLIC_URL);
+	const movies = useRef(null);
 	const video = useRef(null);
 
 	useEffect(() => {
-		video.current.playbackRate = 1;
+		video.current.playbackRate = 0.9;
 	}, []);
 
-	return (
-		<div className='Movies'>
-			<Swiper
-				style={{
-					'--swiper-navigation-color': 'var(--subPoint)',
-					'--swiper-pagination-color': 'var(--subPoint)'
-				}}
-				speed={500}
-				pagination={{
-					clickable: true
-				}}
-				navigation={true}
-				modules={[Parallax, Pagination, Navigation]}
-				className='swiper'>
-				<video
-					ref={video}
-					src={`${path.current}/movies/movie.mp4`}
-					autoPlay
-					loop
-					muted
-					slot='container-start'
-					className='parallax-bg'
-					data-swiper-parallax='0%'></video>
-				<SwiperSlide>
-					<div className='mainCard'>
-						<div className='wrap'>
-							<img src={`${path.current}/movies/movie1.jpg`} alt='subPage' />
-							<div className='text'>
-								<div className='title'>DEPARTMENT</div>
-								<div className='desc'>
-									Our department, renowned for excellence in both teaching and
-									research, offers a dynamic and innovative educational
-									experience. We boast a diverse range of programs, encompassing
-								</div>
+	if (isSuccess) {
+		const movies = data.movies;
 
-								<Link to='/department'>
-									<button>Go to page</button>
-								</Link>
-							</div>
-						</div>
-					</div>
-				</SwiperSlide>
-			</Swiper>
-		</div>
-	);
+		return (
+			<div className='Movies'>
+				<Swiper
+					style={{
+						'--swiper-navigation-color': 'var(--subPoint)',
+						'--swiper-pagination-color': 'var(--subPoint)'
+					}}
+					speed={500}
+					pagination={{
+						clickable: true
+					}}
+					navigation={true}
+					modules={[Parallax, Pagination, Navigation]}
+					className='swiper'>
+					<video
+						ref={video}
+						src={`${path.current}/movies/movie.mp4`}
+						autoPlay
+						loop
+						muted
+						slot='container-start'
+						className='parallax-bg'
+						data-swiper-parallax='0%'></video>
+					{movies.map((movie, idx) => {
+						return (
+							<SwiperSlide>
+								<div className='mainCard'>
+									<div className='wrap'>
+										<img
+											src={`${path.current}/movies/movie${idx + 1}.jpg`}
+											alt='subPage'
+										/>
+										<div className='text'>
+											<div className='title'>{movie.title}</div>
+											<div className='desc'>{movie.desc}</div>
+
+											<Link to={`/${movie.link}`}>
+												<button>Go to page</button>
+											</Link>
+										</div>
+									</div>
+								</div>
+							</SwiperSlide>
+						);
+					})}
+				</Swiper>
+			</div>
+		);
+	} else {
+		return (
+			<div className='Movies'>
+				<Swiper
+					style={{
+						'--swiper-navigation-color': 'var(--subPoint)',
+						'--swiper-pagination-color': 'var(--subPoint)'
+					}}
+					speed={500}
+					pagination={{
+						clickable: true
+					}}
+					navigation={true}
+					modules={[Parallax, Pagination, Navigation]}
+					className='swiper'>
+					<video
+						ref={video}
+						src={`${path.current}/movies/movie.mp4`}
+						autoPlay
+						loop
+						muted
+						slot='container-start'
+						className='parallax-bg'
+						data-swiper-parallax='0%'></video>
+				</Swiper>
+			</div>
+		);
+	}
 }
