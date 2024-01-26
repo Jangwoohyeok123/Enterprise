@@ -116,3 +116,64 @@
 		}
 	}
 }
+
+.Tablet {
+	.Movies {
+		height: calc(100vh - 30px);
+		.wrap {
+			display: block;
+		}
+	}
+}
+
+.Mobile,
+.Tablet {
+	.Movies {
+		width: 100%;
+		height: calc(100vh - 50px);
+		.swiper {
+			.swiper-pagination {
+				bottom: 3%;
+			}
+
+			.swiper-wrapper {
+				.swiper-slide {
+					.mainCard {
+						.wrap {
+							display: block;
+							width: 75%;
+							height: 70%;
+
+							.text {
+								width: 100%;
+								height: 50%;
+								padding: 5vh 5%;
+
+								.title {
+									font-size: 1.3rem;
+								}
+
+								.desc {
+									font-size: 0.9rem;
+									display: -webkit-inline-box;
+									-webkit-line-clamp: 3;
+									-webkit-box-orient: vertical;
+									overflow: hidden;
+									overflow-wrap: break-word;
+								}
+
+								.button {
+								}
+							}
+
+							img {
+								width: 100%;
+								height: 50%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
