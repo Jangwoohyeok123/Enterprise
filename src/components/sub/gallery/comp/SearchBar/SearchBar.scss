@@ -1,0 +1,49 @@
+.SearchBar {
+	position: relative;
+	.input-wrapper {
+		position: relative;
+
+		input {
+			background: transparent;
+			border-bottom: 1px solid rgba(var(--baseColor-code), 0.4);
+			opacity: 0.6;
+			width: 150px;
+			transition: 0.5s;
+
+			&::placeholder {
+				background: transparent;
+			}
+
+			&:focus {
+				outline: none;
+			}
+
+			&:focus::placeholder {
+				color: var(--subPoint);
+			}
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 0;
+			height: 1px;
+			background-color: var(--subPoint);
+			transition: width 0.5s;
+		}
+
+		&.on::before {
+			width: 100%;
+		}
+	}
+
+	.icon {
+		font-size: 0.9rem;
+		opacity: 0.6;
+		position: absolute;
+		right: 4px;
+		top: 8px;
+	}
+}

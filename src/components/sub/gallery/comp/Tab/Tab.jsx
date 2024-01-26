@@ -1,4 +1,4 @@
-import SearchBar from '../Form/Form';
+import SearchBar from '../SearchBar/SearchBar';
 import './Tab.scss';
 
 export default function Tab({ tab, activation, setOpt, userId }) {

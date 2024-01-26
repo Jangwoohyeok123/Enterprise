@@ -2,24 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import Masonry from 'react-masonry-component';
 import Layout from '../../common/layout/Layout';
 import './Gallery.scss';
-import { IoArrowForwardCircleOutline, IoArrowBack } from 'react-icons/io5';
+import { IoArrowForwardCircleOutline } from 'react-icons/io5';
 import useTextMethod from '../../../hooks/useText';
 import Modal from '../../common/modal/Modal';
-import { FaSearch } from 'react-icons/fa';
 import { useQueryGallery } from '../../../query/useQueryGallery';
 import { useViewType } from '../../../hooks/useViewType';
 import Tab from './comp/Tab/Tab';
 
 export default function Gallery() {
 	const [Opt, setOpt] = useState({ type: 'interest' });
-	const { data: Pics, isSuccess, error, isError } = useQueryGallery(Opt); // Opt 는 setOpt 가 변경될 때 마다 바뀔 거고 쿼리키가 바뀔때마다 리액트는 캐싱할 것임
+	const { data: Pics, isSuccess, isError } = useQueryGallery(Opt); // Opt 는 setOpt 가 변경될 때 마다 바뀔 거고 쿼리키가 바뀔때마다 리액트는 캐싱할 것임
 
 	if (isError) alert('fetching 된 데이터가 없다.'); // 나중에 처리하자
 
-	// useState
-	const [Title, setTitle] = useState(
-		'Our users post creative and interesting photos on our app'
-	);
 	const [OpenModal, setOpenModal] = useState(false);
 	const [Index, setIndex] = useState(0); // for Modal
 
@@ -90,7 +85,6 @@ export default function Gallery() {
 						options={{ transitionDuration: '0.5s', gutter: 20 }}>
 						{isSuccess &&
 							Pics.map((pic, idx) => {
-								console.log(Pics);
 								let picTitle = pic.title;
 								if (pic.title.length > 50)
 									picTitle = picTitle.slice(0, 50).concat('...');

@@ -1,6 +1,7 @@
 .Tab {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	margin-top: 50px;
 
 	.menu {
@@ -9,7 +10,7 @@
 
 		span {
 			text-align: center;
-			width: 150px;
+			width: auto;
 			padding: 10px;
 			opacity: 0.6;
 			transition: color 0.5s;
@@ -40,4 +41,18 @@
 			}
 		}
 	}
+}
+
+.Tablet,
+.Mobile {
+	.Tab {
+		.menu {
+			span {
+				width: auto;
+			}
+		}
+	}
+}
+
+.Mobile {
 }
