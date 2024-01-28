@@ -1,6 +1,6 @@
 import './Maps.scss';
 
-export default function Tab({ mapFrame, viewFrame, View }) {
+export default function Maps({ mapFrame, viewFrame, View }) {
 	return (
 		<section className='Maps'>
 			<article

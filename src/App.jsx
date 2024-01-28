@@ -46,8 +46,8 @@ export default function App() {
 				<Menu />
 				<CookieModal wid={300} ht={400} />
 			</div>
-			<ScrollKey />
-			<ReactQueryDevtools />
+			{/* <ScrollKey /> */}
+			{/* <ReactQueryDevtools /> */}
 		</QueryClientProvider>
 	);
 }

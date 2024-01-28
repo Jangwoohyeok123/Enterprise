@@ -5,7 +5,7 @@ import Form from './components/form/Form';
 import './Contact.scss';
 import ControlBox from './components/controlBox/ControlBox';
 import GetTouchSection from './components/getTouchSection/GetTouchSection';
-import Tab from './components/maps/Maps';
+import Maps from './components/maps/Maps';
 
 //  roadview 빼기
 export default function Contact() {
@@ -53,13 +53,6 @@ export default function Contact() {
 		)
 	});
 
-	const setCenter = useCallback(() => {
-		console.log('setCenter');
-		mapInstance.current.setCenter(mapInfo.current[Index].latlng);
-	}, [Index]);
-
-	const throttledSetCenter = useThrottle(setCenter);
-
 	//컴포넌트 마운트시 참조객체에 담아놓은 돔 프레임에 지도 인스턴스 출력 및 마커 세팅
 	useEffect(() => {
 		mapFrame.current.innerHTML = '';
@@ -81,6 +74,13 @@ export default function Contact() {
 		);
 		mapInstance.current.setZoomable(false);
 	}, [Index]);
+
+	const setCenter = useCallback(() => {
+		console.log('Throttling 적용후 setCenter');
+		mapInstance.current.setCenter(mapInfo.current[Index].latlng);
+	}, [Index]);
+
+	const throttledSetCenter = useThrottle(setCenter);
 
 	useEffect(() => {
 		window.addEventListener('resize', throttledSetCenter);
@@ -106,7 +106,7 @@ export default function Contact() {
 				</div>
 
 				<div id='mapSection'>
-					<Tab mapFrame={mapFrame} View={View} />
+					<Maps mapFrame={mapFrame} View={View} />
 					<ControlBox
 						mapInfo={mapInfo}
 						Index={Index}

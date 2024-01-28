@@ -6,8 +6,8 @@
 
 	.parallax-bg {
 		width: 100%;
-		opacity: 0.8;
-		filter: saturate(0.1);
+		opacity: 1;
+		filter: saturate(0.3);
 	}
 
 	.swiper {
@@ -63,7 +63,7 @@
 					align-items: center;
 
 					.wrap {
-						background-color: rgba(255, 255, 255, 0.2);
+						background-color: rgba(255, 255, 255, 0.3);
 						width: 80%;
 						height: 60%;
 						position: relative;
