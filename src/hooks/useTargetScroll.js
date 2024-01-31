@@ -26,25 +26,3 @@ export function useTargetScroll(count = 1) {
 		});
 	}, [scrollTo, Frame]);
 }
-
-/* 
-			if (Frame && scrollCount.current === 2) {
-				scrollTo(
-					scrollTargets.current[0].offsetTop + (window.innerHeight / 5) * 4
-				);
-				--scrollCount.current;
-				return;
-			}
-			if (scrollCount.current === 1) {
-				scrollTo(
-					scrollTargets.current[1].offsetTop + (window.innerHeight / 5) * 4
-				);
-				--scrollCount.current;
-				return;
-			}
-
-			console.log(scrollTargets.current[0].offsetTop);
-			console.log(scrollTargets.current[1].offsetTop);
-			console.log(scrollTargets.current[2].offsetTop);
-
-*/
