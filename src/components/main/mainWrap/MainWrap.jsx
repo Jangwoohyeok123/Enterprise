@@ -12,6 +12,7 @@ export default function MainWrap() {
 
 	useEffect(() => {
 		scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
+
 		// Frame 동기화 문제
 		if (Frame) {
 			scrollCount.current = scrollTargets.current.length;
@@ -19,7 +20,7 @@ export default function MainWrap() {
 
 		Frame?.addEventListener('mousewheel', () => {
 			if (Frame && scrollCount.current > 0) {
-				scrollTo(701);
+				scrollTo(scrollTargets.current[0].offsetTop);
 				scrollCount.current = 0;
 			}
 		});
