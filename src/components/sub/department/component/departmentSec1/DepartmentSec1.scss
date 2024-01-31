@@ -15,6 +15,9 @@
 
 			.body {
 				padding-bottom: 5vh;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
 			}
 
 			.cards {

@@ -38,4 +38,25 @@ export default function useTextMethod(type) {
 			return result;
 		};
 	}
+
+	if (type === 'paragraphSlice') {
+		return (txt, num) => {
+			const paragraphLength = Math.floor(txt.length / 3);
+			const paragraphs = new Array(num);
+			for (let i = 0; i < num; i++) {
+				paragraphs[i] = txt.slice(
+					i * paragraphLength,
+					(i + 1) * paragraphLength
+				);
+			}
+
+			return paragraphs;
+		};
+	}
 }
+
+/* 문단 나누기 알고리즘  
+
+num 개의 paragraph 를 만들어준다.
+
+*/
