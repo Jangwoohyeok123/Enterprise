@@ -19,7 +19,11 @@ export default function MainWrap() {
 		}
 
 		Frame?.addEventListener('mousewheel', () => {
-			if (Frame && scrollCount.current > 0) {
+			if (
+				Frame &&
+				scrollCount.current > 0 &&
+				!Frame.classList.contains('Mobile')
+			) {
 				scrollTo(scrollTargets.current[0].offsetTop);
 				scrollCount.current = 0;
 			}
