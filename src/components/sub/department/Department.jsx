@@ -1,11 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
 import './Department.scss';
-import useTextMethod from '../../../hooks/useText';
-import { useQueryDepartment } from '../../../query/useQueryDepartment';
+import { useRef } from 'react';
 import Layout from '../../common/layout/Layout';
-import DepartmentSec3 from './component/departmentSec3/DepartmentSec3';
+import { useQueryDepartment } from '../../../query/useQueryDepartment';
 import DepartmentSec1 from './component/departmentSec1/DepartmentSec1';
 import DepartmentSec2 from './component/departmentSec2/DepartmentSec2';
+import DepartmentSec3 from './component/departmentSec3/DepartmentSec3';
 
 export default function Department() {
 	const { data: json, isSuccess: isDepartment } = useQueryDepartment();

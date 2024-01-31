@@ -41,16 +41,22 @@ export default function useTextMethod(type) {
 
 	if (type === 'paragraphSlice') {
 		return (txt, num) => {
-			const paragraphLength = Math.floor(txt.length / 3);
+			const paragraphUnit = Math.floor(txt.split(' ').length / num);
+			// console.log(txt.split(' ').slice(0, 70).join());
 			const paragraphs = new Array(num);
+
+			// 반복문 문제인데 ....
 			for (let i = 0; i < num; i++) {
-				paragraphs[i] = txt.slice(
-					i * paragraphLength,
-					(i + 1) * paragraphLength
-				);
+				// console.log(txt); x
+				// console.log(txt.split(' ').slice(0, 70));
+				paragraphs[i] = txt
+					.split(' ')
+					.slice(i * paragraphUnit, (i + 1) * paragraphUnit);
 			}
 
-			return paragraphs;
+			return paragraphs.map((p, idx) => {
+				return p.join(' ');
+			});
 		};
 	}
 }
