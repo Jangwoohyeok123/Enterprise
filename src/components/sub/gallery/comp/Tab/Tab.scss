@@ -55,4 +55,38 @@
 }
 
 .Mobile {
+	.Tab {
+		display: block;
+		margin-top: 10px;
+
+		.menu {
+			display: flex;
+			justify-content: space-between;
+			padding-bottom: 20px;
+
+			span {
+				width: 45%;
+			}
+		}
+
+		.SearchBar {
+			display: flex;
+			justify-content: right;
+
+			.input-wrapper {
+				width: 45%;
+				padding-top: 10px;
+				display: flex;
+				justify-content: right;
+
+				input {
+					width: 100%;
+				}
+			}
+
+			.icon {
+				top: 20px;
+			}
+		}
+	}
 }

@@ -3,7 +3,7 @@ import Layout from '../../common/layout/Layout';
 import './Youtube.scss';
 import { useQueryYoutube } from '../../../query/useQueryYoutube';
 import Card from './comp/card/Card';
-import Tab from './comp/tab/Tab';
+// import Tab from './comp/tab/Tab';
 
 export default function Youtube() {
 	// component 분리하기
