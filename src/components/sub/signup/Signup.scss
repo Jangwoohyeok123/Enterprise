@@ -1,7 +1,11 @@
 .Signup {
 	width: 500px;
 	min-height: 100%;
-	margin: 3% auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
 
 	h1 {
 		font-size: 2rem;
