@@ -15,6 +15,7 @@ export function useScroll(customHandler, baseLine = -window.innerHeight / 2) {
 
 	const getCurrentScroll = useCallback(() => {
 		const scroll = Frame.scrollTop - baseLine;
+		console.log(refEl.current);
 		const modifiedScroll = scroll - refEl.current?.offsetTop;
 		return modifiedScroll;
 	}, [Frame, baseLine]);

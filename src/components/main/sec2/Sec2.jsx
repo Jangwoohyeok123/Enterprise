@@ -26,14 +26,12 @@ export default function Sec2() {
 				{isSuccess &&
 					data.map((el, idx) => {
 						return (
-							<>
-								<Card
-									key={idx}
-									Icon={Icons.current[idx]}
-									title={el.title}
-									content={el.body}
-								/>
-							</>
+							<Card
+								key={idx}
+								Icon={Icons.current[idx]}
+								title={el.title}
+								content={el.body}
+							/>
 						);
 					})}
 				<Card

@@ -19,6 +19,7 @@ export default function MainWrap() {
 		scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
 		// Frame 동기화 문제
 		if (Frame) {
+			console.log(scrollTargets.current);
 			// console.log(scrollTargets.current[0].offsetTop);
 			// console.log(scrollTargets.current[1].offsetTop);
 			// console.log(scrollTargets.current[2].offsetTop);

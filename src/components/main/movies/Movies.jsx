@@ -50,7 +50,7 @@ export default function Movies() {
 						data-swiper-parallax='0%'></video>
 					{movies.map((movie, idx) => {
 						return (
-							<SwiperSlide>
+							<SwiperSlide key={idx}>
 								<div className='mainCard'>
 									<div className='wrap'>
 										<img
