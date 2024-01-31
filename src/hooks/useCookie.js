@@ -41,10 +41,12 @@ export function useCookie() {
 		document.cookie = `${name}=${value}; path=/; expires=${now.toUTCString()}`;
 	};
 
+	// rewrite
 	const deleteCookie = (name, value) => {
 		createCookie(name, value, 0);
 	};
 
+	// key 를 통한 존재여부 검사
 	const isCookie = cookieName => {
 		if (document.cookie.indexOf(cookieName) < 0) return false;
 		else return true;

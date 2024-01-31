@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import './CookieModal.scss';
 import { SlClose } from 'react-icons/sl';
 import { useCookie } from '../../../hooks/useCookie';
+import { BiCookie } from 'react-icons/bi';
 
 // 'name', 'asd'
 export default function Cookie({ wid, ht, children }) {
@@ -12,7 +13,7 @@ export default function Cookie({ wid, ht, children }) {
 		// ref 로 고치면 됨
 		const isChecked = checkBox.current.checked;
 		if (isChecked) createCookie('name', 'asd', 20);
-		setOpen(!Open);
+		setOpen(!Open); // App 이 실행되면 Open 한다.
 	};
 
 	return (
@@ -26,22 +27,33 @@ export default function Cookie({ wid, ht, children }) {
 						marginLeft: -wid / 2,
 						marginTop: -ht / 2
 					}}>
-					{children}
+					<div className='cookie-icon'>
+						<BiCookie />
+					</div>
 
-					<div className='controls'>
-						<nav>
-							<input type='checkbox' ref={checkBox} />
-							<span>오늘하루 팝업 그만보기</span>
-						</nav>
+					<p className='cookie-content'>{children}</p>
 
-						<button>
-							<SlClose
-								onClick={e => {
-									handleClose(e);
-								}}
-							/>
+					<div className='buttons'>
+						<button
+							onClick={e => {
+								handleClose(e);
+							}}>
+							Accept
+						</button>
+
+						<button
+							onClick={e => {
+								handleClose(e);
+							}}>
+							Refuse
 						</button>
 					</div>
+
+					{/* <nav>
+						<input type='checkbox' ref={checkBox} />
+						<span>오늘하루 팝업 그만보기</span>
+					</nav>
+					<button></button> */}
 				</aside>
 			)}
 		</>

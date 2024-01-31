@@ -4,15 +4,11 @@ import Sec2 from '../sec2/Sec2';
 import { useScroll } from '../../../hooks/useScroll';
 import { useEffect, useRef } from 'react';
 import Movies from '../movies/Movies';
-import { useQueryMain } from '../../../query/useQueryMain';
 
 export default function MainWrap() {
 	const { scrollTo, Frame } = useScroll();
 	const scrollTargets = useRef(null);
 	const scrollCount = useRef(0);
-
-	// window.innerWidth, window.innerHeight * 3 - 140
-	// 위치 찾는 걸 좀 연구하자
 
 	useEffect(() => {
 		scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
@@ -37,5 +33,3 @@ export default function MainWrap() {
 		</div>
 	);
 }
-
-// sec1 의 offsetTop 을 알면 new Anime 를 통해 이동할 수 있음

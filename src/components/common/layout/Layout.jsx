@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import './Layout.scss';
 
+// Layout scroll 적용은 나중에 할 것!
 export default function Layout({ children, title, src, className }) {
 	const refFrame = useRef(null);
 	const refTitle = useRef(null);
@@ -21,10 +22,3 @@ export default function Layout({ children, title, src, className }) {
 		</main>
 	);
 }
-
-//  Layout component
-
-/* 
-  재렌더링이 될 때 마다 화면을 맨 위로 이동시키기 
-	
-*/

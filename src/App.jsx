@@ -40,7 +40,9 @@ export default function App() {
 				<Route path='/detail/:id' component={Detail} />
 				<Footer />
 				<Menu />
-				<Cookie wid={300} ht={400} />
+				<Cookie wid={300} ht={400}>
+					Please, accept cookie to enjoy out site!
+				</Cookie>
 			</div>
 			<ReactQueryDevtools />
 		</QueryClientProvider>
