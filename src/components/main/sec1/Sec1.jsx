@@ -5,7 +5,6 @@ import Linetext from '../linetext/Linetext';
 
 export default function Sec1() {
 	const [SecArr, setSecArr] = useState([1, 2, 3]);
-
 	const path = process.env.PUBLIC_URL;
 
 	return (

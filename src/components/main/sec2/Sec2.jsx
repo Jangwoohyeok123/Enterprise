@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Linetext from '../linetext/Linetext';
 import './Sec2.scss';
 import { FaRegSmile } from 'react-icons/fa';

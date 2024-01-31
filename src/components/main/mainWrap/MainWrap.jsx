@@ -9,37 +9,23 @@ import { useQueryMain } from '../../../query/useQueryMain';
 export default function MainWrap() {
 	const { scrollTo, Frame } = useScroll();
 	const scrollTargets = useRef(null);
-	const scrollCount = useRef(2);
+	const scrollCount = useRef(0);
 
 	// window.innerWidth, window.innerHeight * 3 - 140
 	// 위치 찾는 걸 좀 연구하자
 
 	useEffect(() => {
-		scrollTo(0);
 		scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
 		// Frame 동기화 문제
 		if (Frame) {
-			console.log(scrollTargets.current);
-			// console.log(scrollTargets.current[0].offsetTop);
-			// console.log(scrollTargets.current[1].offsetTop);
-			// console.log(scrollTargets.current[2].offsetTop);
+			scrollCount.current = scrollTargets.current.length;
 		}
 
 		Frame?.addEventListener('mousewheel', () => {
-			// if (Frame && scrollCount.current === 2) {
-			// 	scrollTo(
-			// 		scrollTargets.current[0].offsetTop + (window.innerHeight / 5) * 4
-			// 	);
-			// 	--scrollCount.current;
-			// 	return;
-			// }
-			// if (scrollCount.current === 1) {
-			// 	scrollTo(
-			// 		scrollTargets.current[1].offsetTop + (window.innerHeight / 5) * 4
-			// 	);
-			// 	--scrollCount.current;
-			// 	return;
-			// }
+			if (Frame && scrollCount.current > 0) {
+				scrollTo(701);
+				scrollCount.current = 0;
+			}
 		});
 	}, [scrollTo, Frame]);
 

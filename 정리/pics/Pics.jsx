@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import './Pics.scss';
-import { useScroll } from '../../../hooks/useScroll';
+import { useScroll } from '../../src/hooks/useScroll';
 
 export default function Pics() {
 	const tit = useRef(null);
