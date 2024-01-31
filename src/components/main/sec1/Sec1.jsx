@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useScroll } from '../../../hooks/useScroll';
 import Image from '../../common/img/Image';
 import './Sec1.scss';
 import Linetext from '../linetext/Linetext';
@@ -10,13 +9,13 @@ export default function Sec1() {
 	const path = process.env.PUBLIC_URL;
 
 	return (
-		<section className='Sec1'>
+		<section className='Sec1 scrollTarget'>
 			<Linetext tit1='NORM SERVICES' tit2='LSOSERVIESSDAMPJALL' />
 			<div className='wrap'>
 				{SecArr.map((_, idx) => {
 					const number = idx + 1;
 					return (
-						<div className='item scrollTarget'>
+						<div className='item '>
 							<div className='img'>
 								<Image
 									className='sec1Img'

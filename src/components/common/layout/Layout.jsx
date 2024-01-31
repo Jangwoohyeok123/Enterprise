@@ -1,11 +1,9 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import './Layout.scss';
-import { useScroll } from '../../../hooks/useScroll';
 
 export default function Layout({ children, title, src, className }) {
 	const refFrame = useRef(null);
 	const refTitle = useRef(null);
-	const refBtnTop = useRef(null);
 
 	return (
 		<main className={className} ref={refFrame}>

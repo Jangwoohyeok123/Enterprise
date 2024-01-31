@@ -4,7 +4,7 @@ import { SlClose } from 'react-icons/sl';
 import { useCookie } from '../../../hooks/useCookie';
 
 // 'name', 'asd'
-export default function CookieModal({ wid, ht, children }) {
+export default function Cookie({ wid, ht, children }) {
 	const { createCookie, isCookie } = useCookie();
 	const [Open, setOpen] = useState(isCookie('name=asd'));
 	const checkBox = useRef(null);
@@ -18,7 +18,14 @@ export default function CookieModal({ wid, ht, children }) {
 	return (
 		<>
 			{!Open && (
-				<aside className='CookieModal' style={{ width: wid, height: ht, marginLeft: -wid / 2, marginTop: -ht / 2 }}>
+				<aside
+					className='CookieModal'
+					style={{
+						width: wid,
+						height: ht,
+						marginLeft: -wid / 2,
+						marginTop: -ht / 2
+					}}>
 					{children}
 
 					<div className='controls'>
