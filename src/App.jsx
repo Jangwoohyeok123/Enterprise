@@ -44,7 +44,7 @@ export default function App() {
 					Please, accept cookie to enjoy out site!
 				</Cookie>
 			</div>
-			<ReactQueryDevtools />
+			{/* <ReactQueryDevtools /> */}
 		</QueryClientProvider>
 	);
 }

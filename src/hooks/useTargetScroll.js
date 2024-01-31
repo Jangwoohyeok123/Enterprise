@@ -1,23 +1,30 @@
-import { useEffect, useRef, useState } from 'react';
-import Anime from '../asset/anime';
+import { useEffect, useRef } from 'react';
+import { useScroll } from './useScroll';
 
-export function useTargetScroll(count) {
-	const [Frame, setFrame] = useState(null);
+export function useTargetScroll(count = 1) {
+	const { scrollTo, Frame } = useScroll();
 	const scrollTargets = useRef(null);
+	const scrollCount = useRef(0);
 
 	useEffect(() => {
-		setFrame(document.querySelector('.App'));
-	}, []);
+		scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
 
-	useEffect(() => {
 		// Frame 동기화 문제
 		if (Frame) {
-			scrollTargets.current = Frame?.querySelectorAll('.scrollTarget');
-			Frame.addEventListener('mousewheel', () => {
-				//
-			});
+			scrollCount.current = scrollTargets.current.length;
 		}
-	}, [Frame]);
+
+		Frame?.addEventListener('mousewheel', () => {
+			if (
+				Frame &&
+				scrollCount.current > 0 &&
+				!Frame.classList.contains('Mobile')
+			) {
+				scrollTo(scrollTargets.current[0].offsetTop);
+				scrollCount.current--;
+			}
+		});
+	}, [scrollTo, Frame]);
 }
 
 /* 
