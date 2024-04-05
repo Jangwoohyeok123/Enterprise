@@ -10,6 +10,7 @@ import Maps from './components/maps/Maps';
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
 	const kakao = useRef(window.kakao);
+	console.log(kakao);
 	const [Index, setIndex] = useState(0);
 	const [View, setView] = useState(false);
 
@@ -17,7 +18,6 @@ export default function Contact() {
 	const marker = useRef(null);
 	const mapInstance = useRef(null);
 
-	//지점마다 출력할 정보를 개별적인 객체로 묶어서 배열로 그룹화
 	const mapInfo = useRef([
 		{
 			title: 'seoul',
