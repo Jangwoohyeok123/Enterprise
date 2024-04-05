@@ -7,14 +7,13 @@ import ControlBox from './components/controlBox/ControlBox';
 import GetTouchSection from './components/getTouchSection/GetTouchSection';
 import Maps from './components/maps/Maps';
 
-//  roadview 빼기
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
 	const kakao = useRef(window.kakao);
 	const [Index, setIndex] = useState(0);
 	const [View, setView] = useState(false);
 
-	const mapFrame = useRef(null); // default map
+	const mapFrame = useRef(null);
 	const marker = useRef(null);
 	const mapInstance = useRef(null);
 

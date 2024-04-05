@@ -1,5 +1,4 @@
 import './Darkmode.scss';
-import { FiMenu } from 'react-icons/fi';
 import { MdOutlineDarkMode } from 'react-icons/md';
 import { useGlobalData } from '../../../hooks/useGlobalData';
 import { useCookie } from '../../../hooks/useCookie';

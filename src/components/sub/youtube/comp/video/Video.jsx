@@ -31,7 +31,7 @@ export default function Video({ video }) {
 			<div className='videoContainer'>
 				<Link className='videoImg' to={`/detail/${video.id}`}>
 					<img
-						src={video.snippet.thumbnails.standard.url}
+						src={video.snippet.thumbnails.standard?.url}
 						alt={video.snippet.title}
 					/>
 				</Link>
@@ -40,7 +40,7 @@ export default function Video({ video }) {
 				</Link>
 			</div>
 			<div className='text'>
-				<h4 className='text-title'>{wordSlice(video.snippet.title)}</h4>
+				<h4 className='text-title'>{wordSlice(video.snippet?.title)}</h4>
 				<div className='sub'>
 					<div className='time'>
 						<span>{date}</span>

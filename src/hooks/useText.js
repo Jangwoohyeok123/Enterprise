@@ -42,13 +42,9 @@ export default function useTextMethod(type) {
 	if (type === 'paragraphSlice') {
 		return (txt, num) => {
 			const paragraphUnit = Math.floor(txt.split(' ').length / num);
-			// console.log(txt.split(' ').slice(0, 70).join());
 			const paragraphs = new Array(num);
 
-			// 반복문 문제인데 ....
 			for (let i = 0; i < num; i++) {
-				// console.log(txt); x
-				// console.log(txt.split(' ').slice(0, 70));
 				paragraphs[i] = txt
 					.split(' ')
 					.slice(i * paragraphUnit, (i + 1) * paragraphUnit);
@@ -60,9 +56,3 @@ export default function useTextMethod(type) {
 		};
 	}
 }
-
-/* 문단 나누기 알고리즘  
-
-num 개의 paragraph 를 만들어준다.
-
-*/

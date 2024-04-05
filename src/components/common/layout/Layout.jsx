@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 import './Layout.scss';
 
-// Layout scroll 적용은 나중에 할 것!
 export default function Layout({ children, title, src, className }) {
 	const refFrame = useRef(null);
 	const refTitle = useRef(null);

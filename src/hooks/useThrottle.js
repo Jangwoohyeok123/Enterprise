@@ -1,14 +1,16 @@
 import { useRef } from 'react';
 
 export const useThrottle = (func, gap = 500) => {
-	const eventBlocker = useRef(null);
+	const timer = useRef(null);
 
 	return () => {
-		if (eventBlocker.current) return;
+		// timer 가 있다면 함수 호출 x
+		if (timer.current) return;
 
-		eventBlocker.current = setTimeout(() => {
+		// timer 가 없다면 timer 를 만들면서 함수 호출
+		timer.current = setTimeout(() => {
 			func();
-			eventBlocker.current = null;
+			timer.current = null;
 		}, gap);
 	};
 };

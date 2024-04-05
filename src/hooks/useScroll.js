@@ -7,7 +7,6 @@ export function useScroll(customHandler, baseLine = -window.innerHeight / 2) {
 
 	const scrollTo = useCallback(
 		targetPos => {
-			console.log(targetPos);
 			Frame && new Anime(Frame, { scroll: targetPos });
 		},
 		[Frame]

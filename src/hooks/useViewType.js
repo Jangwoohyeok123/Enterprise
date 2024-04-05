@@ -20,16 +20,5 @@ export const useViewType = opt => {
 		return () => window.removeEventListener('resize', getClientWid);
 	}, []);
 
-	// console.log('viewType: ' + Type);
 	return { ViewType, setViewType };
 };
-
-// App component 의 life cycle 동안 등록될 addEventListener 처리하는 로직
-/*  다른 프로젝트에서 재활용시 check 해 볼 요소 
-	1. 모바일 화면에서 새로고침시 모바일 화면이 나오는가?
-	2. width 를 변경해보고 eventListener 가 set 함수를 잘 호출하는지 체크
-*/
-
-/* 
-  App componenet 에서 한 번 실행한 후 전역 컨텍스트로 다루기
-*/

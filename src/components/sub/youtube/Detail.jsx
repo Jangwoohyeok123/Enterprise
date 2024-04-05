@@ -16,7 +16,6 @@ export default function Detail() {
 		const baseURL = `https://www.googleapis.com/youtube/v3/playlistItems?key=${api_key}&part=snippet&id=${id}`;
 		const data = await fetch(baseURL);
 		const json = await data.json();
-		console.log(json.items[0].snippet);
 		setVideo(json.items[0].snippet);
 	};
 
