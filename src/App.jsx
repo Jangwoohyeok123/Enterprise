@@ -12,7 +12,6 @@ import './globalStyles/Reset.scss';
 import './globalStyles/Variable.scss';
 import Detail from './components/sub/youtube/Detail';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import Cookie from './components/common/cookieModal/CookieModal';
 import { useCookie } from './hooks/useCookie';
 import { useGlobalData } from './hooks/useGlobalData';
@@ -23,7 +22,6 @@ export default function App() {
 	const queryClient = new QueryClient();
 	const { createCookie } = useCookie();
 
-	// App 컴포넌트가 실행되면 dark 쿠키를 만든다.
 	createCookie('dark', '', 60 * 60);
 
 	return (
@@ -44,15 +42,6 @@ export default function App() {
 					Please, accept cookie to enjoy out site!
 				</Cookie>
 			</div>
-			{/* <ReactQueryDevtools /> */}
 		</QueryClientProvider>
 	);
 }
-
-// main 에서 scroll 없애고 싶으면
-
-/* 
-${
-	location.pathname === '/' && 'main'
-}
-*/

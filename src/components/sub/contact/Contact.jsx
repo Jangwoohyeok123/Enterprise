@@ -10,7 +10,6 @@ import Maps from './components/maps/Maps';
 export default function Contact() {
 	const path = process.env.PUBLIC_URL;
 	const kakao = useRef(window.kakao);
-	console.log(kakao);
 	const [Index, setIndex] = useState(0);
 	const [View, setView] = useState(false);
 
@@ -21,31 +20,31 @@ export default function Contact() {
 	const mapInfo = useRef([
 		{
 			title: 'seoul',
-			latlng: new kakao.current.maps.LatLng(37.5567, 126.97597),
+			latlng: new window.kakao.current.maps.LatLng(37.5567, 126.97597),
 			imgSrc: `${process.env.PUBLIC_URL}/img/marker/marker1.png`,
-			imgSize: new kakao.current.maps.Size(232, 99),
-			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
+			imgSize: new window.kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new window.kakao.current.maps.Point(116, 99) }
 		},
 		{
 			title: 'naver',
-			latlng: new kakao.current.maps.LatLng(37.3589, 127.1052131),
+			latlng: new window.kakao.current.maps.LatLng(37.3589, 127.1052131),
 			imgSrc: `${process.env.PUBLIC_URL}/img/marker/marker2.png`,
-			imgSize: new kakao.current.maps.Size(232, 99),
-			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
+			imgSize: new window.kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new window.kakao.current.maps.Point(116, 99) }
 		},
 		{
 			title: 'kakao',
-			latlng: new kakao.current.maps.LatLng(37.55637, 126.92392393),
+			latlng: new window.kakao.current.maps.LatLng(37.55637, 126.92392393),
 			imgSrc: `${process.env.PUBLIC_URL}/img/marker/marker3.png`,
-			imgSize: new kakao.current.maps.Size(232, 99),
-			imgPos: { offset: new kakao.current.maps.Point(116, 99) }
+			imgSize: new window.kakao.current.maps.Size(232, 99),
+			imgPos: { offset: new window.kakao.current.maps.Point(116, 99) }
 		}
 	]);
 
 	//마커 인스턴스 생성
-	marker.current = new kakao.current.maps.Marker({
+	marker.current = new window.kakao.current.maps.Marker({
 		position: mapInfo.current[Index].latlng,
-		image: new kakao.current.maps.MarkerImage(
+		image: new window.kakao.current.maps.MarkerImage(
 			mapInfo.current[Index].imgSrc,
 			mapInfo.current[Index].imgSize,
 			mapInfo.current[Index].imgOpt
@@ -55,7 +54,7 @@ export default function Contact() {
 	//컴포넌트 마운트시 참조객체에 담아놓은 돔 프레임에 지도 인스턴스 출력 및 마커 세팅
 	useEffect(() => {
 		mapFrame.current.innerHTML = '';
-		mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
+		mapInstance.current = new window.kakao.current.maps.Map(mapFrame.current, {
 			center: mapInfo.current[Index].latlng,
 			level: 3
 		});
@@ -64,18 +63,17 @@ export default function Contact() {
 		setView(false);
 
 		mapInstance.current.addControl(
-			new kakao.current.maps.MapTypeControl(),
-			kakao.current.maps.ControlPosition.TOPRIGHT
+			new window.kakao.current.maps.MapTypeControl(),
+			window.kakao.current.maps.ControlPosition.TOPRIGHT
 		);
 		mapInstance.current.addControl(
-			new kakao.current.maps.ZoomControl(),
-			kakao.current.maps.ControlPosition.RIGHT
+			new window.kakao.current.maps.ZoomControl(),
+			window.kakao.current.maps.ControlPosition.RIGHT
 		);
 		mapInstance.current.setZoomable(false);
 	}, [Index]);
 
 	const setCenter = useCallback(() => {
-		console.log('Throttling 적용후 setCenter');
 		mapInstance.current.setCenter(mapInfo.current[Index].latlng);
 	}, [Index]);
 
