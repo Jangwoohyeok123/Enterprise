@@ -51,27 +51,29 @@ export default function Contact() {
 		)
 	});
 
-	//컴포넌트 마운트시 참조객체에 담아놓은 돔 프레임에 지도 인스턴스 출력 및 마커 세팅
 	useEffect(() => {
-		mapFrame.current.innerHTML = '';
-		mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
-			center: mapInfo.current[Index].latlng,
-			level: 3
-		});
-		marker.current.setMap(mapInstance.current);
+		if (mapFrame.current) {
+			console.log('mapFrame 이 존재할 때');
+			mapFrame.current.innerHTML = '';
+			mapInstance.current = new kakao.current.maps.Map(mapFrame.current, {
+				center: mapInfo.current[Index].latlng,
+				level: 3
+			});
+			marker.current.setMap(mapInstance.current);
 
-		setView(false);
+			setView(false);
 
-		mapInstance.current.addControl(
-			new kakao.current.maps.MapTypeControl(),
-			kakao.current.maps.ControlPosition.TOPRIGHT
-		);
-		mapInstance.current.addControl(
-			new kakao.current.maps.ZoomControl(),
-			kakao.current.maps.ControlPosition.RIGHT
-		);
-		mapInstance.current.setZoomable(false);
-	}, [Index]);
+			mapInstance.current.addControl(
+				new kakao.current.maps.MapTypeControl(),
+				kakao.current.maps.ControlPosition.TOPRIGHT
+			);
+			mapInstance.current.addControl(
+				new kakao.current.maps.ZoomControl(),
+				kakao.current.maps.ControlPosition.RIGHT
+			);
+			mapInstance.current.setZoomable(false);
+		}
+	}, [Index, mapFrame.current]);
 
 	const setCenter = useCallback(() => {
 		mapInstance.current.setCenter(mapInfo.current[Index].latlng);
@@ -101,20 +103,17 @@ export default function Contact() {
 					</div>
 					<Form />
 				</div>
-
-				{window.kakao.current && (
-					<div id='mapSection'>
-						<Maps mapFrame={mapFrame} View={View} />
-						<ControlBox
-							mapInfo={mapInfo}
-							Index={Index}
-							setIndex={setIndex}
-							View={View}
-							setView={setView}
-							setCenter={setCenter}
-						/>
-					</div>
-				)}
+				<div id='mapSection'>
+					<Maps mapFrame={mapFrame} View={View} />
+					<ControlBox
+						mapInfo={mapInfo}
+						Index={Index}
+						setIndex={setIndex}
+						View={View}
+						setView={setView}
+						setCenter={setCenter}
+					/>
+				</div>
 			</div>
 		</Layout>
 	);
