@@ -5,11 +5,9 @@ import { FiEdit3 } from 'react-icons/fi';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 export default function Community() {
-	// state
 	const [Posts, setPosts] = useState([]);
 	const [IsEdit, setIsEdit] = useState(false);
 
-	// ref
 	const path = useRef(process.env.PUBLIC_URL);
 	const refTitle = useRef(null);
 	const refBody = useRef(null);
@@ -49,7 +47,6 @@ export default function Community() {
 	};
 
 	const openEditMode = selectedIndex => {
-		console.log(selectedIndex);
 		if (IsEdit) return;
 		setIsEdit(!IsEdit);
 		setPosts(
@@ -63,7 +60,6 @@ export default function Community() {
 	};
 
 	const closeEditMode = selectedIndex => {
-		console.log('closeEdit Mode');
 		setIsEdit(!IsEdit);
 
 		setPosts(
